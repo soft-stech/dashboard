@@ -53,13 +53,15 @@ generic:
   remove: Удалить
   resource: |-
     {count, plural,
-    один  {resource}
-    остальные {resources}
+    one {ресурс}
+    two {ресурса}
+    other {ресурсов}
     }
   resourceCount: |-
     {count, plural,
-    один  {1 resource}
-    остальные {# resources}
+    one  {1 ресурс}
+    two {ресурса}
+    other {# ресурсов}
     }
   save: Сохранить
   showAdvanced: Показать расширенные
@@ -102,7 +104,7 @@ generic:
         {matched, plural,
           =0 {Совпадений 0 из {total, number}}
           =1 {Совпадений 1 из {total, number}: "{sample}"}
-          другие {Совпадений {matched, number} из {total, number}, включая "{sample}"}
+          other {Совпадений {matched, number} из {total, number}, включая "{sample}"}
         }
 
 locale:
@@ -110,3 +112,122 @@ locale:
   zh-hans: 简体中文
   ru-ru: Русский
   none: (None)
+
+nav:
+  backToRancher: Управление кластером
+  clusterTools: Инструменты кластера
+  kubeconfig:
+    download: Скачать KubeConfig
+    copy: Скопировать KubeConfig в буфер обмена
+    options: Настройки KubeConfig
+  import: Импортировать YAML
+  home: Главная
+  shell: Консоль Kubectl
+  shellShortcut: Консоль Kubectl {key}
+  support: |-
+    {hasSupport, select,
+      true {Поддержка}
+      other {Получить поддержку}
+    }
+  restoreSnapshot: Восстановить из снапшота
+  rotateCertificates: Обновить сертификаты
+  rotateEncryptionKeys: Обновить ключи шифрования
+  saveAsRKETemplate: Сохранить как шаблон RKE
+  takeSnapshot: Сделать снапшот
+  group:
+    cluster: Кластер
+    inUse: Дополнительные ресурсы
+    policy: Политики
+    rbac: RBAC
+    serviceDiscovery: Обзор сервиса
+    starred: Избранное
+    storage: Хранилище
+    workload: Рабочие процессы
+    monitoring: Мониторинг
+    advanced: Продвинутые
+    RKE1Configuration: Конфигурация RKE1
+    admission: Допуски
+    apps: Приложения
+    clusterProvisioning: Управление кластером
+    core: Основное
+  ns:
+    all: Все пространства имен
+    clusterLevel: Только ресурсы кластера
+    namespace: "{name}"
+    namespaced: Только ресурсы пространства имен
+    orphan: Не в проекте
+    project: "Проект: {name}"
+    system: Только системные пространства имен
+    user: Только пользовательские пространства имен
+  apps: Приложения
+  categories:
+    explore: Обзор кластера
+    multiCluster: Глобальные приложения
+    legacy: Устаревшие приложения
+    configuration: Конфигурация
+  search:
+    placeholder: Начните писать для поиска кластера
+    noResults: Не найдено кластеров
+  resourceSearch:
+    label: Поиск ресурсов
+    toolTip: Поиск ресурсов {key}
+    placeholder: Начните писать для поиска ресурса...
+  header:
+    setLoginPage: Установить как страницу входа
+    restoreCards: Восстановить скрытые карточки
+  userMenu:
+    preferences: Настройки
+    accountAndKeys: Аккаунт и API ключи
+    logOut: Выйти
+  failWhale:
+    reload: Перезагрузить
+    separator: или
+
+product:
+  apps: Приложения
+  auth: Пользователи и аутентификация
+  backup: Резервные копии Rancher
+  cis: CIS Бенчмарк
+  ecm: Управление кластером
+  explorer: Обзор кластера
+  fleet: Беспрерывная доставка
+  longhorn: Longhorn
+  manager: Управление кластером
+  gatekeeper: OPA Gatekeeper
+  istio: Istio
+  logging: Логирование
+  settings: Глобальные настройки
+  clusterManagement: Управление кластером
+  monitoring: Мониторинг
+  mcapps: Глобальные настройки
+  neuvector: NeuVector
+  harvesterManager: Управление виртуализацией
+  rancher: Rancher
+  uiplugins: Расширения
+  elemental: Управление ОС
+
+suffix:
+  percent: "%"
+  milliCpus: несколько CPU
+  cores: Ядра
+  cpus: CPU
+  gpus: GPU
+  ib: Б
+  mib: МБ
+  gb: ГБ
+  revisions: |-
+    {count, plural,
+      =1 { Ревизия }
+      other { Ревизии }
+    }
+  seconds: |-
+    {count, plural,
+      =1 { Секунда }
+      other { Секунд }
+    }
+  sec: Сек
+  times: |-
+    {count, plural,
+      =1 { Раз }
+      other { Раза }
+    }
