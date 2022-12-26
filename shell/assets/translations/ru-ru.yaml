@@ -231,3 +231,181 @@ suffix:
       =1 { Раз }
       other { Раза }
     }
+
+##############################
+# Components & Pages
+##############################
+about:
+  title: Информация
+  versions:
+    title: Версии
+    component: Компонент
+    version: Версия
+    cli: CLI
+    helm: Helm
+    machine: Машина
+    rancher: Rancher
+    releaseNotes: 'Смотреть заметки к релизу'
+  os:
+    mac: macOS
+    windows: Windows
+    linux: Linux
+  downloadImageList:
+    title: Списки образов
+  downloadCLI:
+    title: CLI Загрузки
+  diagnostic:
+    title: Диагностика
+    checkboxTooltip: Дополните диагностические данные временем отклика для 10 основных ресурсов. Это может занять некоторое время
+    checkboxLabel: Выполнить дополнительные запросы
+    systemInformation:
+      subtitle: Системная информация
+      browser: Браузер
+      browserInfo: "User Agent: {userAgent}, Язык: {language}, Cookies включены: {cookieEnabled}"
+      system: Система
+      jsMemory: Javascript Память
+      deviceMemory: "Память устройства: {deviceMemory}"
+      hardwareConcurrency: "Аппаратный параллелизм: {hardwareConcurrency}"
+      os: "ОС: {platform}"
+      memJsHeapLimit: "Лимит Heap: {jsHeapSizeLimit}"
+      memTotalJsHeapSize: "Итоговый размер Heap: {totalJSHeapSize}"
+      memUsedJsHeapSize: "Используемый размер Heap: {usedJSHeapSize}"
+    logs:
+      subtitle: Последние логи
+    resourceCounts: |-
+      {count, plural,
+        one { Счетчики ресурсов по кластерам ({count} кластер)}
+        other { Счетчики ресурсов по кластерам ({count} кластеры)}
+      }
+    modal:
+      title: Время запросов еще не сгенерировано.
+      body: Сгенерируйте время запросов для более детальной информации.
+
+accountAndKeys:
+  title: Аккаунт и API ключи
+  account:
+    title: Аккаунт
+    change: Изменить пароль
+  apiKeys:
+    title: API ключи
+    notAllowed: У вас нет прав для управления API ключами
+    apiEndpoint: "API эндпоинт:"
+    add:
+      description:
+        label: Описание
+        placeholder: Введите дополнительное описание, которое поможет вам отличать этот ключ API.
+      label: Создать API ключ
+      expiry:
+        label: Автоматическое истечение
+        options:
+          never: Никогда
+          day: Один день от текущего момента
+          month: Один месяц от текущего момента
+          year: Один год от текущего момента
+          custom: Свой вариант
+          maximum: "{value} - Максимально допустимое значение"
+      customExpiry:
+        options:
+          minute: Минут
+          hour: Часов
+          day: Дней
+          month: Месяцев
+          year: Лет
+        scope: Области
+        noScope: Без областей
+      info:
+        accessKey: Ключ доступа
+        secretKey: Секретный ключ
+        bearerToken: Bearer токен
+        saveWarning: Сохраните ключи выше! Это единственный раз, когда вы сможете их увидеть. Если вы его потеряете, вам нужно будет создать новый ключ API.
+        keyCreated: Новый API ключ был создан
+        bearerTokenTip: "Ключ доступа и секретный ключ могут быть отправлены в качестве имени пользователя и пароля для базовой аутентификации HTTP для авторизации запросов. Вы также можете объединить их для использования в качестве Bearer токена:"
+        ttlLimitedWarning: Срок действия этого ключа API был сокращен из-за конфигурации системы.
+
+addClusterMemberDialog:
+  title: Добавить пользователя в кластер
+
+addonConfigConfirmation:
+  title: Сброс конфигурации аддонов
+  body: Изменение версии Kubernetes может привести к сбросу значений конфигурации надстройки. Вы должны убедиться, что значения соответствуют ожидаемым, прежде чем продолжить.
+
+addProjectMemberDialog:
+  title: Добавить пользователя в проект
+
+authConfig:
+  accessMode:
+    label: 'Настройте, кто может иметь возможность входить в систему и использовать {vendor}'
+    required: Ограничить доступ только авторизованным пользователям и группам
+    restricted: 'Разрешить участникам кластеров и проектов, а также авторизованным пользователям и группам'
+    unrestricted: Разрешить любому пользователю
+  allowedPrincipalIds:
+    title: Авторизованные пользователи и группы
+  associatedWarning: 'Примечание. Пользователь {provider}, под которым вы аутентифицируетесь, будет использован как альтернативный способ входа в систему с пользователем {vendor}, под которым вы в настоящее время вошли как <code>{username}</code>; все привязки глобальных разрешений, проектов и ролей кластера этого пользователя {vendor} также будут применяться к пользователю {provider}.'
+  github:
+    clientId:
+      label: ID Клиента
+    clientSecret:
+      label: Секретный ключ клиента
+    form:
+      app:
+        label: Наименование приложения
+        value: 'Все, что вам хочется, к примеру. Мой {vendor}'
+      callback:
+        label: callback URL для авторизации
+      description:
+        label: Описание приложения
+        value: 'Не обязательно, можно оставить пустым'
+      homepage:
+        label: URL домашней страницы
+      instruction: 'Заполните форму этими значениями:'
+      prefix:
+        1: <li><a href="{baseUrl}/settings/developers" target="_blank" rel="noopener noreferrer nofollow">Кликните сюда</a> перейти к настройкам приложения GitHub в новом окне.</li>
+        2: <li>Кликните на вкладку "OAuth Apps".</li>
+        3: <li>Кликните на кнопку "New OAuth App".</li>
+      suffix:
+        1: <li>Кликните "Register application"</li>
+        2: <li>Скопируйте и вставьте ID клиента и секретный ключ клиента только что созданного приложения OAuth в поля ниже.</li>
+    host:
+      label: GitHub Enterprise хост
+      placeholder: например github.mycompany.example
+    target:
+      label: Какую версию GitHub вы хотите использовать?
+      private: Частная установка GitHub Enterprise
+      public: Публичный GitHub.com
+    table:
+      server: Сервер
+      clientId: ID Клиента
+  googleoauth:
+    adminEmail: Email администратора
+    domain: Домен
+    oauthCredentials:
+      label: Учетные данные OAuth
+      tip: Учетные данные OAuth в формате JSON можно найти в консоли разработчиков Google API.
+    serviceAccountCredentials:
+      label: Учетные данные сервисной учетной записи
+      tip: Учетные данные служебной учетной записи JSON можно найти в разделе служебных учетных записей консоли разработчиков Google API.
+    steps:
+      1:
+        title: 'Кликните <a href="https://console.developers.google.com/apis/credentials" target="_blank" rel="noopener noreferrer nofollow">здесь</a> чтобы открыть настройки приложений в новом окне'
+        body:
+          1: Войдите в ваш аккаунт. Перейдите в "APIs & Services" и затем выберите "OAuth consent screen".
+          2: 'Авторизованные домены:'
+          3: 'Ссылка на главную страницу приложения: '
+          4: 'В разделе "Области действия API Google", включите "email", "profile" и "openid".'
+          5: 'Кликните на "Save".'
+        topPrivateDomain: 'Лучший частный домен:'
+      2:
+        title: 'Перейдите на вкладку «Учетные данные», чтобы создать идентификатор клиента OAuth.'
+        body:
+          1: 'В списке "Create Credentials" выберите "OAuth clientID" и затем "Web application".'
+          2: 'Авторизованные источники Javascript:'
+          3: 'Разрешенные URI перенаправления:'
+          4: 'Кликните "Create", затем кликните на кнопку "Download JSON".'
+          5: 'Загрузите скачанный JSON файл в поле учетных данных OAuth.'
+      3:
+        title: 'Создать учетные данные сервисной учетной записи'
+        introduction: 'Пройдите <a href="{docsBase}/admin-settings/authentication/google/#3-creating-service-account-credentials" target="_blank" rel="noopener noreferrer nofollow">сюда</a> для получения инструкции:'
+        body:
+          1: Создать сервисную учетную запись.
+          2: Сгенерировать ключ для сервисного аккаунта.
+          3: Добавить учетную запись службы в качестве клиента OAuth в свой домен Google.
