@@ -289,7 +289,7 @@ accountAndKeys:
   apiKeys:
     title: API ключи
     notAllowed: У вас нет прав для управления API ключами
-    apiEndpoint: "API эндпоинт:"
+    apiEndpoint: "API endpoint:"
     add:
       description:
         label: Описание
@@ -409,3 +409,125 @@ authConfig:
           1: Создать сервисную учетную запись.
           2: Сгенерировать ключ для сервисного аккаунта.
           3: Добавить учетную запись службы в качестве клиента OAuth в свой домен Google.
+
+  ldap:
+    freeipa: Настроить сервер FreeIPA
+    activedirectory: Настроить аккаунт Active Directory
+    openldap: Настроить сервер OpenLDAP
+    defaultLoginDomain:
+      label: Домен для входа по умолчанию
+      placeholder: например mycompany
+      hint: Этот домен будет использоваться, если пользователь войдет в систему, не указав его.
+    cert: Сертификат
+    disabledStatusBitmask: Битовая маска отключенного состояния
+    groupDNAttribute: Аттрибут группы DN
+    groupMemberMappingAttribute: Аттрибут сопоставления группы пользователя
+    groupMemberUserAttribute: Атрибут пользователя члена группы
+    groupSearchBase:
+      label: Начальный запрос групп
+      placeholder: 'ou=groups,dc=mycompany,dc=com'
+    hostname:
+      label: Имя хоста/IP
+      placeholder: например server1,server2
+      hint: Несколько серверов можно указать в виде списка, разделенного запятыми.
+    loginAttribute: Аттрибут логина
+    nameAttribute: Аттрибут имени
+    nestedGroupMembership:
+      label: Членство во вложенной группе
+      options:
+        direct: Искать только прямое членство в группах
+        nested: Поиск прямого и вложенного членства в группах
+    objectClass: Класс объекта
+    password: Пароль
+    port: Порт
+    customizeSchema: Настроить схему
+    users: Пользователи
+    groups: Группы
+    searchAttribute: Атрибут поиска
+    searchFilter: Фильтр поиска
+    serverConnectionTimeout: Время ожидания подключения к серверу
+    serviceAccountDN: Отличительное имя сервисной учетной записи
+    serviceAccountPassword: Пароль сервисной учетной записи
+    serviceAccountInfo: '{vendor} требуется учетная запись службы, которая имеет доступ только для чтения ко всем доменам, которые смогут войти в систему, чтобы мы могли определить, к каким группам принадлежит пользователь, когда он делает запрос с помощью ключа API.'
+    starttls:
+      label: Запустить TLS
+      tip: Обновляет незашифрованные соединения, оборачивая их TLS в процессе соединения. Нельзя использовать вместе с TLS.
+    tls: TLS
+    userEnabledAttribute: Включенный пользователем атрибут
+    userMemberAttribute: Атрибут члена пользователя
+    userSearchBase:
+      label: Начальный запрос пользователей
+      placeholder: 'например ou=users,dc=mycompany,dc=com'
+    username: Имя пользователя
+    usernameAttribute: Атрибут имени пользователя
+    table:
+      server: Сервер
+      clientId: ID клиента
+  saml:
+    entityID: Поле Entity ID
+    UID: Поле UID
+    adfs: Настроить аккаунт AD FS
+    api: '{vendor} API Host'
+    cert:
+      label: Сертификат
+      placeholder: Вставьте сертификат, начинающийся с  -----BEGIN CERTIFICATE-----
+    displayName: Отображаемое имя
+    groups: Группы
+    key:
+      label: Приватный ключ
+      placeholder: Вставьте приватный ключ, обычно начинается с -----BEGIN RSA PRIVATE KEY-----
+    keycloak: Настроить аккаунт Keycloak
+    metadata:
+      label: Метаданные XML
+      placeholder: Вставьте в IDP метаданные XML
+    okta: Настроить аккаунт Okta
+    ping: Настроить аккаунт Ping
+    shibboleth: Настроить аккаунт Shibboleth
+    showLdap: Настроить OpenLDAP сервер
+    userName: Поле имени пользователя
+  azuread:
+    tenantId: ID жильца
+    applicationId: ID приложения
+    endpoint: endpoint
+    graphEndpoint: Graph endpoint
+    tokenEndpoint: Token endpoint
+    authEndpoint: Auth endpoint
+    reply:
+      info: 'Перед началом этой настройки Azure AD требуется URL-адрес из белого списка для вашего сервера Rancher. Убедитесь, что указанный ниже URL-адрес задан в разделе URL-адрес ответа вашего портала Azure. Обратите внимание, что распространение URL-адреса из белого списка может занять до 5 минут.'
+      label: URL ответа
+    updateEndpoint:
+      button: Обновить endpoint
+      banner:
+        message: 'Аутентификацию Azure AD необходимо обновить: она использует API Azure Graph, поддержка которого будет прекращена в конце 2022 года.'
+        linkText: 'Обновите здесь'
+      modal:
+        title: Вы уверены? Это обновление необратимо.
+        body: '<p><b>Возможно, вам потребуется внести некоторые дополнительные изменения</b>. Убедитесь, что в приложении Azure AD есть Directory.Read.All.<b>Application</b> разрешение добавлено в Microsoft Graph.<br> Если какие-либо endpoint'ы были настроены при настройке проверки подлинности Azure AD в Rancher, они не будут обновляться автоматически.</p>'
+  oidc:
+    oidc: Настроить аккаунт OIDC
+    keycloakoidc: Настроить аккаунт Keycloak OIDC
+    rancherUrl: Rancher URL
+    clientId: ID клиента
+    clientSecret: Secret клиента
+    customEndpoint:
+      label: Endpoint'ы
+      custom: Уточнить
+      standard: Сгенерировать
+    keycloak:
+      url: Keycloak URL
+      realm: Область Keycloak
+    issuer: Эмитент
+    authEndpoint: Endpoint авторизации
+    cert:
+      label: Сертификат
+      placeholder: Вставьте сертификат, начинающийся с -----BEGIN CERTIFICATE-----
+    key:
+      label: Приватный ключ
+      placeholder: Вставьте приватный ключ, обычно начинается с -----BEGIN RSA PRIVATE KEY-----
+  stateBanner:
+    disabled: '{provider} как провайдер авторизации сейчас выключен.'
+    enabled: '{provider} как провайдер авторизации сейчас включен.'
+  testAndEnable: Протестировать и включить авторизацию
+  noneEnabled: Локальная аутентификация всегда включена, но вы можете выбрать другого дополнительного провайдера аутентификации из показанных ниже.
+  localEnabled: '{vendor} настроен на разрешение доступа к учетным записям в своей локальной базе данных.'
+  manageLocal: Управлять аккаунтами
