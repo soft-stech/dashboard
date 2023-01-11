@@ -1033,7 +1033,7 @@ cluster:
   rkeTemplateUpgrade: Доступно обновление для ревизии шаблона {name}
 
   availabilityWarnings:
-    node: Нода {name} неактивена
+    node: Нода {name} неактивна
     machine: Машина {name} неактивна
 
   detail:
