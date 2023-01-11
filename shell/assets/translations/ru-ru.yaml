@@ -27,7 +27,7 @@ generic:
     always: Всегда
     ifNotPresent: Если отсутствует
     never: Никогда
-    labelsAndAnnotations: Ярлыки и Примечания
+    labelsAndAnnotations: Лейблы и Примечания
   links: Ссылки
   loading: Загрузка&hellip;
   members: Пользователи
@@ -409,7 +409,7 @@ authConfig:
           1: Создать сервисную учетную запись.
           2: Сгенерировать ключ для сервисного аккаунта.
           3: Добавить учетную запись службы в качестве клиента OAuth в свой домен Google.
-          
+
   ldap:
     freeipa: Настроить сервер FreeIPA
     activedirectory: Настроить аккаунт Active Directory
@@ -538,7 +538,7 @@ cluster:
     rancher-vsphere-csi: Конфигурация vSphere CSI
     rke2-calico: Конфигурация Calico
     rke2-calico-crd: Конфигурация Calico
-    rke2-canal: Конфигурация канала
+    rke2-canal: Конфигурация Canal
     rke2-cilium: Конфигурация Cilium
     rke2-coredns: Конфигурация CoreDNS
     rke2-ingress-nginx: Конфигурация NGINX Ingress
@@ -546,7 +546,7 @@ cluster:
     rke2-metrics-server: Конфигурация сервера метрик
     rke2-multus: Конфигурация Multus
   agentEnvVars:
-    label: Окружающая среда агента
+    label: Переменные окружения агента
     detail: Добавьте дополнительные переменные окружения в контейнер агента. Чаще всего это используется при конфигурации HTTP-прокси.
     keyLabel: Имя переменной
   cloudProvider:
@@ -555,7 +555,7 @@ cluster:
     azure:
       label: Azure
     external:
-      label: External
+      label: Сторонний
     gcp:
       label: Google
     rancher-vsphere:
@@ -567,25 +567,25 @@ cluster:
   copiedConfig: KubeConfig скопирован в буфер обмена
   custom:
     nodeRole:
-      label: Роль узла
-      detail: Выберите, какие роли будет иметь данный узел в кластере. Кластер должен содержать как минимум один узел каждой роли.
+      label: Роль ноды
+      detail: Выберите, какие роли будет иметь данная нода в кластере. Кластер должен содержать как минимум одну ноду каждой роли.
     advanced:
       label: Расширенные настройки
-      detail: Дополтительный контроль над тем, как узел будет зарегистрирован. Часто требуется, чтобы эти значения отличались у каждого из зарегистрированных узлов.
-      nodeName: Имя узла
-      publicIp: Публичный IP узла
-      privateIp: Приватный IP узла
+      detail: Дополнительные настройки регистрации ноды. Часто требуется, чтобы эти значения отличались у каждой из зарегистрированных нод.
+      nodeName: Имя ноды
+      publicIp: Публичный IP ноды
+      privateIp: Приватный IP ноды
       nodeLabel:
-        title: Ярлыки узла
-        label: Добавить ярлык
+        title: Лейблы ноды
+        label: Добавить лейбл
     registrationCommand:
       label: Команда регистрации
-      linuxDetail: Запустите эту команду на каждой имеющейся машине под Linux, которую вы хотите зарегистрировать.
-      windowsDetail: Запустите эту команду из PowerShell на каждой имеющейся машине под Windows, которую вы хотите зарегистрировать. Узлы под Windows могут быть только worker узлами.
-      windowsNotReady: Кластер должен быть запущен и работать с Linux etcd, Control Plane и worker узлами, прежде чем отобразится команда регистрации для добавления worker узлов под Windows.
-      windowsWarning: Pods рабочей нагрузки, включая развернутые диаграммами Rancher, будут запланированы и на Linux, и на Windows узлах по умолчанию. Отредактируйте NodeSelector на диаграмме, чтобы разместить их на совместимом узле.
+      linuxDetail: Запустить эту команду на каждой имеющейся машине под Linux, которую вы хотите зарегистрировать.
+      windowsDetail: Запустить эту команду из PowerShell на каждой имеющейся машине под Windows, которую вы хотите зарегистрировать. Ноды под Windows могут быть только worker нодами.
+      windowsNotReady: Кластер должен быть запущен и работать с Linux etcd, Control Plane и worker нодами, прежде чем отобразится команда регистрации для добавления worker нод под Windows.
+      windowsWarning: Поды рабочей нагрузки, включая развернутые Rancher чарты, будут запланированы и на Linux, и на Windows нодах по умолчанию. Отредактируйте NodeSelector на чарте, чтобы разместить их на совместимой ноде.
       windowsDeprecatedForRKE1: На Windows прекращена поддержка RKE1. Рекомендуется переход на RKE2.
-      insecure: "Небезопасно: Выберите это, чтобы пропустить TLS верификацию, если ваш сервер имеет самозаверяющий сертификат."
+      insecure: "Небезопасно: Выберите это, чтобы пропустить TLS верификацию, если ваш сервер имеет самоподписанный сертификат."
   credential:
     banner:
       createCredential: |-
@@ -642,17 +642,17 @@ cluster:
         label: Регион по умолчанию
         placeholder: "Необязательно: регион для использования по умолчанию"
       defaultBucket:
-        label: Bucket по умолчанию
-        placeholder: "Необязательно: bucket для использования по умолчанию"
+        label: Бакет по умолчанию
+        placeholder: "Необязательно: бакет для использования по умолчанию"
       defaultEndpoint:
         label: Endpoint по умолчанию
-        placeholder: "Необязательно: Endpoint для использования по умолчанию"
+        placeholder: "Необязательно: endpoint для использования по умолчанию"
       defaultFolder:
         label: Папка по умолчанию
         placeholder: "Необязательно: папка для использования по умолчанию"
       defaultEndpointCA:
-        label: Endpoint CA сертификата  по умолчанию
-        placeholder: "Необязательно: CA сертификат по умолчанию, используемый для проверки Endpoint"
+        label: Endpoint CA сертификата по умолчанию
+        placeholder: "Необязательно: CA сертификат по умолчанию, используемый для проверки endpoint"
       defaultSkipSSLVerify:
         label: Принимать любой сертификат (небезопасно)
       secretKey:
@@ -685,8 +685,8 @@ cluster:
           Больше информации о ролях можете найти <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration" target="_blank" rel="noopener noreferrer nofollow">здесь</a>.
     harvester:
       import: Импортированный Harvester
-      namespace: Namespace
-      cpu: CPUs
+      namespace: Пространство имён
+      cpu: CPU
       memory: Память
       disk: Диск
       image: Образ
@@ -700,7 +700,7 @@ cluster:
         title: "Данные сети:"
       kubeconfigContent:
         label: KubeconfigContent
-      placeholder: 'Namespace/Имя'
+      placeholder: 'Пространство имён/Имя'
       cluster: Кластер
       affinity:
         namespaces:
@@ -746,7 +746,7 @@ cluster:
   import:
     warningBanner: 'Не импортируйте кластер, который уже был присоединен к другому экземпляру Rancher, т.к. это приведет к повреждению данных.'
     commandInstructions: 'Выполните команду <code>kubectl</code> ниже на существующем Kubernetes кластере, работающем на поддерживаемой версии Kubernetes, чтобы импортировать в {vendor}:'
-    commandInstructionsInsecure: 'Если возникает ошибка &quot;certificate signed by unknown authority&quot;, это означает, что сборка {vendor} имеет самозаверяющий или ненадежный SSL-сертификат.  Вместо предыдущей выполните команду, приведенную ниже, чтобы пропустить проверку сертификата:'
+    commandInstructionsInsecure: 'Если возникает ошибка &quot;certificate signed by unknown authority&quot;, это означает, что сборка {vendor} имеет самоподписанный или ненадежный SSL-сертификат.  Вместо предыдущей выполните команду, приведенную ниже, чтобы пропустить проверку сертификата:'
     clusterRoleBindingInstructions: 'Если при создании некоторых ресурсов возникают ошибки разрешения доступа, возможно, ваш пользователь не имеет роли <code>cluster-admin</code>.  Используйте следующую команду, чтобы применить её:'
     clusterRoleBindingCommand: 'kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user <your username from your kubeconfig>'
   explore: Обзор
@@ -773,7 +773,7 @@ cluster:
       sizeLabel: |-
         {apiName}: {cpu, plural,
         =1 {1 vCPU}
-          other {# vCPUs}
+          other {# vCPU}
         } / {memory, number} GiB память / {storageSize, plural,
           =0 {EBS-Only}
           other {{storageSize, number} {storageUnit} {storageType}}
@@ -788,8 +788,8 @@ cluster:
         label: Зона доступности
         description: Зоны доступности защищают приложения от полных сбоев дата-центра Azure.
       dns:
-        help: Уникальный DNS-ярлык для публичного IP-адреса.
-        label: DNS-ярлык
+        help: Уникальный DNS-лейбл для публичного IP-адреса.
+        label: DNS-лейбл
       environment:
         label: Окружение
       faultDomainCount:
@@ -805,7 +805,7 @@ cluster:
       managedDisksSize:
         label: Размер управляемого диска
       nsg:
-        help: При использовании управляемого Rancher или предоставлении существующей NSG, все узлы, использующие данный шаблон, будут использовать предоставленную NSG. Если NSG не задана, новая NSG будет создана для каждого узла.
+        help: При использовании управляемого Rancher или предоставлении существующей NSG, все ноды, использующие данный шаблон, будут использовать предоставленную NSG. Если NSG не задана, новая NSG будет создана для каждой ноды.
         label: Группа безопасности сети
       openPort:
         add: Добавить порт
@@ -865,7 +865,7 @@ cluster:
           other {}
         }{memoryGb} GB, {vcpus, plural,
           =1 {# vCPU}
-          other {# vCPUs}
+          other {# vCPU}
         }, {disk} GB диск ({value})
       tags:
         label: Droplet теги
@@ -874,7 +874,7 @@ cluster:
       typeLabel: |-
         {label}, {vcpus, plural,
           =1 {# vCPU}
-          other {# vCPUs}
+          other {# vCPU}
         }, {disk} GB диск ({value})
     vsphere:
       hostOptions:
@@ -896,13 +896,13 @@ cluster:
           placeholder: например, IPv4
         allocation:
           label: Политика распределения IP-адресов vApp 
-          tooltip: dhcp, fixed, transient or fixedAllocated
+          tooltip: dhcp, fixed, transient или fixedAllocated
           placeholder: например, fixedAllocated
         properties:
           label: свойства vApp
           add: Добавить свойство
           keyPlaceholder: например, guestinfo.interface.0.ip.0.address
-          valuePlaceholder: например, ip:VM Network, expression or string
+          valuePlaceholder: например, ip:VM Network, выражение или строка
       networks:
         label: Сети
         add: Добавить сеть
@@ -925,11 +925,11 @@ cluster:
         folder: Папка
         host:
           label: Хост
-          note: Хост для создания ВМ (оставььте пустым для автономного ESXi или кластера с DRS)
+          note: Хост для создания ВМ (оставьте пустым для автономного ESXi или кластера с DRS)
       instanceOptions:
         label: Свойства экземпляра
         description: Выберите размер и ОС виртуальной машины
-        cpus: CPUs
+        cpus: CPU
         memory: Память
         disk: Диск
         creationMethod: Метод создания
@@ -940,7 +940,7 @@ cluster:
         libraryTemplate: Библиотека шаблонов
         virtualMachine: Виртуальная машина
         osIsoUrl:
-          label: ОС ISO URL
+          label: URL до ISO ОС
           placeholder: 'По умолчанию: последний rancheros-vmware образ'
         cloudInit:
           label: Cloud Init
@@ -950,7 +950,7 @@ cluster:
         os: Операционная система
       tags:
         label: Теги
-        description: Теги позволяет добавить метаданные к объектам в vSphere inventory для упрощения поиска и сортировки этих объектов.
+        description: Теги позволяют добавить метаданные к объектам в vSphere inventory для упрощения поиска и сортировки этих объектов.
         addTag: Добавить тег
       customAttributes:
         label: Пользовательские атрибуты (устаревшее)
@@ -976,7 +976,7 @@ cluster:
       sshUser:
         label: Имя пользователя SSH для AMI
         placeholder: 'По умолчанию: ubuntu'
-        tooltip: 'Имя пользователя, которое сузествует в выбранном AMI; будет использоваться для SSH-подключения к данному узлу.'
+        tooltip: 'Имя пользователя, которое существует в выбранном AMI; будет использоваться для SSH-подключения к данной ноде.'
       securityGroup:
         title: Группа безопасности
         vpcId: '(сначала выберите VPC/подсеть)'
@@ -1012,12 +1012,12 @@ cluster:
         label: Добавить селектор машин
         listLabel: Добавить аргумент
         bannerLabel: 'Замечание: Будет использован только самый последний селектор, удовлетворяющий условию, и только аргументы из него. Аргументы из остальных селекторов, удовлетворяющих условию, не будут ни объединены, ни скомбинированы.'
-        title: 'Для машин с ярлыками совпадающими с:'
+        title: 'Для машин с лейблами совпадающими с:'
         subTitle: 'Использовать следующие аргументы Kubelet:'
         titleAlt:  |-
           {count, plural,
             =1 { Для всех машин использовать следующие аргументы Kubelet: }
-            other { Для любых машин использовать следующеие аргументы Kubelet: }
+            other { Для любых машин использовать следующие аргументы Kubelet: }
           }
         kubeControllerManagerTitle: Дополнительные аргументы диспетчера контроллеров
         kubeApiServerTitle: Дополнительные серверные аргументы API
@@ -1026,14 +1026,14 @@ cluster:
       label: Вызывать ошибку, если параметры ядра отличаются от ожидаемых значений по умолчанию Kubelet
   banner:
     warning: 'Этот кластер содержит machineSelectorConfig. Данная форма не поддерживает его в полной мере. Используйте редактор YAML для управления полной конфигурацией.'
-    os: 'Попытка добавить {newOS} worker узел в кластер с одним или несколькими {existingOS} worker узлами: для некоторых установленных приложений может потребоваться обновление или удаление.'
-    rke2-k3-reprovisioning: 'Внесение изменений в конфигурацию кластера может привести к повторному выделению узлов. Больше информации вы можете найти в <a target="blank" href="{docsBase}/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/rke1-vs-rke2-differences" target="_blank" rel="noopener nofollow">документации</a>.'
-    desiredNodeGroupWarning: Доступно 0 узлов для запуска агента кластера. Кластер не будет активирован, пока нет как минимум одного доступного узела.
+    os: 'Попытка добавить {newOS} worker ноду в кластер с одной или несколькими {existingOS} worker нодами: для некоторых установленных приложений может потребоваться обновление или удаление.'
+    rke2-k3-reprovisioning: 'Внесение изменений в конфигурацию кластера может привести к reprovisioning нод. Больше информации вы можете найти в <a target="blank" href="{docsBase}/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/rke1-vs-rke2-differences" target="_blank" rel="noopener nofollow">документации</a>.'
+    desiredNodeGroupWarning: Доступно 0 нод для запуска агента кластера. Кластер не будет активирован, пока нет как минимум одной доступной ноды.
 
   rkeTemplateUpgrade: Доступно обновление для ревизии шаблона {name}
 
   availabilityWarnings:
-    node: Узел {name} неактивен
+    node: Нода {name} неактивена
     machine: Машина {name} неактивна
 
   detail:
@@ -1056,26 +1056,26 @@ cluster:
       tooltip:
         controlPlane: |-
           {count, plural,
-            =0 { Для работы кластера необходим как минимум один узел Control Plane. }
-            =1 { Кластер, имеющий только один узел Control Plane, не является отказоустойчивым. }
+            =0 { Для работы кластера необходима как минимум одна нода Control Plane. }
+            =1 { Кластер, имеющий только одну ноду Control Plane, не является отказоустойчивым. }
             other {}
           }
         etcd: |-
           {count, plural,
-            =0 { Для работы кластера необходим как минимум один etcd узел. }
-            =1 { Кластер, имеющий только один etcd узел, не является отказоустойчивым. }
-            =2 { Кластеры должны иметь нечетное количество узлов.  Кластер с 2 etcd узлами не является отказоустойчивым. }
+            =0 { Для работы кластера необходима как минимум одна etcd нода. }
+            =1 { Кластер, имеющий только одну etcd ноду, не является отказоустойчивым. }
+            =2 { Кластеры должны иметь нечетное количество нод.  Кластер с 2 etcd нодами не является отказоустойчивым. }
             =3 {}
-            =4 { Кластеры должны иметь нечетное количество узлов. }
+            =4 { Кластеры должны иметь нечетное количество нод. }
             =5 {}
-            =6 { Кластеры должны иметь нечетное количество узлов. }
+            =6 { Кластеры должны иметь нечетное количество нод. }
             =7 {}
-            other { Не рекомендуется использовать более 7 etcd узлов. }
+            other { Не рекомендуется использовать более 7 etcd нод. }
           }
         worker: |-
           {count, plural,
-            =0 { Для работы кластера необходим как минимум один worker узел. }
-            =1 { Кластер, имеющий только один worker узел, не является отказоустойчивым. }
+            =0 { Для работы кластера необходима как минимум одна worker нода. }
+            =1 { Кластер, имеющий только одну worker ноду, не является отказоустойчивым. }
             other {}
           }
     quantity:
@@ -1086,13 +1086,13 @@ cluster:
     role:
       label: Роли
     labels:
-      label: Ярлыки узлов Kubernetes
+      label: Лейблы нод Kubernetes
     noAccessBanner: "Недостаточно прав для просмотра конфигурации машинного пула."
     configNotFound: "Данная конфигурация машинного пула не найдена. Рекомендуем создать новый кластер с желаемой конфигурацией."
     noPoolsDisclaimer: Нет заданных машинных пулов, нажмите на плюс, чтобы добавить.
     autoReplace:
       label: Автоматическая замена
-      toolTip: Если значение больше 0, узлы, недоступные в течение этого времени, будут автоматически удалены и заменены.
+      toolTip: Если значение больше 0, ноды, недоступные в течение этого времени, будут автоматически удалены и заменены.
       unit: "Секунды"
   managementTimeout: Кластер станет доступным. Возможно, кластер уже создан. Рекомендуем проверить страницу кластеров прежде, чем пытаться создавать новый.
   memberRoles:
@@ -1104,10 +1104,10 @@ cluster:
       searchPlaceholder: Начните вводить для поиска
       noResults: Результатов не найдено
   privateRegistry:
-    label: Включить реестр контейнеров на уровне кластера для образов системных контейнеров Rancher
-    description: "Если включено, Rancher будет извлекать образы контейнеров из этого реестра во время выделения кластера. По умолчанию Rancher также будет использовать этот реестр при установке официальных приложений Rancher Helm chart. Если отключен реестр контейнеров на уровне кластера, системные образы извлекаются из системного реестра по умолчанию, указанного в глобальных настройках."
-    docsLinkRke2: "За помощью в конфигурации приватных зеркал реестра обратитесь к <a href=\"https://docs.rke2.io/install/containerd_registry_configuration/\" target=\"_blank\">документации</a> RKE2."
-    docsLinkK3s: "За помощью в конфигурации приватных зеркал реестра обратитесь к <a href=\"https://docs.k3s.io/installation/private-registry\" target=\"_blank\">документации</a> K3s."
+    label: Включить регистри контейнеров на уровне кластера для образов системных контейнеров Rancher
+    description: "Если включено, Rancher будет извлекать образы контейнеров из этого регистри во время выделения кластера. По умолчанию Rancher также будет использовать этот регистри при установке официальных Helm чарт приложений Rancher. Если отключен регистри контейнеров на уровне кластера, системные образы извлекаются из системного регистри по умолчанию, указанного в глобальных настройках."
+    docsLinkRke2: "За помощью в конфигурации приватных зеркал регистри обратитесь к <a href=\"https://docs.rke2.io/install/containerd_registry_configuration/\" target=\"_blank\">документации</a> RKE2."
+    docsLinkK3s: "За помощью в конфигурации приватных зеркал регистри обратитесь к <a href=\"https://docs.k3s.io/installation/private-registry\" target=\"_blank\">документации</a> K3s."
   provider:
     aliyunecs: Aliyun ECS
     aliyunkubernetescontainerservice: Alibaba ACK
@@ -1169,17 +1169,17 @@ cluster:
     rke2:
       harvester: '{tag}'
   providerGroup:
-    create-custom1: Использовать существующие узлы и создать кластер с помощью RKE
-    create-custom2: Использовать существующие узлы и создать кластер с помощью RKE2/K3s
+    create-custom1: Использовать существующие ноды и создать кластер с помощью RKE
+    create-custom2: Использовать существующие ноды и создать кластер с помощью RKE2/K3s
     create-kontainer: Создать кластер во внешнем провайдере Kubernetes
     register-kontainer: Зарегистрировать существующий кластер во внешнем провайдере Kubernetes
-    create-rke1: Выделить новые узлы и создать кластер с помощью RKE
-    create-rke2: Выделить новые узлы и создать кластер с помощью RKE2/K3s
+    create-rke1: Сделать provision новых нод и создать кластер с помощью RKE
+    create-rke2: Сделать provision новых нод и создать кластер с помощью RKE2/K3s
     create-template: Использовать шаблон каталога для создания кластера
     register-custom: Импортировать любой Kubernetes кластер
   rke2:
     snapshots:
-      suffix: число Snapshot на один узел
+      suffix: снапшотов на одну ноду
     systemService:
       rke2-coredns: 'CoreDNS'
       rke2-ingress-nginx: 'NGINX Ingress'
@@ -1194,24 +1194,24 @@ cluster:
     security:
       header: Безопасность
     defaultPodSecurityPolicyTemplateName:
-      label: Политика безопасности Pods по умолчанию
+      label: Политика безопасности подов по умолчанию
     defaultPodSecurityAdmissionTemplateName:
-      label: Допуск безопасности Pods по умолчанию
+      label: Допуск безопасности подов по умолчанию
     enableNetworkPolicy:
       label: Изоляция сети проекта
-      warning: По умолчанию контроллер входящего трафика не сможет направлять запросы к Pods на других узлах.
+      warning: По умолчанию контроллер входящего трафика не сможет направлять запросы к подам на других нодах.
     workNode:
-      label: Worker узлы
+      label: Worker ноды
     controlPlaneConcurrency:
       label: Согласованность Control Plane
-      toolTip: "Указывается либо фиксированное количество узлов (например, 1) за раз, либо процент (например, 10%)"
+      toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
     workerConcurrency:
       label: Согласованность Worker
-      toolTip: "Указывается либо фиксированное количество узлов (например, 1) за раз, либо процент (например, 10%)"
+      toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
     drain:
-      label: Освобождение узлов
-      toolTip: Освобождение превентивно удаляет Pods на каждом узле, чтобы на обновляемых узлах не было запущенных рабочих нагрузок. Обновление без освобождения выполняется быстрее и вызывает меньше изменений, но Pods все равно могут быть перезапущены в зависимости от выполняемого обновления.
-    deleteEmptyDir: "По умолчанию Pods, использующие тома emptyDir, будут удалены при обновлении. Это может повлиять на операции, зависящие от томов emptyDir, сохраняющихся в течение жизненного цикла Pods."
+      label: Освобождение нод
+      toolTip: Освобождение превентивно удаляет поды на каждой ноде, чтобы на обновляемых нодах не было запущенных рабочих нагрузок. Обновление без освобождения выполняется быстрее и вызывает меньше изменений, но поды все равно могут быть перезапущены в зависимости от выполняемого обновления.
+    deleteEmptyDir: "По умолчанию поды, использующие тома emptyDir, будут удалены при обновлении. Это может повлиять на операции, зависящие от томов emptyDir, сохраняющихся в течение жизненного цикла подов."
     address:
       tooltip: Сетевые значения кластера нельзя изменить после того, как кластер будет создан.
       header: Адресация
@@ -1228,16 +1228,16 @@ cluster:
       tlsSan:
         label: Альтернативные имена TLS
       fqdn:
-        toolTip: FQDN, который будет разрешаться в исправные узлы Control Plane кластера.
+        toolTip: FQDN, который будет разрешаться в исправные ноды Control Plane кластера.
       caCerts:
         label: CA сертификаты 
         toolTip: Сертификаты, необходимые клиенту для успешной проверки действительности сертификата, возвращенного Endpoint.
       ipv6:
-        warning: Похоже, вы используете IPv6 CIDR. Драйвер узла может требовать дополнительной конфигурации для его поддержки.
+        warning: Похоже, вы используете IPv6 CIDR. Драйвер ноды может требовать дополнительной конфигурации для его поддержки.
         enable: Включить поддержку IPv6
     etcd:
       disableSnapshots:
-        label: Автоматические Snapshots
+        label: Автоматические снапшоты
       snapshotScheduleCron:
         label: Cron-расписание
       snapshotRetention:
@@ -1256,17 +1256,17 @@ cluster:
   selectCredential:
     genericDescription: "{vendor} не имеет встроенной поддержки для этого драйвера.  Мы сделали предположение, но обратитесь к документации драйвера, чтобы уточнить список полей, необходимых для аутентификации."
   snapshot:
-    successTitle: Snapshot запущен
-    errorTitle: "Ошибка создания Snapshot {name}"
-    successMessage: "Был запрошен Snapshot для {name}"
-    bulkSuccessTitle: Snapshot запущен
+    successTitle: Снапшот запущен
+    errorTitle: "Ошибка создания снапшота {name}"
+    successMessage: "Был запрошен снапшот для {name}"
+    bulkSuccessTitle: Снапшот запущен
     bulkSuccessMessage: |-
       {count, plural,
-        =1 { Был запрошен Snapshot для 1 кластера }
-        other {Был запрошен Snapshot для {count} кластера/кластеров }
+        =1 { Был запрошен снапшот для 1 кластера }
+        other {Был запрошен снапшот для {count} кластера/кластеров }
       }
     groupLabel: Расположение
-    failed: "Произошла ошибка при выполнении Snapshot от {time} "
+    failed: "Произошла ошибка при выполнении снапшота от {time} "
     rke1:
       local: локально
       s3: s3
@@ -1275,7 +1275,7 @@ cluster:
     addons: Конфигурация аддонов
     advanced: Расширенные настройки
     agentEnv: Переменные окружения агента
-    basic: Базы
+    basic: Основы
     cluster: Конфигурация кластера
     etcd: etcd
     log: Provisioning Log
@@ -1283,7 +1283,7 @@ cluster:
     machinePools: Машинные пулы
     machines: Машины
     memberRoles: Роли участников
-    registry: Реестры
+    registry: Регистри
     upgrade: Стратегия обновления
     registration: Регистрация
   rotateCertificates:
