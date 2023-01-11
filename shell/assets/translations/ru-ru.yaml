@@ -622,13 +622,13 @@ cluster:
         label: Tenant ID
     digitalocean:
       accessToken:
-        help: Вставьте токен личного доступа для DigitalOcean со страницы <a href="https://cloud.digitalocean.com/settings/api/tokens" target="_blank" rel="noopener noreferrer nofollow">Приложения & API</a>.
+        help: Вставьте токен личного доступа для DigitalOcean со страницы <a href="https://cloud.digitalocean.com/settings/api/tokens" target="_blank" rel="noopener noreferrer nofollow">Applications & API</a>.
         label: Токен доступа
         placeholder: Ваш токен доступа DigitalOcean API
     label: Облачные учетные данные
     linode:
       accessToken:
-        help: Вставьте токен личного доступа для Linode со страницы <a href="https://cloud.linode.com/profile/tokens" target="_blank" rel="noopener noreferrer nofollow">API токены</a>.
+        help: Вставьте токен личного доступа для Linode со страницы <a href="https://cloud.linode.com/profile/tokens" target="_blank" rel="noopener noreferrer nofollow">API Tokens</a>.
         label: Токен доступа
         placeholder: Ваш токен доступа Linode API
     name:
