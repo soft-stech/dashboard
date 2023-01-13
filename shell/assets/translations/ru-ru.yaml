@@ -16,6 +16,7 @@ generic:
   create: Создать
   created: Создано
   customize: Настроить
+  dashboard: Dashboard
   default: По умолчанию
   disabled: Отключено
   done: Готово
@@ -27,7 +28,8 @@ generic:
     always: Всегда
     ifNotPresent: Если отсутствует
     never: Никогда
-    labelsAndAnnotations: Лейблы и Примечания
+  labels: Labels
+  labelsAndAnnotations: Labels & Annotations
   links: Ссылки
   loading: Загрузка&hellip;
   members: Пользователи
@@ -46,21 +48,20 @@ generic:
   ok: OK
   overview: Обзор
   plusMore: "+ еще {n}"
-  readFromFile: Читать из Файла
-  readFromFolder: Читать из Папки
+  readFromFile: Read from File
+  readFromFolder: Read from Folder
   reload: Перезагрузить
   register: Регистрация
   remove: Удалить
+  addCatalog: Add Catalog
   resource: |-
     {count, plural,
     one {ресурс}
-    two {ресурса}
     other {ресурсов}
     }
   resourceCount: |-
     {count, plural,
     one  {1 ресурс}
-    two {ресурса}
     other {# ресурсов}
     }
   save: Сохранить
@@ -150,6 +151,17 @@ nav:
     apps: Приложения
     clusterProvisioning: Управление кластером
     core: Основное
+    legacy: Legacy
+    API: API
+    Coordination: Coordination
+    Discovery: Discovery
+    Fleet: Fleet
+    K3s: K3s
+    Networking: Networking
+    Rancher: Rancher
+    RBAC: RBAC
+    Scheduling: Scheduling
+    Storage: Storage
   ns:
     all: Все пространства имен
     clusterLevel: Только ресурсы кластера
@@ -203,8 +215,10 @@ product:
   neuvector: NeuVector
   harvesterManager: Управление виртуализацией
   rancher: Rancher
+  legacy: Legacy
   uiplugins: Расширения
   elemental: Управление ОС
+  plugins: Plugins
 
 suffix:
   percent: "%"
@@ -409,7 +423,6 @@ authConfig:
           1: Создать сервисную учетную запись.
           2: Сгенерировать ключ для сервисного аккаунта.
           3: Добавить учетную запись службы в качестве клиента OAuth в свой домен Google.
-
   ldap:
     freeipa: Настроить сервер FreeIPA
     activedirectory: Настроить аккаунт Active Directory
@@ -531,6 +544,527 @@ authConfig:
   noneEnabled: Локальная аутентификация всегда включена, но вы можете выбрать другого дополнительного провайдера аутентификации из показанных ниже.
   localEnabled: '{vendor} настроен на разрешение доступа к учетным записям в своей локальной базе данных.'
   manageLocal: Управлять аккаунтами
+
+authGroups:
+  actions:
+    refresh: Refresh Group Memberships
+    assignRoles: Assign Global Roles
+  assignEdit:
+    assignTitle: Assign Global Roles To Group
+
+assignTo:
+  title: |-
+    {count, plural,
+      =1 { Assign Cluster To&hellip; }
+      other { Assign {count} Clusters To&hellip; }
+    }
+  labelsTitle: |-
+    {count, plural,
+      =1 { Assign Cluster To&hellip; }
+      other { Assign {count} Clusters To&hellip; }
+    }
+  workspace: Workspace
+
+asyncButton:
+  apply:
+    action: Apply
+    success: Applied
+    waiting: Applying&hellip;
+  continue:
+    action: Continue
+    success: Saved
+    waiting: Saving&hellip;
+  copy:
+    action: Click to Copy
+    success: Copied!
+  create:
+    action: Create
+    success: Created
+    waiting: Creating&hellip;
+  default:
+    action: Action
+    error: Error
+    success: Success
+    waiting: Waiting
+  delete:
+    action: Delete
+    success: Deleted
+    waiting: Deleting&hellip;
+  disable:
+    action: Disable
+    success: Disabled
+    waiting: Disabling&hellip;
+  activate:
+    action:  Activate
+    waiting: Activating&hellip;
+    success: Activated
+  deactivate:
+    action:  Deactivate
+    waiting: Deactivating&hellip;
+    success: Deactivated
+  diagnostic:
+    action: Download Diagnostic Package
+    success: Saving
+    waiting: Downloading&hellip;
+  done:
+    action: Done
+    success: Saved
+    waiting: Saving&hellip;
+  download:
+    action: Download
+    success: Saving
+    waiting: Downloading&hellip;
+  drain:
+    action: Drain
+    success: Drained
+    waiting: Draining&hellip;
+  edit:
+    action: Save
+    success: Saved
+    waiting: Saving&hellip;
+  enable:
+    action: Enable
+    success: Enabled
+    waiting: Enabling&hellip;
+  finish:
+    action: Finish
+    success: Finished
+    waiting: Finishing&hellip;
+  import:
+    action: Import
+    success: Imported
+    waiting: Importing&hellip;
+  install:
+    action: Install
+    success: Installed
+    waiting: Installing&hellip;
+  load:
+    action: Load
+    success: Loaded
+    waiting: Loadingg&hellip;
+  pause:
+    action: Pause Orchestration
+    success: Paused Orchestration
+    waiting: Pausing Orchestration
+    description: New revisions will not be deployed because orchestration is temporarily paused. To deploy new revisions, resume orchestration.
+  refresh:
+    action: ''
+    actionIcon: refresh
+    error: ''
+    errorIcon: error
+    success: ''
+    successIcon: checkmark
+    waiting: ''
+    waitingIcon: refresh
+  remove:
+    action: Remove
+    success: Removed
+    waiting: Removing&hellip;
+  restore:
+    action: Restore
+    waiting: Restoring&hellip;
+    success: Restored
+  resume:
+    action: Resume Orchestration
+    success: Resumed Orchestration
+    waiting: Resuming Orchestration
+  rollback:
+    action: Roll Back
+    success: Rolled Back
+    waiting: Rolling Back Workload
+  rotate:
+    action: Rotate
+    waiting: Rotating&hellip;
+    success: Rotated
+  run:
+    action: Run
+    waiting: Running&hellip;
+    success: Completed
+  snapshot:
+    action: Snapshot Now
+    waiting: Snapshot Initiated&hellip;
+    success: Snapshot Creating
+  timing:
+    action: Generate Response Times
+    waiting: Generating&hellip;
+    success: Response Times Generated
+  uninstall:
+    action: Uninstall
+    success: Uninstalled
+    waiting: Uninstalling&hellip;
+  update:
+    action: Update
+    success: Updated
+    waiting: Updating&hellip;
+  upgrade:
+    action: Upgrade
+    success: Upgrading
+    waiting: Starting&hellip;
+  generate:
+    action: Generate
+    success: Generated
+    waiting: Generating&hellip;
+
+backupRestoreOperator:
+  backupFilename: Backup Filename
+  deleteTimeout:
+    label: Delete Timeout
+    tip: Seconds to wait for a resource delete to succeed before removing finalizers to force deletion.
+  deployment:
+    rancherNamespace: Rancher ResourceSet Namespace
+    size: Size
+    storage:
+      label: Default Storage Location
+      options:
+        defaultStorageClass: 'Use the default storage class ({name})'
+        none: No default storage location
+        pickPV: Use an existing persistent volume
+        pickSC: Use an existing storage class
+        s3: Use an S3-compatible object store
+      persistentVolume:
+        label: Persistent Volume
+      storageClass:
+        label: Storage Class
+      tip: 'Configure a storage location where all backups are saved by default. You will have the option to override this with each backup, but will be limited to using an S3-compatible object store.'
+      warning: 'This {type} does not have its reclaim policy set to "Retain".  Your backups may be lost if the volume is changed or becomes unbound.'
+  encryption: Encryption
+  encryptionConfigName:
+    backuptip: 'Any secret in the <code>cattle-resource-system</code> namespace that has an <code>encryption-provider-config.yaml</code> key. <br/>The contents of this file are necessary to perform a restore from this backup, and are not stored by Rancher Backup.'
+    label: Encryption Config Secret
+    options:
+      none: Store the contents of the backup unencrypted
+      secret: 'Encrypt backups using an <a target="_blank" rel="noopener noreferrer nofollow" href="https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#understanding-the-encryption-at-rest-configuration">Encryption Config Secret</a> (Recommended)'
+    restoretip: 'If the backup was performed with encryption enabled, a secret containing the same encryption-provider-config should be used during restore.'
+    warning: 'The contents of this file are necessary to perform a restore from this backup, and are not stored by Rancher Backup.'
+  lastBackup: Last Backup
+  nextBackup: Next Backup
+  noResourceSet: You must define a ResourceSet in this namespace to create a backup CR.
+  prune:
+    label: Prune
+    tip: Delete the resources managed by Rancher that are not present in the backup. (Recommended)
+  resourceSetName: Resource Set
+  restoreFrom:
+    default: The default storage target
+    existing: An existing backup config
+    s3: An S3-compatible object store
+  retentionCount:
+    label: Retention Count
+    units: |-
+      {count, plural,
+        =1 { File }
+        other { Files }
+      }
+  s3:
+    bucketName: Bucket Name
+    credentialSecretName: Credential Secret
+    endpoint: Endpoint
+    endpointCA:
+      label: Endpoint CA
+      prompt: Endpoint CA must be Base64 encoded
+    folder: Folder
+    insecureTLSSkipVerify: Skip TLS Verifications
+    region: Region
+    storageLocation: Storage Location
+    titles:
+      backupLocation: Backup Source
+      location: Storage Location
+      s3: S3
+  schedule:
+    label: Schedule
+    options:
+      disabled: One-Time Backup
+      enabled: Recurring Backups
+    placeholder: e.g. @midnight or 0 0 * * *
+  storageSource:
+    configureS3: Use an S3-compatible object store
+    useBackup: Use the s3 location specified on the Backup CR
+    useDefault: Use the default storage location configured during installation
+  targetBackup: Target Backup
+
+catalog:
+  app:
+    managed: Managed
+    section:
+      lastOperation: Last Operation
+      notes: Release Notes
+      openLogs: View Logs
+      readme: Chart README
+      resources:
+        label: Resources
+        busy: The related resources will appear when {app} is fully installed.
+      values: Values YAML
+  chart:
+    registry:
+      label: Container Registry
+      tooltip: Container images are pulled from the Cluster Container Registry or, failing that, the System Container Registry Setting. To change this default behavior enter or update the registry here
+      custom:
+        checkBoxLabel: Container Registry for Rancher System Container Images
+        inputLabel: Container Registry
+        placeholder: Registry domain and ports, ex. registry.io:5000
+    header:
+      charts: Charts
+    info:
+      appVersion: Application Version
+      chartVersions:
+        label: Chart Versions
+        showMore: Show More
+        showLess: Show Less
+      home: Home
+      maintainers: Maintainers
+      related: Related
+      chartUrls: Chart
+      keywords: Keywords
+    errors:
+      clusterToolExists: This chart has a fixed namespace and name. A matching <a href="{url}">application</a> has been found and any changes will be made to it.
+  charts:
+    all: All
+    categories:
+      all: All Categories
+    certified:
+      other: Other
+      partner: Partner
+      rancher: '{vendor}'
+    deploysOnWindows: Deploys on Windows
+    windowsIncompatible: Linux only
+    versionWindowsIncompatible: Linux only version
+    header: Charts
+    featuredCharts: Featured Charts
+    noCharts: 'There are no charts available, have you added any repos?'
+    noWindows: Your repos do not contain any charts capable of being deployed on a cluster with Windows nodes.
+    noWindowsAndLinux: Your repos do not contain any charts capable of being deployed on a cluster with both Windows and Linux worker nodes.
+    operatingSystems:
+      all: All Operating Systems
+      linux: Linux
+      windows: Windows
+    search: Filter
+  install:
+    action:
+      goToUpgrade: Edit/Upgrade
+    appReadmeMissing: This chart doesn't have any additional chart information.
+    appReadmeTitle: Chart Information (Helm README)
+    chart: Chart
+    error:
+      requiresFound: '<a href="{url}">{name}</a> must be installed before you can install this chart.'
+      requiresMissing: 'This chart requires another chart that provides {name}, but none was was found.'
+      insufficientCpu: 'This chart requires {need, number} CPU cores, but the cluster only has {have, number} available.'
+      insufficientMemory: 'This chart requires {need} of memory, but the cluster only has {have} available.'
+      legacy:
+        label: This is a {legacyType} App and it cannot be modified here
+        enableLegacy:
+          prompt: You will need to enable Legacy Features to edit this App
+          goto: Go to Feature Flag settings
+        navigate: Navigate to Legacy Apps
+        mcmNotSupported: Legacy Multi-cluster Apps can not be managed through this UI
+        category:
+          legacy: Legacy
+          mcm: Multi-cluster
+    header:
+      install: 'Install {name}'
+      installGeneric: Install Chart
+      upgrade: 'Upgrade {name}'
+    helm:
+      atomic: Atomic
+      description:
+        label: Description
+        placeholder: e.g. Purpose of helm command
+      cleanupOnFail: Cleanup on Failure
+      crds: Apply custom resource definitions
+      dryRun: Dry Run
+      force: Force
+      historyMax:
+        label: Keep last
+        unit: |-
+          {value, plural,
+            =1 { revision }
+            other { revisions }
+          }
+      hooks: Execute chart hooks
+      openapi: Validate OpenAPI schema
+      resetValues: Reset Values
+      timeout:
+        label: Timeout
+        unit: |-
+          {value, plural,
+            =1 { second }
+            other { seconds }
+          }
+      wait: Wait
+    namespaceIsInProject: "This chart's target namespace, <code>{namespace}</code>, already exists and cannot be added to a different project."
+    project: Install into Project
+    section:
+      chartOptions: Edit Options
+      valuesYaml: Edit YAML
+      diff: Compare Changes
+    slideIn:
+      dock: Dock to shell
+    steps:
+      basics:
+        label: Metadata
+        subtext: Set App metadata
+        description: This process will help {action, select,
+          install { create }
+          upgrade { upgrade }
+          update { update }
+          } the {existing, select,
+          true { app}
+          false { chart}
+          }. Start by setting some basic information used by {vendor} to manage the App.
+        nsCreationDescription: "To install the app into a new namespace enter it's name in the Namespace field and select it."
+        createNamespace: "Namespace <code>{namespace}</code> will be created."
+      clusterTplVersion:
+        label: Version
+        subtext: Select a version of the template
+        description: Select a version of the Cluster Template
+      clusterTplValues:
+        label: Values
+        subtext: Change how the Cluster is defined
+        description: Configure Values used by Helm that help define the Cluster.
+      helmValues:
+        label: Values
+        subtext: Change how the App works
+        description: Configure Values used by Helm that help define the App.
+        chartInfo:
+          button: View Chart Info
+          label: Chart Info
+      helmCli:
+        checkbox: Customize Helm options before install
+        label: Helm Options
+        subtext: Change how the app is deployed
+        description: Supply additional deployment options
+    version: Version
+    versions:
+      current: '{ver} (Current)'
+      linux: '{ver} (Linux-only)'
+      windows: '{ver} (Windows-only)'
+  operation:
+    tableHeaders:
+      action: Action
+      releaseName: Release Name
+      releaseNamespace: Release Namespace
+  repo:
+    action:
+      refresh: Refresh
+    all: All
+    gitBranch:
+      label: Git Branch
+      placeholder: e.g. master
+      defaultMessage: 'Will default to "master" if left blank'
+    gitRepo:
+      label: Git Repo URL
+      placeholder: 'e.g. https://github.com/your-company/charts.git'
+    name:
+      rancher-charts: '{vendor}'
+      rancher-partner-charts: Partners
+      rancher-rke2-charts: RKE2
+      rancher-ui-plugins: Rancher Extensions
+
+    target:
+      git: Git repository containing Helm chart or cluster template definitions
+      http: http(s) URL to an index generated by Helm
+      label: Target
+    url:
+      label: Index URL
+      placeholder: 'e.g. https://charts.rancher.io'
+  tools:
+    header: Cluster Tools
+    noTools: "No Cluster Tools found"
+    action:
+      install: Install
+      upgrade: Upgrade/Edit
+      edit: Edit
+      remove: Remove
+      manage: Manage
+  os:
+    versionIncompatible: "This version is not compatible with Windows nodes."
+    chartIncompatible: "This chart is not compatible with Windows nodes."
+
+changePassword:
+  title: Change Password
+  cancel: Cancel
+  deleteKeys:
+    label: Delete all existing API keys
+  changeOnLogin:
+    label: Ask user to change their password on next login
+  generatePassword:
+    label: Generate a random password
+  currentPassword:
+    label: Current Password
+  userGen:
+    newPassword:
+      label: New Password
+    confirmPassword:
+      label: Confirm Password
+  randomGen:
+    generated:
+      label: Generated Password
+  newGeneratedPassword: Suggest a password
+  errors:
+    mismatchedPassword: Passwords do not match
+    failedToChange: Failed to change password
+    failedDeleteKey: Failed to delete key
+    failedDeleteKeys: Failed to delete keys
+
+chartHeading:
+  overview: Overview
+  poweredBy: "Powered by:"
+
+cis:
+  addTest: Add Test ID
+  alertNeeded: |-
+    Alerting must be enabled within the CIS chart values.yaml.
+    This requires that the <a tabindex="0" href="{link}">{vendor} Monitoring and Alerting app</a> is installed
+    and the Receivers and Routes are <a target="_blank" rel='noopener noreferrer nofollow' href='{docsBase}/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager'> configured to send out alerts.</a>
+  alertOnComplete: Alert on scan completion
+  alertOnFailure: Alert on scan failure
+  benchmarkVersion: Benchmark Version
+  clusterProvider: Cluster Provider
+  cronSchedule:
+    label: Schedule
+    placeholder: "e.g. 0 * * * *"
+  customConfigMap: Custom Benchmark ConfigMap
+  deleteBenchmarkWarning: |-
+    {count, plural,
+      =1 { Any profiles using this benchmark version will no longer work. }
+      other { Any profiles using these benchmark versions will no longer work }
+    }
+  deleteProfileWarning: |-
+    {count, plural,
+      =1 { Any scheduled scans using this profile will no longer work. }
+      other { Any scheduled scans using either of these profiles will no longer work. }
+    }
+  downloadAllReports: Download All Saved Reports
+  downloadLatestReport: Download Latest Report
+  downloadReport: Download Report
+  maxKubernetesVersion: Maximum allowed Kubernetes version
+  minKubernetesVersion: Minimum required Kubernetes version
+  noProfiles: There are no valid ClusterScanProfiles for this cluster type to select.
+  noReportFound: No scan report found
+  profile: Profile
+  reports: Reports
+  retention: Retention Count
+  scan:
+    description: Description
+    fail: Fail
+    lastScanTime: Last Scan Time
+    notApplicable: N/A
+    number: Number
+    pass: Pass
+    remediation: Remediation
+    scanDate: Scan Date
+    scanReport: Scan Report
+    skip: Skip
+    total: Total
+    warn: Warn
+  scheduling:
+    disable: Run scan once
+    enable: Run scan on a schedule
+  scoreWarning:
+    label: Scan state for "warn" results
+    protip: Scans with no failures will be marked "Pass" by default even if some of the tests generate "warn" output. This behavior can be changed by selecting the "fail" option from this section.
+  testID: Test ID
+  testsSkipped: Tests Skipped
+  testsToSkip: Tests to Skip
+  workerProfile: CIS Worker Profile
 
 cluster:
   addonChart:
@@ -817,7 +1351,7 @@ cluster:
       privateIp:
         label: Приватный IP-адрес
       publicIpOptions:
-        header: Параметры публичного IP 
+        header: Параметры публичного IP
         noPublic:
           label: Без публичного IP
         staticPublicIp:
@@ -880,7 +1414,7 @@ cluster:
       hostOptions:
         any: Любой
       vAppOptions:
-        label: Параметры vApp 
+        label: Параметры vApp
         description: Выберите свойства окружения OVF
         disable: Не использовать vApp
         auto: Использовать vApp для конфигурации сети с сетевыми профилями протоколов
@@ -891,11 +1425,11 @@ cluster:
           tooltip: com.vmware.guestInfo or iso
           placeholder: например, com.vmware.guestInfo
         protocol:
-          label: IP-протокол vApp 
+          label: IP-протокол vApp
           tooltip: IPv4 или IPv6
           placeholder: например, IPv4
         allocation:
-          label: Политика распределения IP-адресов vApp 
+          label: Политика распределения IP-адресов vApp
           tooltip: dhcp, fixed, transient или fixedAllocated
           placeholder: например, fixedAllocated
         properties:
@@ -1021,7 +1555,7 @@ cluster:
           }
         kubeControllerManagerTitle: Дополнительные аргументы диспетчера контроллеров
         kubeApiServerTitle: Дополнительные серверные аргументы API
-        kubeSchedulerTitle: Дополнительные аргументы планировщика 
+        kubeSchedulerTitle: Дополнительные аргументы планировщика
     agentArgs:
       label: Вызывать ошибку, если параметры ядра отличаются от ожидаемых значений по умолчанию Kubelet
   banner:
@@ -1038,7 +1572,7 @@ cluster:
 
   detail:
     provisioner: Provisioner
-    kubernetesVersion: Версия Kubernetes 
+    kubernetesVersion: Версия Kubernetes
     machineProvider: Провайдер машин
     machinePools: Машинные пулы
     machines: Машины
@@ -1230,7 +1764,7 @@ cluster:
       fqdn:
         toolTip: FQDN, который будет разрешаться в исправные ноды Control Plane кластера.
       caCerts:
-        label: CA сертификаты 
+        label: CA сертификаты
         toolTip: Сертификаты, необходимые клиенту для успешной проверки действительности сертификата, возвращенного Endpoint.
       ipv6:
         warning: Похоже, вы используете IPv6 CIDR. Драйвер ноды может требовать дополнительной конфигурации для его поддержки.
