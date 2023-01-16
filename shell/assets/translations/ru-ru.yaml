@@ -130,7 +130,7 @@ nav:
       true {Поддержка}
       other {Получить поддержку}
     }
-  restoreSnapshot: Восстановить из снэпшота
+  restoreSnapshot: Восстановить из снапшота
   rotateCertificates: Обновить сертификаты
   rotateEncryptionKeys: Обновить ключи шифрования
   saveAsRKETemplate: Сохранить как шаблон RKE
