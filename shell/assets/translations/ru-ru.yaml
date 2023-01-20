@@ -1831,3 +1831,501 @@ cluster:
     v2: RKE2/K3s
   validation:
     iamInstanceProfileName: Если выбран облачный провайдер Amazon, необходимо задать "Имя профиля экземпляра IAM" для каждого машинного пула
+
+clusterIndexPage:
+  hardwareResourceGauge:
+    consumption: "{useful} of {total} {units} {suffix}"
+    cores: CPU
+    pods: Pods
+    ram: Memory
+    used: Used
+    reserved: Reserved
+    units:
+      cores: |-
+        {count, plural,
+        =1 {core}
+        other {cores}}
+  header: Cluster Dashboard
+  resourceGauge:
+    totalResources: Total Resources
+  sections:
+    capacity:
+      label: Capacity
+    events:
+      label: Events
+      resource:
+        label: Resource
+      date:
+        label: Date
+    alerts:
+      label: Alerts
+    clusterMetrics:
+      label: Cluster Metrics
+    etcdMetrics:
+      label: Etcd Metrics
+    k8sMetrics:
+      label: Kubernetes Components Metrics
+    gatekeeper:
+      buttonText: Configure Gatekeeper
+      disabled: OPA Gatekeeper is not configured.
+      label: OPA Gatekeeper Constraint Violations
+      noRows: There are no constraints with violations to show.
+    nodes:
+      label: Unhealthy Nodes
+      noRows: There are no unhealthy nodes to show.
+    componentStatus:
+      etcd: Etcd
+      scheduler: Scheduler
+      controller-manager: Controller Manager
+
+configmap:
+  tabs:
+    data:
+      label: Data
+      protip: Use this area for anything that's UTF-8 text data
+    binaryData:
+      label: Binary Data
+
+containerResourceLimit:
+  cpuPlaceholder: e.g. 1000
+  gpuPlaceholder: e.g. 1
+  helpText: Configure how much of the resources the container can consume by default.
+  helpTextDetail: The amount of resources the container can consume by default.
+  label: Container Default Resource Limit
+  limitsCpu: CPU Limit
+  limitsGpu: NVIDIA GPU Limit/Reservation
+  limitsMemory: Memory Limit
+  memPlaceholder: e.g. 128
+  requestsCpu: CPU Reservation
+  requestsMemory: Memory Reservation
+
+
+resource:
+  errors:
+    update: "Error updating {name}"
+
+cruResource:
+  backToForm: Back to Form
+  backBody: You will lose any changes made to the YAML.
+  cancelBody: You will lose any changes made to the YAML.
+  confirmBack: "Okay"
+  confirmCancel: "Okay"
+  reviewForm: "Keep editing YAML"
+  reviewYaml: "Keep editing YAML"
+  previewYaml: Edit as YAML
+  showYaml: View as YAML
+
+detailText:
+  collapse: Hide
+  binary: '<Binary Data: {n, number} bytes>'
+  empty: '<Empty>'
+  unsupported: '<Value not supported by UI, see YAML>'
+  plusMore: |-
+    {n, plural,
+      =1 {+ 1 more char}
+      other {+ {n, number} more chars}
+    }
+
+drainNode:
+  action: 'Drain'
+  actionStop: 'Stop Drain'
+  titleOne: Drain {name}
+  titleMultiple: 'Drain {count} Nodes'
+  deleteLocalData: Delete Empty Dir Data
+  force: Force
+  safe:
+    label: Safe
+    helpText: If a node has standalone pods or ephemeral data it will be cordoned but not drained.
+  gracePeriod:
+    title: Grace period for pods to terminate themselves
+    default: Honor the default from each pod
+    placeholder: e.g. 30
+    custom: "Ignore the defaults and give each pod:"
+  timeout:
+    title: "Drain timeout"
+    default: Keep trying forever
+    placeholder: e.g. 60
+    custom: "Give up after:"
+
+etcdInfoBanner:
+  hasLeader: "Etcd has a leader:"
+  leaderChanges: "Number of leader changes:"
+  failedProposals: "Number of failed proposals:"
+
+fleet:
+  dashboard:
+    pageTitle: Continuous Delivery Dashboard
+    menuLabel: Dashboard
+    welcome: Welcome to Fleet Continuous Delivery
+    gitOpsScale: GitOps at scale.
+    learnMore: Learn More.
+    learnMoreLink: https://fleet.rancher.io
+    noRepo: "You don't have any Git Repositories in your Workspaces"
+    getStarted: Get started
+    thereIsMore: |-
+      {count, plural,
+      =1 { There is one other workspace with no repositories}
+      other { There are { count } other workspaces with no repositories}
+      }
+    expandAll: Expand All
+    collapseAll: Collapse All
+  cluster:
+    summary: Resource Summary
+    nonReady: Non-Ready Bundles
+  clusters:
+    harvester: |-
+      There {count, plural,
+      =1 {is 1 Harvester cluster that is hidden as this can not be used with Continuous Delivery}
+      other {are # Harvester clusters that are hidden as they can not be used with Continuous Delivery}
+      }
+  tokens:
+    harvester: |-
+      {count, plural,
+      =1 {1 token is hidden as it belongs to a Harvester cluster that can not be used with Continuous Delivery}
+      other {# tokens are hidden as they belong to Harvester clusters that can not be used with Continuous Delivery}
+      }
+  bundles:
+    resources: Resources
+    harvester: |-
+      {count, plural,
+      =1 {1 bundle is hidden as it belongs to a Harvester cluster that can not be used with Continuous Delivery}
+      other {# bundles are hidden as they belong to Harvester clusters that can not be used with Continuous Delivery}
+      }
+  fleetSummary:
+    noClustersGitRepo: This git repo is not targeting any clusters
+    state:
+      ready: 'Ready'
+      info: 'Transitioning'
+      warning: 'Warning'
+      error: 'Error'
+      unknown: 'Unknown'
+      notReady: Not Ready
+      waitApplied: Wait Applied
+  gitRepo:
+    createLocalBanner: When deploying a Git Repo to the Local workspace you are unable to target any specific Cluster or Cluster Groups
+    tabs:
+      resources: Resources
+      unready: Non-Ready
+    auth:
+      label: Authentication
+      git: Git Authentication
+      helm: Helm Authentication
+    caBundle:
+      label: Certificates
+      placeholder: "Paste in one or more certificates, starting with -----BEGIN CERTIFICATE----"
+    paths:
+      label: Paths
+      placeholder: e.g. /directory/in/your/repo
+      addLabel: Add Path
+      empty: The root of the repo is used by default.  To use one or more different directories, add them here.
+    repo:
+      label: Repository URL
+      placeholder: 'e.g. https://github.com/rancher/fleet-examples.git'
+      addRepo: Add Repository
+      noRepos: No repositories have been added
+    add:
+      steps:
+        repoInfo:
+          label: Repository Details
+          title: Specify the Git Repository to add to fleet
+          subtext: 'Define repository details'
+          description: Fleet will continuously monitor the Git Repository you configure below and synchronise the resources contained in it to the configured targets.
+        targetInfo:
+          label: Target Details
+          title: Specify which target to synchronise this repository to
+          subtext: 'Define target details'
+          description: You can configure which clusters will be used as the target of synchronisation with the resources in the repository.
+    ref:
+      label: Watch
+      branch: A Branch
+      revision: A Revision
+      branchLabel: Branch Name
+      branchPlaceholder: e.g. master
+      revisionLabel: Tag or Commit Hash
+      revisionPlaceholder: e.g. v1.0.0
+    serviceAccount:
+      label: Service Account Name
+      placeholder: "Optional: Use a service account in the target clusters"
+    targetNamespace:
+      label: Target Namespace
+      placeholder: "Optional: Require all resources to be in this namespace"
+    target:
+      selectLabel: Target
+      advanced: Advanced
+      cluster: Cluster
+      clusterGroup: Cluster Group
+      label: Deploy To
+      labelLocal: Deploy With
+    targetDisplay:
+      advanced: Advanced
+      cluster: "Cluster"
+      clusterGroup: "Group"
+      all: All
+      none: None
+      local: Local
+    tls:
+      label: TLS Certificate Verification
+      verify: Require a valid certificate
+      specify: Specify additional certificates to be accepted
+      skip: Accept any certificate (insecure)
+    warningTooltip:
+      clusterGroup: There are no clusters in this Cluster Group
+      cluster: There are no clusters available
+    workspace:
+      label: Workspace
+  clusterGroup:
+    selector:
+      label: Cluster Selectors
+      matchesAll: Matches all {total, number} existing clusters
+      matchesNone: Matches no existing clusters
+      matchesSome: |-
+        {matched, plural,
+          =1 {Matches 1 of {total, number} existing clusters: "{sample}"}
+          other {Matches {matched, number} of {total, number} existing clusters, including "{sample}"}
+        }
+  fdc:
+    loadingChart: Loading chart data...
+    renderingChart: Rendering chart...
+    id: ID
+    type: Type
+    state: State
+    cluster: Cluster
+    error: Error
+    ready: Ready
+    errors: Errors
+
+footer:
+  docs: Docs
+  download: Download CLI
+  forums: Forums
+  issue: File an Issue
+  slack: Slack
+
+gatekeeperConstraint:
+  match:
+    title: Match
+  tab:
+    enforcementAction:
+      title: Enforcement Action
+    rules:
+      title: Rules
+      sub:
+        labelSelector:
+          addLabel: Add Label
+          title: Label Selector
+    namespaces:
+      sub:
+        excludedNamespaces: Excluded Namespaces
+        namespaces: Namespaces
+        namespaceSelector:
+          addNamespace: Add Namespace
+          title: Namespace Selector
+        scope:
+          title: Scope
+      title: Namespaces
+    parameters:
+      addParameter: Add Parameter
+      editAsForm: Edit as Form
+      editAsYaml: Edit as YAML
+      title: Parameters
+  template: Template
+  violations:
+    title: Violations
+
+gatekeeperIndex:
+  poweredBy: OPA Gatekeeper
+  unavailable: OPA + Gatekeeper is not available in the system-charts catalog.
+  violations: Violations
+
+glance:
+  created: Created
+  cpu: CPU Usage
+  memory: Memory
+  nodes:
+    total:
+      label: |-
+        {count, plural,
+          =1 { Node }
+          other { Total Nodes }
+        }
+  pods: Pods
+  provider: Provider
+  version: Kubernetes Version
+  monitoringDashboard: Monitoring Dashboard
+  installMonitoring: Install Monitoring
+  v1MonitoringInstalled: V1 Monitoring Installed
+  clusterInfo: Cluster Information
+  eventsTable: Full events list
+
+clusterBadge:
+  addLabel: Add Cluster Badge
+  editLabel: Edit Cluster Badge
+  modal:
+    title: Custom Cluster Badge
+    checkbox: Show badge for this cluster
+    description: Custom description
+    iconText: Icon Text
+    buttonAction: Apply
+    badgeBgColor: Badge background color
+    badgeTextColor: Badge text color
+    badgeAsIcon: Customize cluster icon
+    maxCharsTooltip: Maximum two characters
+    previewTitle: "Cluster icon and name presentation:"
+
+grafanaDashboard:
+  failedToLoad: Failed to load graph
+  reload: Reload
+  grafana: Grafana
+
+graphOptions:
+  detail: Detail
+  summary: Summary
+  refresh: Refresh
+  range: Range
+
+growl:
+  clearAll: Clear All Notifications
+  disconnectError:
+    message: "The connection to {url} closed unexpectedly at {time}. Disconnected after {tries} reconnect attempts. Check your network connection and reload the page"
+    title: Websocket Disconnected
+  connectError:
+    message: "The connection to {url} closed unexpectedly at {time}. Reconnect attempt #{tries}."
+    title: Websocket Reconnecting
+  reconnected:
+    message: "The connection to {url} was restored on attempt #{tries}."
+    title: Websocket Reconnected
+
+hpa:
+  detail:
+    currentMetrics:
+      header: Current Metrics
+      noMetrics: No Current Metrics
+    metricHeader: '{source} Metric'
+  metricIdentifier:
+    name:
+      label: Metric Name
+      placeholder: e.g. packets-per-second
+    selector:
+      label: Add Selector
+  metricTarget:
+    averageVal:
+      label: Average Value
+    quantity:
+      label: Quantity
+    type:
+      label: Type
+    utilization:
+      label: Average Utilization
+    value:
+      label: Value
+  metrics:
+    headers:
+      metricName: Name
+      objectKind: Object Kind
+      objectName: Object Name
+      quantity: Quantity
+      resource: Resource Name
+      targetName: Target Name
+      value: Value
+    source: Source
+  objectReference:
+    api:
+      label: Referent API Version
+      placeholder: e.g. apps/v1beta1
+    kind:
+      label: Referent Kind
+      placeholder: e.g. Deployment
+    name:
+      label: Referent Name
+      placeholder: e.g. php-apache
+  tabs:
+    labels: Labels
+    metrics: Metrics
+    target: Target
+    workload: Workload
+  types:
+    cpu: CPU
+    memory: Memory
+  warnings:
+    custom: In order to use custom metrics with HPA, you need to deploy the custom metrics server such as prometheus adapter.
+    external: In order to use external metrics with HPA, you need to deploy the external metrics server such as prometheus adapter.
+    noMetric: In order to use resource metrics with HPA, you need to deploy the metrics server.
+    resource: The selected target reference does not have the correct resource requests on the spec. Without this the HPA metric will have no effect.
+  workloadTab:
+    current: Current Replicas
+    last: Last Scale Time
+    max: Maximum Replicas
+    min: Minimum Replicas
+    targetReference: Target Reference
+
+import:
+  title: Import YAML
+  defaultNamespace:
+    label: Default Namespace
+  success: |-
+    Applied {count, plural,
+    =1 {1 Resource}
+    other {# Resources}
+    }
+
+ingress:
+  certificates:
+    addCertificate: Add Certificate
+    addHost: Add Host
+    certificate:
+      label: Certificate - Secret Name
+      doesntExist: The selected certificate does not exist
+    defaultCertLabel: Default Ingress Controller Certificate
+    headers:
+      certificate: Certificate
+      hosts: Hosts
+    host:
+      label: Host
+      placeholder: e.g. example.com
+    label: Certificates
+    removeHost: Remove
+  defaultBackend:
+    label: Default Backend
+    noServiceSelected: No default backend is configured.
+    port:
+      label: Port
+      placeholder: e.g. 80 or http
+      notInt: Port must be an integer
+      required: Port is required
+    targetService:
+      label: Target Service
+      doesntExist: The selected service does not exist
+      required: Target Service is required
+    warning: "Warning: Default backend is used globally for the entire cluster."
+  ingressClass:
+    label: Ingress Class
+  rules:
+    addPath: Add Path
+    addRule: Add Rule
+    headers:
+      pathType: Path Type
+      path: Path
+      port: Port
+      target: Target Service
+      certificates: Certificates
+    hostname: Hostname
+    path:
+      label: Path
+      placeholder: e.g. /foo
+    port:
+      label: Port
+      placeholder: e.g. 80 or http
+    removePath: Remove
+    requestHost:
+      label: Request Host
+      placeholder: e.g. example.com
+    target:
+      label: Target Service
+      doesntExist: The selected service does not exist
+    title: Rules
+  rulesAndCertificates:
+    title: Rules and Certificates
+    defaultCertificate: default
+  target:
+    default: Default
+  rulesOrBackendSpecified: Either Default Backend or Rules must be specified
