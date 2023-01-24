@@ -15,7 +15,7 @@ import MoveModal from '@shell/components/MoveModal';
 import ResourceQuota from '@shell/components/form/ResourceQuota/Namespace';
 import Loading from '@shell/components/Loading';
 import { HARVESTER_TYPES, RANCHER_TYPES } from '@shell/components/form/ResourceQuota/shared';
-import { HARVESTER_NAME as HARVESTER } from '@shell/config/product/harvester-manager';
+import { HARVESTER_NAME as HARVESTER } from '@shell/config/features';
 import Labels from '@shell/components/form/Labels';
 
 export default {
@@ -244,6 +244,7 @@ export default {
         <PodSecurityAdmission
           :labels="value.labels"
           :mode="mode"
+          labels-prefix="pod-security.kubernetes.io/"
           @updateLabels="value.setLabels($event)"
         />
       </Tab>

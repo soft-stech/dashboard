@@ -9,7 +9,7 @@ import { escapeHtml } from '@shell/utils/string';
 import { insertAt, isArray } from '@shell/utils/array';
 import SteveModel from '@shell/plugins/steve/steve-class';
 import Vue from 'vue';
-import { HARVESTER_NAME as HARVESTER } from '@shell/config/product/harvester-manager';
+import { HARVESTER_NAME as HARVESTER } from '@shell/config/features';
 import { hasPSALabels, getPSATooltipsDescription, getPSALabels } from '@shell/utils/pod-security-admission';
 import { PSAIconsDisplay, PSALabelsNamespaceVersion } from '@shell/config/pod-security-admission';
 
@@ -187,11 +187,10 @@ export default class Namespace extends SteveModel {
   }
 
   get _detailLocation() {
-    const _detailLocation = super._detailLocation;
+    let _detailLocation = super._detailLocation;
 
-    // Harvester uses these resource directly... but has different routes. detailLocation covers routes leading to resource (like edit)
-    if (this.$rootGetters['currentProduct'].inStore === HARVESTER) {
-      _detailLocation.name = `${ HARVESTER }-${ _detailLocation.name }`.replace('-product', '');
+    if (this.$rootGetters['currentProduct'].hideNamespaceLocation) {
+      _detailLocation = false;
     }
 
     return _detailLocation;
