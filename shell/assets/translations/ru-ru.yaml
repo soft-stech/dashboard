@@ -16,6 +16,7 @@ generic:
   create: Создать
   created: Создано
   customize: Настроить
+  dashboard: Дашборд
   default: По умолчанию
   disabled: Отключено
   done: Готово
@@ -27,7 +28,8 @@ generic:
     always: Всегда
     ifNotPresent: Если отсутствует
     never: Никогда
-    labelsAndAnnotations: Лейблы и Примечания
+  labels: Лэйблы
+  labelsAndAnnotations: Лэйблы и Примечания
   links: Ссылки
   loading: Загрузка&hellip;
   members: Пользователи
@@ -46,21 +48,20 @@ generic:
   ok: OK
   overview: Обзор
   plusMore: "+ еще {n}"
-  readFromFile: Читать из Файла
-  readFromFolder: Читать из Папки
+  readFromFile: Читать из файла
+  readFromFolder: Читать из папки
   reload: Перезагрузить
   register: Регистрация
   remove: Удалить
+  addCatalog: Добавить каталог
   resource: |-
     {count, plural,
     one {ресурс}
-    two {ресурса}
     other {ресурсов}
     }
   resourceCount: |-
     {count, plural,
     one  {1 ресурс}
-    two {ресурса}
     other {# ресурсов}
     }
   save: Сохранить
@@ -133,7 +134,7 @@ nav:
   rotateCertificates: Обновить сертификаты
   rotateEncryptionKeys: Обновить ключи шифрования
   saveAsRKETemplate: Сохранить как шаблон RKE
-  takeSnapshot: Сделать снапшот
+  takeSnapshot: Сделать снэпшот
   group:
     cluster: Кластер
     inUse: Дополнительные ресурсы
@@ -150,6 +151,17 @@ nav:
     apps: Приложения
     clusterProvisioning: Управление кластером
     core: Основное
+    legacy: Легаси
+    API: API
+    Coordination: Координация
+    Discovery: Обнаружение
+    Fleet: Fleet
+    K3s: K3s
+    Networking: Сеть
+    Rancher: Rancher
+    RBAC: RBAC
+    Scheduling: Планирование
+    Storage: Хранилище
   ns:
     all: Все пространства имен
     clusterLevel: Только ресурсы кластера
@@ -203,8 +215,10 @@ product:
   neuvector: NeuVector
   harvesterManager: Управление виртуализацией
   rancher: Rancher
+  legacy: Legacy
   uiplugins: Расширения
   elemental: Управление ОС
+  plugins: Plugins
 
 suffix:
   percent: "%"
@@ -409,7 +423,6 @@ authConfig:
           1: Создать сервисную учетную запись.
           2: Сгенерировать ключ для сервисного аккаунта.
           3: Добавить учетную запись службы в качестве клиента OAuth в свой домен Google.
-
   ldap:
     freeipa: Настроить сервер FreeIPA
     activedirectory: Настроить аккаунт Active Directory
@@ -531,6 +544,527 @@ authConfig:
   noneEnabled: Локальная аутентификация всегда включена, но вы можете выбрать другого дополнительного провайдера аутентификации из показанных ниже.
   localEnabled: '{vendor} настроен на разрешение доступа к учетным записям в своей локальной базе данных.'
   manageLocal: Управлять аккаунтами
+
+authGroups:
+  actions:
+    refresh: Обновить членство в группе
+    assignRoles: Назначение глобальных ролей
+  assignEdit:
+    assignTitle: Назначить глобальные роли группе
+
+assignTo:
+  title: |-
+    {count, plural,
+      =1 { Назначить кластер к&hellip; }
+      other { Назначить {count} кластеров к&hellip; }
+    }
+  labelsTitle: |-
+    {count, plural,
+      =1 { Назначить кластер к&hellip; }
+      other { Назначить {count} кластеров к&hellip; }
+    }
+  workspace: Рабочее пространство
+
+asyncButton:
+  apply:
+    action: Применить
+    success: Применено
+    waiting: Применяем&hellip;
+  continue:
+    action: Продолжить
+    success: Сохранено
+    waiting: Сохраняем&hellip;
+  copy:
+    action: Кликните для копирования
+    success: Скопировано!
+  create:
+    action: Создать
+    success: Создано
+    waiting: Создание&hellip;
+  default:
+    action: Действие
+    error: Ошибка
+    success: Успех
+    waiting: Ожидание
+  delete:
+    action: Удалить
+    success: Удалено
+    waiting: Удаление&hellip;
+  disable:
+    action: Выключить
+    success: Выключено
+    waiting: Выключение&hellip;
+  activate:
+    action:  Активировать
+    waiting: Активация&hellip;
+    success: Активировано
+  deactivate:
+    action:  Деактивировать
+    waiting: Деактивация&hellip;
+    success: Деактивировано
+  diagnostic:
+    action: Скачать диагностический пакет
+    success: Сохранение
+    waiting: Загрузка&hellip;
+  done:
+    action: Завершить
+    success: Сохранено
+    waiting: Сохранение&hellip;
+  download:
+    action: Скачать
+    success: Сохранение
+    waiting: Скачивание&hellip;
+  drain:
+    action: Освободить
+    success: Освобождено
+    waiting: Освобождение&hellip;
+  edit:
+    action: Сохранить
+    success: Сохранено
+    waiting: Сохранение&hellip;
+  enable:
+    action: Включить
+    success: Включено
+    waiting: Включение&hellip;
+  finish:
+    action: Завершить
+    success: Завершено
+    waiting: Завершение&hellip;
+  import:
+    action: Импорт
+    success: Импортировано
+    waiting: Импортирование&hellip;
+  install:
+    action: Установить
+    success: Установлено
+    waiting: Установка&hellip;
+  load:
+    action: Загрузить
+    success: Загружено
+    waiting: Загрузка&hellip;
+  pause:
+    action: Приостановить оркестрацию
+    success: Оркестрация приостановлена
+    waiting: Приостановка оркестрации
+    description: Новые версии не будут развернуты, так как оркестровка временно приостановлена. Чтобы развернуть новые версии, возобновите оркестровку.
+  refresh:
+    action: ''
+    actionIcon: обновить
+    error: ''
+    errorIcon: ошибка
+    success: ''
+    successIcon: галочка
+    waiting: ''
+    waitingIcon: обновить
+  remove:
+    action: Удалить
+    success: Удалено
+    waiting: Удаление&hellip;
+  restore:
+    action: Восстановить
+    waiting: Восстановление&hellip;
+    success: Восстановлено
+  resume:
+    action: Возобновить оркестрацию
+    success: Оркестрация возобновлена
+    waiting: Возобновление оркестрации
+  rollback:
+    action: Откатиться
+    success: Откачено
+    waiting: Откатываем рабочее пространство
+  rotate:
+    action: Ротация
+    waiting: Выполнение ротации&hellip;
+    success: Ротация выполнена
+  run:
+    action: Запустить
+    waiting: Запуск&hellip;
+    success: Завершено
+  snapshot:
+    action: Создать снэпшот
+    waiting: Снэпшот создан&hellip;
+    success: Создание снэпшота
+  timing:
+    action: Сгенерировать время ответа
+    waiting: Генерация&hellip;
+    success: Время ответа сгенерировано
+  uninstall:
+    action: Удалить
+    success: Удалено
+    waiting: Удаление&hellip;
+  update:
+    action: Обновить
+    success: Обновлено
+    waiting: Обновление&hellip;
+  upgrade:
+    action: Улучшить
+    success: Улучшено
+    waiting: Начинаем&hellip;
+  generate:
+    action: Сгенерировать
+    success: Сгенерировано
+    waiting: Генерация&hellip;
+
+backupRestoreOperator:
+  backupFilename: Имя файла бэкапа
+  deleteTimeout:
+    label: Таймаут удаления
+    tip: Seconds to wait for a resource delete to succeed before removing finalizers to force deletion.
+  deployment:
+    rancherNamespace: Пространство имен Rancher ResourceSet
+    size: Размер
+    storage:
+      label: Хранилище по умолчанию
+      options:
+        defaultStorageClass: 'Использовать класс хранилища по умолчанию ({name})'
+        none: Нет хранилища по умолчанию
+        pickPV: Использовать существующий постоянный том
+        pickSC: Использовать существующий класс хранилища
+        s3: использовать S3-совместимое хранилище
+      persistentVolume:
+        label: Persistent Volume
+      storageClass:
+        label: Класс хранилища
+      tip: 'Настройка хранилища, где по умолчанию сохраняются все резервные копии. У вас будет возможность переопределить это для каждой резервной копии, но будет ограничено использованием S3-совместимого хранилища объектов.'
+      warning: 'Этот {type} не имеет своей политики "Сохранить".  Ваши резервные копии могут быть потеряны, если объем изменяется или становится несвязанным.'
+  encryption: Шифрование
+  encryptionConfigName:
+    backuptip: 'Любой секрет в пространстве имен <code>cattle-resource-system</code>, имеющий <code>encryption-provider-config.yaml</code> ключ. <br/> Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher.'
+    label: Encryption Config Secret
+    options:
+      none: Хранить содержимое незашифрованной резервной копии
+      secret: 'Шифрование резервных копий с помощью <a target="_blank" rel="noopener noreferrer nofollow" href="https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#understanding-the-encryption-at-rest-configuration">Encryption Config Secret</a> (Рекомендуется)'
+    restoretip: 'Если резервная копия была выполнена с включенным шифрованием, секрет, содержащий тот же encryption-provider-config должны использоваться во время восстановления.'
+    warning: 'Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher.'
+  lastBackup: Последняя резервная копия
+  nextBackup: Следующая резервная копия
+  noResourceSet: вы должны задать ResourceSet в этом пространстве имен для создания резервной копии CR.
+  prune:
+    label: Prune
+    tip: Удалить ресурсы, управляемые Rancher, которые отсутствуют в резервной копии. (Рекомендуется)
+  resourceSetName: Набор ресурсов
+  restoreFrom:
+    default: Хранилище по умолчанию
+    existing: Существующий конфиг резервной копии
+    s3: S3-совместимое хранилище
+  retentionCount:
+    label: Количество повторов
+    units: |-
+      {count, plural,
+        =1 { Файл }
+        other { Файлов }
+      }
+  s3:
+    bucketName: Имя бакета
+    credentialSecretName: Секрет учетных данных
+    endpoint: Endpoint
+    endpointCA:
+      label: Endpoint CA
+      prompt: Endpoint CA должен быть закодирован в Base64
+    folder: Папка
+    insecureTLSSkipVerify: Пропустить проверки TLS
+    region: Регион
+    storageLocation: Хранилище
+    titles:
+      backupLocation: Источник резервной копии
+      location: Хранилище
+      s3: S3
+  schedule:
+    label: Расписание
+    options:
+      disabled: Одноразовое резервное копирование
+      enabled: Периодическое резервное копирование
+    placeholder: например, @midnight или 0 0 * * *
+  storageSource:
+    configureS3: Использовать S3-совместимое хранилище
+    useBackup: Использовать s3 хранилище, указанное в CR резервной копии
+    useDefault: Использовать хранилище по умолчанию, настроенное во время установки
+  targetBackup: Целевое резервное копирование
+
+catalog:
+  app:
+    managed: Управляемое
+    section:
+      lastOperation: Последняя операция
+      notes: Заметки к выпуску
+      openLogs: Смотреть логи
+      readme: README чарта
+      resources:
+        label: Ресурсы
+        busy: Соответствующие ресурсы появятся, когда {app} полностью установится.
+      values: YAML значения
+  chart:
+    registry:
+      label: Регистри контейнеров
+      tooltip: Образы контейнеров извлекаются из регистри контейнеров кластера или, в противном случае, из параметра системного регистри контейнеров. Чтобы поменять это, введите или обновите регистри здесь
+      custom:
+        checkBoxLabel: Регистри контейнеров для образов контейнеров системы Rancher
+        inputLabel: Регистри контейнеров
+        placeholder: Домен и порт регистри, напр. registry.io:5000
+    header:
+      charts: Чарты
+    info:
+      appVersion: Версия приложения
+      chartVersions:
+        label: Версии чартов
+        showMore: Показать больше
+        showLess: Показать меньше
+      home: Главная
+      maintainers: Мэйнтейнеры
+      related: Связанное
+      chartUrls: Чарт
+      keywords: Ключевые слова
+    errors:
+      clusterToolExists: Этот чарт имеет фиксированное пространство имен и имя. Подходящее <a href="{url}">приложение</a> было найдено и любые изменения будут внесены в него.
+  charts:
+    all: Все
+    categories:
+      all: Все категории
+    certified:
+      other: Другое
+      partner: Партнер
+      rancher: '{vendor}'
+    deploysOnWindows: Развертывание на Windows
+    windowsIncompatible: Только на Linux
+    versionWindowsIncompatible: Версия только для Linux
+    header: Чарты
+    featuredCharts: Рекомендуемые чарты
+    noCharts: 'Нет доступных чартов, вы добавляли какие-либо репозитории?'
+    noWindows: Ваши репозитории не содержат чартов, способных развертываться в кластере с Windows нодами.
+    noWindowsAndLinux: Ваши репозитории не содержат чартов, способных развертываться на кластере с worker нодами Windows и Linux.
+    operatingSystems:
+      all: Все операционные системы
+      linux: Linux
+      windows: Windows
+    search: Фильтр
+  install:
+    action:
+      goToUpgrade: Редактировать/Обновить
+    appReadmeMissing: В этом графике нет никакой дополнительной информации.
+    appReadmeTitle: Информация о чарте (Helm README)
+    chart: Чарт
+    error:
+      requiresFound: '<a href="{url}">{name}</a> должна быть установлена перед установкой этого чарта.'
+      requiresMissing: 'Для этого чарта требует другой чарт, с именем {name}, но он не найден.'
+      insufficientCpu: 'Этот чарт требует {need, number} CPU ядер, но в кластере доступно только {have, number}.'
+      insufficientMemory: 'Этот чарт требует {need} памяти, но в кластере доступно только {have}.'
+      legacy:
+        label: Это приложение {legacyType} и не может быть изменено здесь
+        enableLegacy:
+          prompt: Вам нужно будет включить Устаревшие функции для редактирования этого приложения
+          goto: Перейти в настройки фича флагов
+        navigate: Перейти в легаси приложения
+        mcmNotSupported: Мульти-кластерные приложения не могут управляться через этот интерфейс
+        category:
+          legacy: Легаси
+          mcm: Мульти-кластер
+    header:
+      install: 'Установить {name}'
+      installGeneric: Установить чарт
+      upgrade: 'Обновить {name}'
+    helm:
+      atomic: Atomic
+      description:
+        label: Описание
+        placeholder: напр. назначение helm команды
+      cleanupOnFail: Очистить при ошибке
+      crds: Применять пользовательские определения ресурсов
+      dryRun: Пробный запуск
+      force: Принудительно
+      historyMax:
+        label: Оставлять последние
+        unit: |-
+          {value, plural,
+            =1 { ревизию }
+            other { ревизий }
+          }
+      hooks: Выполнить хуки чарта
+      openapi: Валидировать OpenAPI схему
+      resetValues: Сбросить значения
+      timeout:
+        label: Таймаут
+        unit: |-
+          {value, plural,
+            =1 { секунда }
+            other { секунд }
+          }
+      wait: Подождите
+    namespaceIsInProject: "Пространство имен этого чарта, <code>{namespace}</code>, уже существует и не может быть добавлено в другой проект."
+    project: Установить в проект
+    section:
+      chartOptions: Редактировать настройки
+      valuesYaml: Редактировать YAML
+      diff: Сравнить изменения
+    slideIn:
+      dock: Dock to shell
+    steps:
+      basics:
+        label: Метаданные
+        subtext: Установить метаданные приложению
+        description: Этот процесс может помочь {action, select,
+          install { создать }
+          upgrade { улучшить }
+          update { обновить }
+          } {existing, select,
+          true { приложение }
+          false { чарт }
+          }. Начните с установки некоторых основных сведений, используемых {vendor} для управления приложением.
+        nsCreationDescription: "Чтобы установить приложение в новое пространство имен, введите его имя в поле Пространство имен и выберите его."
+        createNamespace: "Будет создано пространство имен <code>{namespace}</code>."
+      clusterTplVersion:
+        label: Версия
+        subtext: Выберите версию шаблона
+        description: Выберите версия шаблона кластера
+      clusterTplValues:
+        label: Значения
+        subtext: Изменить способ определения Кластера
+        description: Настройка значений, используемых Helm, которые помогут определить кластер.
+      helmValues:
+        label: Значения
+        subtext: Изменить, как работает приложение
+        description: Настройка значений, используемых Helm, которые помогут определить приложение.
+        chartInfo:
+          button: Просмотреть информацию о чарте
+          label: Информация о чарте
+      helmCli:
+        checkbox: Настройка параметров Helm перед установкой
+        label: Helm параметры
+        subtext: Изменение параметров развертывания приложения
+        description: Указание дополнительных параметров развертывания
+    version: Версия
+    versions:
+      current: '{ver} (Current)'
+      linux: '{ver} (Linux-only)'
+      windows: '{ver} (Windows-only)'
+  operation:
+    tableHeaders:
+      action: Действие
+      releaseName: Имя релиза
+      releaseNamespace: Пространство имен релиза
+  repo:
+    action:
+      refresh: Обновить
+    all: Все
+    gitBranch:
+      label: Git ветка
+      placeholder: напр. master
+      defaultMessage: 'По умолчанию будет "master" если оставить пустым'
+    gitRepo:
+      label: URL Git репозитория
+      placeholder: 'напр. https://github.com/your-company/charts.git'
+    name:
+      rancher-charts: '{vendor}'
+      rancher-partner-charts: Партнеры
+      rancher-rke2-charts: RKE2
+      rancher-ui-plugins: Расширения Rancher
+
+    target:
+      git: Git репозиторий, содержащий определения Helm шаблонов или кластера
+      http: http(s) URL к index, генерируемому Helm
+      label: Адрес
+    url:
+      label: Index URL
+      placeholder: 'напр. https://charts.rancher.io'
+  tools:
+    header: Инструменты кластера
+    noTools: "Не найдено инструментов кластера"
+    action:
+      install: Установить
+      upgrade: Улучшить/Редактировать
+      edit: Редактировать
+      remove: Удалить
+      manage: Управлять
+  os:
+    versionIncompatible: "Эта версия не совместима с Windows нодами."
+    chartIncompatible: "Этот чарт не совместим с Windows нодами."
+
+changePassword:
+  title: Поменять пароль
+  cancel: Отменить
+  deleteKeys:
+    label: Удалить все существующие ключи API
+  changeOnLogin:
+    label: Попросить пользователя изменить свой пароль при следующем входе
+  generatePassword:
+    label: Генерировать случайный пароль
+  currentPassword:
+    label: Текущий пароль
+  userGen:
+    newPassword:
+      label: Новый пароль
+    confirmPassword:
+      label: Подтверждение пароля
+  randomGen:
+    generated:
+      label: Сгенерированный пароль
+  newGeneratedPassword: Предложенный пароль
+  errors:
+    mismatchedPassword: Пароли не совпадают
+    failedToChange: Ошибка при смене пароля
+    failedDeleteKey: Ошибка при удалении ключа
+    failedDeleteKeys: Ошибка при удалении ключей
+
+chartHeading:
+  overview: Обзор
+  poweredBy: "Разработано:"
+
+cis:
+  addTest: Добавить Test ID
+  alertNeeded: |-
+    Оповещение должно быть включено в поле CIS чарта values.yaml.
+    Требуется чтобы <a tabindex="0" href="{link}">{vendor} приложение мониторинга и оповещений </a> было установлено
+    и Receivers и Routes были <a target="_blank" rel='noopener noreferrer nofollow' href='{docsBase}/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager'> настроены на отправку уведомлений.</a>
+  alertOnComplete: Предупреждение о завершении сканирования
+  alertOnFailure: Предупреждение о сбое сканирования
+  benchmarkVersion: Версия бенчмарка
+  clusterProvider: Провайдер кластера
+  cronSchedule:
+    label: Расписание
+    placeholder: "напр. 0 * * * *"
+  customConfigMap: Свой ConfigMap бенчмарка
+  deleteBenchmarkWarning: |-
+    {count, plural,
+      =1 { Новые профили, использующие эту версию бенчмарка, больше не будут работать. }
+      other { Любые профили, использующие эти версии бенчмарка, больше не будут работать}
+    }
+  deleteProfileWarning: |-
+    {count, plural,
+      =1 { Любые запланированные сканирования, использующие этот профиль, больше не будут работать. }
+      other { Любое запланированное сканирование с использованием любого из этих профилей больше не будет работать. }
+    }
+  downloadAllReports: Скачать все сохраненные отчеты
+  downloadLatestReport: Скачать последний отчет
+  downloadReport: Скачать отчет
+  maxKubernetesVersion: Максимально требуемая версия Kubernetes
+  minKubernetesVersion: Минимальная требуемая версия Kubernetes
+  noProfiles: Для этого типа кластера нет допустимых файлов ClusterScanProfiles.
+  noReportFound: Отчет о сканировании не найден
+  profile: Профиль
+  reports: Отчеты
+  retention: Повторных попыток
+  scan:
+    description: Описание
+    fail: Неудача
+    lastScanTime: Время последнего сканирования
+    notApplicable: Н/Д
+    number: Число
+    pass: Успех
+    remediation: Восстановление
+    scanDate: Дата сканирования
+    scanReport: Отчет сканирования
+    skip: Пропустить
+    total: Итого
+    warn: Предупреждение
+  scheduling:
+    disable: Запустить разовое сканирование
+    enable: Запустить сканирование по расписанию
+  scoreWarning:
+    label: Scan state for "warn" results
+    protip: Сканирование без сбоев будет помечено как "Успех" по умолчанию, даже если некоторые тесты генерируют "Предупреждение". Это поведение можно изменить, выбрав в этом разделе опцию "Неудача".
+  testID: Test ID
+  testsSkipped: Тестов пропущено
+  testsToSkip: Тестов для пропуска
+  workerProfile: Профиль CIS Worker
 
 cluster:
   addonChart:
@@ -659,16 +1193,16 @@ cluster:
         label: Секретный ключ
         placeholder: Ваш секретный ключ API
     vmwarevsphere:
-        server:
-          label: vCenter или ESXi сервер
-          placeholder: vcenter.domain.com
-        port:
-          label: Порт
-        username:
-          label: Имя пользователя
-        password:
-          label: Пароль
-        note: 'Замечание: Бесплатная лицензия ESXi не поддерживает API доступ. Поддерживаются только серверы с действующими или ознакомительными лицензиями.'
+      server:
+        label: vCenter или ESXi сервер
+        placeholder: vcenter.domain.com
+      port:
+        label: Порт
+      username:
+        label: Имя пользователя
+      password:
+        label: Пароль
+      note: 'Замечание: Бесплатная лицензия ESXi не поддерживает API доступ. Поддерживаются только серверы с действующими или ознакомительными лицензиями.'
     gcp:
       authEncodedJson:
         label: Сервисный аккаунт
@@ -817,7 +1351,7 @@ cluster:
       privateIp:
         label: Приватный IP-адрес
       publicIpOptions:
-        header: Параметры публичного IP 
+        header: Параметры публичного IP
         noPublic:
           label: Без публичного IP
         staticPublicIp:
@@ -880,7 +1414,7 @@ cluster:
       hostOptions:
         any: Любой
       vAppOptions:
-        label: Параметры vApp 
+        label: Параметры vApp
         description: Выберите свойства окружения OVF
         disable: Не использовать vApp
         auto: Использовать vApp для конфигурации сети с сетевыми профилями протоколов
@@ -891,11 +1425,11 @@ cluster:
           tooltip: com.vmware.guestInfo or iso
           placeholder: например, com.vmware.guestInfo
         protocol:
-          label: IP-протокол vApp 
+          label: IP-протокол vApp
           tooltip: IPv4 или IPv6
           placeholder: например, IPv4
         allocation:
-          label: Политика распределения IP-адресов vApp 
+          label: Политика распределения IP-адресов vApp
           tooltip: dhcp, fixed, transient или fixedAllocated
           placeholder: например, fixedAllocated
         properties:
@@ -1021,7 +1555,7 @@ cluster:
           }
         kubeControllerManagerTitle: Дополнительные аргументы диспетчера контроллеров
         kubeApiServerTitle: Дополнительные серверные аргументы API
-        kubeSchedulerTitle: Дополнительные аргументы планировщика 
+        kubeSchedulerTitle: Дополнительные аргументы планировщика
     agentArgs:
       label: Вызывать ошибку, если параметры ядра отличаются от ожидаемых значений по умолчанию Kubelet
   banner:
@@ -1038,7 +1572,7 @@ cluster:
 
   detail:
     provisioner: Provisioner
-    kubernetesVersion: Версия Kubernetes 
+    kubernetesVersion: Версия Kubernetes
     machineProvider: Провайдер машин
     machinePools: Машинные пулы
     machines: Машины
@@ -1230,7 +1764,7 @@ cluster:
       fqdn:
         toolTip: FQDN, который будет разрешаться в исправные ноды Control Plane кластера.
       caCerts:
-        label: CA сертификаты 
+        label: CA сертификаты
         toolTip: Сертификаты, необходимые клиенту для успешной проверки действительности сертификата, возвращенного Endpoint.
       ipv6:
         warning: Похоже, вы используете IPv6 CIDR. Драйвер ноды может требовать дополнительной конфигурации для его поддержки.
