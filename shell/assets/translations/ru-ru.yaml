@@ -1834,418 +1834,418 @@ cluster:
 
 clusterIndexPage:
   hardwareResourceGauge:
-    consumption: "{useful} of {total} {units} {suffix}"
+    consumption: "{useful} из {total} {units} {suffix}"
     cores: CPU
-    pods: Pods
-    ram: Memory
-    used: Used
-    reserved: Reserved
+    pods: Подов
+    ram: Памяти
+    used: Используется
+    reserved: Зарезервировано
     units:
       cores: |-
         {count, plural,
-        =1 {core}
-        other {cores}}
-  header: Cluster Dashboard
+        =1 {ядро}
+        other {ядер}}
+  header: Дашборд кластера
   resourceGauge:
-    totalResources: Total Resources
+    totalResources: Всего ресурсов
   sections:
     capacity:
-      label: Capacity
+      label: Мощность
     events:
-      label: Events
+      label: События
       resource:
-        label: Resource
+        label: Ресурс
       date:
-        label: Date
+        label: Дата
     alerts:
-      label: Alerts
+      label: Оповещения
     clusterMetrics:
-      label: Cluster Metrics
+      label: Метрики кластера
     etcdMetrics:
-      label: Etcd Metrics
+      label: Etcd метрики
     k8sMetrics:
-      label: Kubernetes Components Metrics
+      label: Метрики компонентов Kubernetes
     gatekeeper:
-      buttonText: Configure Gatekeeper
-      disabled: OPA Gatekeeper is not configured.
-      label: OPA Gatekeeper Constraint Violations
-      noRows: There are no constraints with violations to show.
+      buttonText: Настроить Gatekeeper
+      disabled: OPA Gatekeeper не настроен.
+      label: OPA Gatekeeper нарушения ограничений
+      noRows: Нет ограничений с нарушениями для показа.
     nodes:
-      label: Unhealthy Nodes
-      noRows: There are no unhealthy nodes to show.
+      label: Нездоровые ноды
+      noRows: Нет нездоровых нод, для показа.
     componentStatus:
       etcd: Etcd
-      scheduler: Scheduler
-      controller-manager: Controller Manager
+      scheduler: Планировщик
+      controller-manager: Контроллер менеджер
 
 configmap:
   tabs:
     data:
-      label: Data
-      protip: Use this area for anything that's UTF-8 text data
+      label: Данные
+      protip: Используйте эту область для всех текстовых данных UTF-8
     binaryData:
-      label: Binary Data
+      label: Двоичные данные
 
 containerResourceLimit:
-  cpuPlaceholder: e.g. 1000
-  gpuPlaceholder: e.g. 1
-  helpText: Configure how much of the resources the container can consume by default.
-  helpTextDetail: The amount of resources the container can consume by default.
-  label: Container Default Resource Limit
-  limitsCpu: CPU Limit
-  limitsGpu: NVIDIA GPU Limit/Reservation
-  limitsMemory: Memory Limit
-  memPlaceholder: e.g. 128
-  requestsCpu: CPU Reservation
-  requestsMemory: Memory Reservation
+  cpuPlaceholder: напр. 1000
+  gpuPlaceholder: напр. 1
+  helpText: Задайте, сколько ресурсов контейнер может потреблять по умолчанию.
+  helpTextDetail: Объем ресурсов, которые контейнер может потреблять по умолчанию.
+  label: Предел ресурсов контейнера по умолчанию
+  limitsCpu: Лимит CPU
+  limitsGpu: NVIDIA GPU Ограничение/Резервирование
+  limitsMemory: Лимит памяти
+  memPlaceholder: напр. 128
+  requestsCpu: Резервирование CPU
+  requestsMemory: Резервирование памяти
 
 
 resource:
   errors:
-    update: "Error updating {name}"
+    update: "Ошибка обновления {name}"
 
 cruResource:
-  backToForm: Back to Form
-  backBody: You will lose any changes made to the YAML.
-  cancelBody: You will lose any changes made to the YAML.
-  confirmBack: "Okay"
-  confirmCancel: "Okay"
-  reviewForm: "Keep editing YAML"
-  reviewYaml: "Keep editing YAML"
-  previewYaml: Edit as YAML
-  showYaml: View as YAML
+  backToForm: вернуться к форме
+  backBody: Вы потеряете все изменения, внесенные в YAML.
+  cancelBody: Вы потеряете все изменения, внесенные в YAML.
+  confirmBack: "Окей"
+  confirmCancel: "Окей"
+  reviewForm: "Продолжить редактирование YAML"
+  reviewYaml: "Продолжить редактирование YAML"
+  previewYaml: Редактировать как YAML
+  showYaml: Просмотреть как YAML
 
 detailText:
-  collapse: Hide
-  binary: '<Binary Data: {n, number} bytes>'
-  empty: '<Empty>'
-  unsupported: '<Value not supported by UI, see YAML>'
+  collapse: Скрыть
+  binary: '<Двоичные данные: {n, number} байт>'
+  empty: '<Пусто>'
+  unsupported: '<Значение не поддерживается интерфейсом, смотрите YAML>'
   plusMore: |-
     {n, plural,
-      =1 {+ 1 more char}
-      other {+ {n, number} more chars}
+      =1 {+ 1 символ}
+      other {+ {n, number} символов}
     }
 
 drainNode:
-  action: 'Drain'
-  actionStop: 'Stop Drain'
-  titleOne: Drain {name}
-  titleMultiple: 'Drain {count} Nodes'
-  deleteLocalData: Delete Empty Dir Data
-  force: Force
+  action: 'Освободить'
+  actionStop: 'Остановить освобождение'
+  titleOne: Освободить {name}
+  titleMultiple: 'Освободить {count} нод'
+  deleteLocalData: Удалить пустые данные директории
+  force: принудительно
   safe:
-    label: Safe
-    helpText: If a node has standalone pods or ephemeral data it will be cordoned but not drained.
+    label: Безопасно
+    helpText: Если узел имеет автономные поды или эфемерные данные, то он будет закрыт, но не освобожден.
   gracePeriod:
-    title: Grace period for pods to terminate themselves
+    title: Льготный период для подов, чтобы завершить себя
     default: Honor the default from each pod
-    placeholder: e.g. 30
-    custom: "Ignore the defaults and give each pod:"
+    placeholder: напр. 30
+    custom: "Игнорировать значения по умолчанию и выдать каждому поду:"
   timeout:
-    title: "Drain timeout"
-    default: Keep trying forever
-    placeholder: e.g. 60
-    custom: "Give up after:"
+    title: "Таймаут освобождения"
+    default: Продолжать пытаться вечно
+    placeholder: напр. 60
+    custom: "Сдаваться после:"
 
 etcdInfoBanner:
-  hasLeader: "Etcd has a leader:"
-  leaderChanges: "Number of leader changes:"
-  failedProposals: "Number of failed proposals:"
+  hasLeader: "Etcd имеет лидера:"
+  leaderChanges: "Количество изменений лидера:"
+  failedProposals: "Количество отклоненных предложений:"
 
 fleet:
   dashboard:
-    pageTitle: Continuous Delivery Dashboard
-    menuLabel: Dashboard
-    welcome: Welcome to Fleet Continuous Delivery
-    gitOpsScale: GitOps at scale.
-    learnMore: Learn More.
+    pageTitle: Дашборд Continuous Delivery
+    menuLabel: Дашборд
+    welcome: Добро пожаловать Fleet Continuous Delivery
+    gitOpsScale: GitOps в масштабе.
+    learnMore: Изучить подробнее.
     learnMoreLink: https://fleet.rancher.io
-    noRepo: "You don't have any Git Repositories in your Workspaces"
-    getStarted: Get started
+    noRepo: "У вас нет Git Репозиториев в ваших рабочих местах"
+    getStarted: Приступить к работе
     thereIsMore: |-
       {count, plural,
-      =1 { There is one other workspace with no repositories}
-      other { There are { count } other workspaces with no repositories}
+      =1 { Есть еще одно рабочее пространство без репозиториев}
+      other { Есть еще { count } рабочих пространств без репозиториев}
       }
-    expandAll: Expand All
-    collapseAll: Collapse All
+    expandAll: Развернуть все
+    collapseAll: Свернуть все
   cluster:
-    summary: Resource Summary
-    nonReady: Non-Ready Bundles
+    summary: Сводка ресурсов
+    nonReady: Неготовые бандлы
   clusters:
     harvester: |-
-      There {count, plural,
-      =1 {is 1 Harvester cluster that is hidden as this can not be used with Continuous Delivery}
-      other {are # Harvester clusters that are hidden as they can not be used with Continuous Delivery}
+      Есть {count, plural,
+      =1 { 1 скрытый Harvester кластер, который не может быть использован в Continuous Delivery}
+      other { # скрытых Harvester кластеров, которые не могут быть использованы в Continuous Delivery}
       }
   tokens:
     harvester: |-
       {count, plural,
-      =1 {1 token is hidden as it belongs to a Harvester cluster that can not be used with Continuous Delivery}
-      other {# tokens are hidden as they belong to Harvester clusters that can not be used with Continuous Delivery}
+      =1 {1 токен скрыт так как он относится к Harvester кластеру, который не может быть использован в Continuous Delivery}
+      other {# токенов скрыто так как они относятся к Harvester кластеру, который не может быть использован в Continuous Delivery}
       }
   bundles:
-    resources: Resources
+    resources: Ресурсы
     harvester: |-
       {count, plural,
-      =1 {1 bundle is hidden as it belongs to a Harvester cluster that can not be used with Continuous Delivery}
-      other {# bundles are hidden as they belong to Harvester clusters that can not be used with Continuous Delivery}
+      =1 {1 бандл скрыт так как он относится к Harvester кластеру, который не может быть использован в Continuous Delivery}
+      other {# бандлов скрыто так как они относятся к Harvester кластеру, который не может быть использован в Continuous Delivery}
       }
   fleetSummary:
-    noClustersGitRepo: This git repo is not targeting any clusters
+    noClustersGitRepo: Этот git репозиторий не связан ни с каким кластеров
     state:
-      ready: 'Ready'
-      info: 'Transitioning'
-      warning: 'Warning'
-      error: 'Error'
-      unknown: 'Unknown'
-      notReady: Not Ready
-      waitApplied: Wait Applied
+      ready: 'Готово'
+      info: 'Переходит'
+      warning: 'Предупреждение'
+      error: 'Ошибка'
+      unknown: 'Неизвестно'
+      notReady: Не готово
+      waitApplied: Отложено
   gitRepo:
-    createLocalBanner: When deploying a Git Repo to the Local workspace you are unable to target any specific Cluster or Cluster Groups
+    createLocalBanner: При развертывании Git репозитория в локальное рабочее пространство вы не сможете выбрать целевой кластер или группу кластеров
     tabs:
-      resources: Resources
-      unready: Non-Ready
+      resources: Ресурсы
+      unready: Не готово
     auth:
-      label: Authentication
-      git: Git Authentication
-      helm: Helm Authentication
+      label: Аутентификация
+      git: Git Аутентификация
+      helm: Helm Аутентификация
     caBundle:
-      label: Certificates
-      placeholder: "Paste in one or more certificates, starting with -----BEGIN CERTIFICATE----"
+      label: Сертификаты
+      placeholder: "Вставьте один или несколько сертификатов, начинающихся с -----BEGIN CERTIFICATE----"
     paths:
-      label: Paths
-      placeholder: e.g. /directory/in/your/repo
-      addLabel: Add Path
-      empty: The root of the repo is used by default.  To use one or more different directories, add them here.
+      label: Пути
+      placeholder: напр. /directory/in/your/repo
+      addLabel: Добавить путь
+      empty: Корневой репозиторий будет использоваться по умолчанию. Чтобы использовать одну или несколько различных директорий, добавьте их здесь.
     repo:
-      label: Repository URL
-      placeholder: 'e.g. https://github.com/rancher/fleet-examples.git'
-      addRepo: Add Repository
-      noRepos: No repositories have been added
+      label: URL репозитория
+      placeholder: 'напр. https://github.com/rancher/fleet-examples.git'
+      addRepo: Добавить репозиторий
+      noRepos: Репозитории не были добавлены
     add:
       steps:
         repoInfo:
-          label: Repository Details
-          title: Specify the Git Repository to add to fleet
-          subtext: 'Define repository details'
-          description: Fleet will continuously monitor the Git Repository you configure below and synchronise the resources contained in it to the configured targets.
+          label: Детали репозитория
+          title: Укажите Git репозиторий для добавления в fleet
+          subtext: 'Добавить детали репозитория'
+          description: Fleet будет постоянно отслеживать изменения в Git репозитории указанном ниже и синхронизировать содержащиеся в нем ресурсы  you configure below and synchronise the resources contained in it to the configured targets.
         targetInfo:
-          label: Target Details
-          title: Specify which target to synchronise this repository to
-          subtext: 'Define target details'
-          description: You can configure which clusters will be used as the target of synchronisation with the resources in the repository.
+          label: Детали цели
+          title: Укажите цель для синхронизации этого репозитория
+          subtext: 'Указать детали цели'
+          description: Можно настроить, какие кластеры будут использоваться в качестве цели синхронизации с ресурсами репозитория.
     ref:
-      label: Watch
-      branch: A Branch
-      revision: A Revision
-      branchLabel: Branch Name
-      branchPlaceholder: e.g. master
-      revisionLabel: Tag or Commit Hash
-      revisionPlaceholder: e.g. v1.0.0
+      label: Отслеживать
+      branch: Ветку
+      revision: Ревизию
+      branchLabel: Имя ветки
+      branchPlaceholder: напр. master
+      revisionLabel: Хэш тега или коммита
+      revisionPlaceholder: напр. v1.0.0
     serviceAccount:
-      label: Service Account Name
-      placeholder: "Optional: Use a service account in the target clusters"
+      label: Имя сервис аккаунта
+      placeholder: "Необязательно: Использовать сервис аккаунт в целевых кластерах"
     targetNamespace:
-      label: Target Namespace
-      placeholder: "Optional: Require all resources to be in this namespace"
+      label: Целевое пространство имен
+      placeholder: "Необязательно: Требовать, чтобы все ресурсы были в одном пространстве имен"
     target:
-      selectLabel: Target
-      advanced: Advanced
-      cluster: Cluster
-      clusterGroup: Cluster Group
-      label: Deploy To
-      labelLocal: Deploy With
+      selectLabel: Цель
+      advanced: Расширенный
+      cluster: Кластер
+      clusterGroup: Группа кластера
+      label: Развернуть в
+      labelLocal: Развернуть с
     targetDisplay:
-      advanced: Advanced
-      cluster: "Cluster"
-      clusterGroup: "Group"
-      all: All
-      none: None
-      local: Local
+      advanced: Расширенный
+      cluster: "Кластер"
+      clusterGroup: "Группа"
+      all: Все
+      none: Ничего
+      local: Локальный
     tls:
-      label: TLS Certificate Verification
-      verify: Require a valid certificate
-      specify: Specify additional certificates to be accepted
-      skip: Accept any certificate (insecure)
+      label: Верификация TLS сертификата
+      verify: Требовать валидный сертификат
+      specify: Укажите дополнительные сертификаты, которые будут приниматься
+      skip: Принимать любой сертификат (не безопасно)
     warningTooltip:
-      clusterGroup: There are no clusters in this Cluster Group
-      cluster: There are no clusters available
+      clusterGroup: В этой группе кластеров нет ни одного кластера
+      cluster: Нет доступных кластеров
     workspace:
-      label: Workspace
+      label: Рабочее пространство
   clusterGroup:
     selector:
-      label: Cluster Selectors
-      matchesAll: Matches all {total, number} existing clusters
-      matchesNone: Matches no existing clusters
+      label: Выбор кластера
+      matchesAll: Соответствует всем {total, number} существующим кластерам
+      matchesNone: Не соответствует с существующими кластерами
       matchesSome: |-
         {matched, plural,
-          =1 {Matches 1 of {total, number} existing clusters: "{sample}"}
-          other {Matches {matched, number} of {total, number} existing clusters, including "{sample}"}
+          =1 {Соответствует 1 из {total, number} существующих кластеров: "{sample}"}
+          {Совпадает {matched, number} из {total, number} существующих кластеров, включая "{sample}"}
         }
   fdc:
-    loadingChart: Loading chart data...
-    renderingChart: Rendering chart...
+    loadingChart: Загрузка данных чарта...
+    renderingChart: Отрисовка чарта...
     id: ID
-    type: Type
-    state: State
-    cluster: Cluster
-    error: Error
-    ready: Ready
-    errors: Errors
+    type: Тип
+    state: Состояние
+    cluster: Кластер
+    error: Ошибка
+    ready: Готов
+    errors: Ошибки
 
 footer:
-  docs: Docs
-  download: Download CLI
-  forums: Forums
-  issue: File an Issue
+  docs: Документация
+  download: Скачать CLI
+  forums: Форумы
+  issue: Создать отчет об ошибке
   slack: Slack
 
 gatekeeperConstraint:
   match:
-    title: Match
+    title: Совпадения
   tab:
     enforcementAction:
-      title: Enforcement Action
+      title: Принудительные меры
     rules:
-      title: Rules
+      title: Правила
       sub:
         labelSelector:
-          addLabel: Add Label
-          title: Label Selector
+          addLabel: Добавить лэйбл
+          title: Выбор лэйбла
     namespaces:
       sub:
-        excludedNamespaces: Excluded Namespaces
-        namespaces: Namespaces
+        excludedNamespaces: Исключенные пространства имен
+        namespaces: Пространства имен
         namespaceSelector:
-          addNamespace: Add Namespace
-          title: Namespace Selector
+          addNamespace: Добавить пространство имен
+          title: Выбор пространства имен
         scope:
-          title: Scope
-      title: Namespaces
+          title: Область
+      title: Пространства имен
     parameters:
-      addParameter: Add Parameter
-      editAsForm: Edit as Form
-      editAsYaml: Edit as YAML
-      title: Parameters
-  template: Template
+      addParameter: Добавить параметр
+      editAsForm: Редактировать как форму
+      editAsYaml: Редактировать как YAML
+      title: Параметры
+  template: Шаблон
   violations:
-    title: Violations
+    title: Нарушения
 
 gatekeeperIndex:
   poweredBy: OPA Gatekeeper
-  unavailable: OPA + Gatekeeper is not available in the system-charts catalog.
-  violations: Violations
+  unavailable: OPA + Gatekeeper не доступен в system-charts каталоге.
+  violations: Нарушения
 
 glance:
-  created: Created
-  cpu: CPU Usage
-  memory: Memory
+  created: Создано
+  cpu: Использование CPU
+  memory: Память
   nodes:
     total:
       label: |-
         {count, plural,
-          =1 { Node }
-          other { Total Nodes }
+          =1 { Нода }
+          other { Всего нод }
         }
-  pods: Pods
-  provider: Provider
-  version: Kubernetes Version
-  monitoringDashboard: Monitoring Dashboard
-  installMonitoring: Install Monitoring
-  v1MonitoringInstalled: V1 Monitoring Installed
-  clusterInfo: Cluster Information
-  eventsTable: Full events list
+  pods: Поды
+  provider: Провайдер
+  version: Версия Kubernetes
+  monitoringDashboard: Дашборд мониторинга
+  installMonitoring: Установить мониторинг
+  v1MonitoringInstalled: Установлен мониторинг версии 1
+  clusterInfo: Информация о кластере
+  eventsTable: Полный список событий
 
 clusterBadge:
-  addLabel: Add Cluster Badge
-  editLabel: Edit Cluster Badge
+  addLabel: Добавить значок кластера
+  editLabel: Изменить значок кластера
   modal:
-    title: Custom Cluster Badge
-    checkbox: Show badge for this cluster
-    description: Custom description
-    iconText: Icon Text
-    buttonAction: Apply
-    badgeBgColor: Badge background color
-    badgeTextColor: Badge text color
-    badgeAsIcon: Customize cluster icon
-    maxCharsTooltip: Maximum two characters
-    previewTitle: "Cluster icon and name presentation:"
+    title: Свой значок кластера
+    checkbox: Показать значок для этого кластера
+    description: Свое описание
+    iconText: Текст иконки
+    buttonAction: Применить
+    badgeBgColor: Цвет фона значка
+    badgeTextColor: Цвет текста значка
+    badgeAsIcon: Настроить иконку кластера
+    maxCharsTooltip: До двух символов
+    previewTitle: "Иконка кластера и имя представления:"
 
 grafanaDashboard:
-  failedToLoad: Failed to load graph
-  reload: Reload
+  failedToLoad: Ошибка при загрузке графа
+  reload: Перезагрузить
   grafana: Grafana
 
 graphOptions:
-  detail: Detail
-  summary: Summary
-  refresh: Refresh
-  range: Range
+  detail: Детали
+  summary: Сводка
+  refresh: Обновить
+  range: Диапазон
 
 growl:
-  clearAll: Clear All Notifications
+  clearAll: Очистить все оповещения
   disconnectError:
-    message: "The connection to {url} closed unexpectedly at {time}. Disconnected after {tries} reconnect attempts. Check your network connection and reload the page"
-    title: Websocket Disconnected
+    message: "Соединение до {url} неожиданно закрылось в {time}. Отключено после {tries} попыток переподключения. Проверьте ваше подключение и перезагрузите страницу"
+    title: Websocket отключены
   connectError:
-    message: "The connection to {url} closed unexpectedly at {time}. Reconnect attempt #{tries}."
-    title: Websocket Reconnecting
+    message: "Соединение до {url} неожиданно закрылось в {time}. Попытка переподключения #{tries}."
+    title: Websocket переподключение
   reconnected:
-    message: "The connection to {url} was restored on attempt #{tries}."
-    title: Websocket Reconnected
+    message: "Соединение до {url} было восстановлено на попытке #{tries}."
+    title: Websocket переподключены
 
 hpa:
   detail:
     currentMetrics:
-      header: Current Metrics
-      noMetrics: No Current Metrics
-    metricHeader: '{source} Metric'
+      header: Текущие метрики
+      noMetrics: Нет текущих метрик
+    metricHeader: '{source} Метрика'
   metricIdentifier:
     name:
-      label: Metric Name
-      placeholder: e.g. packets-per-second
+      label: Имя метрики
+      placeholder: напр. packets-per-second
     selector:
-      label: Add Selector
+      label: Добавить выбор
   metricTarget:
     averageVal:
-      label: Average Value
+      label: Среднее значение
     quantity:
-      label: Quantity
+      label: Количество
     type:
-      label: Type
+      label: Тип
     utilization:
-      label: Average Utilization
+      label: Среднее использование
     value:
-      label: Value
+      label: Значение
   metrics:
     headers:
-      metricName: Name
-      objectKind: Object Kind
-      objectName: Object Name
-      quantity: Quantity
-      resource: Resource Name
-      targetName: Target Name
-      value: Value
-    source: Source
+      metricName: Имя
+      objectKind: Вид объекта
+      objectName: Имя объекта
+      quantity: Количество
+      resource: Имя ресурса
+      targetName: Имя цели
+      value: Значение
+    source: Источник
   objectReference:
     api:
-      label: Referent API Version
-      placeholder: e.g. apps/v1beta1
+      label: Версия API референта
+      placeholder: напр. apps/v1beta1
     kind:
-      label: Referent Kind
-      placeholder: e.g. Deployment
+      label: Тип референта
+      placeholder: напр. Развертывание
     name:
-      label: Referent Name
-      placeholder: e.g. php-apache
+      label: Имя референта
+      placeholder: напр. php-apache
   tabs:
-    labels: Labels
-    metrics: Metrics
-    target: Target
-    workload: Workload
+    labels: Лэйблы
+    metrics: Метрики
+    target: Цель
+    workload: Рабочая нагрузка
   types:
     cpu: CPU
-    memory: Memory
+    memory: Память
   warnings:
     custom: In order to use custom metrics with HPA, you need to deploy the custom metrics server such as prometheus adapter.
     external: In order to use external metrics with HPA, you need to deploy the external metrics server such as prometheus adapter.
