@@ -1938,7 +1938,7 @@ drainNode:
     helpText: Если узел имеет автономные поды или эфемерные данные, то он будет закрыт, но не освобожден.
   gracePeriod:
     title: Льготный период для подов, чтобы завершить себя
-    default: Honor the default from each pod
+    default: Использовать значения указанные в pod
     placeholder: напр. 30
     custom: "Игнорировать значения по умолчанию и выдать каждому поду:"
   timeout:
@@ -1954,7 +1954,7 @@ etcdInfoBanner:
 
 fleet:
   dashboard:
-    pageTitle: Дашборд Continuous Delivery
+    pageTitle: Дашборд непрерывной доставки (CD)
     menuLabel: Дашборд
     welcome: Добро пожаловать Fleet Continuous Delivery
     gitOpsScale: GitOps в масштабе.
@@ -1975,21 +1975,21 @@ fleet:
   clusters:
     harvester: |-
       Есть {count, plural,
-      =1 { 1 скрытый Harvester кластер, который не может быть использован в Continuous Delivery}
-      other { # скрытых Harvester кластеров, которые не могут быть использованы в Continuous Delivery}
+      =1 { 1 скрытый Harvester кластер, который не может быть использован в непрерывной доставке (CD)}
+      other { # скрытых Harvester кластеров, которые не могут быть использованы в непрерывной доставке (CD)}
       }
   tokens:
     harvester: |-
       {count, plural,
-      =1 {1 токен скрыт так как он относится к Harvester кластеру, который не может быть использован в Continuous Delivery}
-      other {# токенов скрыто так как они относятся к Harvester кластеру, который не может быть использован в Continuous Delivery}
+      =1 {1 токен скрыт так как он относится к Harvester кластеру, который не может быть использован в непрерывной доставке (CD)}
+      other {# токенов скрыто так как они относятся к Harvester кластеру, который не может быть использован в непрерывной доставке (CD)}
       }
   bundles:
     resources: Ресурсы
     harvester: |-
       {count, plural,
-      =1 {1 бандл скрыт так как он относится к Harvester кластеру, который не может быть использован в Continuous Delivery}
-      other {# бандлов скрыто так как они относятся к Harvester кластеру, который не может быть использован в Continuous Delivery}
+      =1 {1 бандл скрыт так как он относится к Harvester кластеру, который не может быть использован в непрерывной доставке (CD)}
+      other {# бандлов скрыто так как они относятся к Harvester кластеру, который не может быть использован в непрерывной доставке (CD)}
       }
   fleetSummary:
     noClustersGitRepo: Этот git репозиторий не связан ни с каким кластеров
@@ -2247,91 +2247,91 @@ hpa:
     cpu: CPU
     memory: Память
   warnings:
-    custom: In order to use custom metrics with HPA, you need to deploy the custom metrics server such as prometheus adapter.
-    external: In order to use external metrics with HPA, you need to deploy the external metrics server such as prometheus adapter.
-    noMetric: In order to use resource metrics with HPA, you need to deploy the metrics server.
+    custom: Для использования пользовательских метрик с НРА необходимо развернуть настраиваемый сервер метрик, такой как prometheus адаптер.
+    external: Для использования внешних метрик с НРА необходимо развернуть внешний сервер метрик, такой как prometheus адаптер.
+    noMetric: Для использования метрик ресурсов с НРА необходимо развернуть сервер метрик.
     resource: The selected target reference does not have the correct resource requests on the spec. Without this the HPA metric will have no effect.
   workloadTab:
-    current: Current Replicas
-    last: Last Scale Time
-    max: Maximum Replicas
-    min: Minimum Replicas
+    current: Текущие копии
+    last: Время последнего масштабирования
+    max: Максимум копий
+    min: Минимум копий
     targetReference: Target Reference
 
 import:
-  title: Import YAML
+  title: Импортировать YAML
   defaultNamespace:
-    label: Default Namespace
+    label: Пространство имен по умолчанию
   success: |-
-    Applied {count, plural,
-    =1 {1 Resource}
-    other {# Resources}
+    Применено {count, plural,
+    =1 {1 Ресурс}
+    other {# Ресурсов}
     }
 
 ingress:
   certificates:
-    addCertificate: Add Certificate
-    addHost: Add Host
+    addCertificate: Добавить сертификат
+    addHost: Добавить хост
     certificate:
       label: Certificate - Secret Name
       doesntExist: The selected certificate does not exist
     defaultCertLabel: Default Ingress Controller Certificate
     headers:
-      certificate: Certificate
-      hosts: Hosts
+      certificate: Сертификат
+      hosts: Хосты
     host:
-      label: Host
-      placeholder: e.g. example.com
-    label: Certificates
-    removeHost: Remove
+      label: Хост
+      placeholder: напр. example.com
+    label: Сертификаты
+    removeHost: Удалить
   defaultBackend:
-    label: Default Backend
-    noServiceSelected: No default backend is configured.
+    label: Бэкенд по умолчанию
+    noServiceSelected: Бэкенд по умолчанию не настроен.
     port:
-      label: Port
-      placeholder: e.g. 80 or http
-      notInt: Port must be an integer
-      required: Port is required
+      label: Порт
+      placeholder: напр. 80 или http
+      notInt: Порт должен быть числом
+      required: Требуется порт
     targetService:
-      label: Target Service
-      doesntExist: The selected service does not exist
-      required: Target Service is required
-    warning: "Warning: Default backend is used globally for the entire cluster."
+      label: Целевой сервис
+      doesntExist: Выбранный сервис не существует
+      required: Требуется целевой сервис
+    warning: "Предупреждение: Бэкенд по умолчанию используется глобально для всего кластера."
   ingressClass:
-    label: Ingress Class
+    label: Класс Ingress
   rules:
-    addPath: Add Path
-    addRule: Add Rule
+    addPath: Добавить путь
+    addRule: Добавить правило
     headers:
-      pathType: Path Type
-      path: Path
-      port: Port
-      target: Target Service
-      certificates: Certificates
-    hostname: Hostname
+      pathType: Тип пути
+      path: Путь
+      port: Порт
+      target: Целевой сервис
+      certificates: Сертификаты
+    hostname: Имя хоста
     path:
-      label: Path
-      placeholder: e.g. /foo
+      label: Путь
+      placeholder: напр. /foo
     port:
-      label: Port
-      placeholder: e.g. 80 or http
-    removePath: Remove
+      label: Порт
+      placeholder: напр. 80 или http
+    removePath: Удалить
     requestHost:
-      label: Request Host
-      placeholder: e.g. example.com
+      label: Запросить хост
+      placeholder: напр. example.com
     target:
-      label: Target Service
-      doesntExist: The selected service does not exist
-    title: Rules
+      label: Целевой сервис
+      doesntExist: Выбранный целевой сервис не существует
+    title: Правила
   rulesAndCertificates:
-    title: Rules and Certificates
-    defaultCertificate: default
+    title: Правила и сертификаты
+    defaultCertificate: По умолчанию
   target:
-    default: Default
-  rulesOrBackendSpecified: Either Default Backend or Rules must be specified
+    default: По умолчанию
+  rulesOrBackendSpecified: Необходимо указать Бэкенд по умолчанию или Правила
 
 internalExternalIP:
-  none: None
+  none: Ничего
 
 istio:
   links:
@@ -2341,7 +2341,7 @@ istio:
     jaeger:
       label: Jaeger
       description: Monitor and Troubleshoot microservices-based distributed systems.
-    disabled: '{app} is not installed'
+    disabled: '{app} не установлено'
   cni: Enabled CNI
   customOverlayFile:
     label: Custom Overlay File
@@ -2353,120 +2353,120 @@ istio:
       edit: Edit Destination Rule
       view: "Destination Rule: {name}"
     port:
-      label: Port
-      placeholder: e.g. 8080 or myport
+      label: Порт
+      placeholder: напр. 8080 или myport
     host:
-      label: Input a host
-      error: Host is required.
+      label: Введите хост
+      error: Требуется хост.
     name:
-      placeholder: e.g. myrule
+      placeholder: напр. myrule
     loadBalancer:
-      title: Load Balancer
-      label: Algorithm
-      detail: Configure the load balancer algorithms
+      title: Балансировщик нагрузки
+      label: Алгоритм
+      detail: Настроить алгоритмы для балансировщика нагрузки
       simple:
-        label: Use standard load balancing algorithms
+        label: Использовать стандартные алгоритмы балансировки нагрузки
         roundRobin:
           label: Round Robin Policy
         leastConn:
           label: Least Request Load Balancer
         random:
-          label: Random Load Balancer
+          label: Случайный балансировщик нагрузки
         passthrough:
           label: Passthrough
       consistentHash:
         label: Use consistent hash-based load balancing for soft session affinity
         httpHeaderName:
-          label: HTTP Header Name
-          placeholder: e.g. end-user
-          error: HTTP Header Name is required.
+          label: Имя HTTP заголовка
+          placeholder: напр. end-user
+          error: Имя HTTP заголовка обязательное поле.
         minimumRingSize:
-          label: Minimum Ring Size
-          placeholder: e.g. 1024
+          label: Минимальный размер кольца
+          placeholder: напр. 1024
         httpCookie:
           name:
-            label: Cookie Name
-            placeholder: e.g. username
-            error: Cookie Name is required.
+            label: Имя Cookie
+            placeholder: напр. username
+            error: Имя Cookie обязательное поле.
           path:
-            label: Cookie Path
-            placeholder: e.g. /
+            label: Путь Cookie
+            placeholder: напр. /
           ttl:
             label: TTL
-            placeholder: e.g. 0s
-            error: TTL is required.
+            placeholder: напр. 0s
+            error: TTL обязательное поле.
         mode:
-          label: Hash Mode
+          label: Режим хеширования
           header:
-            label: Hash based on a specific HTTP header
+            label: Хэш на основе определенного заголовка НТТР
           cookie:
-            label: Hash based on HTTP cookie
+            label: Хэш на основе НТТР cookie
           sourceIp:
-            label: Hash based on the source IP address
+            label: Хэш на основе исходного IP адреса
     connectionPool:
-      label: Connection Pool
-      detail: Configure the volume of connections to an upstream service
+      label: Пул подключений
+      detail: Настройка объема подключений к вышестоящей службе
       http1MaxPendingRequests:
-        label: HTTP1 Max Pending Requests
-        placeholder: e.g. 1024
-        help: Maximum number of pending HTTP requests to a destination.
+        label: Максимальное кол-во ожидающих запросов HTTP1
+        placeholder: напр. 1024
+        help: Максимальное число ожидающих НТТР запросов к месту назначения.
       http2MaxRequests:
-        label: HTTP2 Max Requests
-        placeholder: e.g. 1024
-        help: Maximum number of requests to a backend.
+        label: Максимальное кол-во запросов HTTP2
+        placeholder: напр. 1024
+        help: Максимальное число запросов к бекенду.
       maxRequestsPerConnection:
-        label: HTTP Max Requests Per Connection
-        placeholder: e.g. 10
-        help: Maximum number of requests per connection to a backend. Setting this parameter to 1 disables keep alive.
+        label: Максимальное кол-во HTTP запросов на соединение
+        placeholder: напр. 10
+        help: Максимальное количество запросов на подключение к бэкенду. Установка этого параметра в 1 выключает keep alive.
       maxRetries:
-        label: HTTP Max Retries
+        label: Максимальное кол-во повторных попыток HTTP
         placeholder: e.g. 1024
-        help: Maximum number of retries that can be outstanding to all hosts in a cluster at a given time.
+        help: Максимальное число повторных попыток, которые могут быть невыполненными для всех узлов в кластере в данный момент времени.
       connectTimeout:
-        label: TCP Connection Timeout
-        placeholder: e.g. 30ms
-        help: TCP connection timeout.
+        label: Таймаут TCP соединения
+        placeholder: напр. 30ms
+        help: Таймаут TCP соединения.
       maxConnections:
-        label: TCP Max Connections
-        placeholder: e.g. 1024
-        help: Maximum number of HTTP1 /TCP connections to a destination host.
+        label: Максимальное кол-во TCP соединений
+        placeholder: напр. 1024
+        help: Максимальное число HTTP1 /TCP соединений с конечным хостом.
     outlierDetection:
       label: Outlier Detection
       detail: Configure eviction of unhealthy hosts from the load balancing pool
       baseEjectionTime:
         label: Base Ejection Time
-        placeholder: e.g. 30s
+        placeholder: напр. 30s
         help: Minimum ejection duration. A host will remain ejected for a period equal to the product of minimum ejection duration and the number of times the host has been ejected.
       consecutiveErrors:
         label: Consecutive Errors
-        placeholder: e.g. 5
+        placeholder: напр. 5
         help: Number of errors before a host is ejected from the connection pool.
       interval:
-        label: Interval
-        placeholder: e.g. 10s
+        label: Интервал
+        placeholder: напр. 10s
         help: Time interval between ejection sweep analysis.
       maxEjectionPercent:
         label: Max Ejection Percent
-        placeholder: e.g. 10
+        placeholder: напр. 10
         help: Maximum % of hosts in the load balancing pool for the upstream service that can be ejected.
     subsets:
-      label: Subsets
-      noSubsets: No Subsets
-      addSubsetLabel: Add Subset
-      removeSubsetLabel: Remove Subset
+      label: Подмножества
+      noSubsets: Нет подмножеств
+      addSubsetLabel: Добавить подмножество
+      removeSubsetLabel: Удалить подмножество
       name:
-        label: Name
-        placeholder: e.g. v1
-        error: Subset Name is required.
+        label: Имя
+        placeholder: напр. v1
+        error: Имя подмножества обязательное поле.
       labels:
-        error: Please input at least one label for subset.
+        error: Введите хотя бы один лэйбл для подмножества.
     tls:
       label: TLS
-      detail: Configure TLS related settings for connections to the upstream service
+      detail: Настройка параметров TLS для подключений к вышестоящей службе
       mode:
-        label: TLS Mode
+        label: Режим TLS
         none:
-          label: NONE
+          label: Ничего
         istio:
           label: Istio Mutual - Secure connections to the upstream using mutual TLS by Istio
         disable:
@@ -2476,38 +2476,38 @@ istio:
         mutual:
           label: Mutual - Secure connections to the upstream using mutual TLS by presenting client certificates for authentication
       clientCertificate:
-        label: Client Certificate
-        placeholder: e.g. /etc/certs/myclientcert.pem
-        error: Client Certificate is required.
+        label: Сертификат клиента
+        placeholder: напр. /etc/certs/myclientcert.pem
+        error: Сертификат клиента обязательное поле.
       privateKey:
-        label: Private Key
-        placeholder: e.g. /etc/certs/client_private_key.pem
-        error: Private Key is required.
+        label: Приватный ключ
+        placeholder: напр. /etc/certs/client_private_key.pem
+        error: Приватный ключ обязательное поле.
       caCertificates:
-        label: CA Certificates
-        placeholder: e.g. /etc/certs/rootcacerts.pem
+        label: CA Сертификаты
+        placeholder: напр. /etc/certs/rootcacerts.pem
       sni:
         label: SNI
-        placeholder: e.g. nginx.example.com
+        placeholder: напр. nginx.example.com
       subjectAltNames:
         label: Subject Alternative Names
-        placeholder: e.g. example.com
+        placeholder: напр. example.com
         add: Add Subject Alternative Name
-  egressGateway: Enabled Egress Gateway
-  ingressGateway: Enabled Ingress Gateway
-  istiodRemote: Enabled istiodRemote
-  kiali: Enabled Kiali
-  pilot: Enabled Pilot
-  policy: Enabled Policy
-  poweredBy: Powered by <a target="_blank" rel="noopener noreferrer nofollow" href='https://istio.io/latest/'>Istio</a>
-  telemetry: Enabled Telemetry
+  egressGateway: Egress Gateway включен
+  ingressGateway: Ingress Gateway включен
+  istiodRemote: istiodRemote включен
+  kiali: Kiali включен
+  pilot: Pilot включен
+  policy: Policy включен
+  poweredBy: Разработано <a target="_blank" rel="noopener noreferrer nofollow" href='https://istio.io/latest/'>Istio</a>
+  telemetry: Телеметрия включена
   titles:
-    components: Components
-    customAnswers: Custom Answers
-    advanced: Advanced Settings
-    description: Description
-  tracing: Enabled Jaeger Tracing (limited)
-  v1Warning: Please uninstall the current Istio version in the <code>istio-system</code> namespace before attempting to install this version.
+    components: Компоненты
+    customAnswers: Пользовательские ответы
+    advanced: Расширенные настройки
+    description: Описание
+  tracing: Включен Jaeger Tracing (ограниченно)
+  v1Warning: Пожалуйста, удалите текущую версию Istio в <code>istio-system</code> пространстве имен перед установкой этой версии.
 
 labels:
   addLabel: Add Label
