@@ -38,12 +38,12 @@ export default {
     mapError(error) {
       switch (true) {
       case error.includes('violates PodSecurity'): {
-        const match = error.match(/(?<=\")(.*?)(?=\")/gi);
+        const match = error.match(/\"(.*?)\"/gi);
         const name = match[0];
-        const policy = match[2];
+        const policy = match[1];
 
         return {
-          message: `Pod "${ name }" Security Policy Violation "${ policy }"`,
+          message: `Pod ${ name } Security Policy Violation ${ policy }`,
           icon:    'icon-pod_security'
         };
       }
@@ -57,7 +57,7 @@ export default {
      * Map all the error texts to a message and icon object
      */
     getErrorsMap(errors) {
-      return !errors ? {} : errors.reduce((acc, error) => ({
+      return !errors || !Array.isArray(errors) ? {} : errors.reduce((acc, error) => ({
         ...acc,
         [error]: this.mapError(error) || {
           message: error,
@@ -244,7 +244,16 @@ export default {
               </div>
               <div class="spacer" />
               <div>
-                <h3>{{ t('workload.container.titles.ports') }}</h3>
+                <h3>
+                  {{ t('workload.container.ports.expose') }}
+                  <i
+                    v-tooltip="t('workload.container.ports.toolTip')"
+                    class="icon icon-info"
+                  />
+                </h3>
+                <p class="padded">
+                  {{ t('workload.container.ports.description') }}
+                </p>
                 <div class="row">
                   <WorkloadPorts
                     v-model="allContainers[i].ports"
@@ -565,9 +574,7 @@ export default {
               type="button"
               class="btn-sm role-link"
               @click="addContainerBtn"
-            >
-              <i class="icon icon-plus" /> {{ t('workload.container.addContainer') }}
-            </button>
+            />
           </li>
         </template>
       </Tabbed>
@@ -634,5 +641,8 @@ export default {
     border-bottom: 1px solid var(--border);
     margin-bottom: 10px;
   }
+}
+.padded {
+  padding-bottom: 10px;
 }
 </style>
