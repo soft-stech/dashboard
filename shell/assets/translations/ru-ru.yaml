@@ -517,7 +517,7 @@ authConfig:
         linkText: 'Обновите здесь'
       modal:
         title: Вы уверены? Это обновление необратимо.
-        body: '<p><b>Возможно, вам потребуется внести некоторые дополнительные изменения</b>. Убедитесь, что в приложении Azure AD есть Directory.Read.All.<b>Application</b> разрешение добавлено в Microsoft Graph.<br> Если какие-либо endpoint'ы были настроены при настройке проверки подлинности Azure AD в Rancher, они не будут обновляться автоматически.</p>'
+        body: <p><b>Возможно, вам потребуется внести некоторые дополнительные изменения</b>. Убедитесь что приложение Azure AD имеет права Directory.Read.All <b>Application</b> добавленные в Microsoft Graph.<br> Если какие-либо endpoint'ы были изменены при настройке аутентификации Azure AD в Rancher, они не будут автоматически обновляться.</p>
   oidc:
     oidc: Настроить аккаунт OIDC
     keycloakoidc: Настроить аккаунт Keycloak OIDC
@@ -597,11 +597,11 @@ asyncButton:
     success: Выключено
     waiting: Выключение&hellip;
   activate:
-    action:  Активировать
+    action: Активировать
     waiting: Активация&hellip;
     success: Активировано
   deactivate:
-    action:  Деактивировать
+    action: Деактивировать
     waiting: Деактивация&hellip;
     success: Деактивировано
   diagnostic:
@@ -650,13 +650,13 @@ asyncButton:
     waiting: Приостановка оркестрации
     description: Новые версии не будут развернуты, так как оркестровка временно приостановлена. Чтобы развернуть новые версии, возобновите оркестровку.
   refresh:
-    action: ''
+    action: 'Действие'
     actionIcon: обновить
-    error: ''
+    error: 'Ошибка'
     errorIcon: ошибка
-    success: ''
+    success: 'Успех'
     successIcon: галочка
-    waiting: ''
+    waiting: 'Ожидание'
     waitingIcon: обновить
   remove:
     action: Удалить
@@ -1591,7 +1591,7 @@ cluster:
         bannerLabel: 'Замечание: Будет использован только самый последний селектор, удовлетворяющий условию, и только аргументы из него. Аргументы из остальных селекторов, удовлетворяющих условию, не будут ни объединены, ни скомбинированы.'
         title: 'Для машин с лейблами совпадающими с:'
         subTitle: 'Использовать следующие аргументы Kubelet:'
-        titleAlt:  |-
+        titleAlt: |-
           {count, plural,
             =1 { Для всех машин использовать следующие аргументы Kubelet: }
             other { Для любых машин использовать следующие аргументы Kubelet: }
@@ -1608,7 +1608,8 @@ cluster:
     desiredNodeGroupWarning: Доступно 0 нод для запуска агента кластера. Кластер не будет активирован, пока нет как минимум одной доступной ноды.
     invalidPsps: You have one or more PodSecurityPolicy resource(s) in this cluster. Pod Security Policies are not available in Kubernetes v1.25.
     haveArgInfo: Configuration information is not available for the selected Kubernetes version.  The options available in this screen will be limited, you may want to use the YAML editor.
-
+    deprecatedPsp: Pod Security Policies помечены как устаревшие в Kubernetes v1.21, и будут удалены в Kubernetes v1.25.
+    removedPsp: Pod Security Policies были удалены Kubernetes v1.25,  используйте вместо них PodSecurity Admission.
   rkeTemplateUpgrade: Доступно обновление для ревизии шаблона {name}
 
   availabilityWarnings:
@@ -1690,7 +1691,7 @@ cluster:
   provider:
     aliyunecs: Aliyun ECS
     aliyunkubernetescontainerservice: Alibaba ACK
-    aliyun:  Alibaba ACK
+    aliyun: Alibaba ACK
     amazonec2: Amazon EC2
     amazoneks: Amazon EKS
     aws: Amazon
@@ -1777,9 +1778,9 @@ cluster:
     defaultPodSecurityPolicyTemplateName:
       label: Политика безопасности подов по умолчанию
       option: RKE Default
-    defaultPodSecurityAdmissionTemplateName:
-      label: Допуск безопасности подов по умолчанию
-      option: (None)
+    defaultPodSecurityAdmissionConfigurationTemplateName:
+      label: Pod Security Admission по умолчанию
+      option: (Ничего)
     cisProfile:
       option: (None)
     enableNetworkPolicy:
@@ -1831,6 +1832,9 @@ cluster:
         label: Метрики
         false: Доступно только внутри кластера
         true: Доступно для публичного интерфейса
+    defaultPodSecurityAdmissionTemplateName:
+      label: Допуск безопасности подов по умолчанию
+      option: (None)
   k3s:
     systemService:
       coredns: 'CoreDNS'
@@ -2323,6 +2327,7 @@ import:
     }
 
 ingress:
+  description: Ingresses перенаправляет входящий трафик из Интернета в сервисы кластера на основе имени хоста и пути, указанных в запросе. Вы можете использовать несколько сервисов на одном внешнем IP-адресе и порту.
   certificates:
     addCertificate: Добавить сертификат
     addHost: Добавить хост
@@ -2375,6 +2380,7 @@ ingress:
       placeholder: напр. example.com
     target:
       label: Целевой сервис
+      tooltip: Если ни один из сервисов в этом выпадающем списке не выбирает поды, которые вам нужны, вам нужно будет сначала создать сервис, который выбирает эти поды.
       doesntExist: Выбранный целевой сервис не существует
     title: Правила
   rulesAndCertificates:
@@ -2736,7 +2742,7 @@ logging:
     secretKey: Secret Key from Secret
   azurestorage:
     storageAccount: Account from Secret
-    accessKey:  Access Key from Secret
+    accessKey: Access Key from Secret
     container: Container
     path: Path
     storeAs: Store As
@@ -3943,6 +3949,18 @@ plugins:
 podSecurityAdmission:
   label: Pod Security Admission
   description: Define the admission control mode you want to use for the pod security
+  banner:
+    modifications: 'Примечание: Изменение шаблона конфигурации Pod Security Admission не повлияет ни на один нижележащий кластер, который ссылается на него, пока не произойдет обновление кластера.'
+  labels:
+    enforce: Обеспечить выполнение
+    audit: Аудит
+    warn: Предупреждение
+    usernames: Имена пользователей
+    runtimeClasses: RuntimeClasses
+    namespaces: Пространства имен
+    privileged: привилегированный
+    baseline: базовый уровень
+    restricted: с ограничениями
   version:
     placeholder: 'Version (default: latest)'
   exemptions:
@@ -4094,704 +4112,686 @@ projectMembers:
     workloadsView: View Workloads
 
 projectNamespaces:
-  createNamespace: Create Namespace
-  createProject: Create Project
-  label: Projects/Namespaces
-  noNamespaces: There are no namespaces defined.
-  noProjectNoNamespaces: All namespaces are in a project
-
+  createNamespace: Создать пространство имен
+  createProject: Создать проект
+  label: Проекты/Пространства имен
+  noNamespaces: Не задано ни одно пространство имен
+  noProjectNoNamespaces: Все пространства имен в проекте
 prometheusRule:
   alertingRules:
-    addLabel: Add Alert
+    addLabel: Добавить оповещение
     annotations:
       description:
-        input: Description Annotation Value
-        label: Description
-      label: Annotations
+        input: Значение примечания описания
+        label: Описание
+      label: Примечания
       message:
-        input: Message Annotation Value
-        label: Message
+        input: Значение примечания сообщения
+        label: Сообщение
       runbook:
-        input: Runbook URL Annotation Value
+        input: Значение примечания Runbook URL
         label: Runbook URL
       summary:
-        input: Summary Annotation Value
-        label: Summary
-    bannerText: 'When firing alerts, the annotations and labels will be passed to the configured AlertManagers to allow them to construct the notification that will be sent to any configured Receivers.'
+        input: Значение примечания итога
+        label: Итог
+    bannerText: 'Когда срабатывают оповещения, заметки и лэйблы будут отправлены в AlertManagers, чтобы дать возможность настроить оповещение, которое будет отправлено на любой настроенный Приемник'
     for:
-      label: Wait to fire for
+      label: Ожидать срабатывания
       placeholder: '60'
-    label: Alerting Rules
+    label: Правила оповещений
     labels:
-      label: Labels
+      label: Лэйблы
       severity:
         choices:
-          critical: critical
-          label: Severity Label Value
-          none: none
-          warning: warning
-        label: Severity
-    name: Alert Name
-    removeAlert: Remove Alert
+          critical: критично
+          label: Значение лэйбла серьезности
+          none: ничего
+          warning: предупреждение
+        label: Серьезность
+    name: Имя оповещения
+    removeAlert: Удалить оповещение
   groups:
-    add: Add Rule Group
-    groupRowLabel: Rule Group {index}
+    add: Добавить группу правил
+    groupRowLabel: Группа правил {index}
     groupInterval:
-      label: Override Group Interval
+      label: Переопределить интервал группы
       placeholder: '60'
-    label: Rule Groups
-    name: Group Name
-    none: Please add at least one rule group that contains at least one alerting or one recording rule.
-    removeGroup: Remove Group
+    label: Группы правил
+    name: Имя группы
+    none: Добавьте хотя бы одну группу правил, содержащую хотя бы одно предупреждение или одно правило записи.
+    removeGroup: Удалить группу
     responseStrategy:
-      label: Partial Response Strategy
+      label: Стратегия частичного реагирования
   promQL:
-    label: PromQL Expression
+    label: PromQL Выражение
   recordingRules:
-    addLabel: Add Record
-    label: Recording Rules
-    labels: Labels
-    name: Time Series Name
-    removeRecord: Remove Record
-
+    addLabel: Добавить запить
+    label: Правила записи
+    labels: Лэйблы
+    name: Имя временных рядов
+    removeRecord: Удалить запить
 promptForceRemove:
-  modalTitle: Are you sure?
-  removeWarning: "There was an issue with deleting underlying infrastructure. If you proceed with this action, the Machine <b>{nameToMatch}</b> will be deleted from Rancher only. It's highly recommended to manually delete any referenced infrastructure."
-  forceDelete: Force Delete
-  confirmName: "Enter in the pool name below to confirm:"
-  podRemoveWarning: "Force deleting pods does not wait for confirmation that the pod's processes have been terminated. This may result in <strong>data corruption or inconsistencies</strong>"
-
+  modalTitle: Вы уверены?
+  removeWarning: "Возникла проблема с удалением базовой инфраструктуры. Если вы продолжите, то <b>{nameToMatch}</b> будет удалена только из Rancher. Настоятельно рекомендуется вручную удалить любые ресурсы, относящиеся к этой инфраструктуре."
+  forceDelete: Принудительное удаление
+  confirmName: "Введите имя пула ниже, для подтверждения:"
+  podRemoveWarning: "Принудительное удаление подов не ждет подтверждения прекращения процессов пода. Это может привести к <strong>повреждению данных или несоответствиям</strong>"
 promptScaleMachineDown:
-  attemptingToRemove: "You are attempting to delete {count} {type}"
-  retainedMachine1: At least one Machine must exist for roles Control Plane and Etcd.
-  retainedMachine2: <b>{ name }</b> will remain
-
+  attemptingToRemove: "Вы пытаетесь удалить {count} {type}"
+  retainedMachine1: Для ролей должна существовать хотя бы одна машина Control Plane и Etcd.
+  retainedMachine2: <b>{ name }</b> останется
 promptRemove:
-  title: Are you sure?
+  title: Вы уверены?
   andOthers: |-
     {count, plural,
     =0 {.}
-    =1 { and <b>one other</b>.}
-    other { and <b>{count} others</b>.}
+    =1 { и <b>еще один</b>.}
+    other { и <b>{count} других</b>.}
     }
-  attemptingToRemove: "You are attempting to delete the {type}"
-  attemptingToRemoveAuthConfig: "You are attempting to disable this Auth Provider. <br><br> Be aware that cluster role template bindings, project role template bindings, global role bindings, users, tokens will be all deleted. <br><br> Are you sure you want to proceed?"
-  protip: "Tip: Hold the {alternateLabel} key while clicking delete to bypass this confirmation"
-  confirmName: "Enter <b>{nameToMatch}</b> below to confirm:"
-  deleteAssociatedNamespaces: "Also delete the namespaces in this project:"
-  willDeleteAssociatedNamespaces: "This will also delete all namespaces in the project: "
-  confirmRelatedResource: "Deleting the {type} will remove all the resources on this particular {type} and this is not revertable, are you sure you want to continue deleting {names}?"
-  promptConfirmation: "Do not prompt again for confirmation when scaling down."
-
+  attemptingToRemove: "Вы пытаетесь удалить {type}"
+  attemptingToRemoveAuthConfig: "Вы пытаетесь отключить этого провайдера авторизации. <br><br> Помните, что все привязки шаблонов ролей кластера, привязки шаблонов ролей проекта, привязки глобальных ролей, пользователи, токены будут удалены. <br><br> Уверены что хотите продолжить?"
+  protip: "Совет: Удерживайте клавишу {alternateLabel} при нажатии кнопки удалить, чтобы обойти это подтверждение"
+  confirmName: "Введите <b>{nameToMatch}</b> ниже, для подтверждения:"
+  deleteAssociatedNamespaces: "Также удалить пространства имен этого проекта:"
+  willDeleteAssociatedNamespaces: "Это также удалит все пространства имен проекта: "
+  confirmRelatedResource: "\nУдаление {type} приведет к удалению всех ресурсов этого конкретного {type}, и это невозможно откатить, вы уверены, что хотите продолжить удаление {names}?\n"
+  promptConfirmation: "Не запрашивать повторное подтверждение при уменьшении маштабирования."
 promptRemoveApp:
-  removeCrd: "Delete the CRD associated with this app"
-
+  removeCrd: "Удалить CRD, связанный с этим приложением"
 promptRestore:
-  title: Restore Snapshot
-  name: Name
-  date: Date
-  fromS3: Restore from S3
-  label: Snapshot
-  placeholder: Select a snapshot to restore
+  title: Восстановить снапшот
+  name: Имя
+  date: Дата
+  fromS3: Восстановить из S3
+  label: Снапшот
+  placeholder: Выберите снапшот для восстановления
   notification:
-    title: Restore Snapshot
-    message: Restoring snapshot { selectedSnapshot } has started...
-
+    title: Восстановить снапшот
+    message: Восстановление снапшота { selectedSnapshot } было начато...
 promptRollback:
-  modalTitle: Roll Back {workloadName}
-  dropdownTitle: Roll Back to Revision
-  placeholder: Choose a Revision...
-  attemptingToRollBack: Attempting to roll back workload...
-  differences: Differences
-  revisionOption: "Revision {revisionNumber}, created {revisionAge} {units} ago {currentLabel}"
-  currentLabel: "(Current)"
-  multipleWorkloadError: "Only one workload can be rolled back at a time."
-  singleRevisionBanner: There are no revisions to roll back to.
-
+  modalTitle: Откатить {workloadName}
+  dropdownTitle: Откатить к версии
+  placeholder: Выбрать ревизию...
+  attemptingToRollBack: Пробуем восстановить рабочие нагрузки...
+  differences: Различия
+  revisionOption: "Ревизия {revisionNumber}, создана {revisionAge} {units} назад {currentLabel}"
+  currentLabel: "(Текущая)"
+  multipleWorkloadError: "Одновременно можно откатить только одну рабочую нагрузку."
+  singleRevisionBanner: Нет ревизий, к которым можно откатиться.
 promptSaveAsRKETemplate:
-  title: Convert {cluster} to new RKE Template
-  name: Cluster Template Name
-  description: Create a new RKE cluster template and initial revision from the current cluster configuration.
-  warning: This will modify the cluster, setting it up to use the newly created cluster template and revision. This can not be undone.
-
+  title: Конвертировать {cluster} в новый RKE шаблон
+  name: Имя шаблона кластера
+  description: Создать новый шаблон кластера RKE и начальную ревизию на основе текущей конфигурации кластера.
+  warning: Это изменит кластер, настроив его на использование только что созданного шаблона кластера и ревизии. Это нельзя отменить.
 promptRotateEncryptionKey:
-  title: Rotate Encryption Keys
-  description: The last backup {name} was performed on {date}
-  warning: Before proceeding, ensure a successful ETCD backup of the cluster has been completed.
-  error: No backup found
-
+  title: Ротация ключей шифрования
+  description: Последнее резервное копирование {name} было выполнено {date}
+  warning: Прежде чем продолжить, убедитесь, что резервное копирование кластера ETCD было завершено.
+  error: Не найдено резервных копий
 rancherAlertingDrivers:
-  msTeams: Enable Microsoft Teams
-  sms: Enable SMS
-  selectOne: You must select at least one of the options below.
-
+  msTeams: Включить Microsoft Teams
+  sms: Включить SMS
+  selectOne: Вы должны выбрать хотя бы один из приведенных ниже вариантов.
 rbac:
   roleBinding:
-    noData: There are no members associated with this resource.
+    noData: Никакие пользователи не связаны с этим ресурсом.
     user:
-      label: User
+      label: Пользователь
     role:
-      label: Role
-    add: Add Member
+      label: Роль
+    add: Добавить пользователя
   displayRole:
-    fleetworkspace-admin: Admin
-    fleetworkspace-member: Member
-    fleetworkspace-readonly: Read-Only
+    fleetworkspace-admin: Администратор
+    fleetworkspace-member: Пользователь
+    fleetworkspace-readonly: Только чтение
   members:
-    label: Members
+    label: Пользователи
   roletemplate:
-    label: Roles
+    label: Роли
     newUserDefault:
-      no: No
-      tooltip: This does not affect any bindings to the role that already exist.
+      'no': ложь
+      tooltip: Это не влияет на уже существующие привязки к роли.
     locked:
-      label: Locked
-      yes: 'Yes: New bindings are not allowed to use this role'
-      no: No
+      label: Заблокировано
+      'yes': 'Да: Новым привязкам не разрешается использовать эту роль'
+      'no': ложь
     tabs:
       grantResources:
-        label: Grant Resources
+        label: Предоставить ресурсы
         noApiGroupClusterScope: Core K8s API, Cluster Scoped
         noApiGroupNamespaceScope: Core K8s API, Namespaced
-        deprecatedLabel: (deprecated)
-        resourceOptionInfo: The resource options are not a complete list of every resource available in every Rancher-managed Kubernetes cluster. Resources and API groups may need to be manually entered in advanced use cases.
+        deprecatedLabel: (устаревшее)
+        resourceOptionInfo: Параметры ресурсов не являются полным списком всех ресурсов, доступных в каждом кластере Kubernetes, управляемом Rancher. Ресурсы и группы API могут потребовать ручного ввода в расширенных случаях использования.
         tableHeaders:
-          verbs: Verbs
-          resources: Resource
-          nonResourceUrls: Non-Resource URLs
-          apiGroups: API Groups
+          verbs: Глаголы
+          resources: Ресурс
+          nonResourceUrls: URL-адреса, не относящиеся к ресурсам
+          apiGroups: Все группы
     subtypes:
       GLOBAL:
-        createButton: Create Global Role
-        label: Global
-        yes: "Yes: Default role for new users"
-        defaultLabel: New User Default
+        createButton: Создать глобальную роль
+        label: Глобально
+        'yes': "Да: Роль по умолчанию для новых пользователей"
+        defaultLabel: Новый пользователь по умолчанию
       CLUSTER:
-        createButton: Create Cluster Role
-        label: Cluster
-        yes: "Yes: Default role for new cluster creation"
-        defaultLabel: Cluster Creator Default
+        createButton: Создать роль кластера
+        label: Кластер
+        'yes': "Да: роль по умолчанию при создания нового кластера"
+        defaultLabel: Создатель кластера по умолчанию
       NAMESPACE:
-        createButton: Create Project/Namespaces Role
-        label: Project/Namespaces
-        yes: "Yes: Default role for new project creation"
-        defaultLabel: Project Creator Default
+        createButton: Создать роль проекта/пространства имен
+        label: Проекты/Пространства имен
+        'yes': "Да: Роль по умолчанию при создании нового проекта"
+        defaultLabel: Создатель проекта по умолчанию
       RBAC_ROLE:
-        label: Role
+        label: Роль
       RBAC_CLUSTER_ROLE:
-        label: Cluster Role
+        label: Роль кластера
       noContext:
-        label: No Context
+        label: Нет контекста
   globalRoles:
-    notBound: 'No users bound <i class="icon icon-checkmark" style="margin-left: 5px"></i>'
-    unableToCheck: Unable to check if any user is bound to the role(s). Please try again.
+    notBound: 'Нет привязанных пользователей <i class="icon icon-checkmark" style="margin-left: 5px"></i>'
+    unableToCheck: Невозможно проверить, привязан ли какой-либо пользователь к роли(ям). Пожалуйста, попробуйте еще раз.
     waiting: |-
       {count, plural,
-        =1 { Checking if there are any users bound to this role <i class="icon-spin icon icon-spinner" style="margin-left: 5px"></i> }
-        other { Checking if there are any users bound to these roles <i class="icon-spin icon icon-spinner" style="margin-left: 5px"></i> }
+        =1 { Проверка наличия пользователей, привязанных к этой роли <i class="icon-spin icon icon-spinner" style="margin-left: 5px"></i> }
+        other { Проверка наличия пользователей, привязанных к этим ролям <i class="icon-spin icon icon-spinner" style="margin-left: 5px"></i> }
       }
     usersBound: |-
       {count, plural,
-        =1 { Caution: There is 1 user bound to the role(s) about to be deleted. Do you want to proceed? }
-        other { Caution: There are {count} users bound to the role(s) about to be deleted. Do you want to proceed? }
+        =1 { Внимание: К роли (ролям), которую нужно удалить, привязан 1 пользователь. Хотите ли вы продолжить? }
+        other { Внимание: Существует {count} пользователей, привязанных к роли (ролям), которая будет удалена. Вы хотите продолжить? }
       }
     types:
       global:
-        label: Global Permissions
+        label: Глобальные права
         description: |-
-          Controls what access the {isUser, select,
-          true {user}
-          false {group}} has to administer the overall {appName} installation.
+          Контролирует, какой доступ {isUser, select,
+          true {пользователь}
+          false {группа}} имеет для управления общей {appName} установкой.
       custom:
-        label: Custom
-        description: 'Roles not created by {vendor}.'
+        label: Пользовательский
+        description: 'Роли не созданы {vendor}.'
       builtin:
-        label: Built-in
-        description: Additional roles to define more fine-grain permissions model.
+        label: Встроенный
+        description: Дополнительные роли для определения более тонкой модели прав доступа.
     unknownRole:
-      description: No description provided
-    assignOnlyRole: This role is already assigned
+      description: Не указано описание
+    assignOnlyRole: Эта роль уже назначена
     role:
       admin:
-        label: Administrator
-        description: Administrators have full control over the entire installation and all resources in all clusters.
+        label: Администратор
+        description: Администраторы имеют полный контроль над всей установкой и всеми ресурсами во всех кластерах.
       restricted-admin:
-        label: Restricted Administrator
-        description: Restricted Admins have full control over all resources in all downstream clusters but no access to the local cluster.
+        label: Администратор с ограниченным доступом
+        description: Ограниченные администраторы имеют полный контроль над всеми ресурсами во всех нижележащих кластерах, но не имеют доступа к локальному кластеру.
       user:
-        label: Standard User
-        description: Standard Users can create new clusters and manage clusters and projects they have been granted access to.
+        label: Обычный пользователь
+        description: Стандартные пользователи могут создавать новые кластеры и управлять кластерами и проектами, к которым им предоставлен доступ.
       user-base:
-        label: User-Base
-        description: User-Base users have login-access only.
+        label: Базовый пользователь
+        description: Базовые пользователи имеют доступ только для входа в систему.
       clusters-create:
-        label: Create new Clusters
-        description: Allows the user to create new clusters and become the owner of them.  Standard Users have this permission by default.
+        label: Создать новые кластеры
+        description: Позволяет пользователю создавать новые кластеры и становиться их владельцем.  Обычные пользователи имеют это разрешение по умолчанию.
       clustertemplates-create:
-        label: Create new RKE Cluster Templates
-        description: Allows the user to create new RKE cluster templates and become the owner of them.
+        label: Создать новый RKE шаблон кластера
+        description: Позволяет пользователю создавать новые шаблоны кластеров RKE и становиться их владельцем.
       authn-manage:
-        label: Configure Authentication
-        description: Allows the user to enable, configure, and disable all Authentication provider settings.
+        label: Настройка аутентификации
+        description: Позволяет пользователю включать, настраивать и отключать все параметры провайдера аутентификации.
       catalogs-manage:
-        label: Legacy Configure Catalogs
-        description: Allows the user to add, edit, and remove management.cattle.io based catalogs resources.
+        label: Настройка каталогов
+        description: Позволяет пользователю добавлять, редактировать и удалять ресурсы каталогов на базе management.cattle.io.
       clusters-manage:
-        label: Manage all Clusters
-        description: Allows the user to manage all clusters, including ones they are not a member of.
+        label: Управлять всеми кластерами
+        description: Позволяет пользователю управлять всеми кластерами, включая те, членом которых он не является.
       clusterscans-manage:
-        label: Manage CIS Cluster Scans
-        description: Allows the user to launch new and manage CIS cluster scans.
+        label: Управление сканированием кластера CIS
+        description: Позволяет пользователю запускать новые и управлять сканированием кластера CIS.
       kontainerdrivers-manage:
-        label: Create new Cluster Drivers
-        description: Allows the user to create new cluster drivers and become the owner of them.
+        label: Создание новых драйверов кластера
+        description: Позволяет пользователю создавать новые драйверы кластера и становиться их владельцем.
       features-manage:
-        label: Configure Feature Flags
-        description: Allows the user to enable and disable custom features via feature flag settings.
+        label: Настроить фича-флаги
+        description: Позволяет пользователю включать и отключать пользовательские функции с помощью настроек фича-флагов
       nodedrivers-manage:
-        label: Configure Node Drivers
-        description: Allows the user to enable, configure, and remove all Node Driver settings.
+        label: Настроить драйверы ноды
+        description: Позволяет пользователю включать, настраивать и удалять все параметры драйвера ноды.
       nodetemplates-manage:
-        label: Manage Node Templates
-        description: Allows the user to define, edit, and remove Node Templates.
+        label: Управлять шаблонами ноды
+        description: Позволяет пользователю определять, редактировать и удалять шаблоны нод.
       podsecuritypolicytemplates-manage:
-        label: Manage Pod Security Policies (PSPs)
-        description: Allows the user to define, edit, and remove PSPs.
+        label: Управление политиками безопасности пода (PSP)
+        description: Позволяет пользователю определять, редактировать и удалять PSP.
       roles-manage:
-        label: Manage Roles
-        description: Allows the user to define, edit, and remove Role definitions.
+        label: Управление ролями
+        description: Позволяет пользователю определять, редактировать и удалять определения ролей.
       settings-manage:
-        label: Manage Settings
-        description: 'Allows the user to manage {vendor} Settings.'
+        label: Управление настройками
+        description: 'Позволяет пользователю управлять настройками {vendor}.'
       users-manage:
-        label: Manage Users
-        description: Allows the user to create, remove, and set passwords for all Users.
+        label: Управление пользователями
+        description: Позволяет пользователю создавать, удалять и устанавливать пароли для всех пользователей.
       catalogs-use:
-        label: Use Catalogs
-        description: Allows the user to see and deploy Templates from the Catalog.  Standard Users have this permission by default.
+        label: Использовать каталоги
+        description: Позволяет пользователю просматривать и развертывать шаблоны из каталога.  Обычные пользователи имеют это разрешение по умолчанию.
       nodetemplates-use:
-        label: Use Node Templates
-        description: Allows the user to deploy new Nodes using any existing Node Templates.
+        label: Использовать шаблоны нод
+        description: Позволяет пользователю развертывать новые ноды, используя любые существующие шаблоны нод.
       view-rancher-metrics:
-        label: 'View {vendor} Metrics'
-        description: Allows the user to view Metrics through the API.
+        label: 'Смотреть метрики {vendor}'
+        description: Позволяет пользователю просматривать метрики через API.
       base:
-        label: Login Access
+        label: Вход в систему
       clustertemplaterevisions-create:
-        label: Create RKE Template Revisions
-
+        label: Создание ревизий шаблона RKE
 resourceDetail:
   detailTop:
-    annotations: Annotations
-    created: Created
-    deleted: Deleted
-    description: Description
-    endpoints: Endpoints
-    labels: Labels
-    namespaces: Namespaces
+    annotations: Примечания
+    created: Создано
+    deleted: Удалено
+    description: Описание
+    endpoints: Endpoint'ы
+    labels: Лэйблы
+    namespaces: Пространства имен
     ownerReferences: |-
       {count, plural,
-      =1 {Owner}
-      other {Owners}}
-    hideLabels: Hide system labels
-    showLabels: Show all labels
+      =1 {Владелец}
+      other {Владельцев}}
+    hideLabels: Скрыть системные лэйблы
+    showLabels: Показать все лэйблы
     hideAnnotations: |-
       {annotations, plural,
-      =1 {Hide 1 annotation}
-      other {Hide {annotations} annotations}}
+      =1 {Скрыть 1 примечание}
+      other {Скрыть {annotations} примечаний}}
     showAnnotations: |-
       {annotations, plural,
-      =1 {Show 1 annotation}
-      other {Show {annotations} annotations}}
-    name: Name
+      =1 {Показать 1 примечание}
+      other {Показать {annotations} примечаний}}
+    name: Имя
   header:
-    clone: "Clone from {subtype} {name}"
-    create: Create {subtype}
-    import: Import {subtype}
+    clone: "Склонировать из {subtype} {name}"
+    create: Создать {subtype}
+    import: Импортировать {subtype}
     edit: "{subtype} {name}"
-    stage: "Stage from {subtype} {name}"
+    stage: "Этап из {subtype} {name}"
     view: "{subtype} {name}"
   masthead:
-    age: Age
-    restartCount: Pod Restarts
+    age: Возраст
+    restartCount: Рестартов пода
     defaultBannerMessage:
-      error: This resource is currently in an error state, but there isn't a detailed message available.
-      transitioning: This resource is currently in a transitioning state, but there isn't a detailed message available.
+      error: Этот ресурс в настоящее время находится в состоянии ошибки, но подробное сообщение недоступно.
+      transitioning: Этот ресурс в настоящее время находится в переходном состоянии, но подробное сообщение недоступно.
     sensitive:
-      hide: Hide Sensitive Values
-      show: Show Sensitive Values
-    namespace: Namespace
-    workspace: Workspace
-    project: Project
-    detail: Detail
-    config: Config
-    graph: Graph
+      hide: Скрыть чувствительные значения
+      show: Показать чувствительные значения
+    namespace: Пространство имён
+    workspace: Рабочее пространство
+    project: Проект
+    detail: Детали
+    config: Конфигурация
+    graph: Граф
     yaml: YAML
     managedWarning: |-
-      This {type} is managed by {hasName, select,
-        no {a {managedBy} app}
-        yes {the {managedBy} app {appName}}}; changes made here will likely be overwritten the next time {managedBy} runs.
+      Этот {type} управляется {hasName, select,
+        no {приложением {managedBy}}
+        yes {{managedBy} приложением {appName}}}; изменения, сделанные здесь, скорее всего, будут перезаписаны в следующий раз, когда {managedBy} запустится.
 resourceList:
   head:
-    create: Create
-    createFromYaml: Create from YAML
-    createResource: "Create {resourceName}"
-  nsFiltering: "There are too many {resource}.<br>Please filter them by selecting a Namespace above."
-  nsFilterToolTip: "There are too many resources, filtering is restricted to a single {mode}."
+    create: Создать
+    createFromYaml: Создать из YAML
+    createResource: "Создать {resourceName}"
+  nsFiltering: "Слишком много {resource}.<br>Пожалуйста, отфильтруйте их, выбрав пространство имен выше."
+  nsFilterToolTip: "Слишком много ресурсов, фильтрация ограничена одним {mode}."
 resourceLoadingIndicator:
-  loading: Loading
-
+  loading: Загрузка
 resourceTable:
   groupBy:
-    none: Flat List
-    namespace: Group by Namespace
-    project: Group by Project
-    node: Group by Node
-    cluster: Group by Cluster
+    none: Плоский список
+    namespace: Группировка по пространству имен
+    project: Группировка по проектам
+    node: Группировка по нодам
+    cluster: Группировка по кластерам
   groupLabel:
-    cluster: "<span>Cluster:</span> {name}"
-    notInACluster: Not in a Cluster
-    namespace: "<span>Namespace:</span> {name}"
-    notInAMachinePool: "Not In A Deployment"
-    machinePool: "<span>Pool:</span> {name}"
-    notInANamespace: Not Namespaced
-    notInAProject: Not in a Project
-    project: "<span>Project:</span> {name}"
-    notInAWorkspace: Not in a Workspace
-    workspace: "<span>Workspace:</span> {name}"
-    notInANodePool: "Not in a Pool"
-    nodePool: "<span>Pool:</span> {name}"
-    node: "<span>Node:</span> {name}"
-
+    cluster: "<span>Кластер:</span> {name}"
+    notInACluster: Не в кластере
+    namespace: "<span>Пространство имён:</span> {name}"
+    notInAMachinePool: "Не в развертывании"
+    machinePool: "<span>Пул:</span> {name}"
+    notInANamespace: Не имеет пространства имен
+    notInAProject: Не в проекте
+    project: "<span>Проект:</span> {name}"
+    notInAWorkspace: Не в рабочем пространстве
+    workspace: "<span>Рабочее пространство:</span> {name}"
+    notInANodePool: "Не в пуле"
+    nodePool: "<span>Пул:</span> {name}"
+    node: "<span>Нода:</span> {name}"
 resourceTabs:
   conditions:
-    tab: Conditions
+    tab: Условия
   events:
-    tab: Recent Events
+    tab: Последние события
   related:
-    tab: Related Resources
-    from: Referred To By
-    to: Refers To
-
-
+    tab: Связанные ресурсы
+    from: На кого ссылается
+    to: Относится к
 resourceYaml:
   errors:
-    namespaceRequired: This resource is namespaced, so a namespace must be provided.
+    namespaceRequired: Этот ресурс имеет пространство имен, поэтому необходимо указать пространство имен.
   buttons:
-    continue: Continue Editing
-    edit: Edit YAML
-    diff: Show Diff
-    hideDiff: Hide Diff
-    unified: Unified
-    split: Split
-
+    continue: Продолжить редактирование
+    edit: Редактировать YAML
+    diff: Показать различия
+    hideDiff: Скрыть различия
+    unified: Унифицированный
+    split: Разделить
 secret:
-  authentication: Authentication
+  authentication: Аутентификация
   certificate:
-    certificate: Certificate
-    certificatePlaceholder: "Paste in the CA certificate, starting with -----BEGIN CERTIFICATE----"
-    cn: Domain Name
-    expires: Expires
-    issuer: Issuer
-    plusMore: "+ {n} more"
-    privateKey: Private Key
-    privateKeyPlaceholder: "Paste in the private key, typically starting with -----BEGIN RSA PRIVATE KEY-----"
-  data: Data
+    certificate: Сертификат
+    certificatePlaceholder: "Вставьте сертификат CA, начинающийся -----BEGIN CERTIFICATE----"
+    cn: Доменное имя
+    expires: Истекает
+    issuer: Эмитент
+    plusMore: "+ еще {n}"
+    privateKey: Приватный ключ
+    privateKeyPlaceholder: "Вставьте приватный ключ, обычно начинается с -----BEGIN RSA PRIVATE KEY-----"
+  data: Данные
   registry:
-    address: Registry
-    domainName: Registry Domain Name
-    password: Password
-    username: Username
+    address: Регистри
+    domainName: Доменное имя регистри
+    password: Пароль
+    username: Имя пользователя
   basic:
     password: Password
-    username: Username
+    username: Имя пользователя
   ssh:
-    keys: Keys
-    public: Public Key
-    publicPlaceholder: "Paste in your public key"
-    private: Private Key
-    privatePlaceholder: "Paste in your private key"
+    keys: Ключи
+    public: Публичный ключ
+    publicPlaceholder: "Вставьте свой публичный ключ"
+    private: Приватный ключ
+    privatePlaceholder: "Вставьте свой приватный ключ"
   serviceAcct:
-    ca: CA Certificate
-    token: Token
-  customType: Custom Type
-  type: Type
+    ca: Сертификат CA
+    token: Токен
+  customType: Пользовательский тип
+  type: Тип
   types:
-    'opaque': 'Opaque'
-    'kubernetes.io/service-account-token': 'Svc Acct Token'
-    'kubernetes.io/dockercfg': 'Registry'
-    'kubernetes.io/dockerconfigjson': 'Registry'
-    'kubernetes.io/basic-auth': 'HTTP Basic Auth'
-    'kubernetes.io/ssh-auth': 'SSH Key'
-    'kubernetes.io/tls': 'TLS Certificate'
-    'bootstrap.kubernetes.io/token': 'Bootstrap Token'
-    'istio.io/key-and-cert': 'Istio Certificate'
-    'helm.sh/release.v1': 'Helm Release'
-    'fleet.cattle.io/cluster-registration-values': 'Fleet Cluster'
-    'provisioning.cattle.io/cloud-credential': 'Cloud Credential'
-    'rke.cattle.io/auth-config': 'RKE Auth Config'
+    opaque: 'Непрозрачный'
+    kubernetes.io/service-account-token: 'Токен сервисного аккаунта'
+    kubernetes.io/dockercfg: 'Регистри'
+    kubernetes.io/dockerconfigjson: 'Регистри'
+    kubernetes.io/basic-auth: 'HTTP Basic Auth'
+    kubernetes.io/ssh-auth: 'SSH ключ'
+    kubernetes.io/tls: 'TLS Сертификат'
+    bootstrap.kubernetes.io/token: 'Bootstrap Token'
+    istio.io/key-and-cert: 'Сертификат Istio'
+    helm.sh/release.v1: 'Релиз Helm'
+    fleet.cattle.io/cluster-registration-values: 'Fleet Кластер'
+    provisioning.cattle.io/cloud-credential: 'Cloud Credential'
+    rke.cattle.io/auth-config: 'Конфигурация авторизации RKE'
   initials:
-    'opaque': 'O'
-    'kubernetes.io/service-account-token': 'SAT'
-    'kubernetes.io/dockercfg': 'R'
-    'kubernetes.io/dockerconfigjson': 'R'
-    'kubernetes.io/basic-auth': 'HTTP'
-    'kubernetes.io/ssh-auth': 'SSH'
-    'kubernetes.io/tls': 'TLS'
-    'bootstrap.kubernetes.io/token': 'Boot'
-    'istio.io/key-and-cert': 'Ist'
-    'helm.sh/release.v1': 'Helm'
-    'fleet.cattle.io/cluster-registration-values': 'F'
-    'provisioning.cattle.io/cloud-credential': 'CC'
-    's3': 'S3'
-  relatedWorkloads: Related Workloads
+    opaque: 'O'
+    kubernetes.io/service-account-token: 'SAT'
+    kubernetes.io/dockercfg: 'R'
+    kubernetes.io/dockerconfigjson: 'R'
+    kubernetes.io/basic-auth: 'HTTP'
+    kubernetes.io/ssh-auth: 'SSH'
+    kubernetes.io/tls: 'TLS'
+    bootstrap.kubernetes.io/token: 'Boot'
+    istio.io/key-and-cert: 'Ist'
+    helm.sh/release.v1: 'Helm'
+    fleet.cattle.io/cluster-registration-values: 'F'
+    provisioning.cattle.io/cloud-credential: 'CC'
+    s3: 'S3'
+  relatedWorkloads: Связанные рабочие нагрузки
   typeDescriptions:
     custom:
-      description: Create a Secret with a custom type
-    'kubernetes.io/basic-auth':
-      description: 'Authentication with a username and password'
-      docLink: https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret
-    'Opaque':
-      description: Default type of Secret using key-value pairs
-      docLink: https://kubernetes.io/docs/concepts/configuration/secret/#opaque-secrets
-    'kubernetes.io/dockerconfigjson':
-      description: Authenticated registry for pulling container images
-      docLink: https://kubernetes.io/docs/concepts/configuration/secret/#docker-config-secrets
-    'kubernetes.io/ssh-auth':
-      description: Public key and private key for SSH authentication
-      docLink: https://kubernetes.io/docs/concepts/configuration/secret/#ssh-authentication-secrets
-    'kubernetes.io/tls':
-      description: Store a certificate and key for TLS
-      docLink: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
-
+      description: Создание секрета с пользовательским типом
+    kubernetes.io/basic-auth:
+      description: 'Аутентификация с помощью имени пользователя и пароля'
+      # basic-authentication-secret
+      docLink: 'https://kubernetes.io/docs/concepts/configuration/secret/'
+    Opaque:
+      description: Тип секрета по умолчанию с использованием пар ключ-значение
+      # opaque-secrets
+      docLink: 'https://kubernetes.io/docs/concepts/configuration/secret/'
+    kubernetes.io/dockerconfigjson:
+      description: Аутентифицированный регистри для извлечения образов контейнеров
+      # docker-config-secrets
+      docLink: 'https://kubernetes.io/docs/concepts/configuration/secret/'
+    kubernetes.io/ssh-auth:
+      description: Публичный и приватный ключи для аутентификации SSH
+      # ssh-authentication-secrets
+      docLink: 'https://kubernetes.io/docs/concepts/configuration/secret/'
+    kubernetes.io/tls:
+      description: Хранить сертификат и ключ для TLS
+      # tls-secrets
+      docLink: 'https://kubernetes.io/docs/concepts/configuration/secret/'
 selectOrCreateAuthSecret:
-  label: Authentication
+  label: Аутентификация
   options:
-    none: None
+    none: Ничего
     basic: HTTP Basic Auth
-    ssh: SSH Key
+    ssh: SSH ключ
     aws: AWS/S3
-    custom: Secret Name
+    custom: Имя секрета
   s3:
-    accessKey: Access Key
-    secretKey: Secret Key
+    accessKey: Ключ доступа
+    secretKey: Секретный ключ
   ssh:
-    publicKey: Public Key
-    privateKey: Private Key
+    publicKey: Публичный ключ
+    privateKey: Приватный ключ
   basic:
-    username: Username
+    username: Имя пользователя
     password: Password
-  namespaceGroup: "Namespace: {name}"
-  chooseExisting: "Choose an existing secret:"
-  createSsh: Create a SSH Key Secret
-  createBasic: Create a HTTP Basic Auth Secret
-  createS3: Create a S3-Compatible Auth Secret
-
+  namespaceGroup: "Пространство имен: {name}"
+  chooseExisting: "Выберите существующий секрет:"
+  createSsh: Создать секретного ключа SSH
+  createBasic: Создать секрет HTTP Basic Auth
+  createS3: Создать S3-совместимый секрет авторизации
 serviceAccount:
-  automount: Automount Service Account Token
+  automount: Токен учетной записи сервиса Automount
   imagePullSecrets: Image Pull Secrets
   tabs:
     serviceAccount:
-      label: Service Account
-
+      label: Сервисный аккаунт
 servicePorts:
   header:
-    label: Port Rules
+    label: Правила портов
   rules:
     listening:
-      label: Listening Port
-      placeholder: e.g. 8080
+      label: Порт для прослушивания
+      placeholder: напр. 8080
     name:
-      label: Port Name
-      placeholder: e.g. myport
+      label: Имя порта
+      placeholder: напр. myport
     node:
-      label: Node Port
-      placeholder: e.g. 30000
+      label: Порт ноды
+      placeholder: напр. 30000
     protocol:
-      label: Protocol
+      label: Протокол
     target:
-      label: Target Port
-      placeholder: e.g. 80 or http
-
+      label: Целевой порт
+      placeholder: напр. 80 или http
 serviceTypes:
-  clusterip: Cluster IP
-  externalname: External Name
+  clusterip: IP кластера
+  externalname: Внешнее имя
   headless: Headless
-  loadbalancer: Load Balancer
-  nodeport: Node Port
-
+  loadbalancer: Балансировщик нагрузки
+  nodeport: Порт ноды
 servicesPage:
-  anyNode: Any Node
+  serviceListDescription: Сервисы позволяют определить логический набор подов, к которым можно получить доступ с помощью одного IP-адреса и порта.
+  targetPorts: Сервис будет отправлять запросы на этот порт, а выбранные Поды должны прослушивать этот порт.
+  listeningPorts: Сервис работает на этом порту.
+  anyNode: Любая нода
   labelsAnnotations:
-    label: Labels & Annotations
+    label: Лэйблы и примечания
   affinity:
     actionLabels:
       clientIp: ClientIP
-      none: There is no session affinity configured.
-    helpText: Map connections to a consistent target based on their source IP.
-    label: Session Affinity
+      none: Не настроена привязка к сессии.
+    helpText: Сопоставлять соединения с согласованной целью на основе их IP-адреса источника.
+    label: Привязка к сессии
     timeout:
-      label: Session Sticky Time
-      placeholder: e.g. 10800
+      label: Время фиксации сессии
+      placeholder: напр. 10800
   externalName:
-    define: External Name
-    helpText: "External Name is intended to specify a canonical DNS name. This is a required field. To hardcode an IP address, use a Headless service."
-    label: External Name
-    placeholder: e.g. my.database.example.com
+    define: Внешнее имя
+    helpText: "Внешнее имя предназначено для указания канонического DNS-имени. Это обязательное поле. Чтобы жестко указать IP-адрес, используйте сервис Headless."
+    label: Внешнее имя
+    placeholder: напр. my.database.example.com
     input:
-      label: DNS Name
+      label: DNS Имя
   harvester:
-    title: Add-on Config
+    title: Конфигурация дополнений
     ipam:
       label: IPAM
     healthCheckPort:
-      label: Health Check Port
+      label: Порт Health Check
     healthCheckSuccessThreshold:
-      label: Health Check Success Threshold
-      description: If the number of times the prober continuously detects an address successfully reaches the success threshold, then the backend server can start to forward traffic.
+      label: Порог успеха Health Check
+      description: Если количество раз, которое prober непрерывно обнаруживает адрес, достигает порога успешности, то внутренний сервер может начать пересылку трафика.
     healthCheckFailureThreshold:
-      label: Health Check Failure Threshold
-      description: The backend server will stop forwarding traffic if the number of health check failures reaches the failure threshold.
+      label: Порог провала Health Check
+      description: Внутренний сервер прекратит пересылку трафика, если количество отказов проверки работоспособности достигнет порога отказа.
     healthCheckPeriod:
-      label: Health Check Period
+      label: Период Health Check
     healthCheckTimeout:
-      label: Health Check Timeout
+      label: Таймаут Health Check
     healthCheckEnabled:
       label: Health Check
   ips:
-    define: Service Ports
-    clusterIpHelpText: The Cluster IP address must be within the CIDR range configured for the API server.
+    define: Сервисные порты
+    clusterIpHelpText: IP-адрес кластера должен находиться в диапазоне CIDR, настроенном для сервера API.
     external:
-      label: External IPs
-      placeholder: e.g. 1.1.1.1
-      protip: List of IP addresses for which nodes in the cluster will also accept traffic for this service.
+      label: Внешние IP
+      placeholder: напр. 1.1.1.1
+      protip: Список IP-адресов, для которых узлы в кластере также будут принимать трафик для этой службы.
     input:
-      label: Cluster IP
-      placeholder: e.g. 10.43.xxx.xxx
-    label: IP Addresses
+      label: IP кластера
+      placeholder: напр. 10.43.xxx.xxx
+    label: IP Адресы
     loadBalancer:
-      label: Load Balancer
+      label: Балансировщик нагрузки
     loadBalancerIp:
-      label: Load Balancer IP
-      placeholder: e.g. 192.0.xxx.xxx
-      helpText: If you specify a loadBalancerIP but your cloud provider does not support the feature, the loadBalancerIP field that you set is ignored.
+      label: IP-адрес балансировщика нагрузки
+      placeholder: напр. 192.0.xxx.xxx
+      helpText: Если вы укажете IP-адрес балансировщика нагрузки, но ваш поставщик облачных услуг не поддерживает эту функцию, поле IP-адреса балансировщика нагрузки, которое вы задали, будет проигнорировано.
   pods:
-    label: Pods
+    label: Поды
   ports:
-    label: Ports
+    label: Порты
   selectors:
-    helpText: ""
-    label: Selectors
+    helpText: "Текст подсказки"
+    label: Селекторы
     matchingPods:
+      description: Ключи селектора и значения должны соответствовать лэйблам и значениям на существующих Подах.
       matchesSome: |-
         {matched, plural,
-          =0 {Matches 0 of {total, number} pods. If no selector is created, manual endpoints must be made.}
-          =1 {Matches 1 of {total, number} pods: "{sample}"}
-          other {Matches {matched, number} of {total, number} existing pods, including "{sample}"}
+          =0 {Совпадает с 0 из {total, number} подов. Если селектор не создан, необходимо создать endpoint'ы вручную.}
+          =1 {Совпадает с 1 из {total, number} подов: "{sample}"}
+          other {Совпадений {matched, number} из {total, number} существующих подов, включая "{sample}"}
         }
   serviceTypes:
     clusterIp:
       abbrv: IP
-      description: Exposes the service on a cluster-internal IP. Choosing this value makes the service only reachable from within the cluster. This is the default type.
-      label: Cluster IP
+      description: Открыть набор Подов другим Подам в кластере. Этот тип Сервиса доступен только внутри кластера. Это тип по умолчанию.
+      label: IP кластера
     externalName:
       abbrv: EN
-      description: "Maps the service to the contents of the `externalName` field (e.g. foo.bar.example.com), by returning a CNAME record with its value. No proxying of any kind is set up."
-      label: External Name
+      description: "Создайте службу, использующую DNS-имя вместо селекторов. Это продвинутый вариант использования."
+      label: Внешнее имя
     headless:
       abbrv: H
-      description: Neither a cluster IP or load balancer is defined. These are used to interface with other service discovery mechanisms outside of Kubernetes implementation. A cluster IP is not allocated and kube-proxy does not handle these services.
+      description: Создание службы без кластерного IP или балансировщика нагрузки. Это продвинутый вариант использования.
       label: Headless
     loadBalancer:
       abbrv: LB
-      description: Exposes the service externally using a cloud provider's load balancer.
-      label: Load Balancer
+      description: Создайте балансировщик нагрузки в базовой инфраструктуре (например, балансировщик нагрузки облачного провайдера) и назначьте публичный IP-адрес сервиса. Позволяет внешним клиентам получать доступ к сервису, используя публичный IP-адрес и порт, указанный в определении сервиса.
+      label: Балансировщик нагрузки
     nodePort:
       abbrv: NP
-      description: "Exposes the service on each node's IP at a static port (the `NodePort`). You'll be able to contact this type of service, from outside the cluster, by requesting `&lt;NodeIP&gt;:&lt;NodePort&gt;`."
-      label: Node Port
+      description: "Выставьте службу на IP каждого узла на статическом порту."
+      label: Порт ноды
   typeOpts:
-    label: Service Type
-
+    label: Тип сервиса
 setup:
-  currentPassword: Bootstrap Password
-  confirmPassword: Confirm New Password
+  currentPassword: Создать пароль
+  confirmPassword: Подтвердить пароль
   defaultPassword:
-    intro: It looks like this is your first time visiting {vendor}; if you pre-set your own bootstrap password, enter it here.  Otherwise a random one has been generated for you.  To find it:<br/><br/>
-    dockerPrefix: 'For a "docker run" installation:'
-    dockerPs: 'Find your container ID with <code>docker ps</code>, then run:'
-    dockerSuffix: ""
-    helmPrefix: 'For a Helm installation, run:'
-    helmSuffix: ""
-  eula: By checking the box, you accept the <a href="https://rancher.com/eula" target="_blank" rel="noopener noreferrer nofollow">End User License Agreement & Terms & Conditions</a>
-  newPassword: New Password
-  newUserSetPassword: The first order of business is to set a strong password. We suggest using this random one generated just for you, but enter your own if you like.
+    intro: 'Похоже, это ваш первый визит  {vendor}; если вы предварительно установили свой собственный пароль, введите его здесь.  В противном случае для вас будет сгенерирован случайный вариант.  Чтобы найти его:<br/><br/>'
+    dockerPrefix: 'Для установки "docker run":'
+    dockerPs: 'Найдите ID своего контейнера с помощью <code>docker ps</code>, затем запустите:'
+    dockerSuffix: "dockerSuffix"
+    helmPrefix: 'Для установки Helm выполните команду:'
+    helmSuffix: "helmSuffix"
+  eula: 'Установив флажок, вы принимаете <a href="https://rancher.com/eula" target="_blank" rel="noopener noreferrer nofollow">Лицензионное соглашение с конечным пользователем и Условия</a>'
+  newPassword: Новый пароль
+  newUserSetPassword: В первую очередь необходимо установить надежный пароль. Мы предлагаем использовать этот случайный пароль, сгенерированный специально для вас, но если хотите, введите свой собственный.
   serverUrl:
-    label: Server URL
-    skip: Skip
-    tip: What URL should be used for this {vendor} installation? All the nodes in your clusters will need to be able to reach this.
-  setPassword: The first order of business is to set a strong password for the default <code>{username}</code> user. We suggest using this random one generated just for you, but enter your own if you like.
-  telemetry: Allow collection of <a href="{docsBase}/faq/telemetry/" target="_blank" rel="noopener noreferrer nofollow">anonymous statistics</a> to help us improve {name}
-  useManual: Set a specific password to use
-  useRandom: Use a randomly generated password
-  welcome: Welcome to {vendor}!
-
+    label: URL сервера
+    skip: Пропустить
+    tip: Какой URL-адрес следует использовать для установки {vendor}? Все узлы в ваших кластерах должны иметь возможность доступа к нему.
+  setPassword: В первую очередь необходимо установить надежный пароль для пользователя по умолчанию <code>{username}</code>. Мы предлагаем использовать этот случайный пароль, сгенерированный специально для вас, но если хотите, введите свой собственный.
+  telemetry: Разрешите сбор <a href="{docsBase}/faq/telemetry/" target="_blank" rel="noopener noreferrer nofollow">анонимной статистики</a>, чтобы помочь нам улучшить {name}
+  useManual: Задать определенный пароль
+  useRandom: Использовать случайно сгенерированный пароль
+  welcome: Добро пожаловать в {vendor}!
 sortableTable:
   bulkActions:
     collapsed:
-      label: Actions
+      label: Действия
   actionAvailability:
-    selected: "{actionable} selected"
-    some: "Affects {actionable} of {total}"
-  noData: There are no rows which match your search query.
-  noRows: There are no rows to show.
-  noActions: No actions available
+    selected: "{actionable} выбрано"
+    some: "Затронет {actionable} из {total}"
+  noData: Нет строк, соответствующих вашему поисковому запросу.
+  noRows: Нет строк, которые можно было бы показать.
+  noActions: Нет доступных действий
   paging:
     generic: |-
       {pages, plural,
-      =0 {No Items}
-      =1 {{count} {count, plural, =1 {Item} other {Items}}}
-      other {{from} - {to} of {count} Items}}
+      =0 {Нет элементов}
+      =1 {{count} {count, plural, =1 {Item} {Items}}} {{from} - {to} из {count} элементов}}
     resource: |-
       {pages, plural,
-      =0 {No {pluralLabel}}
-      =1 {{count} {count, plural, =1 {{singularLabel}} other {{pluralLabel}}}}
-      other {{from} - {to} of {count} {pluralLabel}}}
-  search: Filter
-  in: in
-  addFilter: Add Filter
-  filterFor: Filter for...
-  selectCol: Select a column
-  resetFilters: Reset
-  add: Add
+      =0 {Нет {pluralLabel}}
+      =1 {{count} {count, plural, =1 {{singularLabel}} {{pluralLabel}}}} {{from} - {to} из {count} {pluralLabel}}}
+  search: Фильтр
+  in: в
+  addFilter: Добавить фильтр
+  filterFor: Фильтр для...
+  selectCol: Выбрать столбец
+  resetFilters: Сбросить
+  add: Добавить
   tableHeader:
-    noFilter: This column cannot be filtered by
-    groupBy: Group by
-    show: Show
-
+    noFilter: Этот столбец не может быть отфильтрован по
+    groupBy: Группировка по
+    show: Показать
 storageClass:
   actions:
-    setAsDefault: Set as Default
-    resetDefault: Reset Default
+    setAsDefault: Установить по умолчанию
+    resetDefault: Сброс настроек по умолчанию
   parameters:
-    label: Parameters
+    label: Параметры
   customize:
-    label: Customize
+    label: Настроить
     reclaimPolicy:
-      label: Reclaim Policy
-      delete: Delete volumes and underlying device when volume claim is deleted
-      retain: Retain the volume for manual cleanup
+      label: Политика возмещения
+      delete: Удаление томов и базового устройства при удалении утверждения тома
+      retain: Сохранить объем для ручной очистки
     allowVolumeExpansion:
-      label: Allow Volume Expansion
-      enabled: Enabled
-      disabled: Disabled
+      label: Разрешить расширение объема
+      enabled: Включено
+      disabled: Отключено
     volumeBindingMode:
       label: Volume Binding Mode
-      now: Bind and provision a persistent volume once the PersistentVolumeClaim is created
-      later: Bind and provision a persistent volume once a Pod using the PersistentVolumeClaim is created
+      now: Привязка и предоставление постоянного тома после создания PersistentVolumeClaim
+      later: Привязка и предоставление постоянного тома после создания Pod с использованием PersistentVolumeClaim
     mountOptions:
-      label: Mount Options
-      addLabel: Add Option
+      label: Варианты монтирования
+      addLabel: Добавить вариант
   aws-ebs:
     title: Amazon EBS Disk
     volumeType:
@@ -4803,44 +4803,44 @@ storageClass:
       sc1: SC1 - Cold-Storage HDD
       provisionedIops:
         label: Provisioned IOPS
-        suffix: per second, per GB
+        suffix: в секунду, на гигабайт
     filesystemType:
-      label: Filesystem Type
-      placeholder: e.g. ext4
+      label: Тип файловой системы
+      placeholder: напр. ext4
     availabilityZone:
-      label: Availability Zone
-      automatic: 'Automatic: Zones the cluster has a node in'
-      manual: 'Manual: Choose specific zones'
+      label: Зона доступности
+      automatic: 'Автоматически: Зоны, в которых у кластера есть ноды'
+      manual: 'Вручную: Выбор определенных зон'
       placeholder: us-east-1d, us-east-1c
     encryption:
-      label: Encryption
-      enabled: Enabled
-      disabled: Disabled
+      label: Шифрование
+      enabled: Включено
+      disabled: Отключено
     keyId:
-      label: KMS Key ID for Encryption
-      automatic: 'Automatic: Generate a key'
-      manual: 'Manual: Use a specific key (full ARN)'
+      label: KMS Key ID для шифрования
+      automatic: 'Автоматически: Генерировать ключ'
+      manual: 'Вручную: Используйте определенный ключ (полный ARN)'
   azure-disk:
     title: Azure Disk
     storageAccountType:
-      label: Storage Account Type
-      placeholder: e.g. Standard_LRS
+      label: Тип учетной записи хранилища
+      placeholder: напр. Standard_LRS
     kind:
-      label: Kind
-      shared: Shared (unmanaged disk)
-      dedicated: Dedicated (unmanaged disk)
-      managed: Managed
+      label: Вид
+      shared: Общий (неуправляемый диск)
+      dedicated: Выделенный (неуправляемый диск)
+      managed: Управляемый
   azure-file:
     title: Azure File
     skuName:
-      label: Sku Name
-      placeholder: e.g. Standard_LRS
+      label: Название Sku
+      placeholder: напр. Standard_LRS
     location:
-      label: Location
-      placeholder: e.g. eastus
+      label: Расположение
+      placeholder: напр. eastus
     storageAccount:
       label: Storage Account
-      placeholder: e.g. azure_storage_account_name
+      placeholder: напр. azure_storage_account_name
   gce-pd:
     title: Google Persistent Disk
     volumeType:
@@ -4848,450 +4848,450 @@ storageClass:
       standard: Standard
       ssd: SSD
     filesystemType:
-      label: Filesystem Type
-      placeholder: e.g. ext4
+      label: Тип файловой системы
+      placeholder: напр. ext4
     availabilityZone:
-      label: Availability Zone
-      automatic: 'Automatic: Zones the cluster has a node in'
-      manual: 'Manual: Choose specific zones'
+      label: Зона доступности
+      automatic: 'Автоматически: Зоны, в которых у кластера есть ноды'
+      manual: 'Вручную: Выбор определенных зон'
       placeholder: us-east-1d, us-east-1c
     replicationType:
-      label: Replication Type
-      zonal: Zonal
-      regional: Regional
+      label: Тип репликации
+      zonal: Зональная
+      regional: Региональная
   longhorn:
     title: Longhorn (CSI)
-    addLabel: Add Parameter
+    addLabel: Добавить параметр
   vsphere-volume:
     title: VMWare vSphere Volume
     diskFormat:
-      label: Disk Format
+      label: Формат диска
       thin: Thin
       zeroedthick: Zeroed Thick
       eagerzeroedthick: Eager Zeroed Thick
     storagePolicyName:
-      label: Storage Policy Name
-      placeholder: e.g. gold
+      label: Имя политики хранения
+      placeholder: напр. gold
     datastore:
-      label: Datastore
-      placeholder: e.g. VSANDatastore
+      label: Хранилище данных
+      placeholder: напр. VSANDatastore
     hostFailuresToTolerate:
       label: Host Failures To Tolerate
-      placeholder: e.g. 2
+      placeholder: напр. 2
     cacheReservation:
-      label: Cache Reservation
-      placeholder: e.g. 20
+      label: Резервирование кэша
+      placeholder: напр. 20
     filesystemType:
-      label: Filesystem Type
-      placeholder: e.g. ext3
+      label: Тип файловой системы
+      placeholder: напр. ext3
   custom:
-    addLabel: Add Parameter
+    addLabel: Добавить параметр
   glusterfs:
-    title: Gluster Volume
+    title: Глостерный том
     restUrl:
       label: REST URL
-      placeholder: e.g. http://127.0.0.1:8081
+      placeholder: 'напр. http://127.0.0.1:8081'
     restUser:
-      label: REST User
-      placeholder: e.g. admin
+      label: REST Пользователь
+      placeholder: напр. admin
     restUserKey:
-      label: REST User Key
-      placeholder: e.g. password
+      label: REST Ключ пользователя
+      placeholder: напр. password
     secretNamespace:
-      label: Secret Namespace
-      placeholder: e.g. default
+      label: Пространство имен секрета
+      placeholder: напр. default
     secretName:
-      label: Secret Name
-      placeholder: e.g. heketi-secret
+      label: Имя секрета
+      placeholder: напр. heketi-secret
     clusterId:
-      label: Cluster ID
-      placeholder: e.g. 630372ccdc720a92c681fb928f27b53f
+      label: ID Кластера
+      placeholder: напр. 630372ccdc720a92c681fb928f27b53f
     gidMin:
       label: GID MIN
-      placeholder: e.g. 40000
+      placeholder: напр. 40000
     gidMax:
       label: GID MAX
-      placeholder: e.g. 50000
+      placeholder: напр. 50000
     volumeType:
-      label: Volume Type
-      placeholder: "e.g. replicate:3"
+      label: Тип тома
+      placeholder: "напр. replicate:3"
   cinder:
-    title: Openstack Cinder Volume
+    title: Openstack Cinder том
     volumeType:
-      label: Volume Type
-      placeholder: e.g. fast
+      label: Тип тома
+      placeholder: напр. fast
     availabilityZone:
-      label: Availability Zone
-      automatic: "Automatic: Zones the cluster has a node in"
+      label: Зона доступности
+      automatic: "Автоматически: Зоны, в которых у кластера есть ноды"
       manual:
-        label: "Manual: Choose specific zones"
-        placeholder: e.g. nova
+        label: "Вручную: Выбор определенных зон"
+        placeholder: напр. nova
   rbd:
     title: Ceph RBD
     monitors:
-      label: Monitors
-      placeholder: e.g. 10.16.153.105:6789
+      label: Наблюдатели
+      placeholder: 'напр. 10.16.153.105:6789'
     adminId:
-      label: Admin ID
-      placeholder: e.g. kube
+      label: ID Администратора
+      placeholder: напр. kube
     adminSecretNamespace:
-      label: Admin Secret Namespace
-      placeholder: e.g. kube-system
+      label: Пространство имен секрета администратора
+      placeholder: напр. kube-system
     adminSecret:
-      label: Admin Secret
-      placeholder: e.g. Secret
+      label: Секрет администратора
+      placeholder: напр. Secret
     pool:
-      label: Pool
-      placeholder: e.g. kube
+      label: Пул
+      placeholder: напр. kube
     userId:
-      label: User ID
-      placeholder: e.g. kube
+      label: ID Пользователя
+      placeholder: напр. kube
     userSecretNamespace:
-      label: User Secret Namespace
-      placeholder: e.g. default
+      label: Пространство имен секрета пользователя
+      placeholder: напр. default
     userSecretName:
-      label: User Secret Name
-      placeholder: e.g. ceph-secret-user
+      label: Имя секрета пользователя
+      placeholder: напр. ceph-secret-user
     filesystemType:
-      label: Filesystem Type
-      placeholder: e.g. ext4
+      label: Тип файловой системы
+      placeholder: напр. ext4
     imageFormat:
-      label: Image Format
-      placeholder: e.g. 2
+      label: Формат образа
+      placeholder: напр. 2
     imageFeatures:
-      label: Image Features
-      placeholder: e.g. layering
+      label: Характеристики образа
+      placeholder: напр. layering
   quobyte:
     title: Quobyte Volume
     quobyteApiServer:
       label: Quobyte API Server
-      placeholder: "e.g. http://138.68.74.142:7860"
+      placeholder: "напр. http://138.68.74.142:7860"
     registry:
-      label: Registry
-      placeholder: e.g. 138.68.74.142:7861
+      label: Регистри
+      placeholder: 'напр. 138.68.74.142:7861'
     adminSecretNamespace:
-      label: Admin Secret Namespace
-      placeholder: e.g. kube-system
+      label: Пространство имен секрета администратора
+      placeholder: напр. kube-system
     adminSecretName:
-      label: Admin Secret Name
-      placeholder: e.g. quobyte-admin-secret
+      label: Имя секрета администратора
+      placeholder: напр. quobyte-admin-secret
     user:
-      label: User
-      placeholder: e.g. root
+      label: Пользователь
+      placeholder: напр. root
     group:
-      label: Group
-      placeholder: e.g. root
+      label: Группа
+      placeholder: напр. root
     quobyteConfig:
-      label: Quobyte Config
-      placeholder: e.g. BASE
+      label: Конфигурация Quobyte
+      placeholder: напр. BASE
     quobyteTenant:
       label: Quobyte Tenant
-      placeholder: e.g. DEFAULT
+      placeholder: напр. DEFAULT
   portworx-volume:
-    title: Portworx Volume
+    title: Portworx том
     filesystem:
-      label: Filesystem
-      placeholder: e.g. ext4
+      label: Файловая система
+      placeholder: напр. ext4
     blockSize:
-      label: Block Size
-      placeholder: e.g. 32
+      label: Размер блока
+      placeholder: напр. 32
     repl:
       label: Repl
-      placeholder: e.g.1; 0 for entire device
+      placeholder: напр.1; 0  для всего устройства
     ioPriority:
-      label: I/O Priority
-      placeholder: e.g. low
+      label: Приоритет ввода/вывода
+      placeholder: напр. low
     snapshotsInterval:
-      label: Snapshots Interval
-      placeholder: e.g. 70
+      label: Интервал снапшотов
+      placeholder: напр. 70
     aggregationLevel:
-      label: Aggregation Level
-      placeholder: e.g. 0
+      label: Уровень агрегации
+      placeholder: напр. 0
     ephemeral:
       label: Ephemeral
-      placeholder: e.g. true
+      placeholder: напр. true
   scaleio:
     title: ScaleIO Volume
     gateway:
-      label: Gateway
-      placeholder: e.g. https://192.168.99.200:443/api
+      label: Шлюз
+      placeholder: 'напр. https://192.168.99.200:443/api'
     system:
-      label: System
-      placeholder: e.g. scaleio
+      label: Система
+      placeholder: напр. scaleio
     protectionDomain:
       label: Protection Domain
-      placeholder: e.g. pd0
+      placeholder: напр. pd0
     storagePool:
       label: Storage Pool
-      placeholder: e.g. sp1
+      placeholder: напр. sp1
     storageMode:
       label: StorageMode
       thin: Thin Provisioned
       thick: Thick Provisioned
     secretRef:
       label: Secret Ref
-      placeholder: e.g. sio-secret
+      placeholder: напр. sio-secret
     readOnly:
-      label: Read Only
+      label: Только чтение
     filesystemType:
-      label: Filesystem Type
-      placeholder: e.g. xfs
+      label: Тип файловой системы
+      placeholder: напр. xfs
   storageos:
     title: StorageOS
     pool:
-      label: Pool
-      placeholder: e.g. default
+      label: Пул
+      placeholder: напр. default
     description:
-      label: Description
-      placeholder: e.g. Kubernetes volume
+      label: Описание
+      placeholder: напр. Kubernetes том
     filesystemType:
-      label: Filesystem Type
-      placeholder: e.g. ext4
+      label: Тип файловой системы
+      placeholder: напр. ext4
     adminSecretNamespace:
-      label: Admin Secret Namespace
-      placeholder: e.g. default
+      label: Пространство имен секрета администратора
+      placeholder: напр. default
     adminSecretName:
-      label: Admin Secret Name
-      placeholder: e.g. storageos-secret
+      label: Имя секрета администратора
+      placeholder: напр. storageos-secret
   no-provisioner:
-    title: Local Storage
+    title: Локальное хранение
   deprecated:
-    title: (Deprecated)
-    warning: 'The {provisioner} in-tree plugin is deprecated: Find a CSI driver <a target="_blank" rel="noopener noreferrer nofollow" href="https://kubernetes-csi.github.io/docs/drivers.html">here.</a>'
+    title: (Устаревшее)
+    warning: 'Плагин {provisioner} in-tree устарел: Найдите драйвер CSI<a target="_blank" rel="noopener noreferrer nofollow" href="https://kubernetes-csi.github.io/docs/drivers.html">здесь.</a>'
   harvesterhci:
     title: Harvester (CSI)
     warning:
-      unSatisfiesVersion: Please upgrade your Harvester CSI driver version to use this feature. (csi-driver >= v0.1.15)
+      unSatisfiesVersion: Пожалуйста, обновите версию драйвера CSI Harvester, чтобы использовать эту функцию. (csi-driver >= v0.1.15)
     hostStorageClass:
-      label: Host Storage Class
-      placeholder: Storage class name on the host Harvester cluster
-      tooltip: By default the default storage class on the host Harvester cluster is used.
+      label: Класс хранилища хоста
+      placeholder: Имя класса хранилища на хосте Harvester кластера
+      tooltip: По умолчанию используется класс хранилища по умолчанию на хосте Harvester кластера
 
 tableHeaders:
   assuredConcurrencyShares: Assured Concurrency Shares
-  accessKey: Access Key
-  addressType: Address Type
-  accessModes: Access Modes
-  address: Address
-  age: Age
-  apiGroup: API Groups
-  apikey: API Key
-  available: Available
-  attachedVM: Attached VM
-
+  accessKey: Ключ доступа
+  addressType: Тип адреса
+  accessModes: Режимы доступа
+  address: Адрес
+  age: Возраст
+  apiGroup: Группы API
+  apikey: API Ключ
+  available: Доступно
+  attachedVM: Прикрепленная ВМ
   authRoles:
-    globalDefault: New User Default
-    clusterDefault: Cluster Creator Default
-    projectDefault: Project Creator Default
-  branch: Branch
-  backupTarget: Backup Target
-  builtIn: Built In
-  bundlesReady: Bundles Ready
-  bundleDeploymentsReady: Deployments
-  builtin: Built-In
-  chart: Chart
-  capacity: Capacity
-  current: Current
-  clusterCreatorDefault: Cluster Creator Default
+    globalDefault: Новый пользователь по умолчанию
+    clusterDefault: Создатель кластера по умолчанию
+    projectDefault: Создатель проекта по умолчанию
+  branch: Ветка
+  backupTarget: Цель резервного копирования
+  builtIn: Встроенный
+  bundlesReady: Готовые комплекты
+  bundleDeploymentsReady: Развертывания
+  builtin: Встроенный
+  chart: чарт
+  capacity: Мощность
+  current: Текущий
+  clusterCreatorDefault: Создатель кластера по умолчанию
   clusterFlow: Cluster Flow
   clusterOutput: Cluster Output
-  cluster: Cluster
-  clusters: Clusters
-  cluster-Name: Cluster
-  clustersReady: Clusters Ready
-  clusterGroups: Cluster Groups
+  cluster: Кластер
+  clusters: Кластеры
+  cluster-Name: Кластер
+  clustersReady: Готовых кластеров
+  clusterGroups: Группы кластеров
   commit: Commit
-  condition: Condition
-  completions: Completions
-  count: Count
-  createdAt: Created At
-  customVerbs: Custom Verbs
-  description: Description
-  expires: Expires
+  condition: Состояние
+  completions: Завершения
+  count: Количество
+  createdAt: Создано
+  customVerbs: Пользовательские глаголы
+  description: Описание
+  expires: Истекает
   cpu: CPU
-  currentReplicas: Current Replicas
-  date: Date
-  data: Data
-  default: Default
-  desired: Desired
-  defaultVersion: Default version
-  destination: Target
-  deployed: Deployed
-  download: Download
-  duration: Duration
-  diskState: Disk State
-  drivers: Drivers
-  distinguisherMethod: Distinguisher Method
-  effect: Effect
-  endpoints: Endpoints
-  firstSeen: First Seen
-  fleetBundleType: Type
-  flow: Flow
-  fingerprint: Fingerprint
-  gitRepos: Git Repos
-  groups: Groups
-  groupName: Group Name
-  groupRoleNames: Group Role Names
+  currentReplicas: Текущие реплики
+  date: Дата
+  data: Данные
+  default: По умолчанию
+  desired: Желаемый
+  defaultVersion: Версия по умолчанию
+  destination: Цель
+  deployed: Развернуто
+  download: Скачать
+  duration: Продолжительность
+  diskState: Состояние диска
+  drivers: Драйверы
+  distinguisherMethod: Метод отличия
+  effect: Эффект
+  endpoints: Endpoint'ы
+  firstSeen: Впервые увиденный
+  fleetBundleType: Тип
+  flow: Поток
+  fingerprint: Отпечаток
+  gitRepos: Git Репозитории
+  groups: Группы
+  groupName: Имя группы
+  groupRoleNames: Имена ролей группы
   global-Default: Global-Default
-  host: Host
-  hostIp: Host IP
-  holder: Holder
-  hpaReference: Workload
-  health: Health
+  host: Хост
+  hostIp: IP Хоста
+  holder: Владелец
+  hpaReference: Рабочая нагрузка
+  health: Здоровье
   handSize: Hand Size
-  ipAddress: IP Address
+  ipAddress: IP Адрес
   id: ID
   iP: IP
-  image: Image
-  imageSize: Size
-  ingressClass: Ingress Class
-  ingressDefaultBackend: Default
-  ingressTarget: Target
-  internalExternalIp: External/Internal IP
-  ipaddress: IP Address
-  internalIpSameAsExternal: Same as External
+  image: Образ
+  imageSize: Размер
+  ingressClass: Класс Ingress
+  ingressDefaultBackend: По умолчанию
+  ingressTarget: Цель
+  internalExternalIp: Внешний/внутренний IP
+  ipaddress: IP Адрес
+  internalIpSameAsExternal: Аналогично внешнему
   jobs: Jobs
-  key: Key
-  keys: Data
-  labels: Labels
-  lastUpdated: Last Updated
-  lastSchedule: Last Schedule
-  lastSeen: Last Seen
-  loggingOutputProviders: Provider
-  machines: Machines
-  machineNodeName: Node
-  manual: Manual
-  matches: Matches
-  matchingPrecedence: Matching Precedence
-  maxKubernetesVersion: Max Kubernetes Version
-  message: Message
-  minKubernetesVersion: Min Kubernetes Version
-  minReplicas: Minimum Replicas
-  maxReplicas: Maximum Replicas
+  key: Ключ
+  keys: Данные
+  labels: Лэйблы
+  lastUpdated: Последнее обновление
+  lastSchedule: Последнее расписание
+  lastSeen: Последнее посещение
+  lastSeenTooltip: Время, когда было зарегистрировано последнее возникновение этого события
+  loggingOutputProviders: Провайдер
+  machines: Машины
+  machineNodeName: Нода
+  manual: Вручную
+  matches: Совпадения
+  matchingPrecedence: Приоритет соответствия
+  maxKubernetesVersion: Максимальная версия Kubernetes
+  message: Сообщение
+  minKubernetesVersion: Минимальная версия Kubernetes
+  minReplicas: Минимум копий
+  maxReplicas: Максимум копий
   missingPL: MissingPL
-  memory: Memory
-  monitored: Monitored
-  name: Name
-  nameDisplay: Display Name
-  nameUnlinked: Name
-  namespace: Namespace
-  namespaceName: Name
-  namespaceNameUnlinked: Name
-  networkType: Type
+  memory: Память
+  monitored: Под наблюдением
+  name: Имя
+  nameDisplay: Отображаемое имя
+  nameUnlinked: Имя
+  namespace: Пространство имён
+  namespaceName: Имя
+  namespaceNameUnlinked: Имя
+  networkType: Тип
   networkVlan: Vlan ID
-  node: Node
-  nodeName: Node Name
-  nodesReady: Nodes Ready
-  nodePort: Node Port
-  object: Object
+  node: Нода
+  nodeName: Имя ноды
+  nodesReady: Готовых нод
+  nodePort: Порт ноды
+  object: Объект
   operatingSystem: OS
-  output: Output
+  output: Вывод
   p95: 95%tile
   persistentVolumeClaim: Persistent Volume Claim
-  persistentVolumeSource: Source
-  phase: Phase
-  progress: Progress
-  podImages: Image
-  podRestarts: Restarts
-  pods: Pods
-  pod-Selector: Pod-Selector
-  providers: Providers
-  providerID: Provider ID
-  port: Port
-  ports: Ports
-  project: Project
-  protocol: Protocol
-  provider: Provider
-  priorityLevel: Priority Level
-  publicPorts: Public Ports
-  queues: Queues
-  queueLengthLimit: Queue Length Limit
+  persistentVolumeSource: Источник
+  phase: Фаза
+  progress: Прогресс
+  podImages: Образ
+  podRestarts: Рестартов
+  pods: Подов
+  pod-Selector: Выбор пода
+  providers: Провайдеры
+  providerID: ID Провайдера
+  port: Порт
+  ports: Порты
+  project: Проект
+  protocol: Протокол
+  provider: Провайдер
+  priorityLevel: Уровень приоритета
+  publicPorts: Публичные порты
+  queues: Очереди
+  queueLengthLimit: Лимит длины очереди
   ram: RAM
   rbac:
-    create: Create
-    delete: Delete
-    get: Get
-    list: List
-    patch: Patch
-    update: Update
-    watch: Watch
-  ready: Ready
-  reason: Reason
-  receivers: Receivers
-  receiverTypes: Receiver Types
+    create: Создать
+    delete: Удалить
+    get: Получить
+    list: Список
+    patch: Патч
+    update: Обновить
+    watch: Отслеживать
+  ready: Готово
+  reason: Причина
+  receivers: Получатели
+  receiverTypes: Типы получателей
   reclaimPolicy: Reclaim Policy
-  registrationNamespace: Registration Namespace
-  repo: Repo
-  repositories: Repositories
-  repoName: Repository Name
-  reposReady: Repos Ready
-  replicas: Replicas
+  registrationNamespace: Пространство имен регистрации
+  repo: Репозиторий
+  repositories: Репозитории
+  repoName: Имя репозитория
+  reposReady: Готовых репозиториев
+  replicas: Копии
   reqRate: Req Rate
-  resource: Resource
-  resources: Resources
-  resourcesReady: Resources Ready
-  restarts: Restarts
-  restart: Restart Required
-  role: Role
-  roles: Roles
-  routes: Routes
-  routeConnectivity: Route Connectivity
-  readyToUse: Ready To Use
+  resource: Ресурс
+  resources: Ресурсы
+  resourcesReady: Готовых ресурсов
+  restarts: Рестартов
+  restart: Требуется рестарт
+  role: Роль
+  roles: Роли
+  routes: Роуты
+  routeConnectivity: Связность роутов
+  readyToUse: Готово к использованию
   scale: Scale
-  scope: Scope
-  selector: Selector
+  scope: Область
+  selector: Список
   secrets: Secrets
-  schedule: Schedule
-  service: Service
-  serviceAccounts: Service Accounts
+  schedule: Расписание
+  service: Сервис
+  serviceAccounts: Сервисные аккаунты
   secret-Name: Secret-Name
-  simpleName: Name
+  simpleName: Имя
   simpleScale: Scale
-  simpleType: Type
-  size: Size
-  started: Started
-  state: State
-  status: Status
-  targetVm: Target VM
+  simpleType: Тип
+  size: Размер
+  started: Начато
+  state: Состояние
+  status: Статус
+  targetVm: Целевая VM
   storage_class_provisioner: Provisioner
-  storage: Storage Size
-  storageClass: Storage Class
-  source: Source
-  subject: Subject
-  subType: Kind
-  success: Success
-  summary: Summary
-  subobject: Subobject
+  storage: Размер хранилища
+  storageClass: Класс хранения
+  source: Источник
+  subject: Тема
+  subType: Вид
+  success: Успех
+  summary: Итог
+  subobject: Субъект
   taints: Taints
-  target: Target
-  targetKind: Target Type
-  targetPort: Target
-  type: Type
-  updated: Updated
-  up-to-date: Up To Date
-  upgrade: Upgradable
+  target: Цель
+  targetKind: Тип цели
+  targetPort: Цель
+  type: Тип
+  updated: Обновлено
+  up-to-date: Актуально
+  upgrade: Обновляемый
   url: URL
-  users: Users
-  userDisplayName: Display Name
+  users: Пользователи
+  userDisplayName: Отображаемое имя
   userId: ID
-  userStatus: Status
-  username: Local Username
-  value: Value
-  version: Version
-  volume: Volume
-  volumeMode: Volume Mode
-  weight: Weight
+  userStatus: Статус
+  username: Локальное имя пользователя
+  value: Значение
+  version: Версия
+  volume: Том
+  volumeMode: Режим тома
+  weight: Вес
 target:
   router:
-    label: Router
-    placeholder: Select a router
+    label: Роутер
+    placeholder: Выберите роутер
   service:
-    label: Service
-    placeholder: Select a service
-  title: Target
+    label: Сервис
+    placeholder: Выберите сервис
+  title: Цель
   version:
-    label: Version
-    placeholder: Select a version
+    label: Версия
+    placeholder: Выберите версию
 
 user:
   detail:
@@ -5623,6 +5623,10 @@ workload:
     noPorts: There are no ports configured.
     noServiceAccess: You do not have permission to create or manage services
     ports:
+      expose: Networking
+      description: 'Define a Service to expose the container, or define a non-functional, named port so that humans will know where the app within the container is expected to run.'
+      detailedDescription: If ClusterIP, LoadBalancer, or NodePort is selected, a Service is automatically created that will select the Pods in this workload using labels.
+      toolTip: 'For help exposing workloads on Kubernetes, see the official Kubernetes documentation on Services. You can also manually create a Service to expose Pods by selecting their labels, and you can use an Ingress to map HTTP routes to Services.'
       createService: Service Type
       noCreateService: Do not create a service
       containerPort: Private Container Port
@@ -6210,6 +6214,11 @@ typeLabel:
       one { Workspace }
       other { Workspaces }
     }
+  management.cattle.io.podsecurityadmissionconfigurationtemplate: |-
+    {count, plural,
+      one { Pod Security Admission }
+      other { Pod Security Admissions }
+    }
   policy.poddisruptionbudget: |-
     {count, plural,
       one { Pod Disruption Budget }
@@ -6684,7 +6693,7 @@ unit:
       other { days }
     }
 workloadPorts:
-  addPort: Add Port
+  addPort: Add Port or Service
   remove: Remove
   addHost: Add Host
 
