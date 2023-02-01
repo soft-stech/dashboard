@@ -1112,8 +1112,8 @@ cluster:
       publicIp: Публичный IP ноды
       privateIp: Приватный IP ноды
       nodeLabel:
-        title: Лейблы ноды
-        label: Добавить лейбл
+        title: Лэйблы ноды
+        label: Добавить лэйбл
     registrationCommand:
       label: Команда регистрации
       linuxDetail: Запустить эту команду на каждой имеющейся машине под Linux, которую вы хотите зарегистрировать.
@@ -1344,8 +1344,8 @@ cluster:
         label: Зона доступности
         description: Зоны доступности защищают приложения от полных сбоев дата-центра Azure.
       dns:
-        help: Уникальный DNS-лейбл для публичного IP-адреса.
-        label: DNS-лейбл
+        help: Уникальный DNS-лэйбл для публичного IP-адреса.
+        label: DNS-лэйбл
       environment:
         label: Окружение
       faultDomainCount:
@@ -1589,7 +1589,7 @@ cluster:
         label: Добавить селектор машин
         listLabel: Добавить аргумент
         bannerLabel: 'Замечание: Будет использован только самый последний селектор, удовлетворяющий условию, и только аргументы из него. Аргументы из остальных селекторов, удовлетворяющих условию, не будут ни объединены, ни скомбинированы.'
-        title: 'Для машин с лейблами совпадающими с:'
+        title: 'Для машин с лэйблами совпадающими с:'
         subTitle: 'Использовать следующие аргументы Kubelet:'
         titleAlt:  |-
           {count, plural,
@@ -1665,7 +1665,7 @@ cluster:
     role:
       label: Роли
     labels:
-      label: Лейблы нод Kubernetes
+      label: Лэйблы нод Kubernetes
     noAccessBanner: "Недостаточно прав для просмотра конфигурации машинного пула."
     configNotFound: "Данная конфигурация машинного пула не найдена. Рекомендуем создать новый кластер с желаемой конфигурацией."
     noPoolsDisclaimer: Нет заданных машинных пулов, нажмите на плюс, чтобы добавить.
@@ -2564,19 +2564,19 @@ istio:
   v1Warning: Пожалуйста, удалите текущую версию Istio в <code>istio-system</code> пространстве имен перед установкой этой версии.
 
 labels:
-  addLabel: Добавить лейбл
-  addSetLabel: Добавить/Установить лейбл
+  addLabel: Добавить лэйбл
+  addSetLabel: Добавить/Установить лэйбл
   addTag: Добавить тег
   addTaint: Добавить taint
-  addAnnotation: Добавить аннотацию
+  addAnnotation: Добавить примечание
   labels:
-    title: Лейблы
+    title: Лэйблы
     description: Пары ключ/значение, прикрепленные к объектам, которые задают идентифицирующие атрибуты.
-    fleetClusterTooltip: Изменения лейблов применяются к кластеру управления и синхронизируются с fleet кластером
-    show: Показать системные лейблы
-    hide: Скрыть системные лейблы
+    fleetClusterTooltip: Изменения лэйблов применяются к кластеру управления и синхронизируются с fleet кластером
+    show: Показать системные лэйблы
+    hide: Скрыть системные лэйблы
   annotations:
-    title: Аннотации
+    title: Примечания
 
 landing:
   clusters:
@@ -2631,8 +2631,8 @@ logging:
         title:
           include: Включить поды
           exclude: Исключить поды
-        keyLabel: Ключ лейбла пода
-        valueLabel: Значение лайбла пода
+        keyLabel: Ключ лэйбла пода
+        valueLabel: Значение лэйбла пода
         addLabel: Добавить под
       nodes:
         title:
@@ -2660,7 +2660,7 @@ logging:
     k3sContainerEngine: K3S Container Engine
     enableAdditionalLoggingSources: Включить расширенное логирование облачного провайдера
     dockerRootDirectory: Корневая директория Docker
-    systemdLogPath: Путь systemd логов
+    systemdLogPath: Путь до systemd логов
     tooltip: 'Некоторые дистрибутивы Kubernetes логируются в <code>journald</code>. Для сбора этих логов требуется задать <code>systemdLogPath</code>. При использовании директории по умолчанию <code>/run/log/journal</code> следует учитывать, что некоторые дистрибутивы Linux не используют этот путь как значение по умолчанию.'
     url: '<a href="https://rancher.com/docs/rancher/v2.6/en/logging/helm-chart-options/" target="_blank" rel="noopener nofollow noreferrer">Узнать больше</a>'
     default: /run/log/journal
@@ -2681,7 +2681,7 @@ logging:
       placeholder: Вставьте ключ клиента
     clientKeyPass: Client Key Pass из Secret
     verifySsl: Проверить SSL
-    sslVersion: SSL версия
+    sslVersion: Версия SSL
   redis:
     host: Хост
     port: Порт
@@ -2725,7 +2725,7 @@ logging:
     username: Пользователь из Secret
     password: Пароль из Secret
     configureKubernetesLabels: Сконфигурируйте метаданные Kubernetes в формате подобном Prometheus
-    extractKubernetesLabels: Извлечь лейблы Kubernetes как лейблы Loki
+    extractKubernetesLabels: Извлечь лэйблы Kubernetes как лэйблы Loki
     dropSingleKey: Если запись содержит только 1 ключ, задайте строку логирования и откажитесь от использования ключа
     caCert: CA сертификат из Secret
     cert: Сертификат из Secret
@@ -2785,7 +2785,7 @@ logging:
     port: Порт
     transport: Транспорт
     insecure: небезопасно
-    trustedCaPath: Путь CA из Secret
+    trustedCaPath: Путь до CA из Secret
     format:
       title: Формат
       type: Тип
@@ -2817,7 +2817,7 @@ logging:
       target: Цель
       access: Доступ
       certificate: Соединение
-      labels: Лейблы
+      labels: Лэйблы
       configuration: Конфигурация
   outputProviders:
     elasticsearch: Elasticsearch
@@ -2857,7 +2857,7 @@ logging:
     indexName: Имя индекса
     source: Источник
     caFile: Файл CA из Secret
-    caPath: Путь CA из Secret
+    caPath: Путь до CA из Secret
     clientCert: Сертификат клиента из Secret
     clientKey: Ключ клиента из Secret
   forward:
@@ -2866,8 +2866,8 @@ logging:
     sharedKey: Общий ключ из Secret
     username: Имя пользователя из Secret
     password: Пароль из Secret
-    clientCertPath: Путь для сертификата клиента из Secret
-    clientPrivateKeyPath: Путь для приватного ключа клиента из Secret
+    clientCertPath: Путь до сертификата клиента из Secret
+    clientPrivateKeyPath: Путь до приватного ключа клиента из Secret
     clientPrivateKeyPassphrase: Парольная фраза для приватного ключа клиента из Secret
 
 longhorn:
@@ -2911,7 +2911,7 @@ login:
   loggedIn: Произведён вход
   loginWithLocal: Войти как локальный пользователь
   useProvider: Использовать пользователя {provider}
-  useNonLocal: Использовать нелокального пользователя
+  useNonLocal: Использовать не локального пользователя
   remember:
     label: Запомнить имя пользователя
 
@@ -2961,7 +2961,7 @@ monitoring:
     readOnlyMany: ReadOnlyMany
   aggregateDefaultRoles:
     label: Объединить с ролями Kubernetes по умолчанию
-    tip: 'Добавляет лейблы в ClusterRoles, развернутый чартом мониторинга, чтобы <a target="_blank" rel="noopener nofollow noreferrer" href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles"> объединить их в ClusterRoles с соответствующими значениями по умолчанию k8s администрирования, редактирования и просмотра.</a>'
+    tip: 'Добавляет лэйблы в ClusterRoles, развернутый чартом мониторинга, чтобы <a target="_blank" rel="noopener nofollow noreferrer" href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles"> объединить их в ClusterRoles с соответствующими значениями по умолчанию k8s администрирования, редактирования и просмотра.</a>'
   alerting:
     config:
       label: Конфигурация Alertmanager
@@ -2996,7 +2996,7 @@ monitoring:
     tooltip: 'Для кластеров, которые используют RancherOS для etcd нод, необходимо выбрать опцию <pre class=''inline-block m-0''>/opt/rke/etc/kubernetes/ssl</pre>. Гибридное окружение, требующее указания нескольких директорий для сертификатов (например, etcd плоскость, содержащая и хосты RancherOS, и хосты Ubuntu), не поддерживается.'
   grafana:
     storage:
-      annotations: Аннотации PVC
+      annotations: Примечания PVC
       className: Название класса хранилища
       existingClaim: Использовать существующий Claim
       finalizers: PVC Finalizers
@@ -3059,8 +3059,8 @@ monitoring:
         cpu: Ограничение CPU
         memory: Ограничение памяти
       requests:
-        cpu: Запрошенное CPU
-        memory: Запрошенная память
+        cpu: Запрошено CPU
+        memory: Запрошено памяти
       resourceLimits: Ограничение ресурсов
       retention: Резерв
       retentionSize: Размер резерва
@@ -3084,15 +3084,15 @@ monitoring:
     tls:
       label: SSL
       caFilePath:
-        label: Путь файла CA
+        label: Путь до файла CA
         placeholder: например, ./ca-file.csr
       certFilePath:
-        label: Путь файла сертификата
+        label: Путь до файла сертификата
         placeholder: например, ./cert-file.crt
       keyFilePath:
-        label: Путь файла ключа
+        label: Путь до файла ключа
         placeholder: например, ./key-file.pfx
-      secretsBanner: Пути файлов ниже должны быть указаны в <pre class="inline-block m-0 p-0 vertical-middle">alertmanager.alertmanagerSpec.secrets</pre> при развёртывании чарта мониторинга. Для более подробной информации ознакомьтесь с нашей <a href="{docsBase}/pages-for-subheaders/monitoring-v2-configuration" target="_blank" rel="noopener noreferrer nofollow">документацией</a>.
+      secretsBanner: Пути до файлов ниже должны быть указаны в <pre class="inline-block m-0 p-0 vertical-middle">alertmanager.alertmanagerSpec.secrets</pre> при развёртывании чарта мониторинга. Для более подробной информации ознакомьтесь с нашей <a href="{docsBase}/pages-for-subheaders/monitoring-v2-configuration" target="_blank" rel="noopener noreferrer nofollow">документацией</a>.
   projectMonitoring:
     detail:
       error: "Невозможно получить значения дашборда со статусом: "
@@ -3100,7 +3100,7 @@ monitoring:
       banner: Конфигурация мониторинга проекта хранится в русурсах ProjectHelmChart
       empty:
         message: Мониторинг проекта не был настроен ни для одного проекта
-        canCreate: Начните, нажав Создать, и добавьте мониторинг в проект 
+        canCreate: Для начала, нажмите Создать, и добавьте мониторинг в проект
         cannotCreate: Чтобы добавить мониторинг проекта, свяжитесь с администратором
   route:
     label: Route
@@ -3234,8 +3234,8 @@ alertmanagerConfigReceiver:
 monitoringRoute:
   groups:
     label: Сгруппировать по
-    addGroupByLabel: Лейблы для группировки уведомлений
-    groupByTooltip: Добавьте каждый лейбл как строку в формате ключ:значение. Специальный лейбл ... агрегирует все возможные лейблы. В случае использования, лейбл ... обязательно должен быть единственным элементом в списке.
+    addGroupByLabel: Лэйблы для группировки уведомлений
+    groupByTooltip: Добавьте каждый лэйбл как строку в формате ключ:значение. Специальный лэйбл ... агрегирует все возможные лэйблы. В случае использования, лэйбл ... обязательно должен быть единственным элементом в списке.
   info: Это Route верхнего уровня, используемый Alertmanager как адресат по умолчанию для любых уведомлений, которые не удовлетворяют ни одному другому Route. Этот Route обязательно должен существовать и не может быть удалён.
   interval:
     label: Интервал группы
@@ -3245,9 +3245,9 @@ monitoringRoute:
     addMatcher: Добавить сопоставление
     matchType: Тип сопоставления
     name: Имя
-    nameTooltip: Лейбл для сопоставления
+    nameTooltip: Лэйбл для сопоставления
     value: Значение
-    valueTooltip: Значение лейбла для сопоставления
+    valueTooltip: Значение лэйбла для сопоставления
   receiver:
     type: Тип получателя
     add: Добавить получателя
@@ -3365,11 +3365,11 @@ navLink:
         label: Название группы
         tooltip: Присвоить ссылку группе
       sideLabel:
-        label: Лейбл ссылки
+        label: Лэйбл ссылки
       description:
         label: Описание ссылки
       iconSrc:
-        label: Добавить картинку
+        label: Добавить изображение
 networkpolicy:
   egress:
     label: Правила выхода
@@ -3384,7 +3384,7 @@ networkpolicy:
     ruleHint: Входящий трафик разрешен только от настроенных источников
     portHint: Входящему трафику разрешено подключаться только к настроенным портам
   labelsAnnotations:
-    label: Лейблы & аннотации
+    label: Лэйблы & примечания
   rules:
     ruleLabel: Правило {index}
     addPort: Добавить разрешенный порт
@@ -3788,7 +3788,7 @@ persistentVolume:
       label: Вид
       dedicated: Выделенный
       managed: Управляемый
-      shared: Обобществлённый
+      shared: Общий
     cachingMode:
       label: Режим кэширования
       none: Нет
