@@ -1014,8 +1014,8 @@ cis:
   addTest: Добавить Test ID
   alertNeeded: |-
     Оповещение должно быть включено в поле CIS чарта values.yaml.
-    Требуется чтобы <a tabindex="0" href="{link}">{vendor} приложение мониторинга и оповещений </a> было установлено
-    и Receivers и Routes были <a target="_blank" rel='noopener noreferrer nofollow' href='{docsBase}/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager'> настроены на отправку уведомлений.</a>
+    Требуется, чтобы <a tabindex="0" href="{link}">{vendor} приложение мониторинга и оповещений </a> было установлено,
+    и получатели, и Routes были <a target="_blank" rel='noopener noreferrer nofollow' href='{docsBase}/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager'> настроены на отправку уведомлений.</a>
   alertOnComplete: Предупреждение о завершении сканирования
   alertOnFailure: Предупреждение о сбое сканирования
   benchmarkVersion: Версия бенчмарка
@@ -1112,8 +1112,8 @@ cluster:
       publicIp: Публичный IP ноды
       privateIp: Приватный IP ноды
       nodeLabel:
-        title: Лейблы ноды
-        label: Добавить лейбл
+        title: Лэйблы ноды
+        label: Добавить лэйбл
     registrationCommand:
       label: Команда регистрации
       linuxDetail: Запустить эту команду на каждой имеющейся машине под Linux, которую вы хотите зарегистрировать.
@@ -1226,7 +1226,7 @@ cluster:
           <li><b>Движок Kubernetes:</b> Администратор движка Kubernetes (roles/container.admin)</li>
           <li><b>Сервисные аккаунты:</b> Пользователь сервисного аккаунта (roles/iam.serviceAccountUser)</li>
           </ul>
-          Больше информации о ролях можете найти <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration" target="_blank" rel="noopener noreferrer nofollow">здесь</a>.
+          Больше информации о ролях Вы можете найти <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration" target="_blank" rel="noopener noreferrer nofollow">здесь</a>.
     harvester:
       namespace: Пространство имён
       cpu: CPU
@@ -1344,8 +1344,8 @@ cluster:
         label: Зона доступности
         description: Зоны доступности защищают приложения от полных сбоев дата-центра Azure.
       dns:
-        help: Уникальный DNS-лейбл для публичного IP-адреса.
-        label: DNS-лейбл
+        help: Уникальный DNS-лэйбл для публичного IP-адреса.
+        label: DNS-лэйбл
       environment:
         label: Окружение
       faultDomainCount:
@@ -1589,7 +1589,7 @@ cluster:
         label: Добавить селектор машин
         listLabel: Добавить аргумент
         bannerLabel: 'Замечание: Будет использован только самый последний селектор, удовлетворяющий условию, и только аргументы из него. Аргументы из остальных селекторов, удовлетворяющих условию, не будут ни объединены, ни скомбинированы.'
-        title: 'Для машин с лейблами совпадающими с:'
+        title: 'Для машин с лэйблами совпадающими с:'
         subTitle: 'Использовать следующие аргументы Kubelet:'
         titleAlt: |-
           {count, plural,
@@ -1604,7 +1604,7 @@ cluster:
   banner:
     warning: 'Этот кластер содержит machineSelectorConfig. Данная форма не поддерживает его в полной мере. Используйте редактор YAML для управления полной конфигурацией.'
     os: 'Попытка добавить {newOS} worker ноду в кластер с одной или несколькими {existingOS} worker нодами: для некоторых установленных приложений может потребоваться обновление или удаление.'
-    rke2-k3-reprovisioning: 'Внесение изменений в конфигурацию кластера может привести к reprovisioning нод. Больше информации вы можете найти в <a target="blank" href="{docsBase}/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/rke1-vs-rke2-differences" target="_blank" rel="noopener nofollow">документации</a>.'
+    rke2-k3-reprovisioning: 'Внесение изменений в конфигурацию кластера может привести к reprovisioning нод. Больше информации Вы можете найти в <a target="blank" href="{docsBase}/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/rke1-vs-rke2-differences" target="_blank" rel="noopener nofollow">документации</a>.'
     desiredNodeGroupWarning: Доступно 0 нод для запуска агента кластера. Кластер не будет активирован, пока нет как минимум одной доступной ноды.
     invalidPsps: You have one or more PodSecurityPolicy resource(s) in this cluster. Pod Security Policies are not available in Kubernetes v1.25.
     haveArgInfo: Configuration information is not available for the selected Kubernetes version.  The options available in this screen will be limited, you may want to use the YAML editor.
@@ -1666,7 +1666,7 @@ cluster:
     role:
       label: Роли
     labels:
-      label: Лейблы нод Kubernetes
+      label: Лэйблы нод Kubernetes
     noAccessBanner: "Недостаточно прав для просмотра конфигурации машинного пула."
     configNotFound: "Данная конфигурация машинного пула не найдена. Рекомендуем создать новый кластер с желаемой конфигурацией."
     noPoolsDisclaimer: Нет заданных машинных пулов, нажмите на плюс, чтобы добавить.
@@ -2570,261 +2570,261 @@ istio:
   v1Warning: Пожалуйста, удалите текущую версию Istio в <code>istio-system</code> пространстве имен перед установкой этой версии.
 
 labels:
-  addLabel: Add Label
-  addSetLabel: Add/Set Label
-  addTag: Add Tag
-  addTaint: Add Taint
-  addAnnotation: Add Annotation
+  addLabel: Добавить лэйбл
+  addSetLabel: Добавить/Установить лэйбл
+  addTag: Добавить тег
+  addTaint: Добавить taint
+  addAnnotation: Добавить примечание
   labels:
-    title: Labels
-    description: Key/value pairs that are attached to objects which specify identifying attributes.
-    fleetClusterTooltip: Label changes are made to the Management Cluster and synchronized to the Fleet Cluster
-    show: Show System Label
-    hide: Hide System Label
+    title: Лэйблы
+    description: Пары ключ/значение, прикрепленные к объектам, которые задают идентифицирующие атрибуты.
+    fleetClusterTooltip: Изменения лэйблов применяются к кластеру управления и синхронизируются с fleet кластером
+    show: Показать системные лэйблы
+    hide: Скрыть системные лэйблы
   annotations:
-    title: Annotations
+    title: Примечания
 
 landing:
   clusters:
-    title: Clusters
-    provider: Provider
-    kubernetesVersion: Kubernetes Version
-    explorer: Explorer
-    explore: Explore
+    title: Кластеры
+    provider: Провайдер
+    kubernetesVersion: Версия Kubernetes
+    explorer: Обзор
+    explore: Обзор
     cores: |-
       {count, plural,
-      =1 {core}
-      other {cores}}
-    cpuUsed: CPU Used
-    memoryUsed: Memory Used
-  seeWhatsNew: Learn more about the improvements and new capabilities in this version.
-  whatsNewLink: "What's new in 2.7"
-  learnMore: Learn More
-  support: Support
-  psps: PSPs
-  deprecatedPsp: Pod Security Policies are deprecated as of Kubernetes v1.21, and have been removed in Kubernetes v1.25. You have one or more PodSecurityPolicy resource(s) in this cluster.
+      =1 {ядро}
+      other {ядра/ядер)}}
+    cpuUsed: Использовано CPU
+    memoryUsed: Использовано памяти
+  seeWhatsNew: Узнать больше об улучшениях и новых возможностях этой версии.
+  whatsNewLink: "Что нового в версии 2.7"
+  learnMore: Узнать больше
+  support: Поддержка
+  psps: PSP
+  deprecatedPsp: Политики безопасности подов устарели с версии Kubernetes v1.21 и были удалены в версии Kubernetes v1.25. В данном кластере присутствует один или более источник PodSecurityPolicy.
   community:
-    title: Community Support
-    docs: Docs
-    forums: Forums
+    title: Поддержка сообщества
+    docs: Документы
+    forums: Форумы
   commercial:
-    title: Commercial Support
-    body: Learn about commercial support
+    title: Коммерческая поддержка
+    body: Узнать больше о коммерческой поддержке
   landingPrefs:
-    title: You can change what you see when you login via preferences
-    userPrefs: Preferences
-    body: "You can change where you land when you login"
+    title: В настройках Вы можете изменить то, что видите при входе в систему
+    userPrefs: Настройки
+    body: "Вы можете изменить стартовую страницу при входе в систему"
     options:
-      homePage: Take me to the home page
-      lastVisited: Take me to the area I last visited
-      custom: "Take me to cluster:"
-  welcomeToRancher: 'Welcome to {vendor}'
+      homePage: Перейти на главную страницу
+      lastVisited: Перейти на последнюю посещенную страницу
+      custom: "Перейти к кластеру:"
+  welcomeToRancher: 'Добро пожаловать в {vendor}'
 
 logging:
   clusterFlow:
-    noOutputsBanner: There are no cluster outputs in the selected namespace.
+    noOutputsBanner: Выводы кластера отсутствуют в выбранном пространстве имён.
   flow:
     clusterOutputs:
-      doesntExistTooltip: This cluster output doesn't exist
-      label: Cluster Outputs
+      doesntExistTooltip: Этот вывод кластера не существует
+      label: Выводы кластера
     matches:
-      banner: Configure which container logs will be pulled from
-      unsupportedConfig: This resource contains a match configuration that the form editor does not support. Please use YAML edit.
-      label: Matches
-      addSelect: Add Include Rule
-      addExclude: Add Exclude Rule
+      banner: Настройте из какого контейнера будут извлечены логи
+      unsupportedConfig: Этот ресурс содержит настройки сопоставления, которые не поддерживаются данной формой редактирования. Пожалуйста, используйте редактор YAML.
+      label: Совпадает с
+      addSelect: Добавить правило включения
+      addExclude: Добавить правило исключения
       pods:
         title:
-          include: Include Pods
-          exclude: Exclude Pods
-        keyLabel: Pod Label Key
-        valueLabel: Pod Label Value
-        addLabel: Add Pod
+          include: Включить поды
+          exclude: Исключить поды
+        keyLabel: Ключ лэйбла пода
+        valueLabel: Значение лэйбла пода
+        addLabel: Добавить под
       nodes:
         title:
-          include: Limit to specific nodes
-          exclude: Exclude specific nodes
-        placeholder: "Default: Any node"
+          include: Ограничить указанными нодами
+          exclude: Исключить указанные ноды
+        placeholder: "По умолчанию: любая нода"
       containerNames:
         title:
-          include: Limit to specific container names
-          exclude: Exclude specific container names
-        placeholder: "Default: Any container"
+          include: Ограничить контейнерами с указанными именами
+          exclude: Исключить контейнеры с указанными именами
+        placeholder: "По умолчанию: любой контейнер"
       namespaces:
         title:
-          include: Limit to specific namespaces
-          exclude: Exclude specific namespaces
-        placeholder: "Default: Any namespace"
+          include: Ограничить указанными пространствами имён
+          exclude: Исключить указанные пространства имён
+        placeholder: "По умолчанию: любое пространство имён"
 
     filters:
-      label: Filters
+      label: Фильтры
     outputs:
-      doesntExistTooltip: This output doesn't exist
-      sameNamespaceError: Output must reside in same namespace as the flow.
-      label: Outputs
+      doesntExistTooltip: Этот вывод не существует
+      sameNamespaceError: Вывод должен находиться в том же пространстве имён, что и поток.
+      label: Выводы
   install:
     k3sContainerEngine: K3S Container Engine
-    enableAdditionalLoggingSources: Enable enhanced cloud provider logging
-    dockerRootDirectory: Docker Root Directory
-    systemdLogPath: systemd Log Path
-    tooltip: 'Some kubernetes distributions log to <code>journald</code>. In order to collect these logs the <code>systemdLogPath</code> needs to be defined. While the <code>/run/log/journal</code> directory is used by default, some Linux distributions do not default to this path.'
-    url: '<a href="https://rancher.com/docs/rancher/v2.6/en/logging/helm-chart-options/" target="_blank" rel="noopener nofollow noreferrer">Learn more</a>'
+    enableAdditionalLoggingSources: Включить расширенное логирование облачного провайдера
+    dockerRootDirectory: Корневая директория Docker
+    systemdLogPath: Путь до systemd логов
+    tooltip: 'Некоторые дистрибутивы Kubernetes логируются в <code>journald</code>. Для сбора этих логов требуется задать <code>systemdLogPath</code>. При использовании директории по умолчанию <code>/run/log/journal</code> следует учитывать, что некоторые дистрибутивы Linux не используют этот путь как значение по умолчанию.'
+    url: '<a href="https://rancher.com/docs/rancher/v2.6/en/logging/helm-chart-options/" target="_blank" rel="noopener nofollow noreferrer">Узнать больше</a>'
     default: /run/log/journal
   elasticsearch:
-    host: Host
-    scheme: Scheme
-    port: Port
-    indexName: Index Name
-    user: User
-    password: Password from Secret
+    host: Хост
+    scheme: Схема
+    port: Порт
+    indexName: Имя индекса
+    user: Пользователь
+    password: Пароль из Secret
     caFile:
-      label: CA File from Secret
+      label: CA-файл из Secret
     clientCert:
-      label: Client Cert from Secret
-      placeholder: Paste in the CA certificate
+      label: Сертификат клиента из Secret
+      placeholder: Вставьте CA сертификат
     clientKey:
-      label: Client Key from Secret
-      placeholder: Paste in the client key
-    clientKeyPass: Client Key Pass from Secret
-    verifySsl: Verify SSL
-    sslVersion: SSL Version
+      label: Ключ клиента из Secret
+      placeholder: Вставьте ключ клиента
+    clientKeyPass: Client Key Pass из Secret
+    verifySsl: Проверить SSL
+    sslVersion: Версия SSL
   redis:
-    host: Host
-    port: Port
-    dbNumber: Redis database number
-    ttl: TTL for each key
-    password: Password from Secret
+    host: Хост
+    port: Порт
+    dbNumber: Номер базы данных Redis
+    ttl: TTL для каждого ключа
+    password: Пароль из Secret
     format:
-      title: Format
-      type: Type
+      title: Формат
+      type: Тип
   gelf:
-    host: Host
-    port: Port
-    protocol: Protocol
-    tls: Enable TLS
+    host: Хост
+    port: Порт
+    protocol: Протокол
+    tls: Включить TLS
     tlsOptions:
-      clientCert: Client Cert
-      clientKey: Client Cert Key
-      allCiphers: Allow any ciphers to be used
-      tlsVersion: TLS version
-      noVerify: Skip TLS verification
+      clientCert: Сертификат клиента
+      clientKey: Ключ сертификата клиента
+      allCiphers: Разрешить использование любого шифрования
+      tlsVersion: Версия TLS
+      noVerify: Пропустить проверку TLS
   kafka:
     brokers: Brokers
-    defaultTopic: Default Topic
-    saslOverSsl: SASL Over SSL
-    scramMechanism: Scram Mechanism
-    username: Username from Secret
-    password: Password from Secret
+    defaultTopic: Тема по умолчанию
+    saslOverSsl: SASL через SSL
+    scramMechanism: Scram механизм
+    username: Имя пользователя из Secret
+    password: Пароль из Secret
     sslCaCert:
-      label: CA Cert from Secret
-      placeholder: Paste in the CA certificate
+      label: CA сертификат из Secret
+      placeholder: Вставьте CA сертификат
     sslClientCert:
-      label: Cert from Secret
-      placeholder: Paste in the client cert
+      label: Сертификат из Secret
+      placeholder: Вставьте сертификат клиента
     sslClientCertChain:
-      label: Cert Chain from Secret
-      placeholder: Paste in the client cert chain
-    sslClientCertKey: Cert Key from Secret
+      label: Цепочка сертификатов из Secret
+      placeholder: Вставьте цепочку сертификатов клиента
+    sslClientCertKey: Ключ сертификата из Secret
   loki:
     url: URL
-    tenant: Tenant
-    username: User from Secret
-    password: Password from Secret
-    configureKubernetesLabels: Configure Kubernetes metadata in a Prometheus like format
-    extractKubernetesLabels: Extract Kubernetes labels as Loki labels
-    dropSingleKey: If a record only has 1 key, then just set the log line to the value and discard the key
-    caCert: CA Cert from Secret
-    cert: Cert from Secret
-    key: Key from Secret
+    tenant: Клиент
+    username: Пользователь из Secret
+    password: Пароль из Secret
+    configureKubernetesLabels: Сконфигурируйте метаданные Kubernetes в формате подобном Prometheus
+    extractKubernetesLabels: Извлечь лэйблы Kubernetes как лэйблы Loki
+    dropSingleKey: Если запись содержит только 1 ключ, задайте строку логирования и откажитесь от использования ключа
+    caCert: CA сертификат из Secret
+    cert: Сертификат из Secret
+    key: Ключ из Secret
   awsElasticsearch:
     url: URL
-    keyId: Key Id from Secret
-    secretKey: Secret Key from Secret
+    keyId: Key Id из Secret
+    secretKey: Секретный ключ из Secret
   azurestorage:
-    storageAccount: Account from Secret
-    accessKey: Access Key from Secret
-    container: Container
-    path: Path
-    storeAs: Store As
+    storageAccount: Аккаунт из Secret
+    accessKey:  Ключ доступа из Secret
+    container: Контейнер
+    path: Путь
+    storeAs: Хранить как
   cloudwatch:
-    keyId: Key Id from Secret
-    secretKey: Secret Key from Secret
+    keyId: Key Id из Secret
+    secretKey: Секретный ключ из Secret
     endpoint: Endpoint
-    region: Region
-    logGroupName: Log Group Name
-    logStreamName: Log Stream Name
+    region: Регион
+    logGroupName: Название группы логов
+    logStreamName: Название потока логов
   datadog:
-    apiKey: API Key from Secret
-    useSSL: Use SSL
-    useCompression: Use Compression
-    host: Host
+    apiKey: Ключ API из Secret
+    useSSL: Использовать SSL
+    useCompression: Использовать сжатие
+    host: Хост
   file:
-    path: Path
+    path: Путь
   gcs:
-    project: Project
-    credentialsJson: Credentials from Secret
-    bucket: Bucket
-    path: Path
-    overwriteExistingPath: Overwrite Existing Path
+    project: Проект
+    credentialsJson: Учётные данные из Secret
+    bucket: Бакет
+    path: Путь
+    overwriteExistingPath: Переписать существующий путь
   kinesisStream:
-    streamName: Stream Name
-    keyId: Key Id from Secret
-    secretKey: Secret Key from Secret
+    streamName: Название потока
+    keyId: Key Id из Secret
+    secretKey: Секретный ключ из Secret
   logdna:
-    apiKey: API Key
-    hostname: Hostname
-    app: App
+    apiKey: Ключ API
+    hostname: Имя хоста
+    app: Приложение
   logz:
     url: URL
-    port: Port
-    token: Api Token from Secret
-    enableCompression: Enable Compression
+    port: Порт
+    token: Токен API из Secret
+    enableCompression: Включить сжатие
   newrelic:
-    apiKey: API Key from Secret
-    licenseKey: License Key from Secret
-    baseURI: Base URI
+    apiKey: Ключ API из Secret
+    licenseKey: Ключ лицензии из Secret
+    baseURI: Базовый URI
   sumologic:
-    endpoint: Endpoint from Secret
-    sourceName: Source Name
+    endpoint: Endpoint из Secret
+    sourceName: Имя источника
   syslog:
-    host: Host
-    port: Port
-    transport: Transport
-    insecure: insecure
-    trustedCaPath: CA Path from Secret
+    host: Хост
+    port: Порт
+    transport: Транспорт
+    insecure: небезопасно
+    trustedCaPath: Путь до CA из Secret
     format:
-      title: Format
-      type: Type
-      addNewLine: Add New Line
-      messageKey: Message Key
+      title: Формат
+      type: Тип
+      addNewLine: Добавить новую строку
+      messageKey: Ключ сообщения
     buffer:
-      title: Buffer
-      tags: Tags
-      chunkLimitSize: Chunk Limit Size
-      chunkLimitRecords: Chunk Limit chunkLimitRecords
-      totalLimitSize: Total Limit Size
-      flushInterval: Flush Interval
+      title: Буфер
+      tags: Теги
+      chunkLimitSize: Предельный размер chunk
+      chunkLimitRecords: Лимит Chunk chunkLimitRecords
+      totalLimitSize: Общий предельный размер
+      flushInterval: Интервал Flush
       timekey: Timekey
-      timekeyWait: Timekey Wait
-      timekeyUseUTC: Timekey Use UTC
+      timekeyWait: Ожидание Timekey
+      timekeyUseUTC: Использование UTC в Timekey 
   s3:
-    keyId: Key Id from Secret
-    secretKey: Secret Key from Secret
+    keyId: Key Id из Secret
+    secretKey: Секретный ключ из Secret
     endpoint: Endpoint
-    bucket: Bucket
-    path: Path
-    overwriteExistingPath: Overwrite Existing Path
+    bucket: Бакет
+    path: Путь
+    overwriteExistingPath: Переписать существующий путь
   output:
     buffer:
-      label: Output Buffer
-    selectOutputs: Select Outputs
-    selectBanner: Select to configure an output
+      label: Буфер вывода
+    selectOutputs: Выбрать выводы
+    selectBanner: Выберите, чтобы настроить вывод
     sections:
-      target: Target
-      access: Access
-      certificate: Connection
-      labels: Labels
-      configuration: Configuration
+      target: Цель
+      access: Доступ
+      certificate: Соединение
+      labels: Лэйблы
+      configuration: Конфигурация
   outputProviders:
     elasticsearch: Elasticsearch
     opensearch: OpenSearch
@@ -2838,7 +2838,7 @@ logging:
     azurestorage: Azure Storage
     cloudwatch: Cloudwatch
     datadog: Datadog
-    file: File
+    file: Файл
     gcs: GCS
     kinesisStream: Kinesis Stream
     logdna: LogDNA
@@ -2847,118 +2847,118 @@ logging:
     sumologic: SumoLogic
     syslog: Syslog
     s3: S3
-    unknown: Unknown
+    unknown: Неизвестно
   overview:
     poweredBy: Banzai Cloud
-    clusterLevel: Cluster-Level
-    namespaceLevel: Namespace-Level
-  provider: Provider
+    clusterLevel: Уровень кластера
+    namespaceLevel: Уровень пространства имён
+  provider: Провайдер
   splunk:
-    host: Host
-    port: Port
-    protocol: Protocol
-    index: Index
-    token: Token from Secret
-    insecureSsl: Insecure SSL
-    indexName: Index Name
-    source: Source
-    caFile: CA File from Secret
-    caPath: CA Path from Secret
-    clientCert: Client Cert from Secret
-    clientKey: Client Key from Secret
+    host: Хост
+    port: Порт
+    protocol: Протокол
+    index: Индекс
+    token: Токен из Secret
+    insecureSsl: Небезопасный SSL
+    indexName: Имя индекса
+    source: Источник
+    caFile: Файл CA из Secret
+    caPath: Путь до CA из Secret
+    clientCert: Сертификат клиента из Secret
+    clientKey: Ключ клиента из Secret
   forward:
-    host: Host
-    port: Port
-    sharedKey: Shared Key from Secret
-    username: Username from Secret
-    password: Password from Secret
-    clientCertPath: Client Cert Path from Secret
-    clientPrivateKeyPath: Client Private Key Path from Secret
-    clientPrivateKeyPassphrase: Client Private Key Passphrase from Secret
+    host: Хост
+    port: Порт
+    sharedKey: Общий ключ из Secret
+    username: Имя пользователя из Secret
+    password: Пароль из Secret
+    clientCertPath: Путь до сертификата клиента из Secret
+    clientPrivateKeyPath: Путь до приватного ключа клиента из Secret
+    clientPrivateKeyPassphrase: Парольная фраза для приватного ключа клиента из Secret
 
 longhorn:
   overview:
-    title: Overview
-    subtitle: "Powered By: <a href='https://github.com/longhorn' target='_blank' rel='noopener nofollow noreferrer'>Longhorn</a>"
+    title: Обзор
+    subtitle: "При поддержке: <a href='https://github.com/longhorn' target='_blank' rel='noopener nofollow noreferrer'>Longhorn</a>"
     linkedList:
       longhorn:
         label: 'Longhorn'
-        description: 'Manage storage system via UI'
-        na: Resource Unavailable
+        description: 'Управление системой хранения через UI'
+        na: Ресурс недоступен
 
 neuvector:
   overview:
-    title: Overview
-    subtitle: "Powered by: <a href='https://github.com/neuvector' target='_blank' rel='noopener nofollow noreferrer'>NeuVector</a>"
+    title: Обзор
+    subtitle: "При поддержке: <a href='https://github.com/neuvector' target='_blank' rel='noopener nofollow noreferrer'>NeuVector</a>"
     linkedList:
       neuvector:
         label: 'NeuVector'
-        description: 'Full Lifecycle Container Security'
-        na: Resource Unavailable
+        description: 'Полная безопасность контейнера жизненного цикла'
+        na: Ресурс недоступен
 
 login:
   howdy: Howdy!
-  welcome: Welcome to {vendor}
-  loggedOut: You have been logged out.
-  loginAgain: Log in again to continue.
+  welcome: Добро пожаловать в {vendor}
+  loggedOut: Произведён выход из системы.
+  loginAgain: Авторизуйтесь снова, чтобы продолжить.
   serverError:
-    authFailedCreds: "Logging in failed: Check credentials, or your account may not be authorized to log in."
-    authFailed: "Logging in failed: Your account may not be authorized to log in."
-    unknown: "An unknown error occurred while attempting to login. Please contact your system administrator."
-    invalidSamlAttrs: "Invalid saml attributes"
-    noResponse: "No response received"
-  error: An error occurred logging in. Please try again.
-  clientError: Invalid username or password. Please try again.
-  useLocal: Use a local user
-  loginWithProvider: Log in with {provider}
-  username: Username
-  password: Password
-  loggingIn: Logging in...
-  loggedIn: Logged in
-  loginWithLocal: Log in with Local User
-  useProvider: Use a {provider} user
-  useNonLocal: Use a non-local user
+    authFailedCreds: "Авторизация не удалась: проверьте учётные данные; возможно, учетная запись не имеет прав для входа."
+    authFailed: "Авторизация не удалась: возможно, учетная запись не имеет прав для входа."
+    unknown: "При попытке авторизации произошла неизвестная ошибка. Пожалуйста, свяжитесь с Вашим системным администратором."
+    invalidSamlAttrs: "Некорректные saml-атрибуты"
+    noResponse: "Нет ответа"
+  error: Во время авторизации произошла ошибка. Пожалуйста, попытайтесь снова.
+  clientError: Неправильное имя пользователя или пароль. Пожалуйста, попытайтесь снова.
+  useLocal: Использовать локального пользователя
+  loginWithProvider: Войти с использованием {provider}
+  username: Имя пользователя
+  password: Пароль
+  loggingIn: Авторизация...
+  loggedIn: Произведён вход
+  loginWithLocal: Войти как локальный пользователь
+  useProvider: Использовать пользователя {provider}
+  useNonLocal: Использовать не локального пользователя
   remember:
-    label: Remember Username
+    label: Запомнить имя пользователя
 
 managementNode:
-  customName: Custom Name
+  customName: Пользовательское имя
 
 members:
-  clusterMembers: Cluster Members
-  clusterAndProject: Cluster and Project Members
-  createActionLabel: Add
+  clusterMembers: Участники кластера
+  clusterAndProject: Участники кластера и проекта
+  createActionLabel: Добавить
   clusterPermissions:
-    noDescription: User created - no description
-    label: Cluster Permissions
-    description: Controls what access users have to the Cluster
-    createProjects: Create Projects
-    manageClusterBackups: Manage Cluster Backups
-    manageClusterCatalogs: Manage Cluster Catalogs
-    manageClusterMembers: Manage Cluster Members
-    manageNavlinks: Manage Navlinks
-    manageNodes: Manage Nodes
-    manageStorage: Manage Storage
-    viewAllProjects: View All Projects
-    viewClusterCatalogs: View Cluster Catalogs
-    viewClusterMembers: View Cluster Members
-    viewNodes: View Nodes
+    noDescription: Пользователь создан - нет описания
+    label: Разрешения кластера
+    description: Определяет какой доступ пользователи имеют к данному кластеру
+    createProjects: Создать проекты
+    manageClusterBackups: Управление резервным копированием кластера
+    manageClusterCatalogs: Управление каталогами кластера
+    manageClusterMembers: Управление участниками кластера
+    manageNavlinks: Управление Navlinks
+    manageNodes: Управление нодами
+    manageStorage: Управление хранилищем
+    viewAllProjects: Просмотр всех проектов
+    viewClusterCatalogs: Просмотр каталогов кластера
+    viewClusterMembers: Просмотр участников кластера
+    viewNodes: Просмотр нод
     owner:
-      label: Owner
-      description: Owners have full control over the Cluster and all resources inside it.
+      label: Владелец
+      description: Владельцы имеют полный контроль над кластером и всеми ресурсами внутри него.
     member:
-      label: Member
-      description: Members can manage the resources inside the Cluster but not change the Cluster itself.
+      label: Участник
+      description: Участники могут управлять ресурсами внутри кластера, но они не могут изменять сам кластер. 
     custom:
-      label: Custom
-      description: Choose individual roles for this user.
-  localClusterWarning: "Caution: This is the cluster that Rancher is using as a data store. Only administrators should be given write access to this cluster. Users with write access to this cluster can use it to grant themselves access to any part of this installation."
-  noRolesAssigned: There are no users assigned to this project.
+      label: Настраиваемый
+      description: Выберите индивидуальные роли для данного пользователя.
+  localClusterWarning: "Внимание! Rancher использует этот кластер как хранилище данных. Доступ для записи к данному кластеру должны иметь только администраторы. Пользователи с доступом для записи к данному кластеру могут воспользоваться им, чтобы выдать себе доступ к любой части этой установки."
+  noRolesAssigned: Нет пользователей, назначенных на этот проект.
 
 membershipEditor:
-  label: Members
-  user: User
-  role: Role
+  label: Участники
+  user: Пользователь
+  role: Роль
 
 monitoring:
   accessModes:
@@ -2966,989 +2966,989 @@ monitoring:
     once: ReadWriteOnce
     readOnlyMany: ReadOnlyMany
   aggregateDefaultRoles:
-    label: Aggregate to Default Kubernetes Roles
-    tip: 'Adds labels to the ClusterRoles deployed by the Monitoring chart to <a target="_blank" rel="noopener nofollow noreferrer" href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles"> aggregate to the corresponding default k8s admin, edit, and view ClusterRoles.</a>'
+    label: Объединить с ролями Kubernetes по умолчанию
+    tip: 'Добавляет лэйблы в ClusterRoles, развернутый чартом мониторинга, чтобы <a target="_blank" rel="noopener nofollow noreferrer" href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles"> объединить их в ClusterRoles с соответствующими значениями по умолчанию k8s администрирования, редактирования и просмотра.</a>'
   alerting:
     config:
-      label: Alert Manager Config
+      label: Конфигурация Alertmanager
     enable:
-      label: Deploy Alertmanager
+      label: Развернуть Alertmanager
     secrets:
       additional:
-        info: Secrets should be mounted at <pre class='inline-block m-0'>/etc/alertmanager/secrets/</pre>
-        label: Additional Secrets
-      existing: Choose an existing config secret
+        info: Secret должны быть установлены в <pre class='inline-block m-0'>/etc/alertmanager/secrets/</pre>
+        label: Дополнительные Secret
+      existing: Выбрать существующий Secret конфигурации
       info: |
-        <span class="text-bold">Create default config</span>: A Secret containing your Alertmanager Config will be created in the <pre class='inline-block m-0'>cattle-monitoring-system</pre> namespace on deploying this chart under the name <pre class='inline-block m-0'>alertmanager-rancher-monitoring-alertmanager</pre>. By default, this Secret will never be modified on an uninstall or upgrade of this chart. <br />
-        Once you have deployed this chart, you should edit the Secret via the UI in order to add your custom notification configurations that will be used by Alertmanager to send alerts. <br /> <br />
-        <span class="text-bold">Choose an existing config secret</span>: You must specify a Secret that exists in the <pre class='inline-block m-0'>cattle-monitoring-system</pre> namespace. If the namespace does not exist, you will not be able to select an existing secret.
+        <span class="text-bold">Создать конфигурацию по умолчанию</span>: Secret, содержащий Ваши настройки Alertmanager, будет создан в пространстве имён <pre class='inline-block m-0'>cattle-monitoring-system</pre> при развёртывании этого чарта под именем <pre class='inline-block m-0'>alertmanager-rancher-monitoring-alertmanager</pre>. По умолчанию, этот Secret никогда не будет изменяться ни при удалении, ни при обновлении этого чарта.<br />
+        После развёртывания этого чарта, отредактируйте Secret с помощью UI, чтобы добавить собственные настройки оповещений, которые Alertmanager будет использовать для отправки уведомлений. <br /> <br />
+        <span class="text-bold">Выберите существующий Secret конфигурации</span>: Необходимо указать Secret, который существует в пространстве имён <pre class='inline-block m-0'>cattle-monitoring-system</pre>. Если пространство имён не существует, выбор существующего Secret будет недоступен.
       label: Alertmanager Secret
-      new: Create default config
+      new: Создать конфигурацию по умолчанию
       radio:
-        label: Config Secret
+        label: Настроить Secret
     templates:
-      keyLabel: File Name
-      label: Template Files
-      valueLabel: YAML Template
-    title: Configure Alertmanager
+      keyLabel: Имя файла
+      label: Файлы шаблонов
+      valueLabel: Шаблон YAML
+    title: Настроить Alertmanager
   clusterType:
-    label: Cluster Type
-    placeholder: Select cluster type
+    label: Тип кластера
+    placeholder: Выберите тип кластера
   createDefaultRoles:
-    label: Create Default Monitoring Cluster Roles
-    tip: 'Creates <code>monitoring-admin</code>, <code>monitoring-edit</code>, and <code>monitoring-view</code> ClusterRoles that can be assigned to users to provide permissions to CRDs installed by the Monitoring chart.'
+    label: Создать роли кластера мониторинга по умолчанию
+    tip: 'Создает <code>monitoring-admin</code>, <code>monitoring-edit</code> и <code>monitoring-view</code> ClusterRoles, которые могут быть назначены на пользователей для предоставления разрешений на CRD, установленные чартом мониторинга.'
   etcdNodeDirectory:
-    label: etcd Node Certificate Directory
-    tooltip: 'For clusters that use RancherOS for the etcd nodes, this option should be set to <pre class=''inline-block m-0''>/opt/rke/etc/kubernetes/ssl</pre>. Hybrid environments that require specifying multiple certificate directories (e.g. an etcd plane composed of both RancherOS and Ubuntu hosts) are not supported.'
+    label: Директория для сертификата etcd ноды
+    tooltip: 'Для кластеров, которые используют RancherOS для etcd нод, необходимо выбрать опцию <pre class=''inline-block m-0''>/opt/rke/etc/kubernetes/ssl</pre>. Гибридное окружение, требующее указания нескольких директорий для сертификатов (например, etcd плоскость, содержащая и хосты RancherOS, и хосты Ubuntu), не поддерживается.'
   grafana:
     storage:
-      annotations: PVC Annotations
-      className: Storage Class Name
-      existingClaim: Use Existing Claim
+      annotations: Примечания PVC
+      className: Название класса хранилища
+      existingClaim: Использовать существующий Claim
       finalizers: PVC Finalizers
-      label: Grafana Storage
-      mode: Access Mode
-      selector: Selector
-      size: Size
-      subpath: Use Subpath
-      type: Persistent Storage Types
+      label: Хранилище Grafana
+      mode: Режим доступа
+      selector: Селектор
+      size: Размер
+      subpath: Использовать подпуть
+      type: Типы постоянного хранилища
       types:
-        existing: Enable With Existing PVC
-        statefulset: Enable with StatefulSet Template
-        template: Enable with PVC Template
-      volumeName: Volume Name
-    title: Configure Grafana
+        existing: Включить с существующим PVC
+        statefulset: Включить с шаблоном StatefulSet
+        template: Включить с шаблоном PVC
+      volumeName: Название тома
+    title: Настроить Grafana
   hostNetwork:
-    label: Use Host Network For Prometheus Operator
-    tip: If you are using a managed Kubernetes cluster with custom CNI (e.g. Calico), you must enable this option to allow a managed control plane to contact the admission webhook exposed by Prometheus Operator to mutate or validate incoming PrometheusRules.
+    label: Использовать хост-сеть для оператора Prometheus
+    tip: При использовании управляемого кластера Kubernetes с пользовательским CNI (например, Calico), включение данной опции обязательно, чтобы позволить управляемой контрольной плоскости связываться с webhook доступа, предоставляемым оператором Prometheus для изменения или проверки входящих PrometheusRules.
   overview:
     alertsList:
       ends:
-        label: Ends At
-      label: Active Alerts
+        label: Заканчивается в
+      label: Активные уведомления
       message:
-        label: Message
+        label: Сообщение
       severity:
-        label: Severity
+        label: Точность
       start:
-        label: Starts At
+        label: Начинается в
     linkedList:
       alertManager:
-        description: Active Alerts
+        description: Активные уведомления
         label: Alertmanager
       grafana:
-        description: Metrics Dashboards
+        description: Дашборд метрик
         label: Grafana
-      na: Resource Unavailable
+      na: Ресурс недоступен
       prometheusPromQl:
         description: PromQL Graph
         label: Prometheus Graph
       prometheusRules:
-        description: Configured Rules
+        description: Сконфигурированные роли
         label: PrometheusRules
       prometheusTargets:
-        description: Configured Targets
-        label: Prometheus Targets
-    subtitle: 'Powered By: <a href="https://github.com/coreos/prometheus-operator" target="_blank" rel="noopener noreferrer nofollow">Prometheus</a>'
-    title: Dashboard
+        description: Сконфигурированные цели
+        label: Цели Prometheus
+    subtitle: 'При поддержке: <a href="https://github.com/coreos/prometheus-operator" target="_blank" rel="noopener noreferrer nofollow">Prometheus</a>'
+    title: Дашборд
   prometheus:
     config:
-      adminApi: Admin API
-      evaluation: Evaluation Interval
+      adminApi: API администратора
+      evaluation: Интервал оценки
       ignoreNamespaceSelectors:
-        help: 'Ignoring Namespace Selectors allows Cluster Admins to limit teams from monitoring resources outside of namespaces they have permissions to but can break the functionality of Apps that rely on setting up Monitors that scrape targets across multiple namespaces, such as Istio.'
-        label: Namespace Selectors
+        help: 'Игнорирование селектора пространства имён позволяет администраторам кластера ограничивать командам мониторинг ресурсов вне пространств имён, для которых они имеют разрешение; но это может нарушить функциональность приложений, полагающихся на настройку мониторов, которые осуществляют scrape целей в нескольких пространствах имён, например, Istio.'
+        label: Селектор пространства имён
         radio:
-          enforced: 'Use: Monitors can access resources based on namespaces that match the namespace selector field'
-          ignored: 'Ignore: Monitors can only access resources in the namespace they are deployed in'
+          enforced: 'Использование: Мониторы могут получить доступ к ресурсам на основе пространств имён, совпадающих с пространством имён в поле селектора'
+          ignored: 'Игнорирование: Мониторы могут получить доступ только к ресурсам из пространства имён, в котором они развёрнуты'
       limits:
-        cpu: CPU Limit
-        memory: Memory Limit
+        cpu: Ограничение CPU
+        memory: Ограничение памяти
       requests:
-        cpu: Requested CPU
-        memory: Requested Memory
-      resourceLimits: Resource Limits
-      retention: Retention
-      retentionSize: Retention Size
-      scrape: Scrape Interval
+        cpu: Запрошено CPU
+        memory: Запрошено памяти
+      resourceLimits: Ограничение ресурсов
+      retention: Резерв
+      retentionSize: Размер резерва
+      scrape: Интервал Scrape
     storage:
-      className: Storage Class Name
-      label: Persistent Storage for Prometheus
-      mode: Access Mode
-      selector: Selector
-      selectorWarning: 'If you are using a dynamic provisioner (e.g. Longhorn), no Selectors should be specified since a PVC with a non-empty selector can''t have a PV dynamically provisioned for it.'
-      size: Size
-      volumeName: Volume Name
-    title: Configure Prometheus
+      className: Название класса хранилища
+      label: Постоянное хранилище для Prometheus
+      mode: Режим доступа
+      selector: Селектор
+      selectorWarning: 'При использовании динамического provisioner (например, Longhorn), не должно быть задано ни одного селектора, поскольку PVC с непустым селектором не может иметь PV, динамически provisioned для него.'
+      size: Размер
+      volumeName: Название тома
+    title: Настроить Prometheus
     warningInstalled: |
-      Warning: Prometheus Operators are currently deployed. Deploying multiple Prometheus Operators onto one cluster is not currently supported. Please remove all other Prometheus Operator deployments from this cluster before trying to install this chart.
-      If you are migrating from an older version of {vendor} with Monitoring enabled, please disable Monitoring on this cluster completely before attempting to install this chart.
+      Предупреждение: имеется развёрнутый оператор Prometheus. Развёртывание нескольких операторов Prometheus в одном кластере на данный момент не поддерживается. Пожалуйста, удалите все другие развёрнутые операторы Prometheus из кластера прежде, чем пытаться установить этот чарт.
+      При миграции с более старой версии {vendor} со включенным мониторингом, пожалуйста, полностью отключите мониторинг на этом кластере прежде, чем пытаться установить этот чарт.
   receiver:
-    addReceiver: Add Receiver
+    addReceiver: Добавить получателя
     fields:
-      name: Name
+      name: Имя
     tls:
       label: SSL
       caFilePath:
-        label: CA File Path
-        placeholder: e.g. ./ca-file.csr
+        label: Путь до файла CA
+        placeholder: например, ./ca-file.csr
       certFilePath:
-        label: Cert File Path
-        placeholder: e.g. ./cert-file.crt
+        label: Путь до файла сертификата
+        placeholder: например, ./cert-file.crt
       keyFilePath:
-        label: Key File Path
-        placeholder: e.g. ./key-file.pfx
-      secretsBanner: The file paths below must be referenced in <pre class="inline-block m-0 p-0 vertical-middle">alertmanager.alertmanagerSpec.secrets</pre> when deploying the Monitoring chart. For more information see our <a href="{docsBase}/pages-for-subheaders/monitoring-v2-configuration" target="_blank" rel="noopener noreferrer nofollow">documentation</a>.
+        label: Путь до файла ключа
+        placeholder: например, ./key-file.pfx
+      secretsBanner: Пути до файлов ниже должны быть указаны в <pre class="inline-block m-0 p-0 vertical-middle">alertmanager.alertmanagerSpec.secrets</pre> при развёртывании чарта мониторинга. Для более подробной информации ознакомьтесь с нашей <a href="{docsBase}/pages-for-subheaders/monitoring-v2-configuration" target="_blank" rel="noopener noreferrer nofollow">документацией</a>.
   projectMonitoring:
     detail:
-      error: "Unable to fetch Dashboard values with status: "
+      error: "Невозможно получить значения дашборда со статусом: "
     list:
-      banner: Project Monitoring Configuration is stored in ProjectHelmChart resources
+      banner: Конфигурация мониторинга проекта хранится в русурсах ProjectHelmChart
       empty:
-        message: Project Monitoring has not been configured for any projects
-        canCreate: Get started by clicking Create to add monitoring to a project
-        cannotCreate: Contact the admin to add project monitoring
+        message: Мониторинг проекта не был настроен ни для одного проекта
+        canCreate: Для начала, нажмите Создать, и добавьте мониторинг в проект
+        cannotCreate: Чтобы добавить мониторинг проекта, свяжитесь с администратором
   route:
     label: Route
     fields:
-      groupBy: Group By
-      groupInterval: Group Interval
-      groupWait: Group Wait
-      receiver: Receiver
-      repeatInterval: Repeat Interval
-  routesAndReceivers: Routes and Receivers (Deprecated)
-  monitors: Monitors
-  projectMonitors: Project Monitoring
+      groupBy: Сгруппировать по
+      groupInterval: Интервал группы
+      groupWait: Ожидание группы
+      receiver: Получатель
+      repeatInterval: Интервал повтора
+  routesAndReceivers: Routes и получатели (устаревшее)
+  monitors: Мониторы
+  projectMonitors: Мониторинг проекта
   alertmanagerConfig:
-    description: Routes and receivers for project alerting and cluster alerting are configured within AlertmanagerConfig resources.
-    empty: Alerts have not been configured for any accessible namespaces.
-    getStarted: Get started by clicking Create to configure an alert.
-    receiverTooltip: This route will direct alerts to the selected receiver, which must be defined in the same AlertmanagerConfig.
-    deprecationWarning: The Route and Receiver resources are deprecated. Going forward, routes and receivers should not be managed as separate Kubernetes resources on this page. They should be configured as YAML fields in an AlertmanagerConfig resource.
-    routeInfo: This form supports configuring one route that directs traffic to a receiver. Alerts can be directed to more receiver(s) by configuring child routes in YAML.
+    description: Routes и получатели для оповещений от проекта и оповещений от кластера настроены внутри ресурсов AlertmanagerConfig.
+    empty: Уведомления не были настроены ни для одного доступного пространства имён.
+    getStarted: Начните настройку уведомления, нажав Создать
+    receiverTooltip: Этот route будет направлять уведомления выбранному получателю, который должен быть задан в том же AlertmanagerConfig.
+    deprecationWarning: Данные ресурсы route и получателя устарели. В будущем routes и получатели не должны управляться как отдельные ресурсы Kubernetes на этой странице. Они должны быть сконфигурированы как YAML-поля в ресурсе AlertmanagerConfig.
+    routeInfo: Данная форма поддерживает настройку одного route, который направляет трафик получателю. Уведомления могут быть направлены большему количеству получателей посредством конфигурации дочерних routes в YAML.
     receiverFormNames:
-      create: Create Receiver in AlertmanagerConfig
-      edit: Edit Receiver in AlertmanagerConfig
-      editYaml: Edit AlertmanagerConfig
-      detail: Receiver in AlertmanagerConfig
-    disabledReceiverButton: The receiver form is available after the AlertmanagerConfig is created
-    error: An error occurred saving the AlertmanagerConfig
+      create: Создать получателя в AlertmanagerConfig
+      edit: Редактировать получателей в AlertmanagerConfig
+      editYaml: Редактировать AlertmanagerConfig
+      detail: Получатели в AlertmanagerConfig
+    disabledReceiverButton: Форма получателей станет доступна после создания AlertmanagerConfig
+    error: При сохранении AlertmanagerConfig произошла ошибка
     email:
-      username: Auth Username
-      password: Secret with Auth Password
+      username: Имя пользователя для авторизации
+      password: Secret с паролем для авторизации
     slack:
-      apiUrl: Secret with Slack Webhook URL
+      apiUrl: Secret со Slack Webhook URL
     pagerDuty:
-      routingKey: Secret with Routing Key
-      serviceKey: Secret with Service Key
+      routingKey: Secret с ключом роутинга
+      serviceKey: Secret c сервисным ключом
     opsgenie:
-      apiKey: Secret with API Key
+      apiKey: Secret с ключом API
     webhook:
       url: URL
       urlSecret: URL Secret
-      urlSecretTooltip: 'urlSecret takes precedence over url. One of urlSecret and url should be defined.'
+      urlSecretTooltip: 'urlSecret имеет приоритет над URL. Должно быть задано одно из значений urlSecret и URL.'
     auth:
-      bearerTokenSecret: Bearer Token Secret
-      basicAuthUsername: Secret with Basic Auth Username
-      basicAuthPassword: Secret with Basic Auth Password
+      bearerTokenSecret: Secret токена на предъявителя 
+      basicAuthUsername: Secret с именем пользователя базовой авторизации
+      basicAuthPassword: Secret с паролем базовой авторизации
   installSteps:
     uninstallV1:
-      stepTitle: Uninstall V1
-      stepSubtext: Uninstall Previous Monitoring
-      warning1: V1 Monitoring is currently deployed. This needs to be uninstalled before V2 monitoring can be installed.
-      warning2: <a target="blank" href="https://ranchermanager.docs.rancher.com/v2.6/how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring#migrating-from-monitoring-v1-to-monitoring-v2" target='_blank' rel='noopener nofollow'>Learn more</a> about the migration steps to V2 Monitoring.
-      promptDescription: <div class="mt-20 mb-20">You are attempting to uninstall V1 Monitoring. Please ensure you have read the migration steps.</div>
-      success1: V1 monitoring successfully uninstalled.
-      success2: Press Next to continue
+      stepTitle: Удалить V1
+      stepSubtext: Удалить предыдущий мониторинг
+      warning1: На настоящий момент развёрнут мониторинг V1. Его необходимо удалить перед установкой мониторинга V2. 
+      warning2: <a target="blank" href="https://ranchermanager.docs.rancher.com/v2.6/how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring#migrating-from-monitoring-v1-to-monitoring-v2" target='_blank' rel='noopener nofollow'>Узнать больше</a> о шагах миграции на мониторинг V2.
+      promptDescription: <div class="mt-20 mb-20">Вы пытаетесь удалить мониторинг V1. Пожалуйста, убедитесь, что Вы ознакомились с шагами миграции.</div>
+      success1: Мониторинг V1 успешно удален.
+      success2: Чтобы продолжить, нажмите Далее
   tabs:
-    alerting: Alerting
-    general: General
+    alerting: Оповещения
+    general: Общее
     grafana: Grafana
     prometheus: Prometheus
-    projectMetrics: Project Metrics
-  v1Warning: 'Monitoring is currently deployed from Cluster Manager. If you are migrating from an older version of {vendor} with monitoring enabled, please disable monitoring in Cluster Manager before attempting to install the new {vendor} Monitoring chart in Cluster Explorer.'
+    projectMetrics: Метрики проекта
+  v1Warning: 'На настоящий момент мониторинг развёрнут из Управления кластером. При миграции с более старой версии {vendor} со включенным мониторингом, пожалуйста, выключите мониторинг в Управлении кластером прежде, чем пытаться установить этот новый чарт мониторинга {vendor} в Обзоре кластера.'
 
 monitoringReceiver:
-  addButton: Add {type}
+  addButton: Добавить {тип}
   custom:
-    label: Custom
-    title: Custom Config
-    info: The YAML provided here will be directly appended to your receiver within the Alertmanager Config Secret.
+    label: Пользовательский
+    title: Настройки для пользовательского типа
+    info: Предоставленный здесь YAML будет добавлен непосредственно в Ваш получатель внутри Secret конфигурации Alertmanager.
   email:
     label: Email
-    title: Email Config
+    title: Настройки для Email
   opsgenie:
     label: Opsgenie
-    title: Opsgenie Config
+    title: Настройки для Opsgenie
   pagerduty:
     label: PagerDuty
-    title: PagerDuty Config
-    info: "You can find additional info on creating an Integration Key for PagerDuty <a href='https://www.pagerduty.com/docs/guides/prometheus-integration-guide/' target='_blank' rel='noopener nofollow' class='flex-right'>here</a>."
+    title: Настройки для PagerDuty
+    info: "Вы можете найти дополнительную информацию по созданию интеграционного ключа для PagerDuty <a href='https://www.pagerduty.com/docs/guides/prometheus-integration-guide/' target='_blank' rel='noopener nofollow' class='flex-right'>здесь</a>."
   slack:
     label: Slack
-    title: Slack Config
-    info: "You can find additional info on creating Incoming Webhooks for Slack <a href='https://rancher.slack.com/apps/A0F7XDUAZ-incoming-webhooks' target='_blank' rel='noopener noreferrer nofollow'>here</a> ."
+    title: Настройки для Slack
+    info: "Вы можете найти дополнительную информацию по созданию входящих Webhooks для Slack <a href='https://rancher.slack.com/apps/A0F7XDUAZ-incoming-webhooks' target='_blank' rel='noopener noreferrer nofollow'>здесь</a> ."
   webhook:
     label: Webhook
-    title: Webhook Config
-    urlTooltip: For some webhooks this a url that points to the service DNS
-    modifyNamespace: If <pre class="inline-block m-0 p-0 vertical-middle">rancher-alerting-drivers</pre> default values were changed, please update the url below in the format http://&lt;new_service_name&gt;.&lt;new_namespace&gt.svc.&lt;port&gt/&lt;path&gt
-    banner: To use MS Teams or SMS you will need to have at least one instance of <pre class="inline-block m-0 p-0 vertical-middle">rancher-alerting-drivers</pre> installed first.
+    title: Настройки для Webhook
+    urlTooltip: Для некоторых webhooks это URL, указывающий на DNS службу. 
+    modifyNamespace: Если были изменены значения по умолчанию <pre class="inline-block m-0 p-0 vertical-middle">rancher-alerting-drivers</pre>, обновите URL согласно следующему формату http://&lt;new_service_name&gt;.&lt;new_namespace&gt.svc.&lt;port&gt/&lt;path&gt
+    banner: Для использования MS Teams или SMS необходимо сначала установить как минимум один экземпляр <pre class="inline-block m-0 p-0 vertical-middle">rancher-alerting-drivers</pre>.
     add:
-      selectWebhookType: Select Webhook Type
-      generic: Generic
+      selectWebhookType: Выберите тип Webhook
+      generic: Общий
       msTeams: MS Teams
       alibabaCloudSms: SMS
   auth:
-    label: Auth
-    authType: Auth Type
-    username: Username
-    password: Password
+    label: Авторизация
+    authType: Тип авторизации
+    username: Имя пользователя
+    password: Пароль
     none:
-      label: None
+      label: Нет
     bearerToken:
-      label: Bearer Token
-      placeholder: e.g. secret-token
+      label: Токен на предъявителя
+      placeholder: например, secret-token
     basicAuth:
-      label: Basic Auth
+      label: Базовая авторизация
     bearerTokenFile:
-      label: Bearer Token File
-      placeholder: e.g. ./user_token
+      label: Файл токена на предъявителя
+      placeholder: например, ./user_token
   tls:
-    ca: Secret with CA
-    cert: Secret with Client Cert
-    key: Secret with Client Key
-    serverName: Server Name
-    serverNameTooltip: Used to verify the hostname for the targets.
+    ca: Secret с CA
+    cert: Secret с сертификатом клиента
+    key: Secret с ключом клиента
+    serverName: Имя сервера
+    serverNameTooltip: Используется для проверки имени хоста для целей.
   shared:
     proxyUrl:
-      label: Proxy URL
-      placeholder: e.g. http://my-proxy/
+      label: URL прокси
+      placeholder: например, http://my-proxy/
     sendResolved:
-      label: Enable send resolved alerts
+      label: Включить отправку разрешенных уведомлений
 
 alertmanagerConfigReceiver:
-  secretKeyId: Key Id from Secret
-  name: Receiver Name
-  addButton: Add Receiver
-  receivers: Receivers
-  namespaceWarning: Could not render the secret selector because no namespace was found to get secrets from.
-  receiverTypes: "The following receiver types can be edited in forms: Email, Slack, PagerDuty, Opsgenie and Webhook. For other receiver types, edit the AlertmanagerConfig YAML."
+  secretKeyId: Key Id из Secret
+  name: Имя получателя
+  addButton: Добавить получателя
+  receivers: Получатели
+  namespaceWarning: Невозможно отобразить селектор Secret, поскольку не найдено ни одного пространства имён для получения secrets.
+  receiverTypes: "Следующие типы получателей могут быть изменены на формах: Email, Slack, PagerDuty, Opsgenie и Webhook. Для других типов получателей требуется изменение AlertmanagerConfig YAML."
   slack:
-    webhookUrl: Webhook URL
-    apiUrlTooltip: The secret's key that contains the Slack webhook URL. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.
+    webhookUrl: URL для Webhook
+    apiUrlTooltip: Ключ Secret, который содержит URL для Slack webhook. Этот Secret должен быть в том же пространстве имён, что и объект AlertmanagerConfig и быть доступным для оператора Prometheus.
 monitoringRoute:
   groups:
-    label: Group By
-    addGroupByLabel: Labels to Group Alerts By
-    groupByTooltip: Add each label as a string in the format key:value. The special label ... will aggregate by all possible labels. If provided, the ... must be the only element in the list.
-  info: This is the top-level Route used by Alertmanager as the default destination for any Alerts that do not match any other Routes. This Route must exist and cannot be deleted.
+    label: Сгруппировать по
+    addGroupByLabel: Лэйблы для группировки уведомлений
+    groupByTooltip: Добавьте каждый лэйбл как строку в формате ключ:значение. Специальный лэйбл ... агрегирует все возможные лэйблы. В случае использования, лэйбл ... обязательно должен быть единственным элементом в списке.
+  info: Это Route верхнего уровня, используемый Alertmanager как адресат по умолчанию для любых уведомлений, которые не удовлетворяют ни одному другому Route. Этот Route обязательно должен существовать и не может быть удалён.
   interval:
-    label: Group Interval
+    label: Интервал группы
   matching:
-    info: The root route has to match everything so matching cannot be configured.
-    label: Match
-    addMatcher: Add Matcher
-    matchType: Match Type
-    name: Name
-    nameTooltip: Label to match
-    value: Value
-    valueTooltip: Label value to match
+    info: Корневой route удовлетворять всем условиям, поэтому сопоставление не может быть сконфигурировано.
+    label: Сопоставление
+    addMatcher: Добавить сопоставление
+    matchType: Тип сопоставления
+    name: Имя
+    nameTooltip: Лэйбл для сопоставления
+    value: Значение
+    valueTooltip: Значение лэйбла для сопоставления
   receiver:
-    type: Receiver Type
-    add: Add Receiver
-    label: Receiver
-    oneOrMoreLabel: One or More Receivers
-    addMatch: Add match
+    type: Тип получателя
+    add: Добавить получателя
+    label: Получатель
+    oneOrMoreLabel: Один или более получателей
+    addMatch: Добавить сопоставление
   regex:
-    label: Match Regex
+    label: Совпадение с Regex
   repeatInterval:
-    label: Repeat Interval
+    label: Интервал повтора
   wait:
-    label: Group Wait
+    label: Ожидание группы
 
 moveModal:
-  title: Move to a new project?
-  description: 'You are moving the following namespaces:'
-  moveButtonLabel: Move
-  targetProject: Target Project
+  title: Переместить в новый проект?
+  description: 'Вы перемещаете следующие пространства имён:'
+  moveButtonLabel: Переместить
+  targetProject: Целевой проект
 
 nameNsDescription:
   name:
-    label: Name
-    placeholder: 'A unique name'
+    label: Имя
+    placeholder: 'Уникальное имя'
   namespace:
-    label: Namespace
+    label: Пространство имён
     placeholder: ''
   workspace:
-    label: Workspace
+    label: Рабочее пространство
     placeholder:
   description:
-    label: Description
-    placeholder: Any text you want that better describes this resource
+    label: Описание
+    placeholder: Произвольный текст, который лучше описывает этот ресурс
 
 namespace:
-  containerResourceLimit: Container Resource Limit
-  resourceQuotas: Resource Quotas
+  containerResourceLimit: Лимит ресурсов контейнера
+  resourceQuotas: Квоты ресурсов
   project:
-    label: Project
-  resources: Resources
-  enableAutoInjection: Enable Istio Auto Injection
-  disableAutoInjection: Disable Istio Auto Injection
-  move: Move
-  total: Total
-  workloads: Workloads
-  label: Namespace
-  selectNamespace: Select Namespace
-  createNamespace: Create a New Namespace
-  selectOrCreate: Select or Create a Namespace
+    label: Проект
+  resources: Ресурсы
+  enableAutoInjection: Включить автоматические инъекции Istio
+  disableAutoInjection: Выключить автоматические инъекции Istio
+  move: Переместить
+  total: Итого
+  workloads: Нагрузки
+  label: Пространство имён
+  selectNamespace: Выбрать пространство имён
+  createNamespace: Создать новое пространство имён
+  selectOrCreate: Выбрать или создать пространство имён
   resourceStates:
-    success: 'Active'
+    success: 'Активно'
     info: 'Transitioning'
-    warning: 'Warning'
-    error: 'Error'
-    unknown: 'Unknown'
+    warning: 'Предупреждение'
+    error: 'Ошибка'
+    unknown: 'Неизвестно'
     paused:
-      stateName: 'Inactive'
-      shortDescription: Deployment is paused
-      longDescription: Deployment is paused. Pausing stops the controller from deploying revisions.
+      stateName: 'Неактивно'
+      shortDescription: Развертывание приостановлено
+      longDescription: Развертывание приостановлено. Приостановка прекращает развертывание ревизий контроллером.
 
 namespaceFilter:
-  noMatchingOptions: No matching options
+  noMatchingOptions: Нет подходящих вариантов
   more: "+{more}"
   selected:
     label: |-
       {total, plural,
-      one {1 item selected}
-      other {{total} items selected}
+      one {1 элемент выбран}
+      other {{total} элемента/элементов выбрано}
       }
 
 namespaceList:
-  selectLabel: Namespace
-  addLabel: Add Namespace
+  selectLabel: Пространство имён
+  addLabel: Добавить пространство имён
 
 navLink:
   name:
-    label: Name
-    placeholder: 'e.g. foo-bar'
+    label: Имя
+    placeholder: 'например, foo-bar'
   label:
-    label: Display name
-    placeholder: 'Text displayed for the link'
+    label: Имя для отображения
+    placeholder: 'Текст, отображаемый для ссылки'
   tabs:
     link:
-      label: Link type
+      label: Тип ссылки
       type:
-        label: Link type
-        service: Link to service
-        url: Link to URL
+        label: Тип ссылки
+        service: Ссылка на сервис
+        url: Ссылка на URL
       toURL:
-        label: Destination URL
-        placeholder: 'e.g. https://rancher.com'
+        label: Целевой URL
+        placeholder: 'например, https://rancher.com'
       toService:
         service:
-          label: Service (namespace/name)
-          placeholder: 'e.g. cattle-system/rancher-webhook'
+          label: Сервис (namespace/name)
+          placeholder: 'например, cattle-system/rancher-webhook'
         path:
-          label: Path
-          placeholder: 'e.g. proxy/?orgId=1'
+          label: Путь
+          placeholder: 'например, proxy/?orgId=1'
         port:
-          label: Port
-          placeholder: 'e.g. 80'
+          label: Порт
+          placeholder: 'например, 80'
         scheme:
-          label: Scheme
-          placeholder: 'e.g. http'
+          label: Схема
+          placeholder: 'например, http'
     target:
-      label: Window target
+      label: Целевое окно
       option:
-        blank: New window
-        self: Replace window
-        named: Custom named window
+        blank: Новое окно
+        self: Замена окна
+        named: Окно с заданным именем
       namedValue:
-        label: Window name
+        label: Имя окна
     group:
-      label: Group
+      label: Группа
       group:
-        label: Group name
-        tooltip: Assign link to a group
+        label: Название группы
+        tooltip: Присвоить ссылку группе
       sideLabel:
-        label: Link Label
+        label: Лэйбл ссылки
       description:
-        label: Link description
+        label: Описание ссылки
       iconSrc:
-        label: Add image
+        label: Добавить изображение
 networkpolicy:
   egress:
-    label: Egress Rules
-    enable: Configure egress rules to restrict outgoing traffic
-    ruleLabel: Targets
-    ruleHint: Outgoing traffic is only allowed to the configured targets
-    portHint: Outgoing traffic is only allowed to connect to the configured ports
+    label: Правила выхода
+    enable: Настройте правила выхода, чтобы ограничить исходящий трафик
+    ruleLabel: Цели
+    ruleHint: Исходящий трафик разрешен только на настроенные цели
+    portHint: Исходящему трафику разрешено подключаться только к настроенным портам
   ingress:
-    label: Ingress Rules
-    enable: Configure ingress rules to restrict incoming traffic
-    ruleLabel: Sources
-    ruleHint: Incoming traffic is only allowed from the configured sources
-    portHint: Incoming traffic is only allowed to connect to the configured ports
+    label: Правила входа
+    enable: Настройте правила входа, чтобы ограничить входящий трафик
+    ruleLabel: Источники
+    ruleHint: Входящий трафик разрешен только от настроенных источников
+    portHint: Входящему трафику разрешено подключаться только к настроенным портам
   labelsAnnotations:
-    label: Labels & Annotations
+    label: Лэйблы & примечания
   rules:
-    ruleLabel: Rule {index}
-    addPort: Add allowed port
-    type: Rule type
+    ruleLabel: Правило {index}
+    addPort: Добавить разрешенный порт
+    type: Тип правила
     ingress:
-      add: Add allowed traffic source
+      add: Добавить разрешенный источник трафика
     egress:
-      add: Add allowed traffic target
+      add: Добавить разрешенную цель трафика
     ports:
-      label: Allowed ports
+      label: Разрешенные порты
       port:
-        label: Port
-        placeholder: e.g. 8080
-      protocol: Protocol
+        label: Порт
+        placeholder: например, 8080
+      protocol: Протокол
     ipBlock:
       label: IP block
-      exceptions: Exceptions
+      exceptions: Исключения
       cidr:
         label: CIDR
-        placeholder: e.g. 1.1.1.0/24
-      addExcept: Add exception
-      invalidCidr: "Invalid CIDR"
-      invalidExceptionCidrs: "Invalid Exceptions: "
+        placeholder: например, 1.1.1.0/24
+      addExcept: Добавить исключение
+      invalidCidr: "Некорректный CIDR"
+      invalidExceptionCidrs: "Некорректные исключения: "
     podSelector:
-      label: Pod Selector
+      label: Селектор подов
     namespaceSelector:
-      label: Namespace Selector
+      label: Селектор пространств имён
   config:
-    label: Configuration
+    label: Конфигурация
   selectors:
-    label: Selectors
-    hint: The NetworkPolicy is applied to the selected Pods
+    label: Селекторы
+    hint: NetworkPolicy применяется к выбранным подам.
     matchingPods:
       matchesSome: |-
         {matched, plural,
-          =0 {Matches 0 of {total, number} pods}
-          =1 {Matches 1 of {total, number} pods: "{sample}"}
-          other {Matches {matched, number} of {total, number} existing pods, including "{sample}"}
+          =0 {Совпадает с 0 из {total, number} пода/подов}
+          =1 {Совпадает с 1 из {total, number} пода/подов: "{sample}"}
+          other {Совпадает с {matched, number} из {total, number} существующих подов, включая "{sample}"}
         }
     matchingNamespaces:
       matchesSome: |-
         {matched, plural,
-          =0 {Matches 0 of {total, number} namespaces}
-          =1 {Matches 1 of {total, number} namespaces: "{sample}"}
-          other {Matches {matched, number} of {total, number} existing namespaces, including "{sample}"}
+          =0 {Совпадает с 0 из {total, number} пространств(а) имён}
+          =1 {Совпадает с 1 из {total, number} пространств(а) имён: "{sample}"}
+          other {Совпадает с {matched, number} из {total, number} существующих пространств имён, включая "{sample}"}
         }
 node:
   list:
-    pool: Pool
-    noNodes: This pool is empty
+    pool: Пул
+    noNodes: Данный пул пуст
     nodeTaint: Taints
-    scaleDown: Scale Pool Down
-    scaleUp: Scale Pool Up
+    scaleDown: Уменьшение пула
+    scaleUp: Увеличение пула
     poolDescription:
-      noSize: No Size
-      noLocation: No Location
+      noSize: Нет размера
+      noLocation: Нет месторасположения
   detail:
     detailTop:
-      containerRuntime: Container Runtime
-      internalIP: Internal IP
-      externalIP: External IP
-      os: OS
-      version: Version
+      containerRuntime: Runtime контейнера
+      internalIP: Внутренний IP
+      externalIP: Внешний IP
+      os: ОС
+      version: Версия
     glance:
       consumptionGauge:
-        used: Used
-        amount: "{used} of {total} {unit}"
+        used: Использовано
+        amount: "{used} из {total} {unit}"
         cpu: CPU
-        memory: MEMORY
-        pods: PODS
-      diskPressure: Disk Pressure
+        memory: ПАМЯТЬ
+        pods: ПОДЫ
+      diskPressure: Нехватка диска
       kubelet: kubelet
-      memoryPressure: Memory Pressure
-      pidPressure: PID Pressure
+      memoryPressure: Нехватка памяти
+      pidPressure: Нехватка PID
     tab:
-      conditions: Conditions
-      images: Images
-      metrics: Metrics
+      conditions: Условия
+      images: Образы
+      metrics: Метрики
       info:
-        label: Info
+        label: Информация
         key:
-          architecture: Architecture
+          architecture: Архитектура
           bootID: Boot ID
-          containerRuntimeVersion: Container Runtime Version
-          kernelVersion: Kernel Version
-          kubeProxyVersion: Kube Proxy Version
-          kubeletVersion: Kubelet Version
-          machineID: Machine ID
-          operatingSystem: Operating System
-          osImage: Image
-          systemUUID: System UUID
-      pods: Pods
+          containerRuntimeVersion: Версия Runtime контейнера
+          kernelVersion: Версия Kernel
+          kubeProxyVersion: Версия Kube Proxy
+          kubeletVersion: Версия Kubelet
+          machineID: ID машины
+          operatingSystem: Операционная система
+          osImage: Образ
+          systemUUID: Системный UUID
+      pods: Поды
       taints: Taints
   actions:
-    downloadSSHKey: Download SSH Key
-    downloadNodeConfig: Download Keys
-    scaleDown: Scale Down
-    forceDelete: Force Delete
+    downloadSSHKey: Скачать ключ SSH
+    downloadNodeConfig: Скачать ключи
+    scaleDown: Уменьшить
+    forceDelete: Принудительное удаление
 
 persistentVolume:
   pluginConfiguration:
-    label: Plugin configuration
+    label: Конфигурация плагина
   plugin:
-    label: Volume Plugin
-    inTree: in-tree plugin
-    unsupported: (Unsupported)
+    label: Плагин тома
+    inTree: in-tree плагин
+    unsupported: (не поддерживается)
   capacity:
-    label: Capacity
+    label: Ёмкость
   customize:
-    label: Customize
+    label: Настроить
     affinity:
-      label: Node Selectors
-      addLabel: Add Node Selector
+      label: Селекторы нод
+      addLabel: Добавить селектор нод
     assignToStorageClass:
-      label: Assign to Storage Class
+      label: Назначить на класс хранилища
     mountOptions:
-      label: Mount Options
-      addLabel: Add Option
+      label: Опции установки
+      addLabel: Добавить опцию
     accessModes:
-      label: Access Modes
-      readWriteOnce: Single Node Read-Write
-      readOnlyMany: Many Nodes Read-Only
-      readWriteMany: Many Nodes Read-Write
+      label: Режимы доступа
+      readWriteOnce: Чтение-запись одной ноды
+      readOnlyMany: Только чтение множества нод
+      readWriteMany: Чтение-запись множества нод
   shared:
     partition:
       label: Partition
-      placeholder: e.g. 1; 0 for entire device
+      placeholder: например, 1; 0 для всего устройства
     readOnly:
-      label: Read Only
+      label: Только для чтения
     filesystemType:
-      label: Filesystem Type
-      placeholder: e.g. ext4
+      label: Тип файловой системы
+      placeholder: например, ext4
     secretName:
-      label: Secret Name
-      placeholder: e.g. secret
+      label: Имя Secret
+      placeholder: например, secret
     secretNamespace:
-      label: Secret Namespace
-      placeholder: e.g. default
+      label: Пространство имён Secret
+      placeholder: например, default
     monitors:
-      add: Add Monitor
+      add: Добавить монитор
   vsphereVolume:
-    label: VMWare vSphere Volume
+    label: Том VMWare vSphere
     volumePath:
-      label: Volume Path
-      placeholder: e.g. /
+      label: Путь до тома
+      placeholder: например, /
     storagePolicyName:
-      label: Storage Policy Name
-      placeholder: e.g. sp
+      label: Имя политики хранилища
+      placeholder: например, sp
     storagePolicyId:
-      label: Storage Policy ID
-      placeholder: e.g. sp1
+      label: ID политики хранилища
+      placeholder: например, sp1
   csi:
-    label: CSI (Unsupported)
+    label: CSI (не поддерживается)
     suffix: (CSI)
     driver:
-      label: Driver
-      placeholder: e.g. driver.longhorn.io
+      label: Драйвер
+      placeholder: например, driver.longhorn.io
     volumeHandle:
       label: Volume Handle
-      placeholder: e.g. pvc-xxxx
+      placeholder: например, pvc-xxxx
     volumeAttributes:
-      add: Add Volume Attribute
+      add: Добавить атрибут тома
     nodePublishSecretName:
-      label: Node Publish Secret Name
-      placeholder: e.g. secret
+      label: Имя Node Publish Secret
+      placeholder: например, secret
     nodePublishSecretNamespace:
-      label: Node Publish Secret Namespace
-      placeholder: e.g. default
+      label: Пространство имён Node Publish Secret
+      placeholder: например, default
     nodeStageSecretName:
-      label: Node Stage Secret Name
-      placeholder: e.g. secret
+      label: Имя Node Stage Secret
+      placeholder: например, secret
     nodeStageSecretNamespace:
-      label: Node Stage Secret Namespace
-      placeholder: e.g. default
+      label: Пространство имён Node Stage Secret
+      placeholder: например, default
     controllerExpandSecretName:
-      label: Controller Expand Secret Name
-      placeholder: e.g. secret
+      label: Имя Controller Expand Secret
+      placeholder: например, secret
     controllerExpandSecretNamespace:
-      label: Controller Expand Secret Namespace
-      placeholder: e.g. default
+      label: Пространство имён Controller Expand Secret
+      placeholder: например, default
     controllerPublishSecretName:
-      label: Controller Publish Secret Name
-      placeholder: e.g. secret
+      label: Имя Controller Publish Secret
+      placeholder: например, secret
     controllerPublishSecretNamespace:
-      label: Controller Publish Secret Namespace
-      placeholder: e.g. default
+      label: Пространство имён Controller Publish Secret
+      placeholder: например, default
     drivers:
-      disk-csi-azure-com: Azure Disk (CSI)
-      file-csi-azure-com: Azure File (CSI)
+      disk-csi-azure-com: Azure диск (CSI)
+      file-csi-azure-com: Azure файл (CSI)
       driver-longhorn-io: Longhorn (CSI)
       driver-harvesterhci-io: Harvester (CSI)
       nfs-csi-k8s-io: NFS (CSI)
       ebs-csi-aws-com: AWS Elastic Block Store (CSI)
       rbd-csi-ceph-com: Ceph RBD (CSI)
       org-gluster-glusterfs: GlusterFS (CSI)
-      pd-csi-storage-gke-io: GCE Persistent Disk (CSI)
+      pd-csi-storage-gke-io: Постоянный диск GCE (CSI)
       cinder-csi-openstack-org: Cinder (CSI)
       pxd-portworx-com: Portworx (CSI)
       quobyte-csi: Quobyte (CSI)
       storageos: StorageOS (CSI)
       csi-vsphere-vmware-com: vSphere (CSI)
   cephfs:
-    label: Ceph Filesystem (Unsupported)
+    label: Файловая система Ceph (не поддерживается)
     path:
-      label: Path
-      placeholder: e.g. /var
+      label: Путь
+      placeholder: например, /var
     user:
-      label: User
-      placeholder: e.g. root
+      label: Пользователь
+      placeholder: например, root
     secretFile:
-      label: Secret File
-      placeholder: e.g. secret
+      label: Файл Secret
+      placeholder: например, secret
   rbd:
-    label: Ceph RBD (Unsupported)
+    label: Ceph RBD (не поддерживается)
     user:
-      label: User
-      placeholder: e.g. root
+      label: Пользователь
+      placeholder: например, root
     keyRing:
-      label: Key Ring
-      placeholder: e.g. /etc/ceph/keyring
+      label: Связка ключей
+      placeholder: например, /etc/ceph/keyring
     pool:
-      label: Pool
-      placeholder: e.g. rbd
+      label: Пул
+      placeholder: например, rbd
     image:
-      label: Image
-      placeholder: e.g. image
+      label: Образ
+      placeholder: например, image
   fc:
-    label: Fibre Channel (Unsupported)
+    label: Fibre Channel (не поддерживается)
     targetWWNS:
-      add: Add Target WWN
+      add: Добавить целевой WWN
     wwids:
-      add: Add WWID
+      add: Добавить WWID
     lun:
       label: Lun
-      placeholder: e.g. 2
+      placeholder: например, 2
   flexVolume:
-    label: Flex Volume (Unsupported)
+    label: Том Flex (не поддерживается)
     driver:
-      label: Driver
-      placeholder: e.g. driver
+      label: Драйвер
+      placeholder: например, driver
     options:
-      add: Add Option
+      add: Добавить опцию
   flocker:
-    label: Flocker (Unsupported)
+    label: Flocker (не поддерживается)
     datasetName:
-      label: Dataset Name
-      placeholder: e.g. dataset
+      label: Имя набора данных
+      placeholder: например, dataset
     datasetUUID:
-      label: Dataset UUID
-      placeholder: e.g. uuid
+      label: UUID набора данных
+      placeholder: например, uuid
   glusterfs:
-    label: Gluster Volume (Unsupported)
+    label: Том Gluster (не поддерживается)
     endpoints:
       label: Endpoints
-      placeholder: e.g. glusterfs-cluster
+      placeholder: например, glusterfs-cluster
     path:
-      label: Path
-      placeholder: e.g. kube-vol
+      label: Путь
+      placeholder: например, kube-vol
   iscsi:
-    label: iSCSI Target (Unsupported)
+    label: iSCSI Target (не поддерживается)
     initiatorName:
-      label: Initiator Name
+      label: Имя Initiator
       placeholder: iqn.1994-05.com.redhat:1df7a24fcb92
     iscsiInterface:
-      label: iSCSI Interface
-      placeholder: e.g. interface
+      label: Интерфейс iSCSI
+      placeholder: например, interface
     chapAuthDiscovery:
-      label: Chap Auth Discovery
+      label: Обнаружение авторизации Chap
     chapAuthSession:
-      label: Chap Auth Session
+      label: Сессия авторизации Chap
     iqn:
       label: IQN
       placeholder: iqn.2001-04.com.example:storage.kube.sys1.xyz
     lun:
       label: Lun
-      placeholder: e.g. 2
+      placeholder: например, 2
     targetPortal:
-      label: Target Portal
-      placeholder: e.g. portal
+      label: Целевой портал
+      placeholder: например, portal
     portals:
-      add: Add Portal
+      add: Добавить портал
   cinder:
-    label: Openstack Cinder Volume (Unsupported)
+    label: Том Openstack Cinder (не поддерживается)
     volumeId:
-      label: Volume ID
-      placeholder: e.g. vol
+      label: ID тома
+      placeholder: например, vol
   quobyte:
-    label: Quobyte Volume (Unsupported)
+    label: Том Quobyte (не поддерживается)
     volume:
-      label: Volume
-      placeholder: e.g. vol
+      label: Том
+      placeholder: например, vol
     user:
-      label: User
-      placeholder: e.g. root
+      label: Пользователь
+      placeholder: например, root
     group:
-      label: Group
-      placeholder: e.g. abc
+      label: Группа
+      placeholder: например, abc
     registry:
-      label: Registry
-      placeholder: e.g. abc
+      label: Регистри
+      placeholder: например, abc
   photonPersistentDisk:
-    label: Photon Volume (Unsupported)
+    label: Том Photon (не поддерживается)
     pdId:
       label: PD ID
-      placeholder: e.g. abc
+      placeholder: например, abc
   portworxVolume:
-    label: Portworx Volume (Unsupported)
+    label: Том Portworx (не поддерживается)
     volumeId:
-      label: Volume ID
-      placeholder: e.g. abc
+      label: ID тома
+      placeholder: например, abc
   scaleIO:
-    label: ScaleIO Volume (Unsupported)
+    label: Том ScaleIO (не поддерживается)
     volumeName:
-      label: Volume Name
-      placeholder: e.g. vol-0
+      label: Имя тома
+      placeholder: например, vol-0
     gateway:
-      label: Gateway
-      placeholder: e.g. https://localhost:443/api
+      label: Шлюз
+      placeholder: например, https://localhost:443/api
     protectionDomain:
-      label: Protection Domain
-      placeholder: e.g. pd01
+      label: Домен защиты
+      placeholder: например, pd01
     storageMode:
-      label: Storage Mode
-      placeholder: e.g. ThinProvisioned
+      label: Режим хранилища
+      placeholder: например, ThinProvisioned
     storagePool:
-      label: Storage Pool
-      placeholder: e.g. sp01
+      label: Пул хранилища
+      placeholder: например, sp01
     system:
-      label: System
-      placeholder: e.g. scaleio
+      label: Система
+      placeholder: например, scaleio
     sslEnabled:
-      label: SSL Enabled
+      label: SSL включено
   storageos:
-    label: StorageOS (Unsupported)
+    label: StorageOS (не поддерживается)
     volumeName:
-      label: Volume Name
-      placeholder: e.g. vol
+      label: Имя тома
+      placeholder: например, vol
     volumeNamespace:
-      label: Volume Namespace
-      placeholder: e.g. default
+      label: Пространство имён тома
+      placeholder: например, default
   nfs:
-    label: NFS Share
+    label: Общая папка NFS
     path:
-      label: Path
-      placeholder: e.g. /var
+      label: Путь
+      placeholder: например, /var
     server:
-      label: Server
-      placeholder: e.g. 10.244.1.4
+      label: Сервер
+      placeholder: например, 10.244.1.4
   longhorn:
     label: Longhorn
     volumeHandle:
       label: Volume Handle
-      placeholder: e.g. pvc-xxxx
+      placeholder: например, pvc-xxxx
     options:
-      label: Options
-      addLabel: Add
+      label: Опции
+      addLabel: Добавить
   local:
-    label: Local
+    label: Локальный
     path:
-      label: Path
-      placeholder: e.g. /mnt/disks/ssd1
+      label: Путь
+      placeholder: например, /mnt/disks/ssd1
   hostPath:
     label: HostPath
     pathOnTheNode:
-      label: Path on the Node
+      label: Путь на ноде
       placeholder: /mnt/disks/ssd1
     mustBe:
-      label: The Path on the Node must be
-      anything: 'Anything: do not check the target path'
-      directory: A directory, or create if it does not exist
-      file: A file, or create if it does not exist
-      existingDirectory: An existing directory
-      existingFile: An existing file
-      existingSocket: An existing socket
-      existingCharacter: An existing character device
-      existingBlock: An existing block device
+      label: Путь на ноде должен быть
+      anything: 'Произвольный: не проверять целевой путь'
+      directory: 'Директория: создать, если не существует'
+      file: 'Файл: создать, если не существует'
+      existingDirectory: Существующая директория
+      existingFile: Существующий файл
+      existingSocket: Существующий сокет
+      existingCharacter: Существующее character-устройство
+      existingBlock: Существующее block-устройство
   gcePersistentDisk:
-    label: Google Persistent Disk
+    label: Постоянный диск Google
     persistentDiskName:
-      label: Persistent Disk Name
-      placeholder: e.g. abc
+      label: Имя постоянного диска
+      placeholder: например, abc
   awsElasticBlockStore:
-    label: Amazon EBS Disk
+    label: Amazon EBS диск
     volumeId:
-      label: Volume ID
-      placeholder: e.g. volume1
+      label: ID тома
+      placeholder: например, volume1
   azureFile:
-    label: Azure Filesystem
+    label: Файловая система Azure
     shareName:
-      label: Share Name
-      placeholder: e.g. abc
+      label: Имя общей папки
+      placeholder: например, abc
   azureDisk:
-    label: Azure Disk
+    label: Azure диск
     diskName:
-      label: Disk Name
-      placeholder: e.g. kubernetes-pvc
+      label: Имя диска
+      placeholder: например, kubernetes-pvc
     diskURI:
-      label: Disk URI
-      placeholder: e.g. https://example.com/disk
+      label: URI диска
+      placeholder: например, https://example.com/disk
     kind:
-      label: Kind
-      dedicated: Dedicated
-      managed: Managed
-      shared: Shared
+      label: Вид
+      dedicated: Выделенный
+      managed: Управляемый
+      shared: Общий
     cachingMode:
-      label: Caching Mode
-      none: None
-      readOnly: Read Only
-      readWrite: Read Write
+      label: Режим кэширования
+      none: Нет
+      readOnly: Только для чтения
+      readWrite: Чтение и запись
     filesystemType:
-      label: Filesystem Type
-      placeholder: e.g. ext4
+      label: Тип файловой системы
+      placeholder: например, ext4
     readOnly:
-      label: Read Only
+      label: Только для чтения
 
 persistentVolumeClaim:
-  name: Persistent Volume Claim Name
-  accessModes: Access Modes
+  name: Имя утверждения постоянного тома
+  accessModes: Режимы доступа
   accessModesOptions:
-    singleNodeRW: Single-Node Read/Write
-    manyNodeR: Many-Node Read-Only
-    manyNodeRW: Many-Node Read/Write
-  capacity: Capacity
-  storageClass: Storage Class
-  useDefault: Use the default class
-  volumes: Persistent Volumes
-  volumeName: Persistent Volume Name
+    singleNodeRW: Чтение-запись одной ноды
+    manyNodeR: Только чтение множества нод
+    manyNodeRW: Чтение-запись множества нод
+  capacity: Ёмкость
+  storageClass: Класс хранилища
+  useDefault: Использовать класс по умолчанию
+  volumes: Постоянные тома
+  volumeName: Имя постоянного тома
   source:
-    label: Source
+    label: Источник
     options:
-      new: Use a Storage Class to provision a new Persistent Volume
-      existing: Use an existing Persistent Volume
+      new: Использовать класс хранилища для provision нового постоянного тома
+      existing: Использовать существующий постоянный том
   expand:
-    label: Expand
-    notSupported: Storage class does not support volume expansion
-    notBound: Only bound PVCs can be expanded
+    label: Расширить
+    notSupported: Класс хранилища не поддерживает расширение тома
+    notBound: Только связанные PVC могут быть расширены
   volumeClaim:
-    label: Volume Claim
-    storageClass: Storage Class
+    label: Утверждение тома
+    storageClass: Класс хранилища
     requestStorage: Request Storage
-    persistentVolume: Persistent Volume
+    persistentVolume: Постоянный том
     tooltips:
-      noStorageClass: You don't have permission to list Storage Classes, enter a name manually
-      noPersistentVolume: You don't have permission to list Persistent Volumes, enter a name manually
+      noStorageClass: Недостаточно прав для отображения списка классов хранилища, введите имя вручную.
+      noPersistentVolume: Недостаточно прав для отображения списка постоянных томов, введите имя вручную.
   customize:
-    label: Customize
+    label: Настроить
     accessModes:
-      readWriteOnce: Single Node Read-Write
-      readOnlyMany: Many Nodes Read-Only
-      readWriteMany: Many Nodes Read-Write
+      readWriteOnce: Чтение-запись одной ноды
+      readOnlyMany: Только чтение множества нод
+      readWriteMany: Чтение-запись множества нод
   status:
-    label: Status
+    label: Статус
 
 podDisruptionBudget:
   budget:
-    label: Budget
+    label: Бюджет
   minAvailable:
-    label: Min. available Pods
+    label: Мин. доступных подов
   maxUnavailable:
-    label: Max. unavailable Pods
+    label: Макс. доступных подов
 
 
 # Rancher Extensions
 plugins:
   labels:
-    builtin: Built-in
-    experimental: Experimental
-    third-party: Third-Party
-    installing: Installing ...
-    uninstalling: Uninstalling ...
+    builtin: Встроенное
+    experimental: Экспериментальное
+    third-party: Стороннее
+    installing: Установка...
+    uninstalling: Удаление...
   descriptions:
-    experimental: This Extension is marked as experimental
-    third-party: This Extension is provided by a Third-Party
-    built-in: This Extension is built-in
+    experimental: Это расширение помечено как экспериментальное
+    third-party: Это расширение предоставлено сторонним разработчиком
+    built-in: Это встроенное расширение
   error:
-    title: Error loading extension
-    message: Could not load extension code
-    generic: Extension error
-    api: This Extension is not compatible with the Extensions API
-    host: This Extension is not compatible with this application
-    version: This Extension is not compatible with this version of Rancher
-    load: An error occurred loading the code for this Extension
+    title: Ошибка при загрузке расширения
+    message: Не удалось загрузить код расширения
+    generic: Ошибка расширения
+    api: Это расширение несовместимо с API для расширений
+    host: Это расширение несовместимо с данным приложением
+    version: Это расширение несовместимо с данной версией Rancher
+    load: При загрузке кода для этого расширения произошла ошибка
   success:
-    title: Loaded extension {name}
-    message: Extension was loaded successfully
+    title: Загруженное расширение {name}
+    message: Расширение успешно загружено
   developer:
-    label: Developer Load
-    title: Developer Load Extension
-    prompt: Load an extension from a URL
+    label: Загрузить как разработчик
+    title: Расширения, загруженные разработчиком
+    prompt: Загрузить расширение по URL
     fields:
-      url: Extension URL
-      name: Extension module name
-      persist: Persist extension by creating custom resource
+      url: URL расширения
+      name: Имя модуля расширения
+      persist: Сохранить расширение путём создания собственного ресурса
   info:
-    detail: Detail
-    versions: Versions
-    versionError: Could not load version information
+    detail: Детали
+    versions: Версии
+    versionError: Не удалось загрузить информацию о версии
   empty:
-    all: Extensions are neither installed nor available
-    available: No Extensions available
-    installed: No Extensions installed
-    updates: No updates available for installed Extensions
-  loadError: An error occurred loading the code for this extension
-  helmError: "An error occurred installing the extension via Helm"
-  manageRepos: Manage Repositories
+    all: Нет ни установленных, ни доступных расширений
+    available: Нет доступных расширений
+    installed: Нет установленных расширений
+    updates: Нет доступных обновлений для установленных расширений
+  loadError: Произошла ошибка при загрузке кода для этого расширения
+  helmError: "Произошла ошибка при установке расширения с помощью Helm"
+  manageRepos: Управление репозиториями
   tabs:
-    all: All
-    available: Available
-    installed: Installed
-    updates: Updates
-  title: Extensions
-  version: "Version: {version}"
+    all: Все
+    available: Доступные
+    installed: Установленные
+    updates: Обновления
+  title: Расширения
+  version: "Версия: {version}"
   install:
-    label: Install
-    title: Install Extension {name}
-    prompt: "Are you sure that you want to install this Extension?"
-    version: Version
-    warnNotCertified: Please ensure that you are aware of the risks of installing Extensions from untrusted authors
+    label: Установить
+    title: "Установить расширение: {name}"
+    prompt: "Вы уверены, что хотите установить данное расширение?"
+    version: Версия
+    warnNotCertified: Пожалуйста, убедитесь, что вы осознаете риски установки расширений от ненадежных авторов.
   update:
-    label: Update
-    title: Update Extension {name}
-    prompt: "Are you sure that you want to update this Extension?"
+    label: Обновить
+    title: "Обновить расширение: {name}"
+    prompt: "Вы уверены, что хотите обновить данное расширение?"
   rollback:
-    label: Rollback
-    title: Rollback Extension {name}
-    prompt: "Are you sure that you want to rollback this Extension?"
+    label: Откатить
+    title: "Откатить расширение: {name}"
+    prompt: "Вы уверены, что хотите откатить данное расширение?"
   uninstall:
-    label: Uninstall
-    title: "Uninstall Extension: {name}"
-    prompt: "Are you sure that you want to uninstall this Extension?"
-  upgradeAvailable: A newer version of this Extension is available
-  reload: Extensions changed - reload required
+    label: Удалить
+    title: "Удалить расширение: {name}"
+    prompt: "Вы уверены, что хотите удалить данное расширение?"
+  upgradeAvailable: Доступна более новая версия этого расширения
+  reload: Расширения изменены - требуется перезагрузка
   safeMode:
-    title: Extensions Safe Mode
-    message: Extensions were not loaded
+    title: Безопасный режим расширений
+    message: Расширения не были загружены
   setup:
-    title: Extension support is not enabled
+    title: Поддержка расширений не включена
     prompt:
-      cant: Automatic installation is not available - required Helm Charts could not be found
-      can: You need to install the Extension Operator
+      cant: Автоматическая установка недоступна - не найдено необходимых чартов Helm
+      can: Требуется установить оператор расширений
     install:
-      title: Enable Extension Support?
-      prompt: This will install the Helm charts to enable Extension support
-      airgap: The Rancher Extensions Repository provides extensions published by Rancher. Un-check if your Rancher installation is air-gapped
-      addRancherRepo: Add the Rancher Extension Repository
+      title: Включить поддержку расширений?
+      prompt: Для включения поддержки расширений будут установлены чарты Helm
+      airgap: Репозиторий расширений Rancher предоставляет расширения, опубликованные Rancher. Отключите галку, если установка Rancher сделана по принципу air-gapped
+      addRancherRepo: Добавить репозиторий расширений Rancher
     remove:
-      label: Disable Extension Support
-      title: Disable Extension Support?
-      prompt: This will un-install the Helm charts that enable Extension support
+      label: Отключить поддержку расширений
+      title: Отключить поддержку расширений?
+      prompt: Чарты Helm, активирующие поддержку расширений, будут удалены
       registry:
-        title: Remove the Rancher Extensions Repository
-        prompt: The Rancher Extensions Repository provides extensions published by Rancher
+        title: Удалить репозиторий расширений Rancher
+        prompt: Репозиторий расширений Rancher предоставляет расширения, опубликованные Rancher
       crd:
-        title: Remove the Rancher Extensions Custom Resource Definition
-        prompt: There are one or more extensions installed - removing the CRD will require you to manually reinstall these extensions if you subsequently re-enable extensions support.
+        title: Удалить определение пользовательского ресурса расширений Rancher
+        prompt: Установлено одно или более расширений - удаление CRD потребует переустановки этих расширений вручную, если поддержка расширений будет повторно включена впоследствии.
 podSecurityAdmission:
-  label: Pod Security Admission
-  description: Define the admission control mode you want to use for the pod security
+  label: Admission безопасности подов
+  description: Определить режим контроля admission для использования в безопасности подов
   banner:
     modifications: 'Примечание: Изменение шаблона конфигурации Pod Security Admission не повлияет ни на один нижележащий кластер, который ссылается на него, пока не произойдет обновление кластера.'
   labels:
@@ -3962,154 +3962,154 @@ podSecurityAdmission:
     baseline: базовый уровень
     restricted: с ограничениями
   version:
-    placeholder: 'Version (default: latest)'
+    placeholder: 'Версия (по умолчанию: последняя)'
   exemptions:
-    title: Exemptions
-    description: Allow the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be prohibited due to the policies set above.
-    placeholder: Enter a comma separated list of {psaExemptionsControl}
+    title: Привелегии
+    description: Разрешить создание подов для определенных имён пользователей, RuntimeClassNames и пространств имён; в противном случае это запрещено заданными выше политиками.
+    placeholder: Введите разделенный запятыми список {psaExemptionsControl}
 prefs:
-  title: Preferences
+  title: Настройки
   theme:
-    label: Theme
-    light: Light
-    auto: Auto
-    dark: Dark
-    autoDetail: Auto uses OS preference if available, or dark from {pm} to {am}
-  language: Language
+    label: Тема
+    light: Светлая
+    auto: Автоматически
+    dark: Тёмная
+    autoDetail: Автоматический режим использует настройки ОС, если доступно, или тёмную тему с {pm} до {am}
+  language: Язык
   landing:
-    label: Login Landing Page
-    vue: Cluster Explorer
-    ember: Cluster Manager
+    label: Войти на главную страницу
+    vue: Обзор кластера
+    ember: Управление кластером
   displaySettings:
-    title: Display Settings
-    detail: Change the way information is displayed in the UI.
+    title: Параметры отображения
+    detail: Измените, каким образом информация отображается в UI.
   clusterToShow:
-    label: Number of clusters to show in side menu
+    label: Количество кластеров, отображенных в боковом меню
     value: |-
       {count, number}
   dateFormat:
-    label: Date Format
+    label: Формат даты
   timeFormat:
-    label: Time Format
+    label: Формат времени
   perPage:
-    label: Table Rows per Page
+    label: Количество строк таблицы на странице
     value: |-
       {count, number}
   keymap:
-    label: YAML Editor Key Mapping
-    sublime: 'Normal human'
+    label: Сопоставление клавиш редактора YAML
+    sublime: 'Человеческий'
     emacs: 'Emacs'
     vim: 'Vim'
   advFeatures:
-    title: Advanced Features
-    viewInApi: Enable "View in API"
-    allNamespaces: Show system Namespaces managed by Rancher (not intended for editing or deletion)
-    themeShortcut: Enable Dark/Light Theme keyboard shortcut toggle (shift+T)
-    pluginDeveloper: Enable Extension developer features
+    title: Расширенные возможности
+    viewInApi: Включить "Просмотр в API"
+    allNamespaces: Показать системные пространства имён, управляемые Rancher (не предназначено для редактирования или удаления)
+    themeShortcut: Включить переключение тёмной/светлой темы сочетанием клавиш (shift+T)
+    pluginDeveloper: Включить функционал для разработчиков расширений
   hideDesc:
-    label: Hide All Type Descriptions
+    label: Скрыть все описания типов
   helm:
-    'true': Include Prerelease Versions
-    'false': Show Releases Only
-    label: Helm Charts
+    'true': Включить предварительные версии
+    'false': Показать только релизы
+    label: Чарты Helm
   confirmationSetting:
-    title: Confirmation Setting
-    scalingDownPrompt: Do not ask for confirmation when scaling down node pools.
+    title: Параметры подтверждения
+    scalingDownPrompt: Не запрашивать подтверждение при уменьшении пулов нод
 
 principal:
   loading: Loading&hellip;
-  error: Unable to fetch principal info
-  name: Name
-  loginName: Username
-  type: Type
+  error: Не удалось получить основную информацию
+  name: Имя
+  loginName: Имя пользователя
+  type: Тип
 
 probe:
   checkInterval:
-    label: Check Interval
-    placeholder: 'Default: 10'
+    label: Интервал проверок
+    placeholder: 'По умолчанию: 10'
   command:
-    label: Command to run
-    placeholder: e.g. cat /tmp/health
+    label: Команда для выполнения
+    placeholder: например, cat /tmp/health
   failureThreshold:
-    label: Failure Threshold
-    placeholder: 'Default: 3'
+    label: Порог отказа
+    placeholder: 'По умолчанию: 3'
   httpGet:
     headers:
-      label: Request Headers
+      label: Заголовки запроса
     path:
-      label: Request Path
-      placeholder: e.g. /healthz
+      label: Путь запроса
+      placeholder: например, /healthz
     port:
-      label: Check Port
-      placeholder: e.g. 80
-      placeholderDeux: e.g. 25
+      label: Проверить порт
+      placeholder: например, 80
+      placeholderDeux: например, 25
   initialDelay:
-    label: Initial Delay
-    placeholder: 'Default: 0'
+    label: Начальная задержка
+    placeholder: 'По умолчанию: 0'
   successThreshold:
-    label: Success Threshold
-    placeholder: 'Default: 1'
+    label: Порог успешного выполнения
+    placeholder: 'По умолчанию: 1'
   timeout:
-    label: Timeout
-    placeholder: 'Default: 3'
+    label: Тайм-аут
+    placeholder: 'По умолчанию: 3'
   type:
-    label: Type
-    placeholder: Select a check type
+    label: Тип
+    placeholder: Выберите тип проверки
 
 project:
-  membersEditOnly: Only permissions equal to or below those of the current user can be applied
+  membersEditOnly: Могут быть выданы только разрешения равные или ниже уровнем, чем имеющиеся у текущего пользователя
   members:
-    label: Members
-  containerDefaultResourceLimit: Container Default Resource Limit
-  vmDefaultResourceLimit: VM Default Resource Limit
-  resourceQuotas: Resource Quotas
-  haveOneOwner: There must be at least one member with the Owner role.
+    label: Участники
+  containerDefaultResourceLimit: Лимит ресурсов по умолчанию для контейнера
+  vmDefaultResourceLimit: Лимит ресурсов по умолчанию для VM
+  resourceQuotas: Квоты ресурсов
+  haveOneOwner: Обязательно должен быть как минимум один участник с ролью владельца.
   psp:
-    default: Cluster Default
-    label: Pod Security Policy
+    default: Значение по умолчанию кластера
+    label: Политика безопасности подов
     current: "{value} (Current)"
 
 
 projectMembers:
   project:
-    label: Project
+    label: Проект
   projectPermissions:
-    label: Project Permissions
-    description: Controls what access users have to the Project
-    noDescription: User created - no description
-    searchForMember: Search for a member to provide project access
+    label: Разрешения проекта
+    description: Контролирует доступ пользователей к проекту
+    noDescription: Пользователь создан - нет описания
+    searchForMember: Найдите участника, чтобы предоставить доступ к проекту
     owner:
-      label: Owner
-      description: Owners have full control over the Project and all resources inside it.
+      label: Владелец
+      description: Владельцы имеют полный контроль над проектом и всеми ресурсами внутри него.
     member:
-      label: Member
-      description: Members can manage the resources inside the Project but not change the Project itself.
+      label: Участник
+      description: Участники могут управлять ресурсами внутри проекта, но они не могут изменять сам проект.
     readOnly:
-      label: Read Only
-      description: Members can only view the resources inside the Project but not change the resources.
+      label: Только для чтения
+      description: Участники могут только просматривать ресурсы внутри проекта, но они не могут изменять эти ресурсы.
     custom:
-      label: Custom
-      description: Choose individual roles for this user.
-    createNs: Create Namespaces
-    configmapsManage: Manage Config Maps
-    ingressManage: Manage Ingress
-    projectcatalogsManage: Manage Project Catalogs
-    projectroletemplatebindingsManage: Manage Project Members
-    secretsManage: Manage Secrets
-    serviceaccountsManage: Manage Service Accounts
-    servicesManage: Manage Services
-    persistentvolumeclaimsManage: Manage Volumes
-    workloadsManage: Manage Workloads
-    configmapsView: View Config Maps
-    ingressView: View Ingress
-    monitoringUiView: View Monitoring
-    projectcatalogsView: View Project Catalogs
-    projectroletemplatebindingsView: View Project Members
-    secretsView: View Secrets
-    serviceaccountsView: View Service Accounts
-    servicesView: View Services
-    persistentvolumeclaimsView: View Volumes
-    workloadsView: View Workloads
+      label: Настраиваемый
+      description: Выберите индивидуальные роли для данного пользователя.
+    createNs: Создание пространства имён
+    configmapsManage: Управление картами конфигурации
+    ingressManage: Управление входящим трафиком
+    projectcatalogsManage: Управление каталогами проекта
+    projectroletemplatebindingsManage: Управление участниками проекта
+    secretsManage: Управление Secrets
+    serviceaccountsManage: Управление сервисными аккаунтами
+    servicesManage: Управление сервисами
+    persistentvolumeclaimsManage: Управление томами
+    workloadsManage: Управление рабочими нагрузками
+    configmapsView: Просмотр карт конфигурации
+    ingressView: Просмотр входящего трафика
+    monitoringUiView: Просмотр мониторинга
+    projectcatalogsView: Просмотр каталогов проекта
+    projectroletemplatebindingsView: Просмотр участников проекта
+    secretsView: Просмотр Secrets
+    serviceaccountsView: Просмотр сервисных аккаунтов
+    servicesView: Просмотр сервисов
+    persistentvolumeclaimsView: Просмотр томов
+    workloadsView: Просмотр рабочих нагрузок
 
 projectNamespaces:
   createNamespace: Создать пространство имен
