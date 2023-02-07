@@ -6997,7 +6997,7 @@ customLinks:
     valueLabel: URL
     showLabel: Показать
   defaults:
-    docs: Документы
+    docs: Документация
     forums: Форумы
     slack: Slack
     issues: Сообщить о проблеме
