@@ -1270,7 +1270,8 @@ cluster:
       label: Это Harvester кластер - включить Harvester фича-флаг для управления им
       state: Предупреждение
       cloudProvider:
-        incompatible: Вы не можете выбрать облачный провайдер Harvester т.к. текущая версия Harvester не совместима с выбранной версией RKE2 Kubernetes, нажмите <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">здесь</a>, чтобы узнать, какие версии Kubernetes поддерживаются.
+        incompatible:
+          Вы не можете выбрать облачный провайдер Harvester т.к. текущая версия Harvester не совместима с выбранной версией RKE2 Kubernetes, нажмите <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">здесь</a>, чтобы узнать, какие версии Kubernetes поддерживаются.
     clusterWarning: |-
       Есть {count, plural,
       =1 {1 Harvester кластер, который не отображен}
@@ -3277,10 +3278,10 @@ nameNsDescription:
     placeholder: "Уникальное имя"
   namespace:
     label: Пространство имён
-    placeholder: ""
+    placeholder: 'заполнитель'
   workspace:
     label: Рабочее пространство
-    placeholder:
+    placeholder: 'заполнитель'
   description:
     label: Описание
     placeholder: Произвольный текст, который лучше описывает этот ресурс
@@ -3944,7 +3945,7 @@ plugins:
         title: Удалить определение пользовательского ресурса расширений Rancher
         prompt: Установлено одно или более расширений - удаление CRD потребует переустановки этих расширений вручную, если поддержка расширений будет повторно включена впоследствии.
 podSecurityAdmission:
-  label: Admission безопасности подов
+  name: Pod Security Admission
   description: Определить режим контроля admission для использования в безопасности подов
   banner:
     modifications: "Примечание: Изменение шаблона конфигурации Pod Security Admission не повлияет ни на один нижележащий кластер, который ссылается на него, пока не произойдет обновление кластера."
@@ -5291,581 +5292,580 @@ target:
 
 user:
   detail:
-    username: Username
+    username: Имя пользователя
     globalPermissions:
-      label: Global Permissions
-      description: Access to manage resources that affect the entire installation
-      adminMessage: This user is an administrator and has all permissions
+      label: Глобальные права доступа
+      description: Доступ к управлению ресурсами, которые влияют на всю установку
+      adminMessage: Этот пользователь является администратором и имеет все полномочия
       tableHeaders:
-        permission: Permission
+        permission: Разрешение
     clusterRoles:
-      label: Cluster Roles
-      description: Roles granted to this user for individual clusters
+      label: Роли кластера
+      description: Роли, предоставленные этому пользователю для отдельных кластеров
       tableHeaders:
-        cluster: Cluster
+        cluster: Кластер
     projectRoles:
-      label: Project Roles
-      description: Roles granted to this user for individual projects
+      label: Роли проекта
+      description: Роли, предоставленные этому пользователю для отдельных проектов
       tableHeaders:
-        project: Project
+        project: Проект
     generic:
       tableHeaders:
-        role: Role
-        granted: Granted
+        role: Роль
+        granted: Предоставлено
   edit:
     credentials:
-      label: Credentials
+      label: Учетные данные
       username:
-        label: Username
-        placeholder: e.g. jsmith
-        exists: "Username is already in use. Please choose a new username"
+        label: Имя пользователя
+        placeholder: например, jsmith
+        exists: 'Имя пользователя уже используется. Пожалуйста, выберите другое имя пользователя'
       displayName:
-        label: Display Name
-        placeholder: e.g. John Smith
+        label: Отображаемое имя
+        placeholder: например, Джон Смит
       userDescription:
-        label: Description
-        placeholder: e.g. This account is for John Smith
+        label: Описание
+        placeholder: например, это аккаунт Джона Смита
   list:
-    errorRefreshingGroupMemberships: Error refreshing group memberships
+    errorRefreshingGroupMemberships: Ошибка обновления членства в группах
 validation:
-  noUpperCase: 'Alphanumeric characters in "{key}" must be lowercase'
+  noUpperCase: 'Буквенно-цифровые символы в "{key}" должны быть в нижнем регистре'
   arrayLength:
-    between: '"{key}" should contain between {min} and {max} {max, plural, =1 {item} other {items}}'
-    exactly: '"{key}" should contain {count, plural, =1 {# item} other {# items}}'
-    max: '"{key}" should contain at most {count} {count, plural, =1 {item} other {items}}'
-    min: '"{key}" should contain at least {count} {count, plural, =1 {item} other {items}}'
-  boolean: '"{key}" must be a boolean value.'
-  chars: '"{key}" contains {count, plural, =1 {an invalid character} other {# invalid characters}}: {chars}'
+    between: '"{key}" должен быть между  {min} и {max} {max, plural, =1 {элемент} other {элементов}}'
+    exactly: '"{key}" должен включать {count, plural, =1 {# элемент} other {# элментов}}'
+    max: '"{key}" должен содержать не более {count} {count, plural, =1 {элемента} other {элементов}}'
+    min: '"{key}" должен содержать как минимум {count} {count, plural, =1 {элемент} other {элементов}}'
+  boolean: '"{key}" должно быть булевым значением.'
+  chars: '"{key}" содержит {count, plural, =1 {недопустимый символ} other {# недопустимые символы}}: {chars}'
   cluster:
-    name: Cluster name cannot be 'local' or take the form 'c-xxxxx'
+    name: Имя кластера не может быть 'local' или иметь форму 'c-xxxxx'
   conflict: |-
-    This resource has been modified since you started editing it, and some of those modifications conflict with your changes.
-    This screen has been updated to reflect the current values on the cluster. Review and reapply the changes you wanted to make, then Save again.
-    Conflicting {fieldCount, plural, =1 {field} other {fields}}: {fields}
+    Этот ресурс был изменен с тех пор, как вы начали его редактировать, и некоторые из этих изменений конфликтуют с вашими изменениями.
+    Этот экран был обновлен, чтобы отразить текущие значения на кластере. Просмотрите и повторно примените изменения, которые вы хотели внести, а затем снова сохраните.
+    Конфликтует с {fieldCount, plural, =1 {полем} other {полями}}: {полями}
   custom:
-    missing: "No validator exists for { validatorName }! Does the validator exist in custom-validators? Is the name spelled correctly?"
+    missing: 'Не существует валидатора для { validatorName }! Существует ли валидатор в пользовательских валидаторах? Правильно ли написано имя?'
   dns:
-    doubleHyphen: '"{key}" Cannot contain two or more consecutive hyphens'
+    doubleHyphen: '"{key}" Не может содержать два или более последовательных дефиса'
     hostname:
-      empty: '"{key}" must be at least one character'
-      emptyLabel: '"{key}" cannot contain two consecutive dots'
-      endDot: '"{key}" cannot end with a dot'
-      endHyphen: '"{key}" cannot end with a hyphen'
-      startDot: '"{key}" cannot start with a dot'
-      startHyphen: '"{key}" cannot start with a hyphen'
-      startNumber: '"{key}" cannot start with a number'
-      tooLong: '"{key}" cannot be longer than {max} characters'
-      tooLongLabel: '"{key}" cannot contain a section longer than {max} characters'
+      empty: '"{key}" должен быть не менее одного символа'
+      emptyLabel: '"{key}" не может содержать две последовательные точки'
+      endDot: '"{key}" не может заканчиваться точкой'
+      endHyphen: '"{key}" не может заканчиваться дефисом'
+      startDot: '"{key}" не может начинаться с точки'
+      startHyphen: '"{key}" не может начинаться с дефиса'
+      startNumber: '"{key}" не может начинаться с цифры'
+      tooLong: '"{key}" не может быть длиннее {max} символов'
+      tooLongLabel: '"{key}" не может содержать раздел длиной более {max} символов'
     label:
-      endDot: '"{key}" cannot end with a dot'
-      startDot: '"{key}" cannot start with a dot'
-      emptyLabel: '"{key}" cannot be empty'
-      endHyphen: '"{key}" cannot end with a hyphen'
-      startHyphen: '"{key}" cannot start with a hyphen'
-      startNumber: '"{key}" cannot start with a number'
-      tooLongLabel: '"{key}" cannot be more than {max} characters'
+      endDot: '"{key}" не может заканчиваться точкой'
+      startDot: '"{key}" не может начинаться с точки'
+      emptyLabel: '"{key}" не может быть пустым'
+      endHyphen: '"{key}" не может заканчиваться дефисом'
+      startHyphen: '"{key}" не может начинаться с дефиса'
+      startNumber: '"{key}" не может начинаться с цифры'
+      tooLongLabel: '"{key}" не может быть больше {max} символов'
   flowOutput:
-    both: Requires "Output" or "Cluster Output" to be selected.
-    global: Requires "Cluster Output" to be selected.
+    both: Требуется выбрать "Выход" или "Выход кластера".
+    global: Требуется выбрать "Выход кластера".
   output:
     logdna:
-      apiKey: Required an "Api Key" to be set.
-  invalidCron: Invalid cron schedule
+      apiKey: Требуется установить "Api Key".
+  invalidCron: Неверное расписание cron
   k8s:
-    name: Must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character (e.g. 'my-name', or '123-abc').
+    name: Должен состоять из буквенно-цифровых символов нижнего регистра или '-', начинаться и заканчиваться буквенно-цифровым символом (например, 'my-name' или '123-abc').
     identifier:
-      emptyLabel: '"{key}" cannot have an empty key'
-      emptyPrefix: '"{key}" cannot have an empty prefix'
-      endLetter: '"{key}" must end with a letter or number'
-      startLetter: '"{key}" must start with a letter or number'
-      tooLongKey: '"{key}" cannot have a key longer than {max} characters'
-      tooLongPrefix: '"{key}" cannot have a prefix longer than {max} characters'
-  minLength: '"{key}" must contain more than {min} characters'
-  maxLength: '"{key}" must contain less than {max} characters'
-  minValue: '"{key}" must be higher than {min}'
-  maxValue: '"{key}" must be lower than {max}'
-  betweenLengths: '"{key}" must contain between {min} and {max} characters'
-  betweenValues: '"{key}" must be between {min} and {max}'
-  noSchema: No schema found to validate
-  noType: No type to validate
+      emptyLabel: '"{key}" не может иметь пустой ключ'
+      emptyPrefix: '"{key}" не может иметь пустой префикс'
+      endLetter: '" {key}" должен заканчиваться буквой или цифрой'
+      startLetter: '"{key}" должен начинаться с буквы или цифры'
+      tooLongKey: '"{key}" не может иметь ключ длиннее {max} символов'
+      tooLongPrefix: '"{key}" не может иметь префикс длиннее {max} символов'
+  minLength: '"{key}" должен содержать более {min} символов'
+  maxLength: '"{key}" должен содержать менее {max} символов'
+  minValue: '"{key}" должно быть больше, чем {min}'
+  maxValue: '"{key}" должно быть меньше {max}'
+  betweenLengths: '"{key}" должен содержать от {min} до {max} символов'
+  betweenValues: '"{key}" должен быть между {min} и {max}'
+  noSchema: Не найдено схемы для проверки
+  noType: Нет типа для проверки
   number:
-    requiredInt: '"{key}" must be integer'
-    isPositive: '"{key}" must be positive'
-    isOctal: '"{key}" must have no leading zeros'
-    between: '"{key}" should be between {min} and {max}'
-    exactly: '"{key}" should be exactly {val}'
-    max: '"{key}" should be at most {val}'
-    min: '"{key}" should be at least {val}'
+    requiredInt: '"{key}" должно быть целым числом'
+    isPositive: '"{key}" должно быть положительным'
+    isOctal: '"{key}" не должен содержать ведущих нулей'
+    between: '"{key}" должен быть между {min} и {max}'
+    exactly: '"{key}" должно быть именно {val}'
+    max: '"{key}" должен быть не более {val}'
+    min: '"{key}" должно быть не менее {val}'
   podAffinity:
     affinityTitle: Pod Affinity
     antiAffinityTitle: Pod Anti-Affinity
-    requiredDuringSchedulingIgnoredDuringExecution: required rules
-    preferredDuringSchedulingIgnoredDuringExecution: preferred rules
-    topologyKey: Rule [{index}] of {group} {rules} - Topology key is required.
+    requiredDuringSchedulingIgnoredDuringExecution: необходимые правила
+    preferredDuringSchedulingIgnoredDuringExecution: предпочтительные правила
+    topologyKey: Правило [{index}] из {group} {rules} -Требуется топологический ключ.
     matchExpressions:
-      operator: Rule [{index}] of {group} {rules} - operator must be one of 'In', 'NotIn', 'Exists', 'DoesNotExist'
-      valueMustBeEmpty: Rule [{index}] of {group} {rules} - value must be empty if operator is 'Exists' or 'DoesNotExist'
-      valuesMustBeDefined: Rule [{index}] of {group} {rules} - value must be defined if operator is 'In' or 'NotIn'
-  port: A port must be a number between 1 and 65535.
-  path: '"{key}" must be an absolute path'
+      operator: Правило [{index}] из {group} {rules} - оператор должен быть одним из 'In', 'NotIn', 'Exists', 'DoesNotExist'
+      valueMustBeEmpty: Правило [{index}] из {group} {rules} - значение должно быть пустым, если оператор 'Exists' или 'DoesNotExist'
+      valuesMustBeDefined: Правило [{index}] из {group} {rules} - значение должно быть определено, если оператор 'In' или 'NotIn'
+  port: Порт должен быть числом от 1 до 65535.
+  path: '"{key}" должен быть абсолютным путем'
   prometheusRule:
-    noEdit: This Prometheus Rule may not be edited due to invalid characters in name.
+    noEdit: Это Prometheus правило не может быть отредактировано из-за недопустимых символов в имени.
     groups:
-      required: At least one rule group is required.
-      singleAlert: A rule may contain alert rules or recording rules but not both.
+      required: Требуется хотя бы одна группа правил.
+      singleAlert: Правило может содержать правила оповещения или правила записи, но не то и другое сразу.
       valid:
-        name: "Name is required for rule group {index}."
+        name: 'Необходимо имя для группы правил {index}.'
         rule:
-          alertName: "Rule group {groupIndex} rule {ruleIndex} requires a Alert Name."
-          expr: "Rule group {groupIndex} rule {ruleIndex} requires a PromQL Expression."
-          labels: "Rule group {groupIndex} rule {ruleIndex} requires at least one label. Severity is recommended."
-          recordName: "Rule group {groupIndex} rule {ruleIndex} requires a Time Series Name."
-        singleEntry: "At least one alert rule or one recording rule is required in rule group {index}."
-  required: '"{key}" is required'
-  invalid: '"{key}" is invalid'
-  requiredOrOverride: '"{key}" is required or must allow override'
+          alertName: 'Группа правил {groupIndex} правила {ruleIndex} требует имени оповещения.'
+          expr: 'Для группы правил {groupIndex} правила {ruleIndex} требуется выражение PromQL.'
+          labels: 'Группа правил {groupIndex} правило {ruleIndex} требует как минимум один лэйбл. Рекомендуется значение Severity.'
+          recordName: 'Группа правил {groupIndex} правило {ruleIndex} требует Имя Time Series.'
+        singleEntry: 'В группе правил {index} требуется как минимум одно правило оповещения или одно правило записи.'
+  required: '"{key}" является обязательным'
+  invalid: '"{key}" недопустим'
+  requiredOrOverride: '"{key}" является обязательным или должен допускать переопределение'
   roleTemplate:
     roleTemplateRules:
-      missingVerb: You must specify at least one verb for each resource grant
-      missingResource: You must specify a Resource for each resource grant
-      missingApiGroup: You must specify an API Group for each resource grant
-      missingOneResource: You must specify at least one Resource, Non-Resource URL or API Group for each resource grant
+      missingVerb: Вы должны указать как минимум один глагол для каждого ресурса гранта
+      missingResource: Вы должны указать Ресурс для каждого ресурсного гранта
+      missingApiGroup: Вы должны указать группу API для каждого гранта на ресурс
+      missingOneResource: Вы должны указать по крайней мере один URL-адрес ресурса, URL-адрес не-ресурса или группу API для каждого гранта на ресурс
   service:
     externalName:
-      none: External Name is required on an ExternalName Service.
+      none: Внешнее имя требуется для сервиса ExternalName.
     ports:
       name:
-        required: "Port Rule [{position}] - Name is required."
+        required: 'Правило порта [{position}] - Имя обязательно.'
       nodePort:
-        requiredInt: "Port Rule [{position}] - Node Port must be integer values if included."
-        between: "Port Rule [{position}] - Node Port must be between 1 and 65535"
+        requiredInt: 'Правило порта [{position}] - Порт ноды должен быть целочисленным значением, если он включен.'
+        between: 'Правило порта [{position}] - Порт ноды должен быть в диапазоне от 1 до 65535'
       port:
-        required: "Port Rule [{position}] - Port is required."
-        requiredInt: "Port Rule [{position}] - Port must be integer values if included."
-        between: "Port Rule [{position}] - Port must be between 1 and 65535"
+        required: 'Правило порта [{position}] - Порт является обязательным.'
+        requiredInt: 'Правило порта [{position}] - Порт должен быть целочисленным значением, если он включен.'
+        between: 'Правило порта [{position}] - Порт должен быть в диапазоне от 1 до 65535'
       targetPort:
-        between: "Port Rule [{position}] - Target Port must be between 1 and 65535"
-        iana: "Port Rule [{position}] - Target Port must be an IANA Service Name or Integer"
-        ianaAt: "Port Rule [{position}] - Target Port "
-        required: "Port Rule [{position}] - Target Port is required"
+        between: 'Правило порта [{position}] - Целевой порт должен быть в диапазоне от 1 до 65535'
+        iana: 'Правило порта [{position}]  - Целевой порт должен быть именем службы IANA или целым числом'
+        ianaAt: 'Правило порта [{position}]  - Целевой порт '
+        required: 'Правило порта [{position}]  - Целевой порт является обязательным.'
   setting:
     serverUrl:
-      https: server-url must be https.
+      https: server-url должен быть https.
   stringLength:
-    between: '"{key}" should be between {min} and {max} {max, plural, =1 {character} other {characters}}'
-    exactly: '"{key}" should be {count, plural, =1 {# character} other {# characters}}'
-    max: '"{key}" should be at most {count} {count, plural, =1 {character} other {characters}}'
-    min: '"{key}" should be at least {count} {count, plural, =1 {character} other {characters}}'
+    between: '"{key}" должен быть между {min} и {max} {max, plural, =1 {символ} other {символов}}'
+    exactly: '"{key}" должен быть {count, plural, =1 {# символ} other {# символов}}'
+    max: '"{key}" должно быть не более {count} {count, plural, =1 {символ} other {символов}}'
+    min: '"{key}" должно быть не менее {count} {count, plural, =1 {character} other {characters}}'
   targets:
-    missingProjectId: A target must have a project selected.
+    missingProjectId: У цели должен быть выбран проект.
   monitoring:
     route:
-      match: At least one Match or Match Regex must be selected
-      interval: '"{key}" must be of a format with digits followed by a unit i.e. 1h, 2m, 30s'
-  tab: "One or more fields in this tab contain a form validation error"
-
+      match: Должно быть выбрано хотя бы одно совпадение или Regex совпадения
+      interval: '"{key}" должен иметь формат с цифрами, за которыми следует единица измерения, т.е. 1h, 2m, 30s'
+  tab: "Одно или несколько полей на этой вкладке содержат ошибку валидации формы"
 wizard:
-  previous: Previous
-  finish: Finish
-  next: Next
-  step: "Step {number}"
-  edit: Edit
-  create: Create
-  view: View
+  previous: Предыдущий
+  finish: Завершить
+  next: Следующий
+  step: "Шаг {number}"
+  edit: Редактировать
+  create: Создать
+  view: Просмотреть
 wm:
   connection:
-    connected: Connected
-    connecting: Connecting&hellip;
-    disconnected: Disconnected
-    error: Error
+    connected: Подключено
+    connecting: Подключение&hellip;
+    disconnected: Отключено
+    error: Ошибка
   containerLogs:
-    clear: Clear
-    containerName: "Container: {label}"
-    download: Download
-    follow: Follow
-    noData: There are no log entries to show in the current range.
-    noMatch: No lines match the current filter.
-    previous: Use Previous Container
+    clear: Очистить
+    containerName: "Контейнер: {label}"
+    download: Скачать
+    follow: Следуйте
+    noData: В текущем диапазоне нет записей журнала для отображения.
+    noMatch: Нет строк, соответствующих текущему фильтру.
+    previous: Использовать предыдущий контейнер
     range:
-      all: Everything
+      all: Все
       hours: |-
         {value, number}
         {value, plural,
-        =1 {Hour}
-        other {Hours}
+        =1 {Час}
+        other {Часов}
         }
-      label: Show the last
-      lines: "{value, number} Lines"
+      label: Показать последние
+      lines: "{value, number} Строк"
       minutes: |-
         {value, number} {value, plural,
-        =1 {Minute}
-        other {Minutes}
+        =1 {Минута}
+        other {Минут}
         }
-    search: Filter
-    timestamps: Show Timestamps
-    wrap: Wrap Lines
+    search: Фильтр
+    timestamps: Показать временные метки
+    wrap: Перенос строк
   containerShell:
-    clear: Clear
-    containerName: "Container: {label}"
+    clear: Очистить
+    containerName: "Контейнер: {label}"
   kubectlShell:
     title: "Kubectl: {name}"
 
 workload:
   container:
     command:
-      addEnvVar: Add Variable
-      args: Arguments
-      as: as
-      command: Command
-      env: Environment Variables
+      addEnvVar: Добавить переменную
+      args: Аргументы
+      as: как
+      command: Команда
+      env: Переменные окружения
       fromResource:
         key:
-          label: Key
-          placeholder: "e.g. metadata.labels['<KEY>']"
+          label: Ключ
+          placeholder: "например, metadata.labels['<KEY>']"
         name:
-          label: Variable Name
-          placeholder: "e.g. FOO"
-        prefix: Prefix
+          label: Имя переменной
+          placeholder: "например, FOO"
+        prefix: Префикс
         source:
-          label: Source
-          placeholder: e.g. my-container
+          label: Источник
+          placeholder: например, my-container
         secret: Secret
         configMap: ConfigMap
-        containerName: Container Name
-        type: Type
+        containerName: Имя контейнера
+        type: Тип
         value:
-          label: Value
-          placeholder: e.g. bar
+          label: Значение
+          placeholder: например, bar
       tty: TTY
       workingDir: WorkingDir
       stdin: Stdin
-    containerName: Container Name
+    containerName: Имя контейнера
     healthCheck:
-      checkInterval: Check Interval
+      checkInterval: Интервал проверки
       command:
-        command: Command to run
-      failureThreshold: Failure Threshold
+        command: Команда для запуска
+      failureThreshold: Порог отказа
       httpGet:
-        headers: Request Headers
-        path: Request Path
-        port: Check Port
-      initialDelay: Initial Delay
-      livenessProbe: Liveness Check
-      livenessTip: Containers will be restarted when this check is failing.  Not recommended for most uses.
-      noHealthCheck: "There is not a Readiness Check, Liveness Check or Startup Check configured."
-      readinessProbe: Readiness Checks
-      readinessTip: Containers will be removed from service endpoints when this check is failing.  Recommended.
-      startupProbe: Startup Check
-      startupTip: Containers will wait until this check succeeds before attempting other health checks.
-      successThreshold: Success Threshold
-      timeout: Timeout
+        headers: Заголовки запроса
+        path: Путь запроса
+        port: Порт для проверки
+      initialDelay: Начальная задержка
+      livenessProbe: Проверка работоспособности
+      livenessTip: Контейнеры будут перезапущены, если эта проверка не удалась.  Не рекомендуется для большинства случаев.
+      noHealthCheck: "Не настроены проверка готовности, проверка работоспособности или проверка запуска."
+      readinessProbe: Проверка готовности
+      readinessTip: Контейнеры будут удалены из endpoint'ов сервиса, если эта проверка не проходит.  Рекомендуется.
+      startupProbe: Проверка при запуске
+      startupTip: Контейнеры будут ждать успешного завершения этой проверки, прежде чем приступать к другим проверкам здоровья.
+      successThreshold: Порог успеха
+      timeout: Таймаут
       kind:
-        none: None
-        HTTP: HTTP request returns a successful status (200-399)
-        HTTPS: HTTPS request returns a successful status
-        tcp: TCP connection opens successfully
-        exec: Command run inside the container exits with status 0
-    image: Container Image
+        none: Ничего
+        HTTP: HTTP-запрос возвращает успешный статус (200-399)
+        HTTPS: HTTPS запрос возвращает успешный статус
+        tcp: TCP-соединение успешно открывается
+        exec: Команда, запущенная внутри контейнера, завершается со статусом 0
+    image: Образ контейнера
     imagePullPolicy: Pull Policy
     imagePullSecrets: Pull Secrets
     init: Init Container
     lifecycleHook:
       postStart:
         label: PostStart
-        add: Add PostStart Hook
+        add: Добавить PostStart хук
       preStop:
         label: PreStop
-        add: Add PreStop Hook
+        add: Добавить PreStop хук
       exec:
         title: Exec
-        add: Add command to execute
+        add: Добавить команду для выполнения
         command:
-          label: Command
-          placeholder: "e.g. sh -c 'sleep 10'"
+          label: Команда
+          placeholder: "например, sh -c 'sleep 10'"
       httpGet:
         title: HttpGet
-        add: Create HTTP request
+        add: Создать HTTP-запрос
         host:
-          label: Host IP
-          placeholder: e.g. 172.17.0.2
+          label: IP-адрес хоста
+          placeholder: например, 172.17.0.2
         path:
-          label: Path
-          placeholder: e.g. app/bin/endpoint?param=value
+          label: Путь
+          placeholder: например, app/bin/endpoint?param=value
         port:
-          label: Port
-          placeholder: e.g. 3000
+          label: Порт
+          placeholder: например, 3000
         scheme:
-          label: Scheme
-          placeholder: e.g. HTTP
+          label: Схема
+          placeholder: например, HTTP
       httpHeaders:
-        title: HTTP Headers
+        title: HTTP заголовки
         name:
-          label: Name
-          placeholder: e.g. accept-ranges
+          label: Имя
+          placeholder: например, accept-ranges
         value:
-          label: Value
-          placeholder: e.g. bytes
+          label: Значение
+          placeholder: например, bytes
       tcpSocket:
         title: TCPSocket
-        add: Open a TCP socket
+        add: Открыть TCP сокет
         host:
-          label: Host
-          placeholder: e.g. 192.168.0.1
+          label: Хост
+          placeholder: например, 192.168.0.1
         port:
-          label: Port
-          placeholder: e.g. 80
-    name: Container Name
-    noResourceLimits: There are no resource requirements configured.
-    noPorts: There are no ports configured.
-    noServiceAccess: You do not have permission to create or manage services
+          label: Порт
+          placeholder: например, 80
+    name: Имя контейнера
+    noResourceLimits: Не настроены требования к ресурсам.
+    noPorts: Нет настроенных портов.
+    noServiceAccess: У вас нет прав на создание или управление сервисами
     ports:
-      expose: Networking
-      description: "Define a Service to expose the container, or define a non-functional, named port so that humans will know where the app within the container is expected to run."
-      detailedDescription: If ClusterIP, LoadBalancer, or NodePort is selected, a Service is automatically created that will select the Pods in this workload using labels.
-      toolTip: "For help exposing workloads on Kubernetes, see the official Kubernetes documentation on Services. You can also manually create a Service to expose Pods by selecting their labels, and you can use an Ingress to map HTTP routes to Services."
-      createService: Service Type
-      noCreateService: Do not create a service
-      containerPort: Private Container Port
-      hostIP: Host IP
-      hostPort: Public Host Port
-      name: Name
-      protocol: Protocol
-      listeningPort: Listening Port
-    removeContainer: Remove Container
-    addContainer: Add Container
+      expose: Сетевое взаимодействие
+      description: 'Определите сервис, который будет отображать контейнер, или определите нефункциональный именованный порт, чтобы люди знали, где должно быть запущено приложение внутри контейнера.'
+      detailedDescription: Если выбраны ClusterIP, LoadBalancer или NodePort, автоматически создается сервис, который будет выбирать поды в этой рабочей нагрузке с помощью лэйблов.
+      toolTip: 'Для получения информации о раскрытии рабочих нагрузок в Kubernetes см. официальную документацию Kubernetes по Сервисам. Вы также можете вручную создать Сервис для раскрытия подсистем, выбрав их лэйблы, и использовать Ingress для сопоставления HTTP-маршрутов с Сервисами.'
+      createService: Тип сервиса
+      noCreateService: Не создавать сервис
+      containerPort: Приватный порт Контейнера
+      hostIP: IP Хоста
+      hostPort: Публичный порт хоста
+      name: Имя
+      protocol: Протокол
+      listeningPort: Порт прослушивания
+    removeContainer: Удалить контейнер
+    addContainer: Добавить контейнер
     security:
-      addCapabilities: Add Capabilities
-      addGroupIDs: Add Group IDs
+      addCapabilities: Добавить возможности
+      addGroupIDs: Добавить ID групп
       allowPrivilegeEscalation:
-        label: Privilege Escalation
-        "false": No
-        "true": "Yes: container can gain more privileges than its parent process"
+        label: Расширение привилегий
+        'false': ложь
+        'true': "Да: контейнер может получить больше привилегий, чем его родительский процесс"
       dropCapabilities: Drop Capabilities
-      fsGroup: Filesystem Group
-      hostIPC: Use Host IPC Namespace
-      hostPID: Use Host PID Namespace
-      podFsGroup: Pod Filesystem Group
+      fsGroup: Группа файловой системы
+      hostIPC: Использовать пространство имен IPC хоста
+      hostPID: Использовать пространство имен PID хоста
+      podFsGroup: Группа файловой системы пода
       privileged:
-        label: Privileged
-        "false": No
-        "true": "Yes: container has full access to the host"
+        label: Привилегированный
+        'false': ложь
+        'true': "Да: контейнер имеет полный доступ к хосту"
       readOnlyRootFilesystem:
-        label: Read-Only Root Filesystem
-        "false": No
-        "true": "Yes: container has a read-only root filesystem"
-      runAsGroup: Run as Group ID
+        label: Корневая файловая система, доступная только для чтения
+        'false': ложь
+        'true': "Да: контейнер имеет корневую файловую систему, доступную только для чтения"
+      runAsGroup: Запустить как ID группы
       runAsNonRoot:
-        label: Run as Non-Root
-        "false": No
-        "true": "Yes: container must run as a non-root user"
+        label: Запустить без рута
+        'false': ложь
+        'true': "Да: контейнер должен запускаться от имени пользователя, не являющегося пользователем root"
       runAsNonRootOptions:
-        noOption: "No"
-        yesOption: "Yes: containers must run as non-root-user"
+        noOption: "Нет"
+        yesOption: "Да: контейнеры должны запускаться от имени не root-пользователя"
       runAsUser: Run as User ID
-      shareProcessNamespace: Share single process namespace
-      supplementalGroups: Additional Group IDs
+      shareProcessNamespace: Совместное использование пространства имен одного процесса
+      supplementalGroups: Дополнительные идентификаторы групп
       sysctls: Sysctls
-      sysctlsKey: Name
-    standard: Standard Container
-    terminationState: "Last state: Terminated with {lsExitCode}: {lsDescription}, started: {lsStartedAt}, finished: {lsFinishedAt}"
+      sysctlsKey: Имя
+    standard: Обычный контейнер
+    terminationState: "Последнее состояние: Прекращено с {lsExitCode}: {lsDescription}, начато: {lsStartedAt}, завершено: {lsFinishedAt}"
     titles:
-      pods: Pods
-      container: Container
-      command: Command
-      containers: Containers
-      env: Environment Variables
-      events: Events
-      general: General
+      pods: Поды
+      container: Контейнер
+      command: Команда
+      containers: Контейнеры
+      env: Переменные окружения
+      events: События
+      general: Общее
       healthCheck: Health Check
-      image: Image
-      lifecycle: Lifecycle Hooks
-      networking: Networking
-      networkSettings: Network Settings
-      podAnnotations: Pod Annotations
-      podLabels: Pod Labels
-      metrics: Metrics
-      podScheduling: Pod Scheduling
-      nodeScheduling: Node Scheduling
-      ports: Ports
-      resources: Resources
+      image: Образ
+      lifecycle: Хуки жизненного цикла
+      networking: Сетевое взаимодействие
+      networkSettings: Параметры сети
+      podAnnotations: Примечания к поду
+      podLabels: Лэйблы пода
+      metrics: Метрики
+      podScheduling: Расписание пода
+      nodeScheduling: Расписание ноды
+      ports: Порты
+      resources: Ресурсы
       securityContext: Security Context
-      status: Status
+      status: Статус
       volumeClaimTemplates: Volume Claim Templates
       upgrading: Scaling and Upgrade Policy
-  cronSchedule: Schedule
+  cronSchedule: Расписание
   detail:
-    services: Services
+    services: Сервисы
     ingresses: Ingresses
-    cannotViewServices: Could not list Services due to lack of permission.
-    cannotFindServices: Could not find any Services that select Pods from this workload.
-    serviceListCaption: "The following Services select Pods from this workload:"
-    cannotViewIngresses: Could not list Ingresses due to lack of permission.
-    cannotFindIngresses: Could not find any Ingresses that forward traffic to Services that select Pods in this workload.
-    ingressListCaption: "The following Ingresses forward traffic to Services that select Pods from this workload:"
-    cannotViewIngressesBecauseCannotViewServices: Could not find relevant relevant Ingresses due to lack of permission to view Services.
+    cannotViewServices: Не удалось перечислить сервисы из-за отсутствия прав.
+    cannotFindServices: Не удалось найти ни одного сервиса, который выбирает поды из этой рабочей нагрузки.
+    serviceListCaption: "Следующие сервисы выбирают поды из этой рабочей нагрузки:"
+    cannotViewIngresses: Не удалось составить список Ingresses из-за отсутствия прав.
+    cannotFindIngresses: Не удалось найти ни одного Ingress, перенаправляющего трафик на сервисы, которые используют поды в этой рабочей нагрузке.
+    ingressListCaption: "Следующие Ingress направляют трафик на сервисы, которые используют поды из этой рабочей нагрузки:"
+    cannotViewIngressesBecauseCannotViewServices: Не удалось найти соответствующие релевантные Ingress из-за отсутствия прав на просмотр сервисов.
     pods:
-      title: Pods
+      title: Поды
   detailTop:
-    node: Node
-    podIP: Pod IP
-    podRestarts: Pod Restarts
-    workload: Workload
-    pods: Pods by State
-    runs: Runs
+    node: Нода
+    podIP: IP пода
+    podRestarts: Рестартов пода
+    workload: Рабочая нагрузка
+    pods: Поды по статусу
+    runs: Запуски
   gaugeStates:
-    succeeded: Successful
-    running: Running
-    failed: Failed
-  hideTabs: "Hide Advanced Options"
+    succeeded: Успешно
+    running: Запущено
+    failed: Неудача
+  hideTabs: 'Скрыть расширенные параметры'
   job:
     activeDeadlineSeconds:
-      label: Active Deadline
-      tip: The duration that the job may be active before the system tries to terminate it.
+      label: Активный дедлайн
+      tip: Время, в течение которого задание может быть активным, прежде чем система попытается его завершить.
     backoffLimit:
       label: Back Off Limit
-      tip: The number of retries before marking this job failed.
+      tip: Количество повторных попыток перед тем, как пометить это задание как неудачное.
     completions:
-      label: Completions
-      tip: The number of successfully finished pods the job should be run with.
+      label: Завершения
+      tip: Количество успешно завершенных подов, с которыми должно быть запущено задание.
     failedJobsHistoryLimit:
-      label: Failed Job History Limit
-      tip: The number of failed finished jobs to retain.
+      label: Лимит истории неудачных заданий
+      tip: Количество неудачных завершенных заданий для хранения.
     parallelism:
-      label: Parallelism
-      tip: The maximum number of pods the job should run at any given time.
+      label: Параллелизм
+      tip: Максимальное количество подов, которые задание должно запускать в каждый момент времени.
     startingDeadlineSeconds:
       label: Starting Deadline Seconds
-      tip: The deadline in seconds for starting the job if it misses scheduled time
+      tip: Дедлайн в секундах для запуска задания, если оно пропустит запланированное время
     successfulJobsHistoryLimit:
-      label: Successful Job History Limit
-      tip: The number of successful finished jobs to retain.
-    suspend: Suspend
+      label: Лимит истории успешных заданий
+      tip: Количество успешно завершенных заданий для хранения.
+    suspend: Приостановить
   list:
-    errorCannotScale: Failed to scale {workloadName} {direction, select, up { up } down { down } }
+    errorCannotScale: Не удалось выполнить масштабирование {workloadName} {direction, select, up { up } down { down } }
   metrics:
-    pod: Pod Metrics
-    metricsView: Metrics View
+    pod: Метрики пода
+    metricsView: Смотреть метрики
   networking:
     dnsPolicy:
-      label: DNS Policy
+      label: Политика DNS
       options:
         clusterFirst: Cluster First
         clusterFirstWithHostNet: Cluster First With Host Network
-        default: Default
-        none: None
-      placeholder: Select a Policy...
+        default: По умолчанию
+        none: Ничего
+      placeholder: Выбрать политику...
     hostAliases:
-      add: Add Alias
-      keyLabel: IP Address
-      keyPlaceholder: e.g. 1.1.1.1
-      label: Host Aliases
-      tip: Additional /etc/hosts entries to be injected in the container.
-      valueLabel: Hostname
-      valuePlaceholder: "e.g. foo.com, bar.com"
+      add: Добавить псевдоним
+      keyLabel: IP-адрес
+      keyPlaceholder: например, 1.1.1.1
+      label: Псевдонимы хоста
+      tip: Дополнительные записи /etc/hosts для внедрения в контейнер.
+      valueLabel: Имя хоста
+      valuePlaceholder: "например, foo.com, bar.com"
     hostname:
-      label: Hostname
-      placeholder: e.g. web
+      label: Имя хоста
+      placeholder: например, web
     nameservers:
-      add: Add Nameserver
-      label: Nameservers
-      placeholder: e.g. 1.1.1.1
+      add: Добавить сервер имен
+      label: Серверы имен
+      placeholder: например, 1.1.1.1
     networkMode:
-      label: Network Mode
+      label: Режим сети
       options:
-        hostNetwork: Host Network
-        normal: Normal
-      placeholder: Select a Mode...
+        hostNetwork: Сеть хоста
+        normal: Обычный
+      placeholder: Выберите режим...
     dns: DNS
     resolver:
-      label: Resolver Options
-      add: Add Option
+      label: Параметры ресолвера
+      add: Добавить опцию
     searches:
-      add: Add Search Domain
-      label: Search Domains
-      placeholder: e.g. mycompany.com
+      add: Добавить домен для поиска
+      label: Домены для поиска
+      placeholder: например, mycompany.com
     subdomain:
-      label: Subdomain
-      placeholder: e.g. web
-  normanWarning: It looks like this workload was created in the legacy Rancher UI. You may need to manually delete any services that were automatically created for it.
+      label: Поддомен
+      placeholder: например, web
+  normanWarning: Похоже, что эта рабочая нагрузка была создана в устаревшем пользовательском интерфейсе Rancher. Вам может потребоваться вручную удалить все сервисы, которые были автоматически созданы для нее.
   validation:
-    containers: Containers
-    containerImage: Container {name} - "Container Image" is required.
-  replicas: Replicas
-  showTabs: "Show Advanced Options"
+    containers: Контейнеры
+    containerImage: Контейнер {name} - требуется "Образ контейнера".
+  replicas: Копии
+  showTabs: 'Показать дополнительные параметры'
   scheduling:
     activeDeadlineSeconds: Pod Active Deadline
-    activeDeadlineSecondsTip: The duration that the pod may be active before the system tries to mark it failed and kill associated containers.
+    activeDeadlineSecondsTip: Время, в течение которого под может быть активен, прежде чем система попытается пометить его как неудачный и уничтожить связанные с ним контейнеры.
     affinity:
-      addNodeSelector: Add Node Selector
-      anyNode: Run pods on any available node
-      affinityTitle: Run pods on nodes with pods matching these selectors
-      antiAffinityTitle: Run pods on nodes without pods matching these selectors
+      addNodeSelector: Добавить селектор нод
+      anyNode: Запуск подов на любой доступной ноде
+      affinityTitle: Запускать поды на нодах с подами, соответствующими этим селекторам
+      antiAffinityTitle: Запуск подов на нодах без подов, соответствующих этим селекторам
       affinityOption: Affinity
       antiAffinityOption: Anti-Affinity
       matchExpressions:
-        addRule: Add Rule
-        doesNotExist: is not set
-        exists: is set
+        addRule: Добавить правило
+        doesNotExist: не установлено
+        exists: установлено
         greaterThan: ">"
-        in: in list
-        inNamespaces: "Pods in these namespaces:"
-        key: Key
+        in: в списке
+        inNamespaces: "Поды в этих пространствах имен:"
+        key: Ключ
         lessThan: <
-        namespaces: Namespaces
-        notIn: not in list
-        operator: Operator
-        value: Value
-        weight: Weight
-      noPodRules: There are no pod scheduling rules configured.
-      nodeName: Node Name
-      priority: Priority
-      preferAny: "Prefer any of:"
-      preferred: Preferred
-      required: Required
-      requireAny: "Require any of:"
-      schedulingRules: Run pods on node(s) matching scheduling rules
-      specificNode: Run pods on specific node(s)
-      thisPodNamespace: This pod's namespace
+        namespaces: Пространства имен
+        notIn: нет в списке
+        operator: Оператор
+        value: Значение
+        weight: Вес
+      noPodRules: Не настроены правила планирования пода.
+      nodeName: Имя ноды
+      priority: Приоритет
+      preferAny: "Предпочитать любой из:"
+      preferred: Предпочтительный
+      required: Требуемый
+      requireAny: "Требовать любое из:"
+      schedulingRules: Запуск подов на ноде (нодах), соответствующих правилам планирования
+      specificNode: Запуск подов на определенной ноде (нодах)
+      thisPodNamespace: Пространство имен этого пода
       topologyKey:
-        label: Topology Key
-        placeholder: e.g. failure-domain.beta.kubernetes.io/zone
-      type: Type
+        label: Топологический ключ
+        placeholder: например, failure-domain.beta.kubernetes.io/zone
+      type: Тип
       weight:
-        label: Weight
-        placeholder: Must be a weight between 1 and 100
+        label: Вес
+        placeholder: Должен иметь вес от 1 до 100
     priority:
-      className: Priority Class Name
-      priority: Priority
+      className: Название класса приоритетов
+      priority: Приоритет
     terminationGracePeriodSeconds: Termination Grace Period
-    terminationGracePeriodSecondsTip: The duration that the pod needs to terminate gracefully.
+    terminationGracePeriodSecondsTip: Время, необходимое для нормального завершения работы стручка.
     titles:
-      advanced: Advanced
-      nodeScheduling: Node Scheduling
-      nodeSelector: Nodes with these labels
-      podScheduling: Pod Scheduling
-      priority: Priority
-      tab: Scheduling
-      tolerations: Tolerations
-      limits: Limits and Reservations
+      advanced: Продвинутые
+      nodeScheduling: Расписание ноды
+      nodeSelector: Ноды с такими лэйблами
+      podScheduling: Расписание пода
+      priority: Приоритет
+      tab: Расписание
+      tolerations: Допуски
+      limits: Лимиты и резервирование
     tolerations:
       addToleration: Add Toleration
-      effect: Effect
+      effect: Эффект
       effectOptions:
-        all: All
+        all: Все
         noExecute: NoExecute
         noSchedule: "NoSchedule,"
         preferNoSchedule: PreferNoSchedule
-      labelKey: Label Key
-      operator: Operator
+      labelKey: Ключ лэйбла
+      operator: Оператор
       operatorOptions:
         equal: =
-        exists: Exists
+        exists: Существует
       tolerationSeconds: Toleration Seconds
-      value: Value
+      value: Значение
   serviceAccountName:
-    label: Service Account Name
-    createMessage: The service name [ {name} ] does not exist in this namespace, you will need to create it manually.
-  serviceName: Service Name
+    label: Имя сервисного аккаунта
+    createMessage: Имя сервиса [ {name} ] не существует в этом пространстве имен, вам необходимо создать его вручную.
+  serviceName: Имя сервиса
   storage:
     subtypes:
       secret: Secret
@@ -5881,123 +5881,121 @@ workload:
       gcePersistentDisk: Google Persistent Disk
       driver.longhorn.io: Longhorn
       vsphereVolume: VMWare vSphere Volume
-      emptyDir: Empty Dir
-    addClaim: Add Claim
+      emptyDir: Пустая директория
+    addClaim: Добавить требование
     addMount: Add Mount
-    addVolume: Add Volume
-    selectVolume: Select Volume
-    noVolumes: Volumes will appear here after they are added in the Pod tab
-    certificate: Certificate
+    addVolume: Добавить том
+    selectVolume: Выбрать том
+    noVolumes: Тома появятся здесь после их добавления на вкладке Под
+    certificate: Сертификат
     csi:
-      diskName: Disk Name
-      diskURI: Disk URI
+      diskName: Имя диска
+      diskURI: URI диска
       cachingMode:
-        label: Caching Mode
+        label: Решим кеширования
         options:
-          none: None
-          readOnly: Read Only
-          readWrite: Read Write
+          none: Ничего
+          readOnly: Только для чтения
+          readWrite: Чтение и запись
       kind:
-        label: Kind
+        label: Вид
         options:
-          dedicated: Dedicated
-          managed: Managed
-          shared: Shared
+          dedicated: Выделенный
+          managed: Управляемый
+          shared: Общий
       drivers:
         driver.longhorn.io: Longhorn
-      fsType: Filesystem Type
+      fsType: Тип файловой системы
       shareName: Share Name
       secretName: Secret Name
-      volumeID: Volume ID
-      partition: Partition
-      pdName: Persistent Disk Name
+      volumeID: ID тома
+      partition: Раздел
+      pdName: Имя постоянного диска
       storagePolicyID: Storage Policy ID
       storagePolicyName: Storage Policy Name
-      volumePath: Volume Path
-    defaultMode: Default Mode
-    driver: driver
+      volumePath: Путь тома
+    defaultMode: Режим по умолчанию
+    driver: драйвер
     hostPath:
-      label: The Path on the Node must be
+      label: Путь к ноде должен быть
       options:
-        default: "Anything: do not check the target path"
-        directoryOrCreate: A directory, or create if it doesn't exist
-        directory: An existing directory
-        fileOrCreate: A file, or create if it doesn't exist
-        file: An existing file
-        socket: An existing socket
-        charDevice: An existing character device
-        blockDevice: An existing block device
+        default: 'Что угодно: не проверять целевой путь'
+        directoryOrCreate: Директория, или создать, если она не существует
+        directory: Существующий каталог
+        fileOrCreate: Файл, или создать его, если он не существует
+        file: Существующий файл
+        socket: Существующий сокет
+        charDevice: Существующее устройство для символов
+        blockDevice: Существующее блочное устройство
     mountPoint: Mount Point
-    nodePath: Path on Node
+    nodePath: Путь на ноде
     optional:
-      label: Optional
-      "no": "No"
-      "yes": "Yes"
-    path: Path
-    readOnly: Read Only
-    server: Server
-
-    subPath: Sub Path in Volume
-    title: "Storage"
-    volumeName: Volume Name
-    volumePath: Volume Path
+      label: Необязательно
+      'no': 'Нет'
+      'yes': 'Да'
+    path: Путь
+    readOnly: Только для чтения
+    server: Сервер
+    subPath: Подпуть в томе
+    title: 'Хранилище'
+    volumeName: Название тома
+    volumePath: Путь тома
     emptyDir:
       medium:
-        label: Medium
-        default: Node's Default Medium
-        memory: Memory
+        label: Средний
+        default: Средство ноды по умолчанию
+        memory: Память
       sizeLimit:
-        label: Size Limit
-        placeholder: "e.g. 300"
+        label: Ограничение по размеру
+        placeholder: "например, 300"
   typeDescriptions:
-    apps.daemonset: DaemonSets run exactly one pod on every eligible node. When new nodes are added to the cluster, DaemonSets automatically deploy to them. Recommended for system-wide or vertically-scalable workloads that never need more than one pod per node.
-    apps.deployment: Deployments run a scalable number of replicas of a pod distributed among the eligible nodes. Changes are rolled out incrementally and can be rolled back to the previous revision when needed. Recommended for stateless & horizontally-scalable workloads.
-    apps.statefulset: StatefulSets manage stateful applications and provide guarantees about the ordering and uniqueness of the pods created. Recommended for workloads with persistent storage or strict identity, quorum, or upgrade order requirements.
-    batch.cronjob: CronJobs create Jobs, which then run Pods, on a repeating schedule. The schedule is expressed in standard Unix cron format, and uses the timezone of the Kubernetes control plane (typically UTC).
-    batch.job: Jobs create one or more pods to reliably perform a one-time task by running a pod until it exits successfully. Failed pods are automatically replaced until the specified number of completed runs has been reached. Jobs can also run multiple pods in parallel or function as a batch work queue.
-    pod: Pods are the smallest deployable units of computing that you can create and manage in Kubernetes. A Pod is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.
+    apps.daemonset: DaemonSets запускают ровно один под на каждой подходящей ноде. Когда в кластер добавляются новые ноды, DaemonSets автоматически развертываются на них. Рекомендуется для общесистемных или вертикально масштабируемых рабочих нагрузок, которым никогда не требуется более одного пода на ноду.
+    apps.deployment: Развертывания запускают масштабируемое количество копий подов, распределенных между подходящими нодами. Изменения разворачиваются инкрементально и при необходимости могут быть откачены до предыдущей ревизии. Рекомендуется для безэталонных и горизонтально-масштабируемых рабочих нагрузок.
+    apps.statefulset: StatefulSets управляют приложениями с состоянием и обеспечивают гарантии упорядоченности и уникальности создаваемых подсистем. Рекомендуется для рабочих нагрузок с постоянным хранением или строгими требованиями к идентификации, кворуму или порядку обновления.
+    batch.cronjob: CronJobs создают задания, которые затем запускают поды по повторяющемуся расписанию. Расписание составлено в стандартном формате Unix cron и использует часовой пояс контрольной панели Kubernetes (обычно UTC).
+    batch.job: Задания создают одну или несколько подов для надежного выполнения одноразовой задачи путем запуска подов до их успешного завершения. Неудачные поды автоматически заменяются до тех пор, пока не будет достигнуто заданное количество завершенных запусков. Задания могут также запускать несколько подов параллельно или функционировать как очередь пакетной работы.
+    pod: Поды - это самые маленькие развертываемые вычислительные единицы, которые можно создавать и управлять ими в Kubernetes. Под - это группа из одного или нескольких контейнеров, с общими ресурсами хранения и сети, а также спецификация того, как запускать контейнеры.
   upgrading:
     activeDeadlineSeconds:
-      label: Pod Active Deadline
-      tip: The duration the pod may be active before the system will try to mark it failed and kill associated containers.
+      label: Дедлайн активного пода
+      tip: Время, в течение которого под может быть активен, прежде чем система попытается пометить его как неудачный и уничтожить связанные с ним контейнеры.
     concurrencyPolicy:
-      label: Concurrency
+      label: Параллелизм
       options:
-        allow: Allow CronJobs to run concurrently
-        forbid: Skip next run if current run hasn't finished
-        replace: Replace run if current run hasn't finished
+        allow: Разрешить одновременное выполнение CronJobs
+        forbid: Пропустить следующий запуск, если текущий не завершился
+        replace: Заменить выполнение, если текущее не завершилось
     maxSurge:
-      label: Max Surge
-      tip: The maximum number of pods allowed beyond the desired scale at any given time.
+      label: Максимальный скачок
+      tip: Максимальное количество подов, допустимое за пределами желаемого масштабирования в любой момент времени.
     maxUnavailable:
-      label: Max Unavailable
-      tip: The maximum number of pods which can be unavailable at any given time.
+      label: Максимально недоступных
+      tip: Максимальное количество подов, которые могут быть недоступны в любой момент времени.
     minReadySeconds:
       label: Minimum Ready
-      tip: The minimum duration a pod should be ready without containers crashing for it to be considered available.
+      tip: Минимальная продолжительность готовности пода без сбоя контейнеров, чтобы он считался доступным.
     podManagementPolicy:
-      label: Pod Management Policy
+      label: Политика управления подами
     progressDeadlineSeconds:
-      label: Progress Deadline
-      tip: The minimum duration to wait for a deployment to progress before marking it failed.
+      label: Дедлайн выполнения
+      tip: Минимальная продолжительность ожидания выполнения развертывания, прежде чем пометить его как неудачное.
     revisionHistoryLimit:
-      label: Revision History Limit
-      tip: The number of old ReplicaSets to retain for rollback.
+      label: Лимит истории ревизий
+      tip: Количество старых наборов ReplicaSet, которые необходимо сохранить для отката.
     strategies:
       labels:
-        delete: "On Delete: New pods are only created when old pods are manually deleted."
-        recreate: "Recreate: Kill ALL pods, then start new pods."
-        rollingUpdate: "Rolling Update: Create new pods, until max surge is reached, before deleting old pods. Don't stop more pods than max unavailable."
+        delete: "При удалении: Новые поды создаются только тогда, когда старые поды удаляются вручную."
+        recreate: "Воссоздать: Убить ВСЕ поды, затем запустить новые поды."
+        rollingUpdate: "Скользящее обновление: Создавать новые поды, пока не будет достигнуто максимальное превышение, прежде чем удалять старые поды. Не останавливайте больше подов, чем максимальное количество недоступных."
     terminationGracePeriodSeconds:
       label: Termination Grace Period
-      tip: The duration the pod needs to terminate successfully.
-    title: Upgrading
+      tip: Продолжительность, необходимая поду для успешного завершения.
+    title: Обновление
   tabs:
     labels:
-      deployment: Deployment
-      pod: Pod
-      containers: Containers
-
+      deployment: Развертывание
+      pod: Под
+      containers: Контейнеры
 ##############################
 # Model Properties
 ##############################
