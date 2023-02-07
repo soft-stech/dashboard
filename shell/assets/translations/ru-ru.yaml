@@ -6971,7 +6971,7 @@ resourceQuota:
     storagePlaceholder: например, 50
     unitlessPlaceholder: например, 50
   namespaceDefaultLimit:
-    label: Лимит по умолчанию пространства имён
+    label: Лимит по умолчанию для пространства имён
     cpuPlaceholder: например, 500
     memoryPlaceholder: например, 1024
     storagePlaceholder: например, 10
