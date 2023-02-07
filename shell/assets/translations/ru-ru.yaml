@@ -4,7 +4,7 @@
 generic:
   add: Добавить
   all: Все
-  and: ' и '
+  and: " и "
   back: Назад
   cancel: Отменить
   confirm: Confirm
@@ -12,7 +12,7 @@ generic:
   clearAll: Очистить Все
   close: Закрыть
   comingSoon: Скоро
-  comma: ', '
+  comma: ", "
   copy: Скопировать
   create: Создать
   created: Создано
@@ -40,7 +40,7 @@ generic:
   never: Никогда
   none: Ничего
   notFound: Не найдено
-  number: '{prefix}{value, number}{suffix}'
+  number: "{prefix}{value, number}{suffix}"
   notification:
     title:
       succeed: Успешно
@@ -72,7 +72,7 @@ generic:
   techPreview: Превью
   type: Тип
   unknown: Неизвестный
-  provisioning: '—'
+  provisioning: "—"
   key: Ключ
   value: Значение
   yes: Да
@@ -261,7 +261,7 @@ about:
     helm: Helm
     machine: Машина
     rancher: Rancher
-    releaseNotes: 'Смотреть заметки к релизу'
+    releaseNotes: "Смотреть заметки к релизу"
   os:
     mac: macOS
     windows: Windows
@@ -350,13 +350,13 @@ addProjectMemberDialog:
 
 authConfig:
   accessMode:
-    label: 'Настройте, кто может иметь возможность входить в систему и использовать {vendor}'
+    label: "Настройте, кто может иметь возможность входить в систему и использовать {vendor}"
     required: Ограничить доступ только авторизованным пользователям и группам
-    restricted: 'Разрешить участникам кластеров и проектов, а также авторизованным пользователям и группам'
+    restricted: "Разрешить участникам кластеров и проектов, а также авторизованным пользователям и группам"
     unrestricted: Разрешить любому пользователю
   allowedPrincipalIds:
     title: Авторизованные пользователи и группы
-  associatedWarning: 'Примечание. Пользователь {provider}, под которым вы аутентифицируетесь, будет использован как альтернативный способ входа в систему с пользователем {vendor}, под которым вы в настоящее время вошли как <code>{username}</code>; все привязки глобальных разрешений, проектов и ролей кластера этого пользователя {vendor} также будут применяться к пользователю {provider}.'
+  associatedWarning: "Примечание. Пользователь {provider}, под которым вы аутентифицируетесь, будет использован как альтернативный способ входа в систему с пользователем {vendor}, под которым вы в настоящее время вошли как <code>{username}</code>; все привязки глобальных разрешений, проектов и ролей кластера этого пользователя {vendor} также будут применяться к пользователю {provider}."
   github:
     clientId:
       label: ID Клиента
@@ -365,15 +365,15 @@ authConfig:
     form:
       app:
         label: Наименование приложения
-        value: 'Все, что вам хочется, к примеру. Мой {vendor}'
+        value: "Все, что вам хочется, к примеру. Мой {vendor}"
       callback:
         label: callback URL для авторизации
       description:
         label: Описание приложения
-        value: 'Не обязательно, можно оставить пустым'
+        value: "Не обязательно, можно оставить пустым"
       homepage:
         label: URL домашней страницы
-      instruction: 'Заполните форму этими значениями:'
+      instruction: "Заполните форму этими значениями:"
       prefix:
         1: <li><a href="{baseUrl}/settings/developers" target="_blank" rel="noopener noreferrer nofollow">Кликните сюда</a> перейти к настройкам приложения GitHub в новом окне.</li>
         2: <li>Кликните на вкладку "OAuth Apps".</li>
@@ -405,21 +405,21 @@ authConfig:
         title: 'Кликните <a href="https://console.developers.google.com/apis/credentials" target="_blank" rel="noopener noreferrer nofollow">здесь</a> чтобы открыть настройки приложений в новом окне'
         body:
           1: Войдите в ваш аккаунт. Перейдите в "APIs & Services" и затем выберите "OAuth consent screen".
-          2: 'Авторизованные домены:'
-          3: 'Ссылка на главную страницу приложения: '
+          2: "Авторизованные домены:"
+          3: "Ссылка на главную страницу приложения: "
           4: 'В разделе "Области действия API Google", включите "email", "profile" и "openid".'
           5: 'Кликните на "Save".'
-        topPrivateDomain: 'Лучший частный домен:'
+        topPrivateDomain: "Лучший частный домен:"
       2:
-        title: 'Перейдите на вкладку «Учетные данные», чтобы создать идентификатор клиента OAuth.'
+        title: "Перейдите на вкладку «Учетные данные», чтобы создать идентификатор клиента OAuth."
         body:
           1: 'В списке "Create Credentials" выберите "OAuth clientID" и затем "Web application".'
-          2: 'Авторизованные источники Javascript:'
-          3: 'Разрешенные URI перенаправления:'
+          2: "Авторизованные источники Javascript:"
+          3: "Разрешенные URI перенаправления:"
           4: 'Кликните "Create", затем кликните на кнопку "Download JSON".'
-          5: 'Загрузите скачанный JSON файл в поле учетных данных OAuth.'
+          5: "Загрузите скачанный JSON файл в поле учетных данных OAuth."
       3:
-        title: 'Создать учетные данные сервисной учетной записи'
+        title: "Создать учетные данные сервисной учетной записи"
         introduction: 'Пройдите <a href="{docsBase}/admin-settings/authentication/google/#3-creating-service-account-credentials" target="_blank" rel="noopener noreferrer nofollow">сюда</a> для получения инструкции:'
         body:
           1: Создать сервисную учетную запись.
@@ -440,7 +440,7 @@ authConfig:
     groupMemberUserAttribute: Атрибут пользователя члена группы
     groupSearchBase:
       label: Начальный запрос групп
-      placeholder: 'ou=groups,dc=mycompany,dc=com'
+      placeholder: "ou=groups,dc=mycompany,dc=com"
     hostname:
       label: Имя хоста/IP
       placeholder: например server1,server2
@@ -463,7 +463,7 @@ authConfig:
     serverConnectionTimeout: Время ожидания подключения к серверу
     serviceAccountDN: Отличительное имя сервисной учетной записи
     serviceAccountPassword: Пароль сервисной учетной записи
-    serviceAccountInfo: '{vendor} требуется учетная запись службы, которая имеет доступ только для чтения ко всем доменам, которые смогут войти в систему, чтобы мы могли определить, к каким группам принадлежит пользователь, когда он делает запрос с помощью ключа API.'
+    serviceAccountInfo: "{vendor} требуется учетная запись службы, которая имеет доступ только для чтения ко всем доменам, которые смогут войти в систему, чтобы мы могли определить, к каким группам принадлежит пользователь, когда он делает запрос с помощью ключа API."
     starttls:
       label: Запустить TLS
       tip: Обновляет незашифрованные соединения, оборачивая их TLS в процессе соединения. Нельзя использовать вместе с TLS.
@@ -472,7 +472,7 @@ authConfig:
     userMemberAttribute: Атрибут члена пользователя
     userSearchBase:
       label: Начальный запрос пользователей
-      placeholder: 'например ou=users,dc=mycompany,dc=com'
+      placeholder: "например ou=users,dc=mycompany,dc=com"
     username: Имя пользователя
     usernameAttribute: Атрибут имени пользователя
     table:
@@ -482,7 +482,7 @@ authConfig:
     entityID: Поле Entity ID
     UID: Поле UID
     adfs: Настроить аккаунт AD FS
-    api: '{vendor} API Host'
+    api: "{vendor} API Host"
     cert:
       label: Сертификат
       placeholder: Вставьте сертификат, начинающийся с  -----BEGIN CERTIFICATE-----
@@ -508,13 +508,13 @@ authConfig:
     tokenEndpoint: Token endpoint
     authEndpoint: Auth endpoint
     reply:
-      info: 'Перед началом этой настройки Azure AD требуется URL-адрес из белого списка для вашего сервера Rancher. Убедитесь, что указанный ниже URL-адрес задан в разделе URL-адрес ответа вашего портала Azure. Обратите внимание, что распространение URL-адреса из белого списка может занять до 5 минут.'
+      info: "Перед началом этой настройки Azure AD требуется URL-адрес из белого списка для вашего сервера Rancher. Убедитесь, что указанный ниже URL-адрес задан в разделе URL-адрес ответа вашего портала Azure. Обратите внимание, что распространение URL-адреса из белого списка может занять до 5 минут."
       label: URL ответа
     updateEndpoint:
       button: Обновить endpoint
       banner:
-        message: 'Аутентификацию Azure AD необходимо обновить: она использует API Azure Graph, поддержка которого будет прекращена в конце 2022 года.'
-        linkText: 'Обновите здесь'
+        message: "Аутентификацию Azure AD необходимо обновить: она использует API Azure Graph, поддержка которого будет прекращена в конце 2022 года."
+        linkText: "Обновите здесь"
       modal:
         title: Вы уверены? Это обновление необратимо.
         body: <p><b>Возможно, вам потребуется внести некоторые дополнительные изменения</b>. Убедитесь что приложение Azure AD имеет права Directory.Read.All <b>Application</b> добавленные в Microsoft Graph.<br> Если какие-либо endpoint'ы были изменены при настройке аутентификации Azure AD в Rancher, они не будут автоматически обновляться.</p>
@@ -540,11 +540,11 @@ authConfig:
       label: Приватный ключ
       placeholder: Вставьте приватный ключ, обычно начинается с -----BEGIN RSA PRIVATE KEY-----
   stateBanner:
-    disabled: '{provider} как провайдер авторизации сейчас выключен.'
-    enabled: '{provider} как провайдер авторизации сейчас включен.'
+    disabled: "{provider} как провайдер авторизации сейчас выключен."
+    enabled: "{provider} как провайдер авторизации сейчас включен."
   testAndEnable: Протестировать и включить авторизацию
   noneEnabled: Локальная аутентификация всегда включена, но вы можете выбрать другого дополнительного провайдера аутентификации из показанных ниже.
-  localEnabled: '{vendor} настроен на разрешение доступа к учетным записям в своей локальной базе данных.'
+  localEnabled: "{vendor} настроен на разрешение доступа к учетным записям в своей локальной базе данных."
   manageLocal: Управлять аккаунтами
 
 authGroups:
@@ -650,13 +650,13 @@ asyncButton:
     waiting: Приостановка оркестрации
     description: Новые версии не будут развернуты, так как оркестровка временно приостановлена. Чтобы развернуть новые версии, возобновите оркестровку.
   refresh:
-    action: 'Действие'
+    action: "Действие"
     actionIcon: обновить
-    error: 'Ошибка'
+    error: "Ошибка"
     errorIcon: ошибка
-    success: 'Успех'
+    success: "Успех"
     successIcon: галочка
-    waiting: 'Ожидание'
+    waiting: "Ожидание"
     waitingIcon: обновить
   remove:
     action: Удалить
@@ -718,7 +718,7 @@ backupRestoreOperator:
     storage:
       label: Хранилище по умолчанию
       options:
-        defaultStorageClass: 'Использовать класс хранилища по умолчанию ({name})'
+        defaultStorageClass: "Использовать класс хранилища по умолчанию ({name})"
         none: Нет хранилища по умолчанию
         pickPV: Использовать существующий постоянный том
         pickSC: Использовать существующий класс хранилища
@@ -727,17 +727,17 @@ backupRestoreOperator:
         label: Persistent Volume
       storageClass:
         label: Класс хранилища
-      tip: 'Настройка хранилища, где по умолчанию сохраняются все резервные копии. У вас будет возможность переопределить это для каждой резервной копии, но будет ограничено использованием S3-совместимого хранилища объектов.'
+      tip: "Настройка хранилища, где по умолчанию сохраняются все резервные копии. У вас будет возможность переопределить это для каждой резервной копии, но будет ограничено использованием S3-совместимого хранилища объектов."
       warning: 'Этот {type} не имеет своей политики "Сохранить".  Ваши резервные копии могут быть потеряны, если объем изменяется или становится несвязанным.'
   encryption: Шифрование
   encryptionConfigName:
-    backuptip: 'Любой секрет в пространстве имен <code>cattle-resource-system</code>, имеющий <code>encryption-provider-config.yaml</code> ключ. <br/> Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher.'
+    backuptip: "Любой секрет в пространстве имен <code>cattle-resource-system</code>, имеющий <code>encryption-provider-config.yaml</code> ключ. <br/> Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher."
     label: Encryption Config Secret
     options:
       none: Хранить содержимое незашифрованной резервной копии
       secret: 'Шифрование резервных копий с помощью <a target="_blank" rel="noopener noreferrer nofollow" href="https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#understanding-the-encryption-at-rest-configuration">Encryption Config Secret</a> (Рекомендуется)'
-    restoretip: 'Если резервная копия была выполнена с включенным шифрованием, секрет, содержащий тот же encryption-provider-config должны использоваться во время восстановления.'
-    warning: 'Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher.'
+    restoretip: "Если резервная копия была выполнена с включенным шифрованием, секрет, содержащий тот же encryption-provider-config должны использоваться во время восстановления."
+    warning: "Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher."
   lastBackup: Последняя резервная копия
   nextBackup: Следующая резервная копия
   noResourceSet: вы должны задать ResourceSet в этом пространстве имен для создания резервной копии CR.
@@ -825,13 +825,13 @@ catalog:
     certified:
       other: Другое
       partner: Партнер
-      rancher: '{vendor}'
+      rancher: "{vendor}"
     deploysOnWindows: Развертывание на Windows
     windowsIncompatible: Только на Linux
     versionWindowsIncompatible: Версия только для Linux
     header: Чарты
     featuredCharts: Рекомендуемые чарты
-    noCharts: 'Нет доступных чартов, вы добавляли какие-либо репозитории?'
+    noCharts: "Нет доступных чартов, вы добавляли какие-либо репозитории?"
     noWindows: Ваши репозитории не содержат чартов, способных развертываться в кластере с Windows нодами.
     noWindowsAndLinux: Ваши репозитории не содержат чартов, способных развертываться на кластере с worker нодами Windows и Linux.
     operatingSystems:
@@ -847,9 +847,9 @@ catalog:
     chart: Чарт
     error:
       requiresFound: '<a href="{url}">{name}</a> должна быть установлена перед установкой этого чарта.'
-      requiresMissing: 'Для этого чарта требует другой чарт, с именем {name}, но он не найден.'
-      insufficientCpu: 'Этот чарт требует {need, number} CPU ядер, но в кластере доступно только {have, number}.'
-      insufficientMemory: 'Этот чарт требует {need} памяти, но в кластере доступно только {have}.'
+      requiresMissing: "Для этого чарта требует другой чарт, с именем {name}, но он не найден."
+      insufficientCpu: "Этот чарт требует {need, number} CPU ядер, но в кластере доступно только {have, number}."
+      insufficientMemory: "Этот чарт требует {need} памяти, но в кластере доступно только {have}."
       legacy:
         label: Это приложение {legacyType} и не может быть изменено здесь
         enableLegacy:
@@ -861,9 +861,9 @@ catalog:
           legacy: Легаси
           mcm: Мульти-кластер
     header:
-      install: 'Установить {name}'
+      install: "Установить {name}"
       installGeneric: Установить чарт
-      upgrade: 'Обновить {name}'
+      upgrade: "Обновить {name}"
     helm:
       atomic: Atomic
       description:
@@ -935,9 +935,9 @@ catalog:
         description: Указание дополнительных параметров развертывания
     version: Версия
     versions:
-      current: '{ver} (Current)'
-      linux: '{ver} (Linux-only)'
-      windows: '{ver} (Windows-only)'
+      current: "{ver} (Current)"
+      linux: "{ver} (Linux-only)"
+      windows: "{ver} (Windows-only)"
   operation:
     tableHeaders:
       action: Действие
@@ -953,9 +953,9 @@ catalog:
       defaultMessage: 'По умолчанию будет "master" если оставить пустым'
     gitRepo:
       label: URL Git репозитория
-      placeholder: 'напр. https://github.com/your-company/charts.git'
+      placeholder: "напр. https://github.com/your-company/charts.git"
     name:
-      rancher-charts: '{vendor}'
+      rancher-charts: "{vendor}"
       rancher-partner-charts: Партнеры
       rancher-rke2-charts: RKE2
       rancher-ui-plugins: Расширения Rancher
@@ -966,7 +966,7 @@ catalog:
       label: Адрес
     url:
       label: Index URL
-      placeholder: 'напр. https://charts.rancher.io'
+      placeholder: "напр. https://charts.rancher.io"
   tools:
     header: Инструменты кластера
     noTools: "Не найдено инструментов кластера"
@@ -1096,7 +1096,7 @@ cluster:
       label: Google
     rancher-vsphere:
       label: vSphere
-      note: '<b>Важно:</b> Настройте облачный провайдер vSphere и провайдер хранилища на вкладке конфигурации аддонов.'
+      note: "<b>Важно:</b> Настройте облачный провайдер vSphere и провайдер хранилища на вкладке конфигурации аддонов."
     harvester:
       label: Harvester
   copyConfig: Скопировать KubeConfig в буфер обмена
@@ -1212,7 +1212,7 @@ cluster:
         label: Имя пользователя
       password:
         label: Пароль
-      note: 'Замечание: Бесплатная лицензия ESXi не поддерживает API доступ. Поддерживаются только серверы с действующими или ознакомительными лицензиями.'
+      note: "Замечание: Бесплатная лицензия ESXi не поддерживает API доступ. Поддерживаются только серверы с действующими или ознакомительными лицензиями."
     gcp:
       authEncodedJson:
         label: Сервисный аккаунт
@@ -1239,7 +1239,7 @@ cluster:
         addNetwork: Add Network
         networkName: Network Name
         macAddress: Mac Address
-        macFormat: 'Invalid MAC address format.'
+        macFormat: "Invalid MAC address format."
       volume:
         title: Volumes
         volume: Volume
@@ -1256,7 +1256,7 @@ cluster:
         title: "Данные сети:"
       kubeconfigContent:
         label: KubeconfigContent
-      placeholder: 'Пространство имён/Имя'
+      placeholder: "Пространство имён/Имя"
       cluster: Кластер
       affinity:
         namespaces:
@@ -1267,11 +1267,10 @@ cluster:
   harvester:
     importNotice: Импортировать Harvester кластеры через
     warning:
-      label: Это Harvester кластер - включить Harvester feature flag для управления им
+      label: Это Harvester кластер - включить Harvester фича-флаг для управления им
       state: Предупреждение
       cloudProvider:
-        incompatible:
-          Вы не можете выбрать облачный провайдер Harvester т.к. текущая версия Harvester не совместима с выбранной версией RKE2 Kubernetes, нажмите <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">здесь</a>, чтобы узнать, какие версии Kubernetes поддерживаются.
+        incompatible: Вы не можете выбрать облачный провайдер Harvester т.к. текущая версия Harvester не совместима с выбранной версией RKE2 Kubernetes, нажмите <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">здесь</a>, чтобы узнать, какие версии Kubernetes поддерживаются.
     clusterWarning: |-
       Есть {count, plural,
       =1 {1 Harvester кластер, который не отображен}
@@ -1300,11 +1299,11 @@ cluster:
         toolTip: SSH пользователь для входа с выбранным образом операционной системы.
   haveOneOwner: Обязательно должен быть как минимум один участник с ролью владельца.
   import:
-    warningBanner: 'Не импортируйте кластер, который уже был присоединен к другому экземпляру Rancher, т.к. это приведет к повреждению данных.'
-    commandInstructions: 'Выполните команду <code>kubectl</code> ниже на существующем Kubernetes кластере, работающем на поддерживаемой версии Kubernetes, чтобы импортировать в {vendor}:'
-    commandInstructionsInsecure: 'Если возникает ошибка &quot;certificate signed by unknown authority&quot;, это означает, что сборка {vendor} имеет самоподписанный или ненадежный SSL-сертификат. Вместо предыдущей выполните команду, приведенную ниже, чтобы пропустить проверку сертификата:'
-    clusterRoleBindingInstructions: 'Если при создании некоторых ресурсов возникают ошибки разрешения доступа, возможно, ваш пользователь не имеет роли <code>cluster-admin</code>. Используйте следующую команду, чтобы применить её:'
-    clusterRoleBindingCommand: 'kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user <your username from your kubeconfig>'
+    warningBanner: "Не импортируйте кластер, который уже был присоединен к другому экземпляру Rancher, т.к. это приведет к повреждению данных."
+    commandInstructions: "Выполните команду <code>kubectl</code> ниже на существующем Kubernetes кластере, работающем на поддерживаемой версии Kubernetes, чтобы импортировать в {vendor}:"
+    commandInstructionsInsecure: "Если возникает ошибка &quot;certificate signed by unknown authority&quot;, это означает, что сборка {vendor} имеет самоподписанный или ненадежный SSL-сертификат. Вместо предыдущей выполните команду, приведенную ниже, чтобы пропустить проверку сертификата:"
+    clusterRoleBindingInstructions: "Если при создании некоторых ресурсов возникают ошибки разрешения доступа, возможно, ваш пользователь не имеет роли <code>cluster-admin</code>. Используйте следующую команду, чтобы применить её:"
+    clusterRoleBindingCommand: "kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user <your username from your kubeconfig>"
   explore: Обзор
   importAction: Импортировать существующий
   manageAction: Управление
@@ -1405,7 +1404,7 @@ cluster:
         label: Использовать приватный IP
       vnet:
         label: Виртуальная сеть
-        placeholder: '[resourcegroup:]name'
+        placeholder: "[resourcegroup:]name"
       tags:
         label: Теги
     digitalocean:
@@ -1468,10 +1467,10 @@ cluster:
         keyPlaceholder: например, guestinfo.hostname
         valuePlaceholder: например, myrancherhost
       creationMethods:
-        template: 'Развернуть из шаблона: Дата-центр'
-        library: 'Развернуть из шаблона: Библиотека контента'
-        vm: 'Клонировать существующую виртуальную машину'
-        legacy: 'Установить из boot2docker ISO (устаревшее)'
+        template: "Развернуть из шаблона: Дата-центр"
+        library: "Развернуть из шаблона: Библиотека контента"
+        vm: "Клонировать существующую виртуальную машину"
+        legacy: "Установить из boot2docker ISO (устаревшее)"
       scheduling:
         label: Планирование
         description: Выберите гипервизор, на который будет назначена виртуальная машина
@@ -1497,7 +1496,7 @@ cluster:
         virtualMachine: Виртуальная машина
         osIsoUrl:
           label: URL до ISO ОС
-          placeholder: 'По умолчанию: последний rancheros-vmware образ'
+          placeholder: "По умолчанию: последний rancheros-vmware образ"
         cloudInit:
           label: Cloud Init
           placeholder: например, http://my_host/cloud-config.yml
@@ -1517,39 +1516,39 @@ cluster:
       zone: Зона
       instanceType: Тип экземпляра
       rootSize:
-        placeholder: 'По умолчанию: 16'
+        placeholder: "По умолчанию: 16"
         label: Размер корневого диска
         suffix: GB
       selectedNetwork:
-        label: 'VPC/Подсеть'
+        label: "VPC/Подсеть"
         placeholder: Выберите VPC или подсеть
       iamInstanceProfile:
         label: Имя профиля экземпляра IAM
         tooltip: Поддержка облачного провайдера Kubernetes AWS требует соответствующего профиля экземпляра
       ami:
         label: AMI ID
-        placeholder: 'По умолчанию: последний Ubuntu LTS'
+        placeholder: "По умолчанию: последний Ubuntu LTS"
       sshUser:
         label: Имя пользователя SSH для AMI
-        placeholder: 'По умолчанию: ubuntu'
-        tooltip: 'Имя пользователя, которое существует в выбранном AMI; будет использоваться для SSH-подключения к данной ноде.'
+        placeholder: "По умолчанию: ubuntu"
+        tooltip: "Имя пользователя, которое существует в выбранном AMI; будет использоваться для SSH-подключения к данной ноде."
       securityGroup:
         title: Группа безопасности
-        vpcId: '(сначала выберите VPC/подсеть)'
+        vpcId: "(сначала выберите VPC/подсеть)"
         mode:
           default: 'Стандартно: Автоматически создать и использовать группу безопасности "{defaultGroup}"'
-          custom: 'Выберите одну или несколько существующих групп безопасности:'
+          custom: "Выберите одну или несколько существующих групп безопасности:"
       volumeType:
         label: Тип корневого EBS тома
-        placeholder: 'По умолчанию: gp2'
+        placeholder: "По умолчанию: gp2"
       encryptEbsVolume: Зашифровать EBS том
       kmsKey:
         label: KMS ключ ARN
-        text: 'У вас недостаточно прав для получения списка ключей KMS, но вы все равно сможете ввести ключ ARN, если вы его знаете.'
+        text: "У вас недостаточно прав для получения списка ключей KMS, но вы все равно сможете ввести ключ ARN, если вы его знаете."
       requestSpotInstance: Запросить Spot-экземпляр
       spotPrice:
         label: Spot-цена
-        placeholder: 'По умолчанию: 0.50'
+        placeholder: "По умолчанию: 0.50"
         suffix: Долларов в час
       privateAddressOnly: Используйте только приватный адрес
       useEbsOptimizedInstance: Оптимизированный по EBS экземпляр
@@ -1581,16 +1580,16 @@ cluster:
     dependencyBanner: Конфигурации аддонов могут отличаться для разных версий Kubernetes. Изменение версии Kubernetes может привести к сбросу значений, приведенных ниже.
     additionalManifest:
       title: Дополнительный манифест
-      tooltip: 'Дополнительный YAML манифест Kubernetes для применения к кластеру при запуске'
+      tooltip: "Дополнительный YAML манифест Kubernetes для применения к кластеру при запуске"
   advanced:
     argInfo:
       title: Дополнительные Kubelet аргументы
       machineSelector:
         label: Добавить селектор машин
         listLabel: Добавить аргумент
-        bannerLabel: 'Замечание: Будет использован только самый последний селектор, удовлетворяющий условию, и только аргументы из него. Аргументы из остальных селекторов, удовлетворяющих условию, не будут ни объединены, ни скомбинированы.'
-        title: 'Для машин с лэйблами совпадающими с:'
-        subTitle: 'Использовать следующие аргументы Kubelet:'
+        bannerLabel: "Замечание: Будет использован только самый последний селектор, удовлетворяющий условию, и только аргументы из него. Аргументы из остальных селекторов, удовлетворяющих условию, не будут ни объединены, ни скомбинированы."
+        title: "Для машин с лэйблами совпадающими с:"
+        subTitle: "Использовать следующие аргументы Kubelet:"
         titleAlt: |-
           {count, plural,
             =1 { Для всех машин использовать следующие аргументы Kubelet: }
@@ -1602,8 +1601,8 @@ cluster:
     agentArgs:
       label: Вызывать ошибку, если параметры ядра отличаются от ожидаемых значений по умолчанию Kubelet
   banner:
-    warning: 'Этот кластер содержит machineSelectorConfig. Данная форма не поддерживает его в полной мере. Используйте редактор YAML для управления полной конфигурацией.'
-    os: 'Попытка добавить {newOS} worker ноду в кластер с одной или несколькими {existingOS} worker нодами: для некоторых установленных приложений может потребоваться обновление или удаление.'
+    warning: "Этот кластер содержит machineSelectorConfig. Данная форма не поддерживает его в полной мере. Используйте редактор YAML для управления полной конфигурацией."
+    os: "Попытка добавить {newOS} worker ноду в кластер с одной или несколькими {existingOS} worker нодами: для некоторых установленных приложений может потребоваться обновление или удаление."
     rke2-k3-reprovisioning: 'Внесение изменений в конфигурацию кластера может привести к reprovisioning нод. Больше информации Вы можете найти в <a target="blank" href="{docsBase}/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/rke1-vs-rke2-differences" target="_blank" rel="noopener nofollow">документации</a>.'
     desiredNodeGroupWarning: Доступно 0 нод для запуска агента кластера. Кластер не будет активирован, пока нет как минимум одной доступной ноды.
     invalidPsps: You have one or more PodSecurityPolicy resource(s) in this cluster. Pod Security Policies are not available in Kubernetes v1.25.
@@ -1630,9 +1629,9 @@ cluster:
       placeholder: По умолчанию будет сгенерировано случайным образом
     nodeTotals:
       label:
-        controlPlane: '{count} Control Plane'
-        etcd: '{count} etcd'
-        worker: '{count} Worker'
+        controlPlane: "{count} Control Plane"
+        etcd: "{count} etcd"
+        worker: "{count} Worker"
       tooltip:
         controlPlane: |-
           {count, plural,
@@ -1676,7 +1675,7 @@ cluster:
       unit: "Секунды"
   managementTimeout: Кластер станет доступным. Возможно, кластер уже создан. Рекомендуем проверить страницу кластеров прежде, чем пытаться создавать новый.
   memberRoles:
-    removeMessage: 'Замечание: удаление пользоватей не приводит к удалению их доступа к проекту'
+    removeMessage: "Замечание: удаление пользоватей не приводит к удалению их доступа к проекту"
     addClusterMember:
       labelSelect: Выберите участника
       labelAdd: Добавить участника
@@ -1686,8 +1685,8 @@ cluster:
   privateRegistry:
     label: Включить регистри контейнеров на уровне кластера для образов системных контейнеров Rancher
     description: "Если включено, Rancher будет извлекать образы контейнеров из этого регистри во время выделения кластера. По умолчанию Rancher также будет использовать этот регистри при установке официальных Helm чарт приложений Rancher. Если отключен регистри контейнеров на уровне кластера, системные образы извлекаются из системного регистри по умолчанию, указанного в глобальных настройках."
-    docsLinkRke2: "За помощью в конфигурации приватных зеркал регистри обратитесь к <a href=\"https://docs.rke2.io/install/containerd_registry_configuration/\" target=\"_blank\">документации</a> RKE2."
-    docsLinkK3s: "За помощью в конфигурации приватных зеркал регистри обратитесь к <a href=\"https://docs.k3s.io/installation/private-registry\" target=\"_blank\">документации</a> K3s."
+    docsLinkRke2: 'За помощью в конфигурации приватных зеркал регистри обратитесь к <a href="https://docs.rke2.io/install/containerd_registry_configuration/" target="_blank">документации</a> RKE2.'
+    docsLinkK3s: 'За помощью в конфигурации приватных зеркал регистри обратитесь к <a href="https://docs.k3s.io/installation/private-registry" target="_blank">документации</a> K3s.'
   provider:
     aliyunecs: Aliyun ECS
     aliyunkubernetescontainerservice: Alibaba ACK
@@ -1747,7 +1746,7 @@ cluster:
     machineinventoryselectortemplate: Elemental Cluster
   providerTag:
     rke2:
-      harvester: '{tag}'
+      harvester: "{tag}"
   providerGroup:
     create-custom1: Использовать существующие ноды и создать кластер с помощью RKE
     create-custom2: Использовать существующие ноды и создать кластер с помощью RKE2/K3s
@@ -1761,10 +1760,10 @@ cluster:
     snapshots:
       suffix: снапшотов на одну ноду
     systemService:
-      rke2-coredns: 'CoreDNS'
-      rke2-ingress-nginx: 'NGINX Ingress'
-      rke2-kube-proxy: 'Kube Proxy'
-      rke2-metrics-server: 'Сервер метрик'
+      rke2-coredns: "CoreDNS"
+      rke2-ingress-nginx: "NGINX Ingress"
+      rke2-kube-proxy: "Kube Proxy"
+      rke2-metrics-server: "Сервер метрик"
       header: Системные сервисы
     cni:
       label: Сеть контейнеров
@@ -1837,11 +1836,11 @@ cluster:
       option: (None)
   k3s:
     systemService:
-      coredns: 'CoreDNS'
-      local-storage: 'Local Storage'
-      metrics-server: 'Сервер метрик'
-      servicelb: 'Klipper Service LB'
-      traefik: 'Traefik Ingress'
+      coredns: "CoreDNS"
+      local-storage: "Local Storage"
+      metrics-server: "Сервер метрик"
+      servicelb: "Klipper Service LB"
+      traefik: "Traefik Ingress"
   selectCredential:
     genericDescription: "{vendor} не имеет встроенной поддержки для этого драйвера. Мы сделали предположение, но обратитесь к документации драйвера, чтобы уточнить список полей, необходимых для аутентификации."
   snapshot:
@@ -1954,7 +1953,6 @@ containerResourceLimit:
   requestsCpu: Резервирование CPU
   requestsMemory: Резервирование памяти
 
-
 resource:
   errors:
     update: "Ошибка обновления {name}"
@@ -1972,9 +1970,9 @@ cruResource:
 
 detailText:
   collapse: Скрыть
-  binary: '<Двоичные данные: {n, number} байт>'
-  empty: '<Пусто>'
-  unsupported: '<Значение не поддерживается интерфейсом, смотрите YAML>'
+  binary: "<Двоичные данные: {n, number} байт>"
+  empty: "<Пусто>"
+  unsupported: "<Значение не поддерживается интерфейсом, смотрите YAML>"
   plusMore: |-
     {n, plural,
       =1 {+ 1 символ}
@@ -1982,10 +1980,10 @@ detailText:
     }
 
 drainNode:
-  action: 'Освободить'
-  actionStop: 'Остановить освобождение'
+  action: "Освободить"
+  actionStop: "Остановить освобождение"
   titleOne: Освободить {name}
-  titleMultiple: 'Освободить {count} нод'
+  titleMultiple: "Освободить {count} нод"
   deleteLocalData: Удалить пустые данные директории
   force: принудительно
   safe:
@@ -2049,11 +2047,11 @@ fleet:
   fleetSummary:
     noClustersGitRepo: Этот git репозиторий не связан ни с каким кластеров
     state:
-      ready: 'Готово'
-      info: 'Переходит'
-      warning: 'Предупреждение'
-      error: 'Ошибка'
-      unknown: 'Неизвестно'
+      ready: "Готово"
+      info: "Переходит"
+      warning: "Предупреждение"
+      error: "Ошибка"
+      unknown: "Неизвестно"
       notReady: Не готово
       waitApplied: Отложено
   gitRepo:
@@ -2075,7 +2073,7 @@ fleet:
       empty: Корневой репозиторий будет использоваться по умолчанию. Чтобы использовать одну или несколько различных директорий, добавьте их здесь.
     repo:
       label: URL репозитория
-      placeholder: 'напр. https://github.com/rancher/fleet-examples.git'
+      placeholder: "напр. https://github.com/rancher/fleet-examples.git"
       addRepo: Добавить репозиторий
       noRepos: Репозитории не были добавлены
     add:
@@ -2083,12 +2081,12 @@ fleet:
         repoInfo:
           label: Детали репозитория
           title: Укажите Git репозиторий для добавления в fleet
-          subtext: 'Добавить детали репозитория'
+          subtext: "Добавить детали репозитория"
           description: Fleet будет постоянно отслеживать изменения в Git репозитории указанном ниже и синхронизировать содержащиеся в нем ресурсы  you configure below and synchronise the resources contained in it to the configured targets.
         targetInfo:
           label: Детали цели
           title: Укажите цель для синхронизации этого репозитория
-          subtext: 'Указать детали цели'
+          subtext: "Указать детали цели"
           description: Можно настроить, какие кластеры будут использоваться в качестве цели синхронизации с ресурсами репозитория.
     ref:
       label: Отслеживать
@@ -2258,7 +2256,7 @@ hpa:
     currentMetrics:
       header: Текущие метрики
       noMetrics: Нет текущих метрик
-    metricHeader: '{source} Метрика'
+    metricHeader: "{source} Метрика"
   metricIdentifier:
     name:
       label: Имя метрики
@@ -2401,7 +2399,7 @@ istio:
     jaeger:
       label: Jaeger
       description: Monitor and Troubleshoot microservices-based distributed systems.
-    disabled: '{app} не установлено'
+    disabled: "{app} не установлено"
   cni: Enabled CNI
   customOverlayFile:
     label: Custom Overlay File
@@ -2618,7 +2616,7 @@ landing:
       homePage: Перейти на главную страницу
       lastVisited: Перейти на последнюю посещенную страницу
       custom: "Перейти к кластеру:"
-  welcomeToRancher: 'Добро пожаловать в {vendor}'
+  welcomeToRancher: "Добро пожаловать в {vendor}"
 
 logging:
   clusterFlow:
@@ -2667,7 +2665,7 @@ logging:
     enableAdditionalLoggingSources: Включить расширенное логирование облачного провайдера
     dockerRootDirectory: Корневая директория Docker
     systemdLogPath: Путь до systemd логов
-    tooltip: 'Некоторые дистрибутивы Kubernetes логируются в <code>journald</code>. Для сбора этих логов требуется задать <code>systemdLogPath</code>. При использовании директории по умолчанию <code>/run/log/journal</code> следует учитывать, что некоторые дистрибутивы Linux не используют этот путь как значение по умолчанию.'
+    tooltip: "Некоторые дистрибутивы Kubernetes логируются в <code>journald</code>. Для сбора этих логов требуется задать <code>systemdLogPath</code>. При использовании директории по умолчанию <code>/run/log/journal</code> следует учитывать, что некоторые дистрибутивы Linux не используют этот путь как значение по умолчанию."
     url: '<a href="https://rancher.com/docs/rancher/v2.6/en/logging/helm-chart-options/" target="_blank" rel="noopener nofollow noreferrer">Узнать больше</a>'
     default: /run/log/journal
   elasticsearch:
@@ -2742,7 +2740,7 @@ logging:
     secretKey: Секретный ключ из Secret
   azurestorage:
     storageAccount: Аккаунт из Secret
-    accessKey:  Ключ доступа из Secret
+    accessKey: Ключ доступа из Secret
     container: Контейнер
     path: Путь
     storeAs: Хранить как
@@ -2806,7 +2804,7 @@ logging:
       flushInterval: Интервал Flush
       timekey: Timekey
       timekeyWait: Ожидание Timekey
-      timekeyUseUTC: Использование UTC в Timekey 
+      timekeyUseUTC: Использование UTC в Timekey
   s3:
     keyId: Key Id из Secret
     secretKey: Секретный ключ из Secret
@@ -2882,8 +2880,8 @@ longhorn:
     subtitle: "При поддержке: <a href='https://github.com/longhorn' target='_blank' rel='noopener nofollow noreferrer'>Longhorn</a>"
     linkedList:
       longhorn:
-        label: 'Longhorn'
-        description: 'Управление системой хранения через UI'
+        label: "Longhorn"
+        description: "Управление системой хранения через UI"
         na: Ресурс недоступен
 
 neuvector:
@@ -2892,8 +2890,8 @@ neuvector:
     subtitle: "При поддержке: <a href='https://github.com/neuvector' target='_blank' rel='noopener nofollow noreferrer'>NeuVector</a>"
     linkedList:
       neuvector:
-        label: 'NeuVector'
-        description: 'Полная безопасность контейнера жизненного цикла'
+        label: "NeuVector"
+        description: "Полная безопасность контейнера жизненного цикла"
         na: Ресурс недоступен
 
 login:
@@ -2948,7 +2946,7 @@ members:
       description: Владельцы имеют полный контроль над кластером и всеми ресурсами внутри него.
     member:
       label: Участник
-      description: Участники могут управлять ресурсами внутри кластера, но они не могут изменять сам кластер. 
+      description: Участники могут управлять ресурсами внутри кластера, но они не могут изменять сам кластер.
     custom:
       label: Настраиваемый
       description: Выберите индивидуальные роли для данного пользователя.
@@ -2996,10 +2994,10 @@ monitoring:
     placeholder: Выберите тип кластера
   createDefaultRoles:
     label: Создать роли кластера мониторинга по умолчанию
-    tip: 'Создает <code>monitoring-admin</code>, <code>monitoring-edit</code> и <code>monitoring-view</code> ClusterRoles, которые могут быть назначены на пользователей для предоставления разрешений на CRD, установленные чартом мониторинга.'
+    tip: "Создает <code>monitoring-admin</code>, <code>monitoring-edit</code> и <code>monitoring-view</code> ClusterRoles, которые могут быть назначены на пользователей для предоставления разрешений на CRD, установленные чартом мониторинга."
   etcdNodeDirectory:
     label: Директория для сертификата etcd ноды
-    tooltip: 'Для кластеров, которые используют RancherOS для etcd нод, необходимо выбрать опцию <pre class=''inline-block m-0''>/opt/rke/etc/kubernetes/ssl</pre>. Гибридное окружение, требующее указания нескольких директорий для сертификатов (например, etcd плоскость, содержащая и хосты RancherOS, и хосты Ubuntu), не поддерживается.'
+    tooltip: "Для кластеров, которые используют RancherOS для etcd нод, необходимо выбрать опцию <pre class='inline-block m-0'>/opt/rke/etc/kubernetes/ssl</pre>. Гибридное окружение, требующее указания нескольких директорий для сертификатов (например, etcd плоскость, содержащая и хосты RancherOS, и хосты Ubuntu), не поддерживается."
   grafana:
     storage:
       annotations: Примечания PVC
@@ -3056,11 +3054,11 @@ monitoring:
       adminApi: API администратора
       evaluation: Интервал оценки
       ignoreNamespaceSelectors:
-        help: 'Игнорирование селектора пространства имён позволяет администраторам кластера ограничивать командам мониторинг ресурсов вне пространств имён, для которых они имеют разрешение; но это может нарушить функциональность приложений, полагающихся на настройку мониторов, которые осуществляют scrape целей в нескольких пространствах имён, например, Istio.'
+        help: "Игнорирование селектора пространства имён позволяет администраторам кластера ограничивать командам мониторинг ресурсов вне пространств имён, для которых они имеют разрешение; но это может нарушить функциональность приложений, полагающихся на настройку мониторов, которые осуществляют scrape целей в нескольких пространствах имён, например, Istio."
         label: Селектор пространства имён
         radio:
-          enforced: 'Использование: Мониторы могут получить доступ к ресурсам на основе пространств имён, совпадающих с пространством имён в поле селектора'
-          ignored: 'Игнорирование: Мониторы могут получить доступ только к ресурсам из пространства имён, в котором они развёрнуты'
+          enforced: "Использование: Мониторы могут получить доступ к ресурсам на основе пространств имён, совпадающих с пространством имён в поле селектора"
+          ignored: "Игнорирование: Мониторы могут получить доступ только к ресурсам из пространства имён, в котором они развёрнуты"
       limits:
         cpu: Ограничение CPU
         memory: Ограничение памяти
@@ -3076,7 +3074,7 @@ monitoring:
       label: Постоянное хранилище для Prometheus
       mode: Режим доступа
       selector: Селектор
-      selectorWarning: 'При использовании динамического provisioner (например, Longhorn), не должно быть задано ни одного селектора, поскольку PVC с непустым селектором не может иметь PV, динамически provisioned для него.'
+      selectorWarning: "При использовании динамического provisioner (например, Longhorn), не должно быть задано ни одного селектора, поскольку PVC с непустым селектором не может иметь PV, динамически provisioned для него."
       size: Размер
       volumeName: Название тома
     title: Настроить Prometheus
@@ -3146,16 +3144,16 @@ monitoring:
     webhook:
       url: URL
       urlSecret: URL Secret
-      urlSecretTooltip: 'urlSecret имеет приоритет над URL. Должно быть задано одно из значений urlSecret и URL.'
+      urlSecretTooltip: "urlSecret имеет приоритет над URL. Должно быть задано одно из значений urlSecret и URL."
     auth:
-      bearerTokenSecret: Secret токена на предъявителя 
+      bearerTokenSecret: Secret токена на предъявителя
       basicAuthUsername: Secret с именем пользователя базовой авторизации
       basicAuthPassword: Secret с паролем базовой авторизации
   installSteps:
     uninstallV1:
       stepTitle: Удалить V1
       stepSubtext: Удалить предыдущий мониторинг
-      warning1: На настоящий момент развёрнут мониторинг V1. Его необходимо удалить перед установкой мониторинга V2. 
+      warning1: На настоящий момент развёрнут мониторинг V1. Его необходимо удалить перед установкой мониторинга V2.
       warning2: <a target="blank" href="https://ranchermanager.docs.rancher.com/v2.6/how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring#migrating-from-monitoring-v1-to-monitoring-v2" target='_blank' rel='noopener nofollow'>Узнать больше</a> о шагах миграции на мониторинг V2.
       promptDescription: <div class="mt-20 mb-20">Вы пытаетесь удалить мониторинг V1. Пожалуйста, убедитесь, что Вы ознакомились с шагами миграции.</div>
       success1: Мониторинг V1 успешно удален.
@@ -3166,7 +3164,7 @@ monitoring:
     grafana: Grafana
     prometheus: Prometheus
     projectMetrics: Метрики проекта
-  v1Warning: 'На настоящий момент мониторинг развёрнут из Управления кластером. При миграции с более старой версии {vendor} со включенным мониторингом, пожалуйста, выключите мониторинг в Управлении кластером прежде, чем пытаться установить этот новый чарт мониторинга {vendor} в Обзоре кластера.'
+  v1Warning: "На настоящий момент мониторинг развёрнут из Управления кластером. При миграции с более старой версии {vendor} со включенным мониторингом, пожалуйста, выключите мониторинг в Управлении кластером прежде, чем пытаться установить этот новый чарт мониторинга {vendor} в Обзоре кластера."
 
 monitoringReceiver:
   addButton: Добавить {тип}
@@ -3191,7 +3189,7 @@ monitoringReceiver:
   webhook:
     label: Webhook
     title: Настройки для Webhook
-    urlTooltip: Для некоторых webhooks это URL, указывающий на DNS службу. 
+    urlTooltip: Для некоторых webhooks это URL, указывающий на DNS службу.
     modifyNamespace: Если были изменены значения по умолчанию <pre class="inline-block m-0 p-0 vertical-middle">rancher-alerting-drivers</pre>, обновите URL согласно следующему формату http://&lt;new_service_name&gt;.&lt;new_namespace&gt.svc.&lt;port&gt/&lt;path&gt
     banner: Для использования MS Teams или SMS необходимо сначала установить как минимум один экземпляр <pre class="inline-block m-0 p-0 vertical-middle">rancher-alerting-drivers</pre>.
     add:
@@ -3232,7 +3230,7 @@ alertmanagerConfigReceiver:
   name: Имя получателя
   addButton: Добавить получателя
   receivers: Получатели
-  namespaceWarning: Невозможно отобразить селектор Secret, поскольку не найдено ни одного пространства имён для получения secrets.
+  namespaceWarning: Невозможно отобразить селектор Secret, поскольку не найдено ни одного пространства имён для получения Secret'ов.
   receiverTypes: "Следующие типы получателей могут быть изменены на формах: Email, Slack, PagerDuty, Opsgenie и Webhook. Для других типов получателей требуется изменение AlertmanagerConfig YAML."
   slack:
     webhookUrl: URL для Webhook
@@ -3269,17 +3267,17 @@ monitoringRoute:
 
 moveModal:
   title: Переместить в новый проект?
-  description: 'Вы перемещаете следующие пространства имён:'
+  description: "Вы перемещаете следующие пространства имён:"
   moveButtonLabel: Переместить
   targetProject: Целевой проект
 
 nameNsDescription:
   name:
     label: Имя
-    placeholder: 'Уникальное имя'
+    placeholder: "Уникальное имя"
   namespace:
     label: Пространство имён
-    placeholder: ''
+    placeholder: ""
   workspace:
     label: Рабочее пространство
     placeholder:
@@ -3303,13 +3301,13 @@ namespace:
   createNamespace: Создать новое пространство имён
   selectOrCreate: Выбрать или создать пространство имён
   resourceStates:
-    success: 'Активно'
-    info: 'Transitioning'
-    warning: 'Предупреждение'
-    error: 'Ошибка'
-    unknown: 'Неизвестно'
+    success: "Активно"
+    info: "Transitioning"
+    warning: "Предупреждение"
+    error: "Ошибка"
+    unknown: "Неизвестно"
     paused:
-      stateName: 'Неактивно'
+      stateName: "Неактивно"
       shortDescription: Развертывание приостановлено
       longDescription: Развертывание приостановлено. Приостановка прекращает развертывание ревизий контроллером.
 
@@ -3330,10 +3328,10 @@ namespaceList:
 navLink:
   name:
     label: Имя
-    placeholder: 'например, foo-bar'
+    placeholder: "например, foo-bar"
   label:
     label: Имя для отображения
-    placeholder: 'Текст, отображаемый для ссылки'
+    placeholder: "Текст, отображаемый для ссылки"
   tabs:
     link:
       label: Тип ссылки
@@ -3343,20 +3341,20 @@ navLink:
         url: Ссылка на URL
       toURL:
         label: Целевой URL
-        placeholder: 'например, https://rancher.com'
+        placeholder: "например, https://rancher.com"
       toService:
         service:
           label: Сервис (namespace/name)
-          placeholder: 'например, cattle-system/rancher-webhook'
+          placeholder: "например, cattle-system/rancher-webhook"
         path:
           label: Путь
-          placeholder: 'например, proxy/?orgId=1'
+          placeholder: "например, proxy/?orgId=1"
         port:
           label: Порт
-          placeholder: 'например, 80'
+          placeholder: "например, 80"
         scheme:
           label: Схема
-          placeholder: 'например, http'
+          placeholder: "например, http"
     target:
       label: Целевое окно
       option:
@@ -3449,7 +3447,7 @@ node:
       noLocation: Нет месторасположения
   detail:
     detailTop:
-      containerRuntime: Runtime контейнера
+      containerRuntime: Среда выполнения контейнера
       internalIP: Внутренний IP
       externalIP: Внешний IP
       os: ОС
@@ -3474,7 +3472,7 @@ node:
         key:
           architecture: Архитектура
           bootID: Boot ID
-          containerRuntimeVersion: Версия Runtime контейнера
+          containerRuntimeVersion: Версия среды выполнения контейнера
           kernelVersion: Версия Kernel
           kubeProxyVersion: Версия Kube Proxy
           kubeletVersion: Версия Kubelet
@@ -3644,7 +3642,7 @@ persistentVolume:
   glusterfs:
     label: Том Gluster (не поддерживается)
     endpoints:
-      label: Endpoints
+      label: Endpoint'ы
       placeholder: например, glusterfs-cluster
     path:
       label: Путь
@@ -3759,9 +3757,9 @@ persistentVolume:
       placeholder: /mnt/disks/ssd1
     mustBe:
       label: Путь на ноде должен быть
-      anything: 'Произвольный: не проверять целевой путь'
-      directory: 'Директория: создать, если не существует'
-      file: 'Файл: создать, если не существует'
+      anything: "Произвольный: не проверять целевой путь"
+      directory: "Директория: создать, если не существует"
+      file: "Файл: создать, если не существует"
       existingDirectory: Существующая директория
       existingFile: Существующий файл
       existingSocket: Существующий сокет
@@ -3851,7 +3849,6 @@ podDisruptionBudget:
     label: Мин. доступных подов
   maxUnavailable:
     label: Макс. доступных подов
-
 
 # Rancher Extensions
 plugins:
@@ -3950,7 +3947,7 @@ podSecurityAdmission:
   label: Admission безопасности подов
   description: Определить режим контроля admission для использования в безопасности подов
   banner:
-    modifications: 'Примечание: Изменение шаблона конфигурации Pod Security Admission не повлияет ни на один нижележащий кластер, который ссылается на него, пока не произойдет обновление кластера.'
+    modifications: "Примечание: Изменение шаблона конфигурации Pod Security Admission не повлияет ни на один нижележащий кластер, который ссылается на него, пока не произойдет обновление кластера."
   labels:
     enforce: Обеспечить выполнение
     audit: Аудит
@@ -3962,7 +3959,7 @@ podSecurityAdmission:
     baseline: базовый уровень
     restricted: с ограничениями
   version:
-    placeholder: 'Версия (по умолчанию: последняя)'
+    placeholder: "Версия (по умолчанию: последняя)"
   exemptions:
     title: Привелегии
     description: Разрешить создание подов для определенных имён пользователей, RuntimeClassNames и пространств имён; в противном случае это запрещено заданными выше политиками.
@@ -3997,9 +3994,9 @@ prefs:
       {count, number}
   keymap:
     label: Сопоставление клавиш редактора YAML
-    sublime: 'Человеческий'
-    emacs: 'Emacs'
-    vim: 'Vim'
+    sublime: "Человеческий"
+    emacs: "Emacs"
+    vim: "Vim"
   advFeatures:
     title: Расширенные возможности
     viewInApi: Включить "Просмотр в API"
@@ -4009,8 +4006,8 @@ prefs:
   hideDesc:
     label: Скрыть все описания типов
   helm:
-    'true': Включить предварительные версии
-    'false': Показать только релизы
+    "true": Включить предварительные версии
+    "false": Показать только релизы
     label: Чарты Helm
   confirmationSetting:
     title: Параметры подтверждения
@@ -4026,13 +4023,13 @@ principal:
 probe:
   checkInterval:
     label: Интервал проверок
-    placeholder: 'По умолчанию: 10'
+    placeholder: "По умолчанию: 10"
   command:
     label: Команда для выполнения
     placeholder: например, cat /tmp/health
   failureThreshold:
     label: Порог отказа
-    placeholder: 'По умолчанию: 3'
+    placeholder: "По умолчанию: 3"
   httpGet:
     headers:
       label: Заголовки запроса
@@ -4045,13 +4042,13 @@ probe:
       placeholderDeux: например, 25
   initialDelay:
     label: Начальная задержка
-    placeholder: 'По умолчанию: 0'
+    placeholder: "По умолчанию: 0"
   successThreshold:
     label: Порог успешного выполнения
-    placeholder: 'По умолчанию: 1'
+    placeholder: "По умолчанию: 1"
   timeout:
     label: Тайм-аут
-    placeholder: 'По умолчанию: 3'
+    placeholder: "По умолчанию: 3"
   type:
     label: Тип
     placeholder: Выберите тип проверки
@@ -4068,7 +4065,6 @@ project:
     default: Значение по умолчанию кластера
     label: Политика безопасности подов
     current: "{value} (Current)"
-
 
 projectMembers:
   project:
@@ -4095,7 +4091,7 @@ projectMembers:
     ingressManage: Управление входящим трафиком
     projectcatalogsManage: Управление каталогами проекта
     projectroletemplatebindingsManage: Управление участниками проекта
-    secretsManage: Управление Secrets
+    secretsManage: Управление Secret'ами
     serviceaccountsManage: Управление сервисными аккаунтами
     servicesManage: Управление сервисами
     persistentvolumeclaimsManage: Управление томами
@@ -4105,7 +4101,7 @@ projectMembers:
     monitoringUiView: Просмотр мониторинга
     projectcatalogsView: Просмотр каталогов проекта
     projectroletemplatebindingsView: Просмотр участников проекта
-    secretsView: Просмотр Secrets
+    secretsView: Просмотр Secret'ов
     serviceaccountsView: Просмотр сервисных аккаунтов
     servicesView: Просмотр сервисов
     persistentvolumeclaimsView: Просмотр томов
@@ -4134,10 +4130,10 @@ prometheusRule:
       summary:
         input: Значение примечания итога
         label: Итог
-    bannerText: 'Когда срабатывают оповещения, заметки и лэйблы будут отправлены в AlertManagers, чтобы дать возможность настроить оповещение, которое будет отправлено на любой настроенный Приемник'
+    bannerText: "Когда срабатывают оповещения, заметки и лэйблы будут отправлены в AlertManagers, чтобы дать возможность настроить оповещение, которое будет отправлено на любой настроенный Приемник"
     for:
       label: Ожидать срабатывания
-      placeholder: '60'
+      placeholder: "60"
     label: Правила оповещений
     labels:
       label: Лэйблы
@@ -4155,7 +4151,7 @@ prometheusRule:
     groupRowLabel: Группа правил {index}
     groupInterval:
       label: Переопределить интервал группы
-      placeholder: '60'
+      placeholder: "60"
     label: Группы правил
     name: Имя группы
     none: Добавьте хотя бы одну группу правил, содержащую хотя бы одно предупреждение или одно правило записи.
@@ -4249,12 +4245,12 @@ rbac:
   roletemplate:
     label: Роли
     newUserDefault:
-      'no': ложь
+      "no": ложь
       tooltip: Это не влияет на уже существующие привязки к роли.
     locked:
       label: Заблокировано
-      'yes': 'Да: Новым привязкам не разрешается использовать эту роль'
-      'no': ложь
+      "yes": "Да: Новым привязкам не разрешается использовать эту роль"
+      "no": ложь
     tabs:
       grantResources:
         label: Предоставить ресурсы
@@ -4271,17 +4267,17 @@ rbac:
       GLOBAL:
         createButton: Создать глобальную роль
         label: Глобально
-        'yes': "Да: Роль по умолчанию для новых пользователей"
+        "yes": "Да: Роль по умолчанию для новых пользователей"
         defaultLabel: Новый пользователь по умолчанию
       CLUSTER:
         createButton: Создать роль кластера
         label: Кластер
-        'yes': "Да: роль по умолчанию при создания нового кластера"
+        "yes": "Да: роль по умолчанию при создания нового кластера"
         defaultLabel: Создатель кластера по умолчанию
       NAMESPACE:
         createButton: Создать роль проекта/пространства имен
         label: Проекты/Пространства имен
-        'yes': "Да: Роль по умолчанию при создании нового проекта"
+        "yes": "Да: Роль по умолчанию при создании нового проекта"
         defaultLabel: Создатель проекта по умолчанию
       RBAC_ROLE:
         label: Роль
@@ -4311,7 +4307,7 @@ rbac:
           false {группа}} имеет для управления общей {appName} установкой.
       custom:
         label: Пользовательский
-        description: 'Роли не созданы {vendor}.'
+        description: "Роли не созданы {vendor}."
       builtin:
         label: Встроенный
         description: Дополнительные роли для определения более тонкой модели прав доступа.
@@ -4369,7 +4365,7 @@ rbac:
         description: Позволяет пользователю определять, редактировать и удалять определения ролей.
       settings-manage:
         label: Управление настройками
-        description: 'Позволяет пользователю управлять настройками {vendor}.'
+        description: "Позволяет пользователю управлять настройками {vendor}."
       users-manage:
         label: Управление пользователями
         description: Позволяет пользователю создавать, удалять и устанавливать пароли для всех пользователей.
@@ -4380,7 +4376,7 @@ rbac:
         label: Использовать шаблоны нод
         description: Позволяет пользователю развертывать новые ноды, используя любые существующие шаблоны нод.
       view-rancher-metrics:
-        label: 'Смотреть метрики {vendor}'
+        label: "Смотреть метрики {vendor}"
         description: Позволяет пользователю просматривать метрики через API.
       base:
         label: Вход в систему
@@ -4518,57 +4514,57 @@ secret:
   customType: Пользовательский тип
   type: Тип
   types:
-    opaque: 'Непрозрачный'
-    kubernetes.io/service-account-token: 'Токен сервисного аккаунта'
-    kubernetes.io/dockercfg: 'Регистри'
-    kubernetes.io/dockerconfigjson: 'Регистри'
-    kubernetes.io/basic-auth: 'HTTP Basic Auth'
-    kubernetes.io/ssh-auth: 'SSH ключ'
-    kubernetes.io/tls: 'TLS Сертификат'
-    bootstrap.kubernetes.io/token: 'Bootstrap Token'
-    istio.io/key-and-cert: 'Сертификат Istio'
-    helm.sh/release.v1: 'Релиз Helm'
-    fleet.cattle.io/cluster-registration-values: 'Fleet Кластер'
-    provisioning.cattle.io/cloud-credential: 'Cloud Credential'
-    rke.cattle.io/auth-config: 'Конфигурация авторизации RKE'
+    opaque: "Непрозрачный"
+    kubernetes.io/service-account-token: "Токен сервисного аккаунта"
+    kubernetes.io/dockercfg: "Регистри"
+    kubernetes.io/dockerconfigjson: "Регистри"
+    kubernetes.io/basic-auth: "HTTP Basic Auth"
+    kubernetes.io/ssh-auth: "SSH ключ"
+    kubernetes.io/tls: "TLS Сертификат"
+    bootstrap.kubernetes.io/token: "Bootstrap Token"
+    istio.io/key-and-cert: "Сертификат Istio"
+    helm.sh/release.v1: "Релиз Helm"
+    fleet.cattle.io/cluster-registration-values: "Fleet Кластер"
+    provisioning.cattle.io/cloud-credential: "Cloud Credential"
+    rke.cattle.io/auth-config: "Конфигурация авторизации RKE"
   initials:
-    opaque: 'O'
-    kubernetes.io/service-account-token: 'SAT'
-    kubernetes.io/dockercfg: 'R'
-    kubernetes.io/dockerconfigjson: 'R'
-    kubernetes.io/basic-auth: 'HTTP'
-    kubernetes.io/ssh-auth: 'SSH'
-    kubernetes.io/tls: 'TLS'
-    bootstrap.kubernetes.io/token: 'Boot'
-    istio.io/key-and-cert: 'Ist'
-    helm.sh/release.v1: 'Helm'
-    fleet.cattle.io/cluster-registration-values: 'F'
-    provisioning.cattle.io/cloud-credential: 'CC'
-    s3: 'S3'
+    opaque: "O"
+    kubernetes.io/service-account-token: "SAT"
+    kubernetes.io/dockercfg: "R"
+    kubernetes.io/dockerconfigjson: "R"
+    kubernetes.io/basic-auth: "HTTP"
+    kubernetes.io/ssh-auth: "SSH"
+    kubernetes.io/tls: "TLS"
+    bootstrap.kubernetes.io/token: "Boot"
+    istio.io/key-and-cert: "Ist"
+    helm.sh/release.v1: "Helm"
+    fleet.cattle.io/cluster-registration-values: "F"
+    provisioning.cattle.io/cloud-credential: "CC"
+    s3: "S3"
   relatedWorkloads: Связанные рабочие нагрузки
   typeDescriptions:
     custom:
       description: Создание секрета с пользовательским типом
     kubernetes.io/basic-auth:
-      description: 'Аутентификация с помощью имени пользователя и пароля'
+      description: "Аутентификация с помощью имени пользователя и пароля"
       # basic-authentication-secret
-      docLink: 'https://kubernetes.io/docs/concepts/configuration/secret/'
+      docLink: "https://kubernetes.io/docs/concepts/configuration/secret/"
     Opaque:
       description: Тип секрета по умолчанию с использованием пар ключ-значение
       # opaque-secrets
-      docLink: 'https://kubernetes.io/docs/concepts/configuration/secret/'
+      docLink: "https://kubernetes.io/docs/concepts/configuration/secret/"
     kubernetes.io/dockerconfigjson:
       description: Аутентифицированный регистри для извлечения образов контейнеров
       # docker-config-secrets
-      docLink: 'https://kubernetes.io/docs/concepts/configuration/secret/'
+      docLink: "https://kubernetes.io/docs/concepts/configuration/secret/"
     kubernetes.io/ssh-auth:
       description: Публичный и приватный ключи для аутентификации SSH
       # ssh-authentication-secrets
-      docLink: 'https://kubernetes.io/docs/concepts/configuration/secret/'
+      docLink: "https://kubernetes.io/docs/concepts/configuration/secret/"
     kubernetes.io/tls:
       description: Хранить сертификат и ключ для TLS
       # tls-secrets
-      docLink: 'https://kubernetes.io/docs/concepts/configuration/secret/'
+      docLink: "https://kubernetes.io/docs/concepts/configuration/secret/"
 selectOrCreateAuthSecret:
   label: Аутентификация
   options:
@@ -4721,11 +4717,11 @@ setup:
   currentPassword: Создать пароль
   confirmPassword: Подтвердить пароль
   defaultPassword:
-    intro: 'Похоже, это ваш первый визит  {vendor}; если вы предварительно установили свой собственный пароль, введите его здесь.  В противном случае для вас будет сгенерирован случайный вариант.  Чтобы найти его:<br/><br/>'
+    intro: "Похоже, это ваш первый визит  {vendor}; если вы предварительно установили свой собственный пароль, введите его здесь.  В противном случае для вас будет сгенерирован случайный вариант.  Чтобы найти его:<br/><br/>"
     dockerPrefix: 'Для установки "docker run":'
-    dockerPs: 'Найдите ID своего контейнера с помощью <code>docker ps</code>, затем запустите:'
+    dockerPs: "Найдите ID своего контейнера с помощью <code>docker ps</code>, затем запустите:"
     dockerSuffix: "dockerSuffix"
-    helmPrefix: 'Для установки Helm выполните команду:'
+    helmPrefix: "Для установки Helm выполните команду:"
     helmSuffix: "helmSuffix"
   eula: 'Установив флажок, вы принимаете <a href="https://rancher.com/eula" target="_blank" rel="noopener noreferrer nofollow">Лицензионное соглашение с конечным пользователем и Условия</a>'
   newPassword: Новый пароль
@@ -4809,8 +4805,8 @@ storageClass:
       placeholder: напр. ext4
     availabilityZone:
       label: Зона доступности
-      automatic: 'Автоматически: Зоны, в которых у кластера есть ноды'
-      manual: 'Вручную: Выбор определенных зон'
+      automatic: "Автоматически: Зоны, в которых у кластера есть ноды"
+      manual: "Вручную: Выбор определенных зон"
       placeholder: us-east-1d, us-east-1c
     encryption:
       label: Шифрование
@@ -4818,8 +4814,8 @@ storageClass:
       disabled: Отключено
     keyId:
       label: KMS Key ID для шифрования
-      automatic: 'Автоматически: Генерировать ключ'
-      manual: 'Вручную: Используйте определенный ключ (полный ARN)'
+      automatic: "Автоматически: Генерировать ключ"
+      manual: "Вручную: Используйте определенный ключ (полный ARN)"
   azure-disk:
     title: Azure Disk
     storageAccountType:
@@ -4852,8 +4848,8 @@ storageClass:
       placeholder: напр. ext4
     availabilityZone:
       label: Зона доступности
-      automatic: 'Автоматически: Зоны, в которых у кластера есть ноды'
-      manual: 'Вручную: Выбор определенных зон'
+      automatic: "Автоматически: Зоны, в которых у кластера есть ноды"
+      manual: "Вручную: Выбор определенных зон"
       placeholder: us-east-1d, us-east-1c
     replicationType:
       label: Тип репликации
@@ -4890,7 +4886,7 @@ storageClass:
     title: Глостерный том
     restUrl:
       label: REST URL
-      placeholder: 'напр. http://127.0.0.1:8081'
+      placeholder: "напр. http://127.0.0.1:8081"
     restUser:
       label: REST Пользователь
       placeholder: напр. admin
@@ -4930,7 +4926,7 @@ storageClass:
     title: Ceph RBD
     monitors:
       label: Наблюдатели
-      placeholder: 'напр. 10.16.153.105:6789'
+      placeholder: "напр. 10.16.153.105:6789"
     adminId:
       label: ID Администратора
       placeholder: напр. kube
@@ -4968,7 +4964,7 @@ storageClass:
       placeholder: "напр. http://138.68.74.142:7860"
     registry:
       label: Регистри
-      placeholder: 'напр. 138.68.74.142:7861'
+      placeholder: "напр. 138.68.74.142:7861"
     adminSecretNamespace:
       label: Пространство имен секрета администратора
       placeholder: напр. kube-system
@@ -5014,7 +5010,7 @@ storageClass:
     title: ScaleIO Volume
     gateway:
       label: Шлюз
-      placeholder: 'напр. https://192.168.99.200:443/api'
+      placeholder: "напр. https://192.168.99.200:443/api"
     system:
       label: Система
       placeholder: напр. scaleio
@@ -5322,7 +5318,7 @@ user:
       username:
         label: Username
         placeholder: e.g. jsmith
-        exists: 'Username is already in use. Please choose a new username'
+        exists: "Username is already in use. Please choose a new username"
       displayName:
         label: Display Name
         placeholder: e.g. John Smith
@@ -5347,7 +5343,7 @@ validation:
     This screen has been updated to reflect the current values on the cluster. Review and reapply the changes you wanted to make, then Save again.
     Conflicting {fieldCount, plural, =1 {field} other {fields}}: {fields}
   custom:
-    missing: 'No validator exists for { validatorName }! Does the validator exist in custom-validators? Is the name spelled correctly?'
+    missing: "No validator exists for { validatorName }! Does the validator exist in custom-validators? Is the name spelled correctly?"
   dns:
     doubleHyphen: '"{key}" Cannot contain two or more consecutive hyphens'
     hostname:
@@ -5418,13 +5414,13 @@ validation:
       required: At least one rule group is required.
       singleAlert: A rule may contain alert rules or recording rules but not both.
       valid:
-        name: 'Name is required for rule group {index}.'
+        name: "Name is required for rule group {index}."
         rule:
-          alertName: 'Rule group {groupIndex} rule {ruleIndex} requires a Alert Name.'
-          expr: 'Rule group {groupIndex} rule {ruleIndex} requires a PromQL Expression.'
-          labels: 'Rule group {groupIndex} rule {ruleIndex} requires at least one label. Severity is recommended.'
-          recordName: 'Rule group {groupIndex} rule {ruleIndex} requires a Time Series Name.'
-        singleEntry: 'At least one alert rule or one recording rule is required in rule group {index}.'
+          alertName: "Rule group {groupIndex} rule {ruleIndex} requires a Alert Name."
+          expr: "Rule group {groupIndex} rule {ruleIndex} requires a PromQL Expression."
+          labels: "Rule group {groupIndex} rule {ruleIndex} requires at least one label. Severity is recommended."
+          recordName: "Rule group {groupIndex} rule {ruleIndex} requires a Time Series Name."
+        singleEntry: "At least one alert rule or one recording rule is required in rule group {index}."
   required: '"{key}" is required'
   invalid: '"{key}" is invalid'
   requiredOrOverride: '"{key}" is required or must allow override'
@@ -5439,19 +5435,19 @@ validation:
       none: External Name is required on an ExternalName Service.
     ports:
       name:
-        required: 'Port Rule [{position}] - Name is required.'
+        required: "Port Rule [{position}] - Name is required."
       nodePort:
-        requiredInt: 'Port Rule [{position}] - Node Port must be integer values if included.'
-        between: 'Port Rule [{position}] - Node Port must be between 1 and 65535'
+        requiredInt: "Port Rule [{position}] - Node Port must be integer values if included."
+        between: "Port Rule [{position}] - Node Port must be between 1 and 65535"
       port:
-        required: 'Port Rule [{position}] - Port is required.'
-        requiredInt: 'Port Rule [{position}] - Port must be integer values if included.'
-        between: 'Port Rule [{position}] - Port must be between 1 and 65535'
+        required: "Port Rule [{position}] - Port is required."
+        requiredInt: "Port Rule [{position}] - Port must be integer values if included."
+        between: "Port Rule [{position}] - Port must be between 1 and 65535"
       targetPort:
-        between: 'Port Rule [{position}] - Target Port must be between 1 and 65535'
-        iana: 'Port Rule [{position}] - Target Port must be an IANA Service Name or Integer'
-        ianaAt: 'Port Rule [{position}] - Target Port '
-        required: 'Port Rule [{position}] - Target Port is required'
+        between: "Port Rule [{position}] - Target Port must be between 1 and 65535"
+        iana: "Port Rule [{position}] - Target Port must be an IANA Service Name or Integer"
+        ianaAt: "Port Rule [{position}] - Target Port "
+        required: "Port Rule [{position}] - Target Port is required"
   setting:
     serverUrl:
       https: server-url must be https.
@@ -5564,11 +5560,11 @@ workload:
       successThreshold: Success Threshold
       timeout: Timeout
       kind:
-        none:  None
-        HTTP:  HTTP request returns a successful status (200-399)
+        none: None
+        HTTP: HTTP request returns a successful status (200-399)
         HTTPS: HTTPS request returns a successful status
-        tcp:   TCP connection opens successfully
-        exec:  Command run inside the container exits with status 0
+        tcp: TCP connection opens successfully
+        exec: Command run inside the container exits with status 0
     image: Container Image
     imagePullPolicy: Pull Policy
     imagePullSecrets: Pull Secrets
@@ -5624,9 +5620,9 @@ workload:
     noServiceAccess: You do not have permission to create or manage services
     ports:
       expose: Networking
-      description: 'Define a Service to expose the container, or define a non-functional, named port so that humans will know where the app within the container is expected to run.'
+      description: "Define a Service to expose the container, or define a non-functional, named port so that humans will know where the app within the container is expected to run."
       detailedDescription: If ClusterIP, LoadBalancer, or NodePort is selected, a Service is automatically created that will select the Pods in this workload using labels.
-      toolTip: 'For help exposing workloads on Kubernetes, see the official Kubernetes documentation on Services. You can also manually create a Service to expose Pods by selecting their labels, and you can use an Ingress to map HTTP routes to Services.'
+      toolTip: "For help exposing workloads on Kubernetes, see the official Kubernetes documentation on Services. You can also manually create a Service to expose Pods by selecting their labels, and you can use an Ingress to map HTTP routes to Services."
       createService: Service Type
       noCreateService: Do not create a service
       containerPort: Private Container Port
@@ -5642,8 +5638,8 @@ workload:
       addGroupIDs: Add Group IDs
       allowPrivilegeEscalation:
         label: Privilege Escalation
-        'false': No
-        'true': "Yes: container can gain more privileges than its parent process"
+        "false": No
+        "true": "Yes: container can gain more privileges than its parent process"
       dropCapabilities: Drop Capabilities
       fsGroup: Filesystem Group
       hostIPC: Use Host IPC Namespace
@@ -5651,17 +5647,17 @@ workload:
       podFsGroup: Pod Filesystem Group
       privileged:
         label: Privileged
-        'false': No
-        'true': "Yes: container has full access to the host"
+        "false": No
+        "true": "Yes: container has full access to the host"
       readOnlyRootFilesystem:
         label: Read-Only Root Filesystem
-        'false': No
-        'true': "Yes: container has a read-only root filesystem"
+        "false": No
+        "true": "Yes: container has a read-only root filesystem"
       runAsGroup: Run as Group ID
       runAsNonRoot:
         label: Run as Non-Root
-        'false': No
-        'true': "Yes: container must run as a non-root user"
+        "false": No
+        "true": "Yes: container must run as a non-root user"
       runAsNonRootOptions:
         noOption: "No"
         yesOption: "Yes: containers must run as non-root-user"
@@ -5720,7 +5716,7 @@ workload:
     succeeded: Successful
     running: Running
     failed: Failed
-  hideTabs: 'Hide Advanced Options'
+  hideTabs: "Hide Advanced Options"
   job:
     activeDeadlineSeconds:
       label: Active Deadline
@@ -5795,7 +5791,7 @@ workload:
     containers: Containers
     containerImage: Container {name} - "Container Image" is required.
   replicas: Replicas
-  showTabs: 'Show Advanced Options'
+  showTabs: "Show Advanced Options"
   scheduling:
     activeDeadlineSeconds: Pod Active Deadline
     activeDeadlineSecondsTip: The duration that the pod may be active before the system tries to mark it failed and kill associated containers.
@@ -5923,7 +5919,7 @@ workload:
     hostPath:
       label: The Path on the Node must be
       options:
-        default: 'Anything: do not check the target path'
+        default: "Anything: do not check the target path"
         directoryOrCreate: A directory, or create if it doesn't exist
         directory: An existing directory
         fileOrCreate: A file, or create if it doesn't exist
@@ -5935,14 +5931,14 @@ workload:
     nodePath: Path on Node
     optional:
       label: Optional
-      'no': 'No'
-      'yes': 'Yes'
+      "no": "No"
+      "yes": "Yes"
     path: Path
     readOnly: Read Only
     server: Server
 
     subPath: Sub Path in Volume
-    title: 'Storage'
+    title: "Storage"
     volumeName: Volume Name
     volumePath: Volume Path
     emptyDir:
@@ -6002,23 +5998,21 @@ workload:
       pod: Pod
       containers: Containers
 
-
-
 ##############################
 # Model Properties
 ##############################
 model:
   account:
     kind:
-      admin: Admin
-      agent: Agent
-      project: Environment
-      registeredAgent: Registered Agent
-      service: Service
-      user: User
+      admin: Администратор
+      agent: Агент
+      project: Окружение
+      registeredAgent: Зарегистрированный агент
+      service: Сервис
+      user: Пользователь
   "catalog.cattle.io.app":
-    firstDeployed: First Deployed
-    lastDeployed: Last Deployed
+    firstDeployed: Первое развёртывание
+    lastDeployed: Последнее развёртывание
   authConfig:
     description:
       ldap: LDAP
@@ -6029,9 +6023,9 @@ model:
       keycloak: Keycloak (SAML)
       keycloakoidc: Keycloak (OIDC)
     provider:
-      system: System
-      local: Local
-      multiple: Multiple
+      system: Система
+      local: Локальный
+      multiple: Несколько
       activedirectory: ActiveDirectory
       azuread: AzureAD
       github: GitHub
@@ -6048,35 +6042,35 @@ model:
       keycloakoidc: Keycloak
 
   cluster:
-    name: Cluster Name
+    name: Имя кластера
   ingress:
     displayKind: L7 Ingress
   machine:
     role:
-      controlPlane: Control Plane
+      controlPlane: Плоскость управления
       etcd: etcd
       worker: Worker
   openldapconfig:
     domain:
-      help: Only users below this base will be used.
-      label: User Search Base
-      placeholder: "e.g. ou=Users,dc=mycompany,dc=com"
+      help: Будут использованы только пользователи из этой базы.
+      label: База поиска пользователей
+      placeholder: "например, ou=Users,dc=mycompany,dc=com"
     server:
-      label: Hostname or IP Address
+      label: Имя хоста или IP-адрес
     serviceAccountPassword:
-      label: Service Account Password
+      label: Пароль сервисного аккаунта
     serviceAccountUsername:
-      label: Service Account Username
+      label: Имя пользователя сервисного аккаунта
   projectMember:
     role:
-      member: Member
-      owner: Owner
-      readonly: Read-Only
-      restricted: Restricted
+      member: Участник
+      owner: Владелец
+      readonly: Только для чтения
+      restricted: Ограниченный
   service:
     displayKind:
-      generic: Service
-      loadBalancer: L4 Balancer
+      generic: Сервис
+      loadBalancer: Балансировщик L4
 
 typeDescription:
   # Map of
@@ -6084,140 +6078,140 @@ typeDescription:
   #       Should fit on one line.
   #       If you link to anything external, it MUST have
   #       target="_blank" rel="noopener noreferrer nofollow"
-  branding: "Branding allows administrators to globally re-brand the UI by customizing the Rancher product name, logos and color scheme."
-  chart: "All charts have at least one version that is installable on clusters with Linux and Windows nodes unless otherwise indicated."
-  cis.cattle.io.clusterscanbenchmark: A benchmark version is the name of benchmark to run using kube-bench as well as the valid configuration parameters for that benchmark.
-  cis.cattle.io.clusterscanprofile: A profile is the configuration for the CIS scan, which is the benchmark versions to use and any specific tests to skip in that benchmark.
-  cis.cattle.io.clusterscan: A scan is created to trigger a CIS scan on the cluster based on the defined profile. A report is created after the scan is completed.
-  cis.cattle.io.clusterscanreport: A report is the result of a CIS scan of the cluster.
-  management.cattle.io.feature: Feature Flags allow certain {vendor} features to be toggled on and off.  Features that are off by default should be considered experimental functionality.
-  cluster.x-k8s.io.machine: A Machine encapsulates the configuration of a Kubernetes Node. Use this view to see what happens after updating a cluster.
-  cluster.x-k8s.io.machinedeployment: A Machine Deployment orchestrates deployments via templates over a collection of Machine Sets (similar to a Deployment). Use this view to see what happens after updating a cluster.
-  cluster.x-k8s.io.machineset: A Machine Set ensures the desired number of Machine resources are up and running at all times (similar to a ReplicaSet). Use this view to see what happens after updating a cluster.
-  resources.cattle.io.backup: A backup is created to perform one-time backups or schedule recurring backups based on a ResourceSet.
-  resources.cattle.io.restore: A restore is created to trigger a restore to the cluster based on a backup file.
-  resources.cattle.io.resourceset: A resource set defines which CRDs and resources to store in the backup.
-  monitoring.coreos.com.servicemonitor: A service monitor defines the group of services and the endpoints that Prometheus will scrape for metrics. This is the most common way to define metrics collection.
-  monitoring.coreos.com.podmonitor: A pod monitor defines the group of pods that Prometheus will scrape for metrics. The common way is to use service monitors, but pod monitors allow you to handle any situation where a service monitor wouldn't work.
-  monitoring.coreos.com.prometheusrule: A Prometheus Rule resource defines both recording and/or alert rules. A recording rule can pre-compute values and save the results. Alerting rules allow you to define conditions on when to send notifications to AlertManager.
-  monitoring.coreos.com.prometheus: A Prometheus server is a Prometheus deployment whose scrape configuration and rules are determined by selected ServiceMonitors, PodMonitors, and PrometheusRules and whose alerts will be sent to all selected Alertmanagers with the custom resource's configuration.
-  monitoring.coreos.com.alertmanager: An alert manager is deployment whose configuration will be specified by a secret in the same namespace, which determines which alerts should go to which receiver.
-  node: The base Kubernetes Node resource represents a virtual or physical machine which hosts deployments. To manage the machine lifecycle, if available, go to Cluster Management.
-  catalog.cattle.io.clusterrepo: 'A chart repository is a Helm repository or {vendor} git based application catalog. It provides the list of available charts in the cluster.'
-  catalog.cattle.io.clusterrepo.local: ' A chart repository is a Helm repository or {vendor} git based application catalog. It provides the list of available charts in the cluster. Cluster Templates are deployed via Helm charts.'
-  catalog.cattle.io.operation: An operation is the list of recent Helm operations that have been applied to the cluster.
-  catalog.cattle.io.app: An installed application is a Helm 3 chart that was installed either via our charts or through the Helm CLI.
-  logging.banzaicloud.io.clusterflow: Logs from the cluster will be collected and logged to the selected Cluster Output.
-  logging.banzaicloud.io.clusteroutput: A cluster output defines which logging providers that logs can be sent to and is only effective when deployed in the namespace that the logging operator is in.
-  logging.banzaicloud.io.flow: A flow defines which logs to collect and filter as well as which output to send the logs. The flow is a namespaced resource, which means logs will only be collected from the namespace that the flow is deployed in.
-  logging.banzaicloud.io.output: An output defines which logging providers that logs can be sent to. The output needs to be in the same namespace as the flow that is using it.
-  group.principal: Assigning global roles to a group only works with external auth providers that support groups. Local authorization does not support groups.
+  branding: "Брендинг позволяет администраторам глобально изменять фирменное оформление UI, настраивая имя продукта Rancher, логотипы и цветовую схему."
+  chart: "Все чарты имеют как минимум одну версию, которая может быть установлена на кластеры с Linux и Windows нодами, если не указано обратное."
+  cis.cattle.io.clusterscanbenchmark: Версия бенчмарка - это название бенчмарка для запуска на kube-bench и корректные параметры конфигурации для этого бенчмарка.
+  cis.cattle.io.clusterscanprofile: Профиль — это конфигурация для CIS-сканирования, представляющая собой используемую версию бенчмарка и любой набор тестов, которые следует пропустить в этом бенчмарке.
+  cis.cattle.io.clusterscan: Сканирование создается, чтобы запустить для данного кластера CIS-сканирование, основанное на заданном профиле. Отчёт создается после завершения сканирования.
+  cis.cattle.io.clusterscanreport: Отчёт — это результат CIS-сканирования данного кластера.
+  management.cattle.io.feature: Фича-флаги позволяют включать и выключать определённые функции, предоставленные {vendor}. Фичи, отключенные по умолчанию, следует рассматривать как экспериментальные функции.
+  cluster.x-k8s.io.machine: Машина инкапсулирует конфигурацию ноды Kubernetes. Используйте это представление, чтобы посмотреть, что произойдет после обновления кластера.
+  cluster.x-k8s.io.machinedeployment: Развёртывание машины организует развёртывание с помощью шаблонов в коллекции наборов машин (аналогично Deployment). Используйте это представление, чтобы посмотреть, что произойдет после обновления кластера.
+  cluster.x-k8s.io.machineset: Набор машин обеспечивает постоянную работу желаемого количества машинных ресурсов (аналогично ReplicaSet). Используйте это представление, чтобы посмотреть, что произойдет после обновления кластера.
+  resources.cattle.io.backup: Резервная копия создается на основе набора ресурсов для выполнения однократного резервного копирования или для задания регулярного резервного копирования по расписанию.
+  resources.cattle.io.restore: Восстановление создается для запуска восстановления кластера на основе файла резервного копирования.
+  resources.cattle.io.resourceset: Набор ресурсов определяет, какие CRD и ресурсы хранить в резервной копии.
+  monitoring.coreos.com.servicemonitor: Монитор сервисов определяет группу сервисов и endpoint'ы, для которых Prometheus будет выполнять сбор метрик. Это наиболее распространенный способ определения коллекции метрик.
+  monitoring.coreos.com.podmonitor: Монитор подов определяет группу подов, для которой Prometheus будет выполнять сбор метрик. Общепринятым подходом является использование мониторов сервисов, но мониторы подов позволяют справляться с любыми ситуациями, когда мониторы сервисов не сработали бы.
+  monitoring.coreos.com.prometheusrule: Ресурс правил Prometheus определяет правила записи и/или правила оповещений. Правило записи может предварительно вычислять значения и сохранять результаты. Правила оповещений позволяют задать условия отправки уведомлений в AlertManager.
+  monitoring.coreos.com.prometheus: Сервер Prometheus — это развёртывание Prometheus, конфигурация и правила сбора которого определены выбранными мониторами сервисов, мониторами подов и правилами Prometheus, а его уведомления отправляются всем выбранным Alertmanager'ам с пользовательской конфигурацией ресурсов.
+  monitoring.coreos.com.alertmanager: Диспетчер оповещений — это развёртывание, конфигурация которого будет указана в Secret в пространстве имён, определяющем какие оповещения должны отправляться какому получателю.
+  node: Базовый ресурс ноды Kubernetes представляет собой виртуальную или физическую машину, на которой размещаются развёртывания. Чтобы управлять жизненным циклом машины, если доступно, перейдите в управление кластером.
+  catalog.cattle.io.clusterrepo: "Репозиторий чартов — это репозиторий Helm или каталог приложений на основе {vendor} git. Он предоставляет список чартов, доступных в кластере."
+  catalog.cattle.io.clusterrepo.local: " Репозиторий чартов — это репозиторий Helm или каталог приложений на основе {vendor} git. Он предоставляет список чартов, доступных в кластере. Шаблоны кластера развёртываются посредством чартов Helm."
+  catalog.cattle.io.operation: Операция — это список последних операций Helm, применённых к данному кластеру.
+  catalog.cattle.io.app: Установленное приложение является чартом Helm 3, который был установлен либо посредством наших чартов, либо через Helm CLI.
+  logging.banzaicloud.io.clusterflow: Логи из кластера будут собираться и записываться в выбранный вывод кластера.
+  logging.banzaicloud.io.clusteroutput: Вывод кластера определяет каким провайдерам логирования могут быть отправлены логи, но это полезно только в случае, когда он развёрнут в том же пространстве имён, где находится оператор логирования.
+  logging.banzaicloud.io.flow: Поток определяет, какие логи будут собираться и фильтроваться, а также на какой вывод посылать эти логи. Поток является ресурсом пространства имён, поэтому сбор логов возможен только в том пространстве имён, где этот поток развёрнут.
+  logging.banzaicloud.io.output: Вывод определяет, каким провайдерам логированя могут быть отправлены данные логи. Вывод должен располагаться в том же пространстве имён, что и поток, который его использует.
+  group.principal: Назначение глобальных ролей группе работает только с внешними провайдерами авторизации, поддерживающими группы. Локальная авторизация не поддерживает группы.
 
 typeLabel:
   management.cattle.io.token: |-
     {count, plural,
-      one { API Key }
-      other { API Keys }
+      one { Ключ API }
+      other { Ключи API }
     }
   cis.cattle.io.clusterscan: |-
     {count, plural,
-      one { Scan }
-      other { Scans }
+      one { Скан }
+      other { Сканы }
     }
   cis.cattle.io.clusterscanprofile: |-
     {count, plural,
-      one { Profile }
-      other { Profiles }
+      one { Профиль }
+      other { Профили }
     }
   cis.cattle.io.clusterscanbenchmark: |-
     {count, plural,
-      one { Benchmark Version }
-      other { Benchmark Versions }
+      one { Версия бенчмарка }
+      other { Версии бенчмарка }
     }
   catalog.cattle.io.operation: |-
     {count, plural,
-      one { Recent Operation }
-      other { Recent Operations }
+      one { Последнее действие }
+      other { Последние действия }
     }
   catalog.cattle.io.app: |-
     {count, plural,
-      one { Installed App }
-      other { Installed Apps }
+      one { Установленное приложение }
+      other { Установленные приложения }
     }
   catalog.cattle.io.clusterrepo: |-
     {count, plural,
-      one { Repository }
-      other { Repositories }
+      one { Репозиторий }
+      other { Репозитории }
     }
   catalog.cattle.io.repo: |-
     {count, plural,
-      one { Namespaced Repo }
-      other { Namespaced Repos }
+      one { Репозиторий с пространством имён }
+      other { Репозитории с пространствами имён }
     }
   chartinstallaction: |-
     {count, plural,
-      one { App }
-      other { Apps }
+      one { Приложение }
+      other { Приложения }
     }
   chartupgradeaction: |-
     {count, plural,
-      one { App }
-      other { Apps }
+      one { Приложение }
+      other { Приложения }
     }
   cloudcredential: |-
     {count, plural,
-      one { Cloud Credential }
-      other { Cloud Credentials }
+      one { Облачные учетные данные }
+      other { Облачные учетные данные }
     }
   endpoints: |-
     {count, plural,
       one { Endpoint }
-      other { Endpoints }
+      other { Endpoint'ы }
     }
   fleet.cattle.io.cluster: |-
     {count, plural,
-      =1 { Cluster }
-      other {Clusters }
+      =1 { Кластер }
+      other { Кластеры }
     }
   fleet.cattle.io.clustergroup: |-
     {count, plural,
-      one { Cluster Group }
-      other {Cluster Groups }
+      one { Группа кластеров }
+      other { Группы кластеров }
     }
   fleet.cattle.io.gitrepo: |-
     {count, plural,
-      one { Git Repo }
-      other {Git Repos }
+      one { Репозиторий Git }
+      other {Репозитории Git }
     }
   management.cattle.io.authconfig: |-
     {count, plural,
-      one { Authentication Provider }
-      other { Authentication Providers }
+      one { Провайдер аутентификации }
+      other { Провайдеры аутентификации }
     }
   management.cattle.io.clusterroletemplatebinding: |-
     {count, plural,
-      one { Cluster Member }
-      other { Cluster Members }
+      one { Участник кластера }
+      other { Участники кластера }
     }
   management.cattle.io.feature: |-
     {count, plural,
-      one { Feature Flag }
-      other { Feature Flags }
+      one { Фича-флаг }
+      other { Фича-флаги }
     }
   management.cattle.io.setting: |-
     {count, plural,
-      one { Setting }
-      other { Settings }
+      one { Настройка }
+      other { Настройки }
     }
   management.cattle.io.fleetworkspace: |-
     {count, plural,
-      one { Workspace }
-      other { Workspaces }
+      one { Рабочая среда }
+      other { Рабочие среды }
     }
   management.cattle.io.podsecurityadmissionconfigurationtemplate: |-
     {count, plural,
-      one { Pod Security Admission }
-      other { Pod Security Admissions }
+      one { Admission безопасности подов }
+      other { Admissions безопасности подов }
     }
   policy.poddisruptionbudget: |-
     {count, plural,
@@ -6226,13 +6220,13 @@ typeLabel:
     }
   limitrange: |-
     {count, plural,
-      one { Limit Range }
-      other { Limit Ranges }
+      one { Предельный диапазон }
+      other { Предельные диапазоны }
     }
   resourcequota: |-
     {count, plural,
-      one { Resource Quota }
-      other { Resource Quotas }
+      one { Квота ресурсов }
+      other { Квоты ресурсов }
     }
   # pruh-mee-thee-eyes https://www.prometheus.io/docs/introduction/faq/#what-is-the-plural-of-prometheus
   monitoring.coreos.com.prometheus: |-
@@ -6242,13 +6236,13 @@ typeLabel:
     }
   helm.cattle.io.projecthelmchart: |-
     {count, plural,
-      one { Project Monitor }
-      other { Project Monitors }
+      one { Монитор проекта }
+      other { Мониторы проекта }
     }
   monitoring.coreos.com.servicemonitor: |-
     {count, plural,
-      one { Service Monitor }
-      other { Service Monitors }
+      one { Монитор сервиса }
+      other { Мониторы сервиса }
     }
   monitoring.coreos.com.alertmanager: |-
     {count, plural,
@@ -6262,8 +6256,8 @@ typeLabel:
     }
   monitoring.coreos.com.podmonitor: |-
     {count, plural,
-      one { Pod Monitor }
-      other { Pod Monitors }
+      one { Монитор пода }
+      other { Мониторы пода }
     }
   monitoring.coreos.com.prometheusrule: |-
     {count, plural,
@@ -6272,58 +6266,58 @@ typeLabel:
     }
   monitoring.coreos.com.thanosruler: |-
     {count, plural,
-      one { Thanos Rule }
-      other { Thanos Rules }
+      one { Правило Thanos }
+      other { Правила Thanos }
     }
   monitoring.coreos.com.receiver: |-
     {count, plural,
-      one { Receiver }
-      other { Receivers }
+      one { Получатель }
+      other { Получатели }
     }
   monitoring.coreos.com.route: |-
     {count, plural,
       one { Route }
       other { Routes }
     }
-  'management.cattle.io.cluster': |-
+  "management.cattle.io.cluster": |-
     {count, plural,
-      one { Mgmt Cluster }
-      other { Mgmt Clusters }
+      one { Кластер управления }
+      other { Кластеры управления }
     }
-  'cluster.x-k8s.io.cluster': |-
+  "cluster.x-k8s.io.cluster": |-
     {count, plural,
-      one { CAPI Cluster }
-      other { CAPI Clusters }
+      one { Кластер CAPI }
+      other { Кластеры CAPI }
     }
-  'provisioning.cattle.io.cluster': |-
+  "provisioning.cattle.io.cluster": |-
     {count, plural,
-      one { Cluster }
-      other { Clusters }
+      one { Кластер }
+      other { Кластеры }
     }
   management.cattle.io.user: |-
     {count, plural,
-      one { User }
-      other { Users}
+      one { Пользователь }
+      other { Пользователи }
     }
   namespace: |-
     {count, plural,
-      one { Namespace }
-      other { Namespaces }
+      one { Пространство имён }
+      other { Пространства имён }
     }
   node: |-
     {count, plural,
-      one { Node }
-      other { Nodes }
+      one { Нода }
+      other { Ноды }
     }
   event: |-
     {count, plural,
-      one { Event }
-      other { Events }
+      one { Событие }
+      other { События }
     }
   apps.deployment: |-
     {count, plural,
-      one { Deployment }
-      other { Deployments }
+      one { Развертывание }
+      other { Развертывания }
     }
   batch.cronjob: |-
     {count, plural,
@@ -6347,8 +6341,8 @@ typeLabel:
     }
   pod: |-
     {count, plural,
-      one { Pod }
-      other { Pods }
+      one { Под }
+      other { Поды }
     }
   autoscaling.horizontalpodautoscaler: |-
     {count, plural,
@@ -6362,13 +6356,13 @@ typeLabel:
     }
   networking.k8s.io.networkpolicy: |-
     {count, plural,
-      one { Network Policy }
-      other { Network Policies }
+      one { Сетевая политика }
+      other { Сетевые политики }
     }
   service: |-
     {count, plural,
-      one { Service }
-      other { Services }
+      one { Сервис }
+      other { Сервисы }
     }
   persistentvolume: |-
     {count, plural,
@@ -6393,7 +6387,7 @@ typeLabel:
   secret: |-
     {count, plural,
       one { Secret }
-      other { Secrets }
+      other { Secret'ы }
     }
   apiregistration.k8s.io.apiservice: |-
     {count, plural,
@@ -6447,33 +6441,33 @@ typeLabel:
     }
   group.principal: |-
     {count, plural,
-      one { Group }
-      other { Groups }
+      one { Группа }
+      other { Группы }
     }
   token: |-
     {count, plural,
-      one { API Key }
-      other { API Keys }
+      one { Ключ API }
+      other { Ключи API }
     }
   workload: |-
     {count, plural,
-      one { Workload }
-      other { Workloads }
+      one { Рабочая нагрузка }
+      other { Рабочие нагрузки }
     }
   harvesterhci.io.management.cluster: |-
     {count, plural,
-      one { Harvester Cluster }
-      other { Harvester Clusters }
+      one { Кластер Harvester }
+      other { Кластеры Harvester }
     }
   harvesterhci.io.cloudtemplate: |-
     {count, plural,
-      one { Cloud Config Template }
-      other { Cloud Config Templates }
+      one { Шаблон облачной конфигурации }
+      other { Шаблоны облачной конфигурации }
     }
   fleet.cattle.io.content: |-
     {count, plural,
-      one { Content }
-      other { Contents }
+      one { Контент }
+      other { Контент }
     }
   fleet.cattle.io.bundle: |-
     {count, plural,
@@ -6487,8 +6481,8 @@ typeLabel:
     }
   k3s.cattle.io.addon: |-
     {count, plural,
-      one { Addon }
-      other { Addons }
+      one { Аддон }
+      other { Аддоны }
     }
   management.cattle.io.apiservice: |-
     {count, plural,
@@ -6497,8 +6491,8 @@ typeLabel:
     }
   management.cattle.io.catalog: |-
     {count, plural,
-      one { Catalog }
-      other { Catalogs }
+      one { Каталог }
+      other { Каталоги }
     }
   fleet.cattle.io.clusterregistration: |-
     {count, plural,
@@ -6572,8 +6566,8 @@ typeLabel:
     }
   management.cattle.io.node: |-
     {count, plural,
-      one { Node }
-      other { Nodes }
+      one { Нода }
+      other { Ноды }
     }
   management.cattle.io.projectalertgroup: |-
     {count, plural,
@@ -6617,8 +6611,8 @@ typeLabel:
     }
   rbac.authorization.k8s.io.role: |-
     {count, plural,
-      one { Role }
-      other { Roles }
+      one { Роль }
+      other { Роли }
     }
   scheduling.k8s.io.priorityclass: |-
     {count, plural,
@@ -6642,375 +6636,373 @@ typeLabel:
     }
   cluster.x-k8s.io.machine: |-
     {count, plural,
-      one { Machine }
-      other { Machines }
+      one { Машина }
+      other { Машины }
     }
   fleet.cattle.io.clusterregistrationtoken: |-
     {count, plural,
-      one { Cluster Registration Token }
-      other { Cluster Registration Tokens }
-    } 
+      one { Токен регистрации кластера }
+      other { Токены регистрации кластера }
+    }
 
 action:
-  clone: Clone
-  disable: Disable
-  download: Download YAML
-  edit: Edit Config
-  editYaml: Edit YAML
-  enable: Enable
-  openLogs: View Logs
-  refresh: Refresh
-  remove: Delete
-  view: View Config
-  viewInApi: View in API
-  viewYaml: View YAML
-  activate: Activate
-  deactivate: Deactivate
-  show: Show
-  hide: Hide
-  copy: Copy
-  unassign: 'Unassign'
-  uninstall: Uninstall
-  redeploy: Redeploy
-  addSidecar: Add Sidecar
-  rollback: Rollback
-  openShell: Execute Shell
-  runNow: Run Now
-  suspend: Suspend
-  resume: Resume
+  clone: Клонировать
+  disable: Выключить
+  download: Скачать YAML
+  edit: Редактировать конфигурацию
+  editYaml: Редактировать YAML
+  enable: Включить
+  openLogs: Просмотр логов
+  refresh: Обновить
+  remove: Удалить
+  view: Просмотр конфигурации
+  viewInApi: Просмотр в API
+  viewYaml: Просмотр YAML
+  activate: Активировать
+  deactivate: Деактивировать
+  show: Показать
+  hide: Скрыть
+  copy: Копировать
+  unassign: "Отменить назначение"
+  uninstall: Удалить
+  redeploy: Повторное развёртывание
+  addSidecar: Добавить Sidecar
+  rollback: Откатить
+  openShell: Выполнить Shell
+  runNow: Запустить сейчас
+  suspend: Приостановить
+  resume: Продолжить
 
 unit:
-  sec: secs
-  min: mins
+  sec: сек.
+  min: мин.
   hour: |-
     {count, plural,
-      one { hour }
-      other { hours }
+      one { час }
+      other { ч. }
     }
   day: |-
     {count, plural,
-      one { day }
-      other { days }
+      one { день }
+      other { д. }
     }
 workloadPorts:
-  addPort: Add Port or Service
-  remove: Remove
-  addHost: Add Host
+  addPort: Добавить порт или сервис
+  remove: Удалить
+  addHost: Добавить хост
 
 podAffinity:
-  addLabel: Add Pod Selector
+  addLabel: Добавить селектор подов
 
 keyValue:
-  keyPlaceholder: e.g. foo
-  valuePlaceholder: e.g. bar
-  protip: 'Paste lines of <em>key=value</em> or <em>key: value</em> into any key field for easy bulk entry'
+  keyPlaceholder: например, foo
+  valuePlaceholder: например, bar
+  protip: "Вставьте строки вида <em>ключ=значение</em> или <em>ключ: значение</em> в любое ключевое поле для упрощения массового ввода"
 
 registryMirror:
-  header: Mirrors
-  toolTip: 'Mirrors can be used to redirect requests for images from one registry to come from a list of endpoints you specify instead.  For example docker.io could redirect to your internal registry instead of ever going to DockerHub.'
-  addLabel: Add Mirror
-  description: Mirrors define the names and endpoints for private registries. The endpoints are tried one by one, and the first working one is used.
-  hostnameLabel: Registry Hostname
-  hostnamePlaceholder: e.g. docker.io or *
-  endpointsLabel: Mirror Endpoints
-  endpointsPlaceholder: e.g. a.registry.com:5000, b.registry.com:5000
+  header: Зеркала
+  toolTip: "Зеркала можно использовать для перенаправления запросов, чтобы, вместо данного регистри, ответы на запросы образов приходили от endpoint'ов из заданного списка. Например, docker.io может всегда перенаправлять на внутренний регистри вместо обращения к DockerHub."
+  addLabel: Добавить зеркало
+  description: Зеркала определяют имена и endpoint'ы для приватных регистри. Эти endpoint'ы проверяются по-очереди, и используется первый работающий.
+  hostnameLabel: Имя хоста регистри
+  hostnamePlaceholder: например, docker.io или *
+  endpointsLabel: Endpoint'ы зеркала
+  endpointsPlaceholder: например, a.registry.com:5000, b.registry.com:5000
 
 registryMirrorRewrite:
   header: Rewrites
-  toolTip: 'Each mirror can have a set of rewrites. Rewrites can change the tag of an image based on a regular expression.'
-  addLabel: Add Rewrite Config
-  keyLabel: Rewrite pattern
-  keyPlaceholder: e.g. ^rancher/(.*)
-  valueLabel: Rewrite replacement
-  valuePlaceholder: e.g. mirrorproject/rancher-images/$1
+  toolTip: "Каждое зеркало может иметь набор rewrites. Rewrites могут изменять тег образа на основе регулярного выражения."
+  addLabel: Добавить конфигурацию Rewrite
+  keyLabel: Шаблон Rewrite
+  keyPlaceholder: например, ^rancher/(.*)
+  valueLabel: Замена Rewrite
+  valuePlaceholder: например, mirrorproject/rancher-images/$1
 
 registryConfig:
-  header: Registry Authentication
-  toolTip: 'When an image needs to be pulled from the given registry hostname, this information will be used to verify the identity of the registry and authenticate to it.'
-  addLabel: Add Registry
-  description: "Define the TLS and credential configuration for each registry hostname and mirror."
+  header: Аутентификация регистри
+  toolTip: "Эта информация будет использована при необходимости получить образ по заданному имени хоста регистри для проверки подлинности этого регистри и аутентификации в нём."
+  addLabel: Добавить регистри
+  description: "Задайте конфигурацию TLS и учётных данных для каждого имени хоста регистри и зеркала."
 
 ##############################
 ### Advanced Settings
 ##############################
 
 advancedSettings:
-  label: Settings
-  subtext: Typical users will not need to change these. Proceed with caution, incorrect values can break your {appName} installation. Settings which have been customized from default settings are tagged 'Modified'.
-  show: Show
-  hide: Hide
-  none: None
-  modified: Modified
+  label: Параметры
+  subtext: Обычным пользователям не нужно будет их менять. Будьте осторожны, некорректные значения могут сломать установку {appName}. Параметры, которые отличаются от значений по умолчанию, отмечены тегом "Изменено".
+  show: Показать
+  hide: Скрыть
+  none: Нет
+  modified: Изменено
   edit:
-    label: Edit Setting
-    changeSetting: "Change Setting:"
-    trueOption: "True"
-    falseOption: "False"
-    value: Value
-    useDefault: Use the default value
-    invalidJSON: Invalid JSON - please check and correct your input before saving
+    label: Редактировать параметры
+    changeSetting: "Изменить параметры:"
+    trueOption: "Да"
+    falseOption: "Нет"
+    value: Значение
+    useDefault: Использовать значение по умолчанию
+    invalidJSON: Некорректный JSON - проверьте и исправьте введённые данные перед сохранением
   descriptions:
-    'cacerts': "CA Certificates needed to verify the server's certificate."
-    'password-min-length': 'Define minimum characters required for an user password.'
-    'cluster-defaults': 'Override RKE Defaults when creating new clusters.'
-    'engine-install-url': 'Default Docker engine installation URL (for most node drivers).'
-    'engine-iso-url': 'Default OS installation URL (for vSphere driver).'
-    'engine-newest-version': 'The newest supported version of Docker at the time of this release.  A Docker version that does not satisfy supported docker range but is newer than this will be marked as untested.'
-    'engine-supported-range': 'Semver range for supported Docker engine versions.  Versions which do not satisfy this range will be marked unsupported in the UI.'
-    'ingress-ip-domain': 'Wildcard DNS domain to use for automatically generated Ingress hostnames. <ingress-name>.<namespace-name>.<ip address of ingress controller> will be added to the domain.'
-    'server-url': 'Default {appName} install url. Must be HTTPS. All nodes in your cluster must be able to reach this.'
-    'system-default-registry': 'Private registry to be used for all Rancher System Container Images. If no value is specified, the default registry for the container runtime is used. For Docker and containerd, the default is `docker.io`.'
-    'ui-index': 'HTML index location for the Cluster Manager UI.'
-    'ui-dashboard-index': 'HTML index location for the {appName} UI.'
-    'ui-offline-preferred': 'Controls whether UI assets are served locally by the server container or from the remote URL defined in the ui-index and ui-dashboard-index settings. The `Dynamic` option will use local assets in production builds of {appName}.'
-    'ui-pl': 'Private-Label company name.'
-    'telemetry-opt': 'Telemetry reporting opt-in.'
-    'auth-user-info-max-age-seconds': 'The maximum age of a users auth tokens before an auth provider group membership sync will be performed.'
-    'auth-user-info-resync-cron': 'Default cron schedule for resyncing auth provider group memberships.'
-    'cluster-template-enforcement': 'Non-admins will be restricted to launching clusters via preapproved RKE Templates only.'
-    'auth-user-session-ttl-minutes': 'Custom TTL (in minutes) on a user auth session.'
-    'auth-token-max-ttl-minutes': 'Max TTL (in minutes) for all authentication tokens. When set to 0, the token never expires.'
-    'kubeconfig-generate-token': 'Automatically generate tokens for users when a kubeconfig is requested.'
-    'kubeconfig-token-ttl-minutes': 'TTL used for tokens generated via the CLI. Deprecated: This setting will be removed, and kubeconfig-default-token-ttl-minutes will be used for all kubeconfig tokens.'
-    'kubeconfig-default-token-ttl-minutes': 'TTL (in minutes) applied on all kubeconfig tokens. When set to 0, the token never expires.'
-    'rke-metadata-config': 'Configure RKE metadata refresh parameters.'
-    'ui-banners': 'Classification banner is used to display a custom fixed banner in the header, footer, or both.'
-    'custom-notifications': Edit custom notifications
-    'ui-consent-banner': 'Banner is used to display a custom consent banner presented to users during login.'
-    'ui-default-landing': 'The default page users land on after login.'
-    'brand': Folder name for an alternative theme defined in '/assets/brand'
-    'hide-local-cluster': Hide the local cluster
+    "cacerts": "Необходимы CA-сертификаты, чтобы подтвердить сертификат сервера."
+    "password-min-length": "Задайте минимальное количество символов, которое должен содержать пароль пользователя."
+    "cluster-defaults": "Переопределить значеня RKE по умолчанию при создании новых кластеров."
+    "engine-install-url": "URL для установки движка Docker по умолчанию (для большинства драйверов нод)."
+    "engine-iso-url": "URL для установки ОС по умолчанию  (для драйвера vSphere)."
+    "engine-newest-version": "Новейшая поддерживаемая версия Docker на момент данного релиза. Версия Docker, которая не попадает в диапазон поддерживаемых версий Docker, но является более новой, будет помечена как непроверенная."
+    "engine-supported-range": "Диапазон Semver для поддерживаемых версий движка Docker. Версии, не попадающие в этот диапазон, будут отмечены в UI как неподдерживаемые."
+    "ingress-ip-domain": "Wildcard DNS-домен для использования для автоматически сгенерированных имён хостов Ingress. <ingress-name>.<namespace-name>.<ip address of ingress controller> будут добавлены в этот домен."
+    "server-url": "URL для установки {appName} по умолчанию. Должен быть HTTPS. Все ноды в кластере должны иметь к нему доступ."
+    "system-default-registry": "Приватный регистри, который будет использоваться для всех образов системных контейнеров Rancher. Если значение не указано, используется регистри по умолчанию для среды выполнения контейнера. Для Docker и containerd по умолчанию используется `docker.io`."
+    "ui-index": "Расположение HTML-индекса для UI управления кластера."
+    "ui-dashboard-index": "Расположение HTML-индекса для {appName} UI."
+    "ui-offline-preferred": "Определяет, будут ли ресурсы UI обслуживаться локально контейнером сервера или с удалённого URL-адреса, определенного в параметрах ui-index и ui-dashboard-index. При выборе опции «Динамически» будут использоваться локальные ресурсы в production-сборках {appName}."
+    "ui-pl": "Название собственной торговой марки."
+    "telemetry-opt": "Включение отчётов телеметрии."
+    "auth-user-info-max-age-seconds": "Максимальный возраст токенов аутентификации пользователей до того, как будет выполнена синхронизация членства в группе провайдера аутентификации."
+    "auth-user-info-resync-cron": "Расписание cron по умолчанию для повторной синхронизации членства в группе провайдера аутентификации."
+    "cluster-template-enforcement": "Пользователи, не являющиеся администраторами, смогут запускать кластеры только с помощью предварительно одобренных шаблонов RKE."
+    "auth-user-session-ttl-minutes": "Пользовательский TTL (в минутах) на сессию авторизации пользователя."
+    "auth-token-max-ttl-minutes": "Максимальный TTL (в минутах) для всех токенов аутентификации. При значении 0 токен никогда не истекает."
+    "kubeconfig-generate-token": "Автоматическая герерация токенов для юзеров при запросе kubeconfig."
+    "kubeconfig-token-ttl-minutes": "TTL, применяющийся к токенам, сгенерированным с помощью CLI. Устаревшее: этот параметр будет удалён, и kubeconfig-default-token-ttl-minutes будет использоваться для всех kubeconfig токенов."
+    "kubeconfig-default-token-ttl-minutes": "TTL (в минутах), применяющийся ко всем токенам kubeconfig. При значении 0 токен никогда не истекает."
+    "rke-metadata-config": "Настроить параметры обновления метаданных RKE."
+    "ui-banners": "Баннер классификации используется для отображения фиксированного пользовательского баннера в шапке и/или подвале страницы."
+    "custom-notifications": Изменить пользовательские уведомления
+    "ui-consent-banner": "Баннер используется для отображения пользовательского баннера подтверждения, который показывается пользователям при входе в систему."
+    "ui-default-landing": "Страница по умолчанию, на которую попадают пользователи после входа в систему."
+    "brand": Имя папки для альтернативной темы, определённой в '/assets/brand'
+    "hide-local-cluster": Скрыть локальный кластер
   editHelp:
-    'ui-banners': This setting takes a JSON object containing 3 root parameters; <code>banner</code>, <code>showHeader</code>, <code>showFooter</code>. <code>banner</code> is an object containing; <code>textColor</code>, <code>background</code>, and <code>text</code>, where <code>textColor</code> and <code>background</code> are any valid CSS color value.
+    "ui-banners": "Эта настройка берет JSON-объект, содержащий 3 корневых параметра: <code>banner</code>, <code>showHeader</code>, <code>showFooter</code>. <code>banner</code> - это объект, содержащий <code>textColor</code>, <code>background</code> и <code>text</code>, где <code>textColor</code> и <code>background</code> любые корректные для использования в CSS значения цвета."
   enum:
-    'ui-default-landing':
-      ember: Cluster Manager
-      vue: Cluster Explorer
-    'telemetry-opt':
+    "ui-default-landing":
+      ember: Управление кластером
+      vue: Обзор кластера
+    "telemetry-opt":
       prompt: Prompt
-      in: Opt-in to Telemetry
-      out: Opt-out of Telemetry
-    'ui-offline-preferred':
-      dynamic: Dynamic
-      true: Local
-      false: Remote
-    'harv-ui-source':
-      auto: 'Auto'
-      bundled: 'Bundled'
-      external: 'External'
-    'harv-log-level':
-      info: Info
+      in: Включить телеметрию
+      out: Выключить телеметрию
+    "ui-offline-preferred":
+      dynamic: Динамически
+      true: Локально
+      false: Удалённо
+    "harv-ui-source":
+      auto: "Автоматический"
+      bundled: "Bundled"
+      external: "Внешний"
+    "harv-log-level":
+      info: Информация
       debug: Debug
       trace: Trace
 
 featureFlags:
-  label: Feature Flags
+  label: Фича-флаги
   warning: |-
-    Feature flags allow {vendor} to gate certain features behind flags.
-    Features that are off by default should be considered experimental functionality.
-    Some features require a restart of the {vendor} server to change.
-    This will result in a short outage of the API and UI, but not affect running clusters or workloads.
-  promptActivate: Please confirm that you want to activate the feature flag "{flag}"
-  promptDeactivate: Please confirm that you want to deactivate the feature flag "{flag}"
-  restartRequired: "Note: Updating this feature flag requires a restart"
+    Фича-флаги позволяют {vendor} настраивать использование определенных фич посредством флагов.
+    Фичи, отключенные по умолчанию, следует рассматривать как экспериментальную функциональность.
+    Чтобы применить изменения, для некоторых фич требуется перезагрузка сервера {vendor}.
+    Это приведет к кратковременному отключению API и UI, но не повлияет на работающие кластеры или рабочие нагрузки.
+  promptActivate: Пожалуйста, подтвердите, что вы хотите активировать фича-флаг "{flag}"
+  promptDeactivate: Пожалуйста, подтвердите, что вы хотите деактивировать фича-флаг "{flag}"
+  restartRequired: "Примечание: Обновление этого фича-флага требует перезагрузки"
   restart:
-    title: Waiting for Restart
-    wait: This may take a few moments
+    title: Ожидание перезапуска
+    wait: Это может занять несколько минут
 
 performance:
-  label: UI Performance Settings
-  settingName: Performance
-  experimental: This setting is experimental and may be removed or updated in future versions.
+  label: Параметры производительности UI
+  settingName: Производительность
+  experimental: Этот параметр является экспериментальным и может быть удалён или обновлён в будущих версиях.
   incrementalLoad:
-    label: Incremental Loading
-    setting: You can configure the threshold above which incremental loading will be used.
+    label: Инкрементная загрузка
+    setting: Вы можете настроить порог, выше которого будет использоваться инкрементная загрузка.
     description: |-
-      When enabled, resources will appear more quickly, but it may take slightly longer to load the entire set of resources. This setting only applies to resources that come from the Kubernetes API
-    checkboxLabel: Enable incremental loading
-    inputLabel: Resource Threshold
+      Если этот параметр включен, ресурсы будут отображаться быстрее, но загрузка всего набора ресурсов может занять немного больше времени. Этот параметр применяется только к ресурсам, поступающим из Kubernetes API
+    checkboxLabel: Включить инкрементную загрузку
+    inputLabel: Порог ресурса
   manualRefresh:
-    label: Manual Refresh
-    setting: You can configure a threshold above which manual refresh will be enabled.
-    buttonTooltip: Refresh list
+    label: Обновление вручную
+    setting: Вы можете настроить порог, выше которого будет доступно ручное обновление.
+    buttonTooltip: Обновить список
     description: |-
-      When enabled, list data will not auto-update but instead the user must manually trigger a list-view refresh. This setting only applies to resources that come from the Kubernetes API
-    checkboxLabel: Enable manual refresh of data for lists
-    inputLabel: Resource Threshold
+      Если этот параметр включен, данные списка не будут обновляться автоматически, вместо этого пользователь должен вручную инициировать обновление представления списка. Этот параметр применяется только к ресурсам, поступающим из Kubernetes API.
+    checkboxLabel: Включить ручное обновление данных для списков
+    inputLabel: Порог ресурса
   websocketNotification:
-    label: Websocket Notifications
+    label: Уведомления через веб-сокеты
     description: |-
-      When checked, websocket notifications will not appear when the UI detects a disconnection.
-    checkboxLabel: Disable websocket notifications
+      Если этот параметр включен, уведомления через веб-сокеты не будут возникать, когда UI обнаруживает обрыв соединения.
+    checkboxLabel: Отключить уведомления через веб-сокеты
   gc:
-    label: Resource Garbage Collection
-    description: The UI will cache kuberentes resources locally to avoid having to re-fetch them. In some cases this can lead to a large amount of data stored in the browser. Enable this setting to periodically remove them.
-    checkboxLabel: Enable Garbage Collection
+    label: Сбор мусора для ресурсов
+    description: Пользовательский интерфейс будет кэшировать ресурсы Kuberentes локально, чтобы избежать их повторной загрузки. В некоторых случаях это может привести к тому, что в браузере будет храниться большой объем данных. Включите этот параметр, чтобы периодически удалять их.
+    checkboxLabel: Включить сбор мусора
     whenRun:
-      description: Update when garbage collection runs
+      description: Обновить, когда запускается сбор мусора
       intervalCheckBox:
-        label: Run garbage collection periodically
+        label: Периодически запускать сбор мусора.
       interval:
-        inputLabel: Run every
+        inputLabel: Запускать каждые
       route:
-        description: Run garbage collection on page change
-        inputLabel: Page Change
+        description: Запускать сбор мусора при переходе на другую страницу
+        inputLabel: Смена страницы
     howRun:
-      description: Update how garbage collection runs
+      description: Обновить, как выполняется сбор мусора
       age:
-        description: "Resource types musn't have been accessed within this period to be considered for garbage collection."
-        inputLabel: Resource Age
+        description: "Чтобы ресурс был помечен для сбора мусора, к нему не должно быть обращений на протяжении заданного периода."
+        inputLabel: Возраст ресурсов
       count:
-        description: Resource types must exceed this amount to be considered for garbage collection.
-        inputLabel: Resource Count
+        description: Типы ресурсов должны превышать это количество, чтобы они учитывались при сборке мусора.
+        inputLabel: Количество ресурсов
   nsFiltering:
-    label: Require Namespace Filtering
-    description: When there are too many resources to show in a list, require the user to select a single namespace and only fetch resources from within it.
-    checkboxLabel: Enable Required Namespace Filtering
+    label: Требовать фильтрацию по пространству имён
+    description: Когда в списке слишком много ресурсов, чтобы их отобразить, требовать от пользователя выбрать одно пространство имён и получать ресурсы только из него.
+    checkboxLabel: Включить обязательную фильтрацию по пространству имён
     count:
-      inputLabel: Resource Threshold
-      description: The threshold above which filtering by a namespace is required
+      inputLabel: Порог ресурсов
+      description: Порог, выше которого требуется фильтрация по пространству имён
   advancedWorker:
     label: Websocket Web Worker
-    description: Updates to resources pushed to the UI come via WebSocket and are handled in the UI thread. Enable this option to handle cluster WebSocket updates in a Web Worker in a separate thread. This should help the responsiveness of the UI in systems where resources change often.
-    checkboxLabel: Enable Advanced Websocket Web Worker
+    description: Обновления ресурсов, передаваемые в UI, поступают через веб-сокеты и обрабатываются в потоке UI. Включите этот параметр, чтобы обрабатывать обновления кластера через веб-сокеты в Web Worker в отдельном потоке. Это должно повысить отзывчивость UI в системах, где ресурсы часто меняются.
+    checkboxLabel: Включить расширенные настройки веб-сокетов в Web Worker
 
 banner:
-  label: Fixed Banners
-  settingName: Banners
-  headerBanner: Header Banner
-  footerBanner: Footer Banner
-  loginScreenBanner: Login Screen Banner
-  text: Text
-  buttonText: Accept Button Text
-  textColor: Text Color
-  background: Background Color
-  showHeader: Show Banner in Header
-  showFooter: Show Banner in Footer
-  showConsent: Show Consent Banner on Login Screen
+  label: Фиксированные баннеры
+  settingName: Баннеры
+  headerBanner: Баннер в шапке страницы
+  footerBanner: Баннер в подвале страницы
+  loginScreenBanner: Баннер экрана входа в систему
+  text: Текст
+  buttonText: Текст кнопки Принять
+  textColor: Цвет текста
+  background: Цвет фона
+  showHeader: Показывать баннер в шапке страницы
+  showFooter: Показывать баннер в подвале страницы
+  showConsent: Показывать баннер подтверждения на экране входа в систему
   showAsDialog:
-    defaultButtonText: Accept
-    label: Show Login Consent as a modal dialog
-    tooltip: Show a modal dialog on the login screen that must be accepted by a user before they can login
+    defaultButtonText: Принять
+    label: Показать подтверждение входа в виде модального диалогового окна
+    tooltip: Показывать модальное диалоговое окно на экране входа в систему, на котором пользователь должен подтвердить своё согласие, прежде чем он сможет войти в систему.
   bannerAlignment:
-    label: Text Alignment
-    leftOption: Left
-    centerOption: Center
-    rightOption: Right
+    label: Выравнивание текста
+    leftOption: Слева
+    centerOption: По центру
+    rightOption: Справа
   bannerDecoration:
-    label: Text Decoration
-    bannerBold: Bold
-    bannerItalic: Italic
-    bannerUnderline: Underline
+    label: Оформление текста
+    bannerBold: Жирный
+    bannerItalic: Курсив
+    bannerUnderline: Подчеркивание
   bannerFontSize:
-    label: 'Font Size'
-  consent: Consent Banner
-  consentFootnote: "Tip: Use \\n character for line break"
+    label: "Размер шрифта"
+  consent: Баннер подтверждения
+  consentFootnote: "Совет: используйте символ \\n для разрыва строки"
 
 branding:
-  label: Branding
-  directoryName: Brand Asset Directory Name
+  label: Брендинг
+  directoryName: Имя директории с ресурсами для брендинга
   logos:
-    label: Logo
-    tip: 'Upload a logo to replace the Rancher logo in the top-level navigation header. Image height should be 21 pixels with a max width of 200 pixels. Max file size is 20KB. Accepted formats: JPEG, PNG, SVG.'
-    lightPreview: Light Theme Preview
-    darkPreview: Dark Theme Preview
-    uploadLight: Upload Light Logo
-    uploadDark: Upload Dark Logo
-    useCustom: Use a Custom Logo
+    label: Логотип
+    tip: "Загрузите логотип, который заменит логотип Rancher в шапке навигации верхнего уровня. Высота изображения должна быть 21 пиксель при максимальной ширине 200 пикселей. Максимальный размер файла 20 КБ. Поддерживаемые форматы: JPEG, PNG, SVG."
+    lightPreview: Просмотр светлой темы
+    darkPreview: Просмотр темной темы
+    uploadLight: Загрузить светлый логотип
+    uploadDark: Загрузить темный логотип
+    useCustom: Использовать собственный логотип
   favicon:
     label: Favicon
-    tip: 'Upload an icon to replace the Rancher favicon in the browser tab. Max file size is 20KB'
-    preview: Favicon Preview
-    upload: Upload Favicon
-    useCustom: Use a Custom Favicon
+    tip: "Загрузите иконку для замены Rancher favicon на вкладке браузера. Максимальный размер файла 20 КБ"
+    preview: Просмотр Favicon
+    upload: Загрузить Favicon
+    useCustom: Использовать собственную Favicon
   options:
-    default: Default Rancher Theme
-    suse: SUSE Theme
-    custom: Define a Custom Theme
+    default: Тема Rancher по умолчанию
+    suse: Тема SUSE
+    custom: Задать собственную тему
   uiPL:
-    label: Private Label
+    label: Приватный лэйбл
   color:
-    label: Primary Color
-    tip: You can override the primary color used throughout the UI with a custom color of your choice.
-    useCustom: Use a Custom Color
+    label: Основной цвет
+    tip: Вы можете переопределить основной цвет, используемый во всём UI, на выбранный Вами цвет.
+    useCustom: Использовать собственный цвет
   linkColor:
-    label: Link Color
-    tip: You can override the link color used throughout the UI with a custom color of your choice.
-    useCustom: Use a Custom Link Color
-    example: Link Example
+    label: Цвет ссылки
+    tip: Вы можете переопределить цвет ссылки, используемый во всём UI, на выбранный Вами цвет.
+    useCustom: Использовать собственный цвет ссылки
+    example: Пример ссылки
 notifications:
-  header: Custom notifications
-  menuLabel: 'Custom Notifications'
+  header: Настраиваемые уведомления
+  menuLabel: "Настраиваемые уведомления"
   loginError:
-    header: Login Failed Banner
-    showCheckboxLabel: Show custom login error
-    messageLabel: Text to display
+    header: Баннер с ошибкой входа
+    showCheckboxLabel: Показать собственную ошибку входа
+    messageLabel: Текст для отображения
 resourceQuota:
-  label: Resource Quotas
+  label: Квоты ресурсов
   headers:
-    limit: Limit
-    namespaceDefaultLimit: Namespace Default Limit
-    projectLimit: Project Limit
-    projectResourceAvailability: Project Resource Availability
-    resourceType: Resource Type
-  helpText: Configure how much of the resources the namespace as a whole can consume.
-  helpTextDetail: The amount of resources the namespace as a whole can consume.
-  configMaps: Config Maps
-  limitsCpu: CPU Limit
-  limitsMemory: Memory Limit
-  persistentVolumeClaims: Persistent Volume Claims
-  pods: Pods
-  replicationControllers: Replication Controllers
-  requestsCpu: CPU Reservation
-  requestsMemory: Memory Reservation
-  requestsStorage: Storage Reservation
-  secrets: Secrets
-  services: Services
-  servicesLoadBalancers: Services Load Balancers
-  servicesNodePorts: Service Node Ports
+    limit: Лимит
+    namespaceDefaultLimit: Лимит по умолчанию пространства имён
+    projectLimit: Лимит проекта
+    projectResourceAvailability: Доступность ресурсов проекта
+    resourceType: Тип ресурса
+  helpText: Настройте, сколько ресурсов может потреблять пространство имён всего.
+  helpTextDetail: Количество ресурсов, которые пространство имён может потреблять всего.
+  configMaps: Карты конфигурации
+  limitsCpu: Лимит CPU
+  limitsMemory: Лимит памяти
+  persistentVolumeClaims: Claims постоянного тома
+  pods: Поды
+  replicationControllers: Контроллеры репликации
+  requestsCpu: Резервирование CPU
+  requestsMemory: Резервирование памяти
+  requestsStorage: Резервирование хранилища
+  secrets: Secret'ы
+  services: Сервисы
+  servicesLoadBalancers: Балансировщики загрузки сервисов
+  servicesNodePorts: Порты сервисной ноды
   namespaceLimit:
-    label: Namespace Limit
+    label: Лимит пространства имён
   projectLimit:
-    label: Project Limit
-    cpuPlaceholder: e.g. 2000
-    memoryPlaceholder: e.g. 2048
-    storagePlaceholder: e.g. 50
-    unitlessPlaceholder: e.g. 50
+    label: Лимит проекта
+    cpuPlaceholder: например, 2000
+    memoryPlaceholder: например, 2048
+    storagePlaceholder: например, 50
+    unitlessPlaceholder: например, 50
   namespaceDefaultLimit:
-    label: Namespace Default Limit
-    cpuPlaceholder: e.g. 500
-    memoryPlaceholder: e.g. 1024
-    storagePlaceholder: e.g. 10
-    unitlessPlaceholder: e.g. 10
+    label: Лимит по умолчанию для пространства имён
+    cpuPlaceholder: например, 500
+    memoryPlaceholder: например, 1024
+    storagePlaceholder: например, 10
+    unitlessPlaceholder: например, 10
   add:
-    label: Add Resource
+    label: Добавить ресурс
   tooltip:
-    reserved: 'Other Namespaces:'
-    namespace: 'This Namespace:'
-    available: 'Available:'
-    max: 'Total:'
+    reserved: "Другие пространства имён:"
+    namespace: "Это пространство имён:"
+    available: "Доступно:"
+    max: "Итого:"
 customLinks:
-  displayTitle: Links
-  label: Home Links
-  description: 'Configure the links to display on the home page. You can define your own custom links as well as show or hide default links.'
-  restoreDefaults: 'Restore Defaults'
-  addLink: Add Link
-  restoreSuccess: Default URLs have been restored.
+  displayTitle: Ссылки
+  label: Ссылки на главной странице
+  description: "Настройте ссылки, которые будут отображаться на главной странице. Вы можете определить свои собственные ссылки, а также показать или скрыть ссылки по умолчанию."
+  restoreDefaults: "Восстановить значения по умолчанию"
+  addLink: Добавить ссылку
+  restoreSuccess: Восстановлены URL по умолчанию.
   settings:
-    default: Default Links
-    custom: Custom Links
-    keyLabel: Display Text
+    default: Ссылки по умолчанию
+    custom: Пользовательские ссылки
+    keyLabel: Показать текст
     valueLabel: URL
-    showLabel: Show
+    showLabel: Показать
   defaults:
-    docs:       Docs
-    forums:     Forums
-    slack:      Slack
-    issues:     File an Issue
-    getStarted: Get Started
-    commercialSupport: Commercial Support
-
-
+    docs: Документация
+    forums: Форумы
+    slack: Slack
+    issues: Сообщить о проблеме
+    getStarted: Начать
+    commercialSupport: Коммерческая поддержка
 
 ##############################
 ### Support Page
@@ -7018,96 +7010,96 @@ customLinks:
 
 support:
   community:
-    title: SUSE Rancher provides world-class support
-    linksTitle: Community Support
-    learnMore: Find out more about SUSE Rancher Support
-    pricing: Contact us for pricing
+    title: SUSE Rancher обеспечивает поддержку мирового уровня
+    linksTitle: Поддержка сообщества
+    learnMore: Узнайте больше о поддержке SUSE Rancher
+    pricing: Свяжитесь с нами, чтобы узнать цены
   subscription:
-    haveSupport: Already have support?
-    addSubscription: Add a Subscription ID
-    removeSubscription: Remove your Subscription ID
-    addTitle: Add your SUSE Subscription ID
-    addLabel: "Please enter a valid Subscription ID:"
-    removeTitle: Remove your ID?
-    removeBody: "Note: This will not affect your subscription."
+    haveSupport: Уже есть поддержка?
+    addSubscription: Добавить ID подписки
+    removeSubscription: Удалить Ваш ID подписки
+    addTitle: Добавить Ваш ID подписки SUSE
+    addLabel: "Пожалуйста, введите действительный ID подписки:"
+    removeTitle: Удалить Ваш ID?
+    removeBody: "Примечание: это не повлияет на Вашу подписку."
 
   suse:
-    title: "Great News - You're covered"
-    editBrand: Customize UI Theme
+    title: "Отличные новости - Вам доступна поддержка"
+    editBrand: Персонализировать тему UI
     access:
-      title: Get Support
-      text: Login to SUSE Customer Center to access support for your subscription
-      action: SUSE Customer Center
+      title: Получить поддержку
+      text: Войдите в центр обслуживания клиентов SUSE, чтобы получить доступ к поддержке по Вашей подписке
+      action: Центр обслуживания клиентов SUSE
       aws:
-        generateConfig: Generate Support Config
-        text: 'Login to SUSE Customer Center to access support for your subscription. Need to open a new support case? Download a support config file below.'
+        generateConfig: Создать конфигурацию поддержки
+        text: "Войдите в центр обслуживания клиентов SUSE, чтобы получить доступ к поддержке по Вашей подписке. Требуется зарегистрировать новое обращение в службу поддержки? Загрузите файл конфигурации поддержки ниже."
   promos:
     one:
-      title: 24x7 Support
-      text: We provide tightly defined SLAs, and offer round the clock support options.
+      title: Поддержка 24x7
+      text: Мы предоставляем четко определенные соглашения об уровне обслуживания и предлагаем варианты круглосуточной поддержки.
     two:
-      title: Issue Resolution
-      text: Run SUSE Rancher products with confidence, knowing that the developers who built them are available to quickly resolve issues.
+      title: Решение проблем
+      text: С уверенностью запускайте продукты SUSE Rancher, зная, что создавшие их разработчики готовы быстро решить проблемы.
     three:
-      title: Troubleshooting
-      text: We focus on uncovering the root cause of any issue, whether it is related to Rancher Labs products, Kubernetes, Docker or your underlying infrastructure.
+      title: Устранение неполадок
+      text: Мы сосредоточены на выявлении основной причины любой проблемы, независимо от того, связана ли она с продуктами Rancher Labs, Kubernetes, Docker или с Вашей базовой инфраструктурой.
     four:
-      title: Innovate with Freedom
-      text: Take advantage of our certified compatibility with a wide range of Kubernetes providers, operating systems, and open source software.
+      title: Свободно внедряйте инновации
+      text: Воспользуйтесь преимуществами нашей сертифицированной совместимости с широким спектром провайдеров Kubernetes, операционных систем и программного обеспечения с открытым исходным кодом.
 
 embedding:
-  retry: Retry
-  unavailable: Cluster Manager UI is not available
+  retry: Повторить попытку
+  unavailable: UI управления кластером недоступен
 
 v1ClusterTools:
   monitoring:
-    label: Monitoring (Legacy)
-    description: 'Legacy V1 monitoring. V1 Monitoring is deprecated since Rancher 2.5.0. <a target="blank" href="{docsBase}/monitoring-alerting/guides/migrating/">Learn more</a> about the migration steps to V2 Monitoring.'
+    label: Мониторинг (легаси)
+    description: 'Легаси мониторинг V1. Мониторинг V1 считается устаревшим, начиная с Rancher 2.5.0. <a target="blank" href="{docsBase}/monitoring-alerting/guides/migrating/">Узнайте больше</a> о шагах миграции на мониторинг V2.'
   logging:
-    label: Logging (Legacy)
-    description: 'Legacy V1 logging. V1 Logging is deprecated since Rancher 2.5.0. <a target="blank" href="{docsBase}/logging/migrating/">Learn more</a> about migrating to V2 Logging.'
+    label: Логирование (легаси)
+    description: 'Легаси логирование V1. Логирование V1 считается устаревшим, начиная с Rancher 2.5.0. <a target="blank" href="{docsBase}/logging/migrating/">Узнайте больше</a> о миграции на логирование V2.'
   istio:
-    label: Istio (Legacy)
-    description: 'Legacy V1 Istio. Istio v1.5 has been deprecated since Rancher 2.5.0. <a target="blank" href="{docsBase}/istio/#migrate-from-previous-istio-version">Learn more</a> about migrating to the latest version.'
+    label: Istio (легаси)
+    description: 'Легаси Istio V1. Istio v1.5 считается устаревшим, начиная с Rancher 2.5.0. <a target="blank" href="{docsBase}/istio/#migrate-from-previous-istio-version">Узнайте больше</a> о миграции на последнюю версию.'
 
 legacy:
-  alerts: Alerts
-  apps: Apps
-  catalogs: Catalogs
-  configMaps: Config Maps
-  configuration: Configuration
-  globalDnsEntries: Global DNS Entries
-  globalDnsProviders: Global DNS Providers
+  alerts: Уведомления
+  apps: Приложения
+  catalogs: Каталоги
+  configMaps: Карты конфигурации
+  configuration: Конфигурация
+  globalDnsEntries: Глобальные DNS-записи
+  globalDnsProviders: Глобальные DNS-провайдеры
   notifiers: Notifiers
-  monitoring: Monitoring
-  psps: Pod Security Policies
-  secrets: Secrets
+  monitoring: Мониторинг
+  psps: Политики безопасности подов
+  secrets: Secret'ы
 
   project:
-    label: Project
-    select: "Use the Project/Namespace filter at the top of the page to select a Project in order to see legacy Project features."
+    label: Проект
+    select: "Используйте фильтр по проектам/пространствам имён вверху страницы, чтобы выбрать проект для просмотра легаси-фич проекта."
 
 serverUpgrade:
-  title: "{vendor} Server Changed"
-  message: "The page reloaded because the version of {vendor} running on your server changed."
+  title: "{vendor} сервер изменён"
+  message: "Страница была перезагружена, поскольку изменилась версия {vendor}, работающего на сервере."
 
 volumeClaimTemplate:
   add:
-    label: Add Claim Template
+    label: Добавить шаблон Claim
 
 manager:
   cloudCredentials:
-    label: Cloud Credentials
+    label: Облачные учётные данные
   drivers:
-    label: Drivers
+    label: Драйвера
   rkeTemplates:
-    label: RKE Templates
+    label: Шаблоны RKE
   nodeTemplates:
-    label: Node Templates
+    label: Шаблоны нод
 
 auth:
   config:
-    label: Auth Provider
+    label: Провайдер авторизации
 vncConsole:
   error:
-    message: Web VNC console connection is disconnected
+    message: Подключение Web VNC консоли прервано
