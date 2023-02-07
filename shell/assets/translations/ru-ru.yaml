@@ -6765,7 +6765,7 @@ advancedSettings:
     "auth-user-session-ttl-minutes": "Пользовательский TTL (в минутах) на сессию авторизации пользователя."
     "auth-token-max-ttl-minutes": "Максимальный TTL (в минутах) для всех токенов аутентификации. При значении 0 токен никогда не истекает."
     "kubeconfig-generate-token": "Автоматическая герерация токенов для юзеров при запросе kubeconfig."
-    "kubeconfig-token-ttl-minutes": "TTL, применяющийся к токенам, сгенерированным с помощью CLI. Устаревшее: этот параметр будет удалён; для всех kubeconfig токенов будет использоваться and kubeconfig-default-token-ttl-minutes."
+    "kubeconfig-token-ttl-minutes": "TTL, применяющийся к токенам, сгенерированным с помощью CLI. Устаревшее: этот параметр будет удалён, и kubeconfig-default-token-ttl-minutes будет использоваться для всех kubeconfig токенов."
     "kubeconfig-default-token-ttl-minutes": "TTL (в минутах), применяющийся ко всем токенам kubeconfig. При значении 0 токен никогда не истекает."
     "rke-metadata-config": "Настроить параметры обновления метаданных RKE."
     "ui-banners": "Баннер классификации используется для отображения фиксированного пользовательского баннера в шапке и/или подвале страницы."
