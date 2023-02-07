@@ -6711,7 +6711,7 @@ registryMirror:
 
 registryMirrorRewrite:
   header: Rewrites
-  toolTip: "Каждое зеркало может иметь набор rewrites. Rewrites могут изменять тэг образа на основе регулярного выражения."
+  toolTip: "Каждое зеркало может иметь набор rewrites. Rewrites могут изменять тег образа на основе регулярного выражения."
   addLabel: Добавить конфигурацию Rewrite
   keyLabel: Шаблон Rewrite
   keyPlaceholder: например, ^rancher/(.*)
