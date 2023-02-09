@@ -4750,11 +4750,13 @@ sortableTable:
     generic: |-
       {pages, plural,
       =0 {Нет элементов}
-      =1 {{count} {count, plural, =1 {Item} {Items}}} {{from} - {to} из {count} элементов}}
+      =1 {{count} {count, plural, =1 {Элемент} other {Элементов}}}
+      other {{from} - {to} из {count} элементов}}
     resource: |-
       {pages, plural,
       =0 {Нет {pluralLabel}}
-      =1 {{count} {count, plural, =1 {{singularLabel}} {{pluralLabel}}}} {{from} - {to} из {count} {pluralLabel}}}
+      =1 {{count} {count, plural, =1 {{singularLabel}} еще {{pluralLabel}}}}
+      other {{from} - {to} из {count} {pluralLabel}}}
   search: Фильтр
   in: в
   addFilter: Добавить фильтр
