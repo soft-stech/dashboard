@@ -37,6 +37,9 @@ import Vue from 'vue';
 
 import { normalizeType } from './normalize';
 
+import { ExtensionPoint, ActionLocation } from '@shell/core/types';
+import { getApplicableExtensionEnhancements } from '@shell/core/plugin-helpers';
+
 const STRING_LIKE_TYPES = [
   'string',
   'date',
@@ -851,7 +854,11 @@ export default class Resource {
 
   // You can add custom actions by overriding your own availableActions (and probably reading super._availableActions)
   get _availableActions() {
-    const all = [
+    // get menu actions available by plugins configuration
+    const currentRoute = this.currentRouter().app._route;
+    const extensionMenuActions = getApplicableExtensionEnhancements(this.$rootState, ExtensionPoint.ACTION, ActionLocation.TABLE, currentRoute, this);
+
+    let all = [
       { divider: true },
       {
         action:  this.canUpdate ? 'goToEdit' : 'goToViewConfig',
@@ -898,6 +905,13 @@ export default class Resource {
         weight:     -10, // Delete always goes last
       },
     ];
+
+    // Extension actions get added to the end, so add a divider if there are any
+    if (extensionMenuActions.length) {
+      // Add a divider first
+      all.push({ divider: true });
+      all = all.concat(extensionMenuActions);
+    }
 
     return all;
   }
@@ -1051,6 +1065,7 @@ export default class Resource {
   async _save(opt = {}) {
     delete this.__rehydrate;
     delete this.__clone;
+
     const forNew = !this.id;
 
     const errors = await this.validationErrors(this, opt.ignoreFields);
@@ -1095,7 +1110,7 @@ export default class Resource {
     }
 
     // @TODO remove this once the API maps steve _type <-> k8s type in both directions
-    opt.data = { ...this };
+    opt.data = this.toSave() || { ...this };
 
     if (opt?.data._type) {
       opt.data.type = opt.data._type;
@@ -1867,6 +1882,13 @@ export default class Resource {
     }
 
     return out;
+  }
+
+  /**
+   * Allow models to override the object that is sent when saving this resource
+   */
+  toSave() {
+    return undefined;
   }
 
   get creationTimestamp() {

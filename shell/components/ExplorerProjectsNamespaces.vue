@@ -112,6 +112,10 @@ export default {
       // is updated if a new project is created or removed.
       const projectsInAllClusters = this.$store.getters['management/all'](MANAGEMENT.PROJECT);
 
+      if (this.currentProduct?.customNamespaceFilter && this.currentProduct?.inStore && this.$store.getters[`${ this.currentProduct.inStore }/filterProject`]) {
+        return this.$store.getters[`${ this.currentProduct.inStore }/filterProject`];
+      }
+
       const clustersInProjects = projectsInAllClusters.filter(project => project.spec.clusterName === clusterId);
 
       return clustersInProjects;
@@ -364,8 +368,8 @@ export default {
             class="group-tab"
           >
             <div
+              v-clean-html="projectLabel(group.group)"
               class="project-name"
-              v-html="projectLabel(group.group)"
             />
             <div
               v-if="projectDescription(group.group)"
@@ -403,7 +407,7 @@ export default {
       <template #cell:name="{row}">
         <div class="namespace-name">
           <n-link
-            v-if="row.detailLocation"
+            v-if="row.detailLocation && !row.hideDetailLocation"
             :to="row.detailLocation"
           >
             {{ row.name }}
@@ -411,6 +415,11 @@ export default {
           <span v-else>
             {{ row.name }}
           </span>
+          <i
+            v-if="row.injectionEnabled"
+            v-tooltip="t('projectNamespaces.isIstioInjectionEnabled')"
+            class="icon icon-istio ml-5"
+          />
           <i
             v-if="row.hasSystemLabels"
             v-tooltip="getPsaTooltip(row)"
@@ -483,6 +492,10 @@ export default {
     .namespace-name {
       display: flex;
       align-items: center;
+
+      .icon-istio {
+        color: var(--primary);
+      }
     }
   }
 }

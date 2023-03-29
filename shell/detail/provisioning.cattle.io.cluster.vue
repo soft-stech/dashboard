@@ -11,6 +11,7 @@ import { CAPI, MANAGEMENT, NORMAN, SNAPSHOT } from '@shell/config/types';
 import {
   STATE, NAME as NAME_COL, AGE, AGE_NORMAN, INTERNAL_EXTERNAL_IP, STATE_NORMAN, ROLES, MACHINE_NODE_OS, MANAGEMENT_NODE_OS, NAME,
 } from '@shell/config/table-headers';
+import { STATES_ENUM } from '@shell/plugins/dashboard-store/resource-class';
 import CustomCommand from '@shell/edit/provisioning.cattle.io.cluster/CustomCommand';
 import AsyncButton from '@shell/components/AsyncButton.vue';
 import AnsiUp from 'ansi_up';
@@ -30,6 +31,7 @@ import Socket, {
 import { get } from '@shell/utils/object';
 import CapiMachineDeployment from '@shell/models/cluster.x-k8s.io.machinedeployment';
 import { isAlternate } from '@shell/utils/platform';
+import { defaultTableSortGenerationFn } from '@shell/components/ResourceTable.vue';
 
 let lastId = 1;
 const ansiup = new AnsiUp();
@@ -248,15 +250,33 @@ export default {
     },
 
     fakeMachines() {
+      const machineNameFn = (clusterName, machinePoolName) => `${ clusterName }-${ machinePoolName }`;
+
       // When we scale up, the quantity will change to N+1 - so from 0 to 1, the quantity changes,
       // but it takes tiem for the machine to appear, so the pool is empty, but if we just go off on a non-zero quqntity
       // then the pool would be hidden - so we find empty pool by checking the machines
       const emptyPools = (this.value.spec.rkeConfig?.machinePools || []).filter((mp) => {
-        const machinePrefix = `${ this.value.name }-${ mp.name }`;
+        const machineFullName = machineNameFn(this.value.name, mp.name);
+
         const machines = this.value.machines.filter((machine) => {
           const isElementalCluster = machine.spec?.infrastructureRef?.apiVersion.startsWith('elemental.cattle.io');
+          const machinePoolInfName = machine.spec?.infrastructureRef?.name;
 
-          return !isElementalCluster ? machine.spec?.infrastructureRef?.name.startsWith(machinePrefix) : machine.spec?.infrastructureRef?.name.includes(machinePrefix);
+          if (isElementalCluster) {
+            return machinePoolInfName.includes(machineFullName);
+          }
+
+          // if labels exist, then the machineFullName must unequivocally be equal to manchineLabelFullName (based on labels)
+          const machineLabelClusterName = machine.metadata?.labels?.['cluster.x-k8s.io/cluster-name'];
+          const machineLabelPoolName = machine.metadata?.labels?.['rke.cattle.io/rke-machine-pool-name'];
+
+          if (machineLabelClusterName && machineLabelPoolName) {
+            const manchineLabelFullName = machineNameFn(machineLabelClusterName, machineLabelPoolName);
+
+            return machineFullName === manchineLabelFullName;
+          }
+
+          return machinePoolInfName.startsWith(machineFullName);
         });
 
         return machines.length === 0;
@@ -335,7 +355,7 @@ export default {
     },
 
     showEksNodeGroupWarning() {
-      if ( this.value.provisioner === 'EKS' ) {
+      if ( this.value.provisioner === 'EKS' && this.value.state !== STATES_ENUM.ACTIVE) {
         const desiredTotal = this.value.eksNodeGroups.filter(g => g.desiredSize === 0);
 
         if ( desiredTotal.length === this.value.eksNodeGroups.length ) {
@@ -620,6 +640,26 @@ export default {
         return day(time).format(this.dateTimeFormatStr);
       }
     },
+
+    machineSortGenerationFn() {
+      // The sort generation function creates a unique value and is used to create a key including sort details.
+      // The unique key determines if the list is redrawn or a cached version is shown.
+      // Because we ensure the 'not in a pool' group is there via a row, and timing issues, the unqiue key doesn't change
+      // after a machine is added/removed... so the list won't update... so we need to inject a string to ensure the key is fresh
+      const base = defaultTableSortGenerationFn(this.machineSchema, this.$store);
+
+      return base + (!!this.fakeMachines.length ? '-fake' : '');
+    },
+
+    nodeSortGenerationFn() {
+      // The sort generation function creates a unique value and is used to create a key including sort details.
+      // The unique key determines if the list is redrawn or a cached version is shown.
+      // Because we ensure the 'not in a pool' group is there via a row, and timing issues, the unqiue key doesn't change
+      // after a machine is added/removed... so the list won't update... so we need to inject a string to ensure the key is fresh
+      const base = defaultTableSortGenerationFn(this.mgmtNodeSchema, this.$store);
+
+      return base + (!!this.fakeNodes.length ? '-fake' : '');
+    },
   }
 };
 </script>
@@ -663,6 +703,7 @@ export default {
           :group-by="value.isCustom ? null : 'poolId'"
           group-ref="pool"
           :group-sort="['pool.nameDisplay']"
+          :sort-generation-fn="machineSortGenerationFn"
         >
           <template #main-row:isFake="{fullColspan}">
             <tr class="main-row">
@@ -686,11 +727,11 @@ export default {
               >
                 <div
                   v-if="group && group.ref"
-                  v-html="group.ref.groupByPoolShortLabel"
+                  v-clean-html="group.ref.groupByPoolShortLabel"
                 />
                 <div
                   v-else
-                  v-html="t('resourceTable.groupLabel.notInANodePool')"
+                  v-clean-html="t('resourceTable.groupLabel.notInANodePool')"
                 />
                 <div
                   v-if="group.ref && group.ref.template"
@@ -747,6 +788,7 @@ export default {
           :group-by="value.isCustom ? null : 'spec.nodePoolName'"
           group-ref="pool"
           :group-sort="['pool.nameDisplay']"
+          :sort-generation-fn="nodeSortGenerationFn"
         >
           <template #main-row:isFake="{fullColspan}">
             <tr class="main-row">
@@ -770,11 +812,11 @@ export default {
               >
                 <div
                   v-if="group.ref"
-                  v-html="t('resourceTable.groupLabel.nodePool', { name: group.ref.spec.hostnamePrefix}, true)"
+                  v-clean-html="t('resourceTable.groupLabel.nodePool', { name: group.ref.spec.hostnamePrefix}, true)"
                 />
                 <div
                   v-else
-                  v-html="t('resourceTable.groupLabel.notInANodePool')"
+                  v-clean-html="t('resourceTable.groupLabel.notInANodePool')"
                 />
                 <div
                   v-if="group.ref && group.ref.nodeTemplate"
@@ -846,13 +888,13 @@ export default {
               >
                 <td
                   :key="line.id + '-time'"
+                  v-clean-html="format(line.time)"
                   class="time"
-                  v-html="format(line.time)"
                 />
                 <td
                   :key="line.id + '-msg'"
+                  v-clean-html="line.msg"
                   class="msg"
-                  v-html="line.msg"
                 />
               </tr>
             </template>
@@ -890,22 +932,22 @@ export default {
           @copied-windows="hasWindowsMachine ? null : showWindowsWarning = true"
         />
         <template v-else>
-          <h4 v-html="t('cluster.import.commandInstructions', null, true)" />
+          <h4 v-clean-html="t('cluster.import.commandInstructions', null, true)" />
           <CopyCode class="m-10 p-10">
             {{ clusterToken.command }}
           </CopyCode>
 
           <h4
+            v-clean-html="t('cluster.import.commandInstructionsInsecure', null, true)"
             class="mt-10"
-            v-html="t('cluster.import.commandInstructionsInsecure', null, true)"
           />
           <CopyCode class="m-10 p-10">
             {{ clusterToken.insecureCommand }}
           </CopyCode>
 
           <h4
+            v-clean-html="t('cluster.import.clusterRoleBindingInstructions', null, true)"
             class="mt-10"
-            v-html="t('cluster.import.clusterRoleBindingInstructions', null, true)"
           />
           <CopyCode class="m-10 p-10">
             {{ t('cluster.import.clusterRoleBindingCommand', null, true) }}

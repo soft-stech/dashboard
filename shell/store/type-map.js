@@ -104,6 +104,8 @@
 //                               customRoute: undefined,
 //                               hasGraph: undefined   -- If true, render ForceDirectedTreeChart graph (ATTENTION: option graphConfig is needed also!!!)
 //                               graphConfig: undefined   -- Use this to pass along the graph configuration
+//                               notFilterNamespace:  undefined -- Define namespaces that do not need to be filtered
+//                               localOnly: False -- Hide this type from the nav/search bar on downstream clusters
 //                           }
 // )
 // ignoreGroup(group):        Never show group or any types in it
@@ -147,6 +149,8 @@ import { normalizeType } from '@shell/plugins/dashboard-store/normalize';
 import { sortBy } from '@shell/utils/sort';
 import { haveV1Monitoring, haveV2Monitoring } from '@shell/utils/monitoring';
 import { NEU_VECTOR_NAMESPACE } from '@shell/config/product/neuvector';
+
+import { ExtensionPoint, TableColumnLocation } from '@shell/core/types';
 
 export const NAMESPACED = 'namespaced';
 export const CLUSTER_LEVEL = 'cluster';
@@ -222,6 +226,33 @@ export function DSL(store, product, module = 'type-map') {
     },
 
     headers(type, headers) {
+      // gate it so that we prevent errors on older versions of dashboard
+      if (store.$plugin?.getUIConfig) {
+        const extensionCols = store.$plugin.getUIConfig(ExtensionPoint.TABLE_COL, TableColumnLocation.RESOURCE);
+
+        // Try and insert the columns before the Age column, if that is the last column
+        let insertPosition = headers.length;
+
+        if (headers.length > 0) {
+          const lastColumn = headers[headers.length - 1];
+
+          if (lastColumn?.name === AGE.name) {
+            insertPosition--;
+          }
+        }
+
+        // adding extension defined cols to the correct header config
+        extensionCols.forEach((col) => {
+          if (col.locationConfig.resource) {
+            col.locationConfig.resource.forEach((resource) => {
+              if (resource && type === resource) {
+                headers.splice(insertPosition, 0, col);
+              }
+            });
+          }
+        });
+      }
+
       headers.forEach((header) => {
         // If on the client, then use the value getter if there is one
         if (header.getValue) {
@@ -813,7 +844,7 @@ export const getters = {
 
   allTypes(state, getters, rootState, rootGetters) {
     return (product, mode = ALL) => {
-      const module = findBy(state.products, 'name', product).inStore;
+      const module = findBy(state.products, 'name', product)?.inStore;
       const schemas = rootGetters[`${ module }/all`](SCHEMA);
       const counts = rootGetters[`${ module }/all`](COUNT)?.[0]?.counts || {};
       const isDev = rootGetters['prefs/get'](VIEW_IN_API);
@@ -839,6 +870,8 @@ export const getters = {
           // Skip the schemas that aren't top-level types
           continue;
         } else if ( typeof typeOptions.ifRancherCluster !== 'undefined' && typeOptions.ifRancherCluster !== rootGetters.isRancher ) {
+          continue;
+        } else if (typeOptions.localOnly && !rootGetters.currentCluster?.isLocal) {
           continue;
         }
 

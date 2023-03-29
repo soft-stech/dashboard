@@ -55,6 +55,10 @@ const sidebars = {
         'code-base-works/helm-chart-apps',
         'code-base-works/keyboard-shortcuts',
         'code-base-works/kubernetes-resources-data-load',
+        'code-base-works/routes',
+        'code-base-works/middleware',
+        'code-base-works/stores',
+        'code-base-works/nuxt-plugins',
         'code-base-works/machine-drivers',
         'code-base-works/performance',
         'code-base-works/sortable-table',
@@ -66,10 +70,25 @@ const sidebars = {
       type:  'category',
       label: 'Extensions',
       items: [
-        'plugins/introduction',
-        'plugins/plugins-getting-started',
-        'plugins/initializing-plugins',
-        'plugins/advanced',
+        'extensions/introduction',
+        'extensions/extensions-getting-started',
+        'extensions/initializing-extensions',
+        {
+          type:  'category',
+          label: 'Extensions API',
+          link:  {
+            type: 'doc',
+            id:   'extensions/extensions-api',
+          },
+          items: [
+            'extensions/extension-api-methods/add-action',
+            'extensions/extension-api-methods/add-card',
+            'extensions/extension-api-methods/add-panel',
+            'extensions/extension-api-methods/add-tab',
+            'extensions/extension-api-methods/add-table-column',
+          ]
+        },
+        'extensions/advanced',
       ]
     },
     'storybook',

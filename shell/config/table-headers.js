@@ -481,6 +481,14 @@ export const REASON = {
   value:    'reason',
   sort:     ['reason']
 };
+export const OBJECT = {
+  name:          'object',
+  labelKey:      'tableHeaders.object',
+  value:         'involvedObject',
+  sort:          ['involvedObject.kind', 'involvedObject.name'],
+  canBeVariable: true,
+  formatter:     'InvolvedObjectLink',
+};
 export const RECLAIM_POLICY = {
   name:     'reclaimPolicy',
   labelKey: 'tableHeaders.reclaimPolicy',
@@ -729,8 +737,8 @@ export const CONSTRAINT_VIOLATION_RESOURCE_LINK = {
 export const CONSTRAINT_VIOLATION_TYPE = {
   name:  'Type',
   label: 'Type',
-  value: `constraint.kind`,
-  sort:  `constraint.kind`
+  value: `kind`,
+  sort:  `kind`
 };
 
 export const CONSTRAINT_VIOLATION_MESSAGE = {

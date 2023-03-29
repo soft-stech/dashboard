@@ -103,7 +103,7 @@ export default class ProvCluster extends SteveModel {
     const clusterTemplatesSchema = this.$getters['schemaFor']('management.cattle.io.clustertemplate');
     let canUpdateClusterTemplate = false;
 
-    if (clusterTemplatesSchema && (clusterTemplatesSchema.resourceMethods.includes('blocked-PUT') || clusterTemplatesSchema.resourceMethods.includes('PUT'))) {
+    if (clusterTemplatesSchema && (clusterTemplatesSchema.resourceMethods?.includes('blocked-PUT') || clusterTemplatesSchema.resourceMethods?.includes('PUT'))) {
       canUpdateClusterTemplate = true;
     }
 
@@ -272,7 +272,7 @@ export default class ProvCluster extends SteveModel {
   }
 
   get mgmtClusterId() {
-    return this.mgmt?.id || this.id.replace(`${ this.metadata.namespace }/`, '');
+    return this.mgmt?.id || this.id?.replace(`${ this.metadata.namespace }/`, '');
   }
 
   get mgmt() {
@@ -291,8 +291,10 @@ export default class ProvCluster extends SteveModel {
     return !!this.mgmt?.isReady;
   }
 
+  // nodeGroups can be undefined for an EKS cluster that has just been created and has not
+  // had any node groups added to it
   get eksNodeGroups() {
-    return this.mgmt?.spec?.eksConfig?.nodeGroups;
+    return this.mgmt?.spec?.eksConfig?.nodeGroups || [];
   }
 
   waitForProvisioner(timeout, interval) {
@@ -457,9 +459,9 @@ export default class ProvCluster extends SteveModel {
         return names.join('<br>');
       } else {
         const names = this.machines.filter((machine) => {
-          return machine.status.conditions.find(c => c.error && c.type === 'NodeHealthy');
+          return machine.status?.conditions?.find(c => c.error && c.type === 'NodeHealthy');
         }).map((machine) => {
-          if (machine.status.nodeRef?.name) {
+          if (machine.status?.nodeRef?.name) {
             return this.t('cluster.availabilityWarnings.node', { name: machine.status.nodeRef.name });
           }
 

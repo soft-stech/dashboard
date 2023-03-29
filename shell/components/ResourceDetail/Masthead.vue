@@ -10,6 +10,8 @@ import { HIDE_SENSITIVE } from '@shell/store/prefs';
 import {
   AS, _DETAIL, _CONFIG, _YAML, MODE, _CREATE, _EDIT, _VIEW, _UNFLAG, _GRAPH
 } from '@shell/config/query-params';
+import { ExtensionPoint, PanelLocation } from '@shell/core/types';
+import ExtensionPanel from '@shell/components/ExtensionPanel';
 
 /**
  * Resource Detail Masthead component.
@@ -21,7 +23,7 @@ export default {
   name: 'MastheadResourceDetail',
 
   components: {
-    BadgeState, Banner, ButtonGroup
+    BadgeState, Banner, ButtonGroup, ExtensionPanel
   },
   props: {
     value: {
@@ -83,7 +85,11 @@ export default {
   },
 
   data() {
-    return { DETAIL_VIEW: _DETAIL };
+    return {
+      DETAIL_VIEW:       _DETAIL,
+      extensionType:     ExtensionPoint.PANEL,
+      extensionLocation: PanelLocation.DETAILS_MASTHEAD,
+    };
   },
 
   computed: {
@@ -423,6 +429,15 @@ export default {
               class="masthead-state"
               :value="value"
             />
+            <span
+              v-if="!isCreate && value.injectionEnabled"
+              class="masthead-istio"
+            >
+              <i
+                v-tooltip="t('projectNamespaces.isIstioInjectionEnabled')"
+                class="icon icon-sm icon-istio"
+              />
+            </span>
           </h1>
         </div>
         <div
@@ -451,7 +466,7 @@ export default {
         </div>
       </div>
       <slot name="right">
-        <div class="actions-container">
+        <div class="actions-container align-start">
           <div class="actions">
             <button
               v-if="detailsAction && currentView === DETAIL_VIEW && isView"
@@ -492,6 +507,13 @@ export default {
         </div>
       </slot>
     </header>
+
+    <!-- Extension area -->
+    <ExtensionPanel
+      :resource="value"
+      :type="extensionType"
+      :location="extensionLocation"
+    />
 
     <Banner
       v-if="banner && isView && !parent.hideBanner"
@@ -553,6 +575,13 @@ export default {
     display: inline-block;
     position: relative;
     top: -2px;
+  }
+
+  .masthead-istio {
+    .icon {
+      vertical-align: middle;
+      color: var(--primary);
+    }
   }
 
   .left-right-split {

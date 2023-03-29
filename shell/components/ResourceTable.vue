@@ -30,6 +30,9 @@ export const defaultTableSortGenerationFn = (schema, $store) => {
   if ( nsFilterKey ) {
     return `${ sortKey }/${ nsFilterKey }`;
   }
+
+  // covers case where we have no current cluster's ns cache
+  return sortKey;
 };
 
 export default {
@@ -462,8 +465,8 @@ export default {
 
     <template #group-by="{group: thisGroup}">
       <div
+        v-clean-html="thisGroup.ref"
         class="group-tab"
-        v-html="thisGroup.ref"
       />
     </template>
 

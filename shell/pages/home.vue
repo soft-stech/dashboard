@@ -38,8 +38,13 @@ export default {
   mixins: [PageHeaderActions],
 
   fetch() {
-    this.$store.dispatch('management/findAll', { type: CAPI.RANCHER_CLUSTER });
-    this.$store.dispatch('management/findAll', { type: MANAGEMENT.CLUSTER });
+    if ( this.$store.getters['management/schemaFor'](CAPI.RANCHER_CLUSTER) ) {
+      this.$store.dispatch('management/findAll', { type: CAPI.RANCHER_CLUSTER });
+    }
+
+    if ( this.$store.getters['management/schemaFor'](MANAGEMENT.CLUSTER) ) {
+      this.$store.dispatch('management/findAll', { type: MANAGEMENT.CLUSTER });
+    }
 
     if ( this.$store.getters['management/canList'](CAPI.MACHINE) ) {
       this.$store.dispatch('management/findAll', { type: CAPI.MACHINE });
@@ -307,7 +312,7 @@ export default {
             <a
               class="hand"
               @click.prevent.stop="showWhatsNew"
-            ><span v-html="t('landing.whatsNewLink')" /></a>
+            ><span v-clean-html="t('landing.whatsNewLink')" /></a>
           </Banner>
         </div>
       </div>
@@ -330,7 +335,7 @@ export default {
                 <a
                   class="hand mr-20"
                   @click.prevent.stop="showUserPrefs"
-                ><span v-html="t('landing.landingPrefs.userPrefs')" /></a>
+                ><span v-clean-html="t('landing.landingPrefs.userPrefs')" /></a>
               </Banner>
             </div>
           </div>

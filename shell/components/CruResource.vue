@@ -358,6 +358,10 @@ export default {
       const newNamespaceName = get(this.resource, this.namespaceKey);
       let namespaceAlreadyExists = false;
 
+      if (!this.createNamespace) {
+        return;
+      }
+
       try {
         // This is in a try-catch block because the call to fetch
         // a namespace throws an error if the namespace is not found.
@@ -461,7 +465,7 @@ export default {
                     <h5>
                       <span
                         v-if="$store.getters['i18n/exists'](subtype.label)"
-                        v-html="t(subtype.label)"
+                        v-clean-html="t(subtype.label)"
                       />
                       <span v-else>{{ subtype.label }}</span>
                     </h5>
@@ -480,7 +484,7 @@ export default {
                   >
                     <span
                       v-if="$store.getters['i18n/exists'](subtype.description)"
-                      v-html="t(subtype.description, {}, true)"
+                      v-clean-html="t(subtype.description, {}, true)"
                     />
                     <span v-else>{{ subtype.description }}</span>
                   </div>
