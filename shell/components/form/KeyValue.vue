@@ -10,11 +10,13 @@ import Select from '@shell/components/form/Select';
 import FileSelector from '@shell/components/form/FileSelector';
 import { _EDIT, _VIEW } from '@shell/config/query-params';
 import { asciiLike } from '@shell/utils/string';
+import CodeMirror from '@shell/components/CodeMirror';
 
 export default {
   name: 'KeyValue',
 
   components: {
+    CodeMirror,
     Select,
     TextAreaAutoGrow,
     FileSelector
@@ -139,6 +141,10 @@ export default {
       type:    Boolean,
       default: false,
     },
+    valueMarkdownMultiline: {
+      type:    Boolean,
+      default: false,
+    },
     valueMultiline: {
       type:    Boolean,
       default: true,
@@ -240,12 +246,19 @@ export default {
     parseLinesFromFile: {
       default: false,
       type:    Boolean
-    }
+    },
+    disabled: {
+      default: false,
+      type:    Boolean
+    },
   },
   data() {
     const rows = this.getRows(this.value);
 
-    return { rows };
+    return {
+      rows,
+      codeMirrorFocus: {},
+    };
   },
 
   computed: {
@@ -519,6 +532,19 @@ export default {
       return this.t('detailText.binary', { n }, true);
     },
     get,
+    /**
+     * Update 'rows' variable with the user's input and prevents to update queue before the row model is updated
+     */
+    onInputMarkdownMultiline(idx, value) {
+      this.rows = this.rows.map((row, i) => i === idx ? { ...row, value } : row);
+      this.queueUpdate();
+    },
+    /**
+     * Set focus on CodeMirror fields
+     */
+    onFocusMarkdownMultiline(idx, value) {
+      this.$set(this.codeMirrorFocus, idx, value);
+    }
   }
 };
 </script>
@@ -533,7 +559,7 @@ export default {
           {{ title }}
           <i
             v-if="titleProtip"
-            v-tooltip="titleProtip"
+            v-clean-tooltip="titleProtip"
             class="icon icon-info"
           />
         </h3>
@@ -548,7 +574,7 @@ export default {
           {{ keyLabel }}
           <i
             v-if="protip && !isView && addAllowed"
-            v-tooltip="protip"
+            v-clean-tooltip="protip"
             class="icon icon-info"
           />
         </label>
@@ -592,13 +618,14 @@ export default {
             :keyName="keyName"
             :valueName="valueName"
             :queueUpdate="queueUpdate"
+            :disabled="disabled"
           >
             <Select
               v-if="keyOptions"
               ref="key"
               v-model="row[keyName]"
               :searchable="true"
-              :disabled="isProtected(row.key)"
+              :disabled="disabled || isProtected(row.key)"
               :clearable="false"
               :taggable="keyTaggable"
               :options="calculateOptions(row[keyName])"
@@ -608,7 +635,7 @@ export default {
               v-else
               ref="key"
               v-model="row[keyName]"
-              :disabled="isView || !keyEditable || isProtected(row.key)"
+              :disabled="isView || disabled || !keyEditable || isProtected(row.key)"
               :placeholder="keyPlaceholder"
               @input="queueUpdate"
               @paste="onPaste(i, $event)"
@@ -635,11 +662,22 @@ export default {
             <div v-else-if="row.binary">
               {{ binaryTextSize(row.value) }}
             </div>
+            <CodeMirror
+              v-else-if="valueMarkdownMultiline"
+              ref="cm"
+              data-testid="code-mirror-multiline-field"
+              :class="{['focus']: codeMirrorFocus[i]}"
+              :value="row[valueName]"
+              :as-text-area="true"
+              :mode="mode"
+              @onInput="onInputMarkdownMultiline(i, $event)"
+              @onFocus="onFocusMarkdownMultiline(i, $event)"
+            />
             <TextAreaAutoGrow
               v-else-if="valueMultiline"
               v-model="row[valueName]"
               :class="{'conceal': valueConcealed}"
-              :disabled="isProtected(row.key)"
+              :disabled="disabled || isProtected(row.key)"
               :mode="mode"
               :placeholder="valuePlaceholder"
               :min-height="40"
@@ -649,7 +687,7 @@ export default {
             <input
               v-else
               v-model="row[valueName]"
-              :disabled="isView || isProtected(row.key)"
+              :disabled="isView || disabled || isProtected(row.key)"
               :type="valueConcealed ? 'password' : 'text'"
               :placeholder="valuePlaceholder"
               autocorrect="off"
@@ -684,7 +722,7 @@ export default {
           >
             <button
               type="button"
-              :disabled="isView || isProtected(row.key)"
+              :disabled="isView || isProtected(row.key) || disabled"
               class="btn role-link"
               @click="remove(i)"
             >
@@ -706,7 +744,7 @@ export default {
           v-if="addAllowed"
           type="button"
           class="btn role-tertiary add"
-          :disabled="loading || (keyOptions && filteredKeyOptions.length === 0)"
+          :disabled="loading || disabled || (keyOptions && filteredKeyOptions.length === 0)"
           @click="add()"
         >
           <i
@@ -750,6 +788,7 @@ export default {
       &.value textarea{
         padding: 10px 10px 10px 10px;
       }
+
       .text-monospace:not(.conceal) {
         font-family: monospace, monospace;
       }

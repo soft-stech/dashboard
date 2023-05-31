@@ -11,6 +11,8 @@ import {
   SERVICE_ACCOUNT,
   CAPI,
   POD,
+  LIST_WORKLOAD_TYPES,
+  HCI,
 } from '@shell/config/types';
 import Tab from '@shell/components/Tabbed/Tab';
 import CreateEditView from '@shell/mixins/create-edit-view';
@@ -25,7 +27,7 @@ import Loading from '@shell/components/Loading';
 import Networking from '@shell/components/form/Networking';
 import VolumeClaimTemplate from '@shell/edit/workload/VolumeClaimTemplate';
 import Job from '@shell/edit/workload/Job';
-import { _EDIT, _CREATE, _VIEW } from '@shell/config/query-params';
+import { _EDIT, _CREATE, _VIEW, _CLONE } from '@shell/config/query-params';
 import WorkloadPorts from '@shell/components/form/WorkloadPorts';
 import ContainerResourceLimit from '@shell/components/ContainerResourceLimit';
 import KeyValue from '@shell/components/form/KeyValue';
@@ -48,6 +50,7 @@ import NameNsDescription from '@shell/components/form/NameNsDescription';
 import formRulesGenerator from '@shell/utils/validators/formRules';
 import { TYPES as SECRET_TYPES } from '@shell/models/secret';
 import { defaultContainer } from '@shell/models/workload';
+import { allHash } from '@shell/utils/promise';
 
 const TAB_WEIGHT_MAP = {
   general:              99,
@@ -142,7 +145,11 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('management/findAll', { type: CAPI.RANCHER_CLUSTER });
+    // TODO Should remove these lines
+    await allHash({
+      rancherClusters:  this.$store.dispatch('management/findAll', { type: CAPI.RANCHER_CLUSTER }),
+      harvesterConfigs: this.$store.dispatch('management/findAll', { type: HCI.HARVESTER_CONFIG }),
+    });
 
     // don't block UI for these resources
     this.resourceManagerFetchSecondaryResources(this.secondaryResourceData);
@@ -177,7 +184,7 @@ export default {
 
     // EDIT view for POD
     // Transform it from POD world to workload
-    if ((this.mode === _EDIT || this.mode === _VIEW ) && this.value.type === 'pod' ) {
+    if ((this.mode === _EDIT || this.mode === _VIEW || this.realMode === _CLONE ) && this.value.type === 'pod') {
       const podSpec = { ...this.value.spec };
       const metadata = { ...this.value.metadata };
 
@@ -197,6 +204,7 @@ export default {
     if (
       this.mode === _CREATE ||
       this.mode === _VIEW ||
+      this.realMode === _CLONE ||
       (!createSidecar && !this.value.hasSidecars) // hasSideCars = containers.length > 1 || initContainers.length;
     ) {
       container = containers[0];
@@ -490,21 +498,19 @@ export default {
       return this.$store.getters['cluster/schemaFor'](this.type);
     },
 
-    workloadTypes() {
-      return omitBy(WORKLOAD_TYPES, (type) => {
+    // array of id, label, description, initials for type selection step
+    workloadSubTypes() {
+      const workloadTypes = omitBy(LIST_WORKLOAD_TYPES, (type) => {
         return (
           type === WORKLOAD_TYPES.REPLICA_SET ||
           type === WORKLOAD_TYPES.REPLICATION_CONTROLLER
         );
       });
-    },
 
-    // array of id, label, description, initials for type selection step
-    workloadSubTypes() {
       const out = [];
 
-      for (const prop in this.workloadTypes) {
-        const type = this.workloadTypes[prop];
+      for (const prop in workloadTypes) {
+        const type = workloadTypes[prop];
         const subtype = {
           id:          type,
           description: `workload.typeDescriptions.'${ type }'`,
@@ -704,7 +710,7 @@ export default {
       if (
         this.type !== WORKLOAD_TYPES.JOB &&
         this.type !== WORKLOAD_TYPES.CRON_JOB &&
-        this.mode === _CREATE
+        (this.mode === _CREATE || this.realMode === _CLONE)
       ) {
         this.spec.selector = { matchLabels: this.value.workloadSelector };
         Object.assign(this.value.metadata.labels, this.value.workloadSelector);
@@ -722,7 +728,7 @@ export default {
       if (
         this.type !== WORKLOAD_TYPES.JOB &&
         this.type !== WORKLOAD_TYPES.CRON_JOB &&
-        this.mode === _CREATE
+        (this.mode === _CREATE || this.realMode === _CLONE)
       ) {
         if (!template.metadata) {
           template.metadata = { labels: this.value.workloadSelector };
@@ -784,6 +790,13 @@ export default {
       this.fixPodSecurityContext(this.podTemplateSpec);
 
       template.metadata.namespace = this.value.metadata.namespace;
+
+      // Handle the case where the user has changed the name of the workload
+      // Only do this for clone. Not allowed for edit
+      if (this.realMode === _CLONE) {
+        template.metadata.name = this.value.metadata.name;
+        template.metadata.description = this.value.metadata.description;
+      }
 
       // delete this.value.kind;
       if (this.container && !this.container.name) {

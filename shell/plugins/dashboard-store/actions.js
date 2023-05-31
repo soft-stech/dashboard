@@ -317,13 +317,15 @@ export default {
 
     // ToDo: SM if we start a "bigger" watch (such as watch without a namespace vs a watch with a namespace), we should stop the stop the "smaller" watch so we don't have duplicate events coming back
     if ( opt.watch !== false ) {
-      dispatch('watch', {
+      const args = {
         type,
         revision:  out.revision,
         namespace: opt.watchNamespace || opt.namespaced, // it could be either apparently
         // ToDo: SM namespaced is sometimes a boolean and sometimes a string, I don't see it as especially broken but we should refactor that in the future
         force:     opt.forceWatch === true,
-      });
+      };
+
+      dispatch('watch', args);
     }
 
     const all = getters.all(type);
@@ -475,6 +477,11 @@ export default {
         commit('registerType', type);
       }
     }
+    // Inject special fields for indexing schemas
+    if ( type === SCHEMA ) {
+      addSchemaIndexFields(data);
+    }
+
     const keyField = getters.keyFieldForType(type);
     const id = data?.[keyField] || existing?.[keyField];
 

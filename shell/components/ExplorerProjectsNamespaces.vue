@@ -4,13 +4,14 @@ import ResourceTable from '@shell/components/ResourceTable';
 import { STATE, AGE, NAME } from '@shell/config/table-headers';
 import { uniq } from '@shell/utils/array';
 import { MANAGEMENT, NAMESPACE, VIRTUAL_TYPES } from '@shell/config/types';
-import { PROJECT_ID } from '@shell/config/query-params';
+import { PROJECT_ID, FLAT_VIEW } from '@shell/config/query-params';
 import Masthead from '@shell/components/ResourceList/Masthead';
 import { mapPref, GROUP_RESOURCES, ALL_NAMESPACES } from '@shell/store/prefs';
 import MoveModal from '@shell/components/MoveModal';
 import { defaultTableSortGenerationFn } from '@shell/components/ResourceTable.vue';
 import { NAMESPACE_FILTER_ALL_ORPHANS } from '@shell/utils/namespace-filter';
 import ResourceFetch from '@shell/mixins/resource-fetch';
+import DOMPurify from 'dompurify';
 
 export default {
   name:       'ListProjectNamespace',
@@ -236,6 +237,9 @@ export default {
 
     notInProjectKey() {
       return this.$store.getters['i18n/t']('resourceTable.groupLabel.notInAProject');
+    },
+    showCreateNsButton() {
+      return this.groupPreference !== 'namespace';
     }
   },
   methods: {
@@ -284,6 +288,21 @@ export default {
 
       return location;
     },
+
+    createNamespaceLocationFlatList() {
+      const location = this.createNamespaceLocationOverride ? { ...this.createNamespaceLocationOverride } : {
+        name:   'c-cluster-product-resource-create',
+        params: {
+          product:  this.$store.getters['currentProduct']?.name,
+          resource: NAMESPACE
+        },
+      };
+
+      location.query = { [FLAT_VIEW]: true };
+
+      return location;
+    },
+
     showProjectAction(event, group) {
       const project = group.rows[0].project;
 
@@ -301,7 +320,10 @@ export default {
       const row = group.rows[0];
 
       if (row.isFake) {
-        return this.t('resourceTable.groupLabel.project', { name: row.project?.nameDisplay }, true);
+        return DOMPurify.sanitize(
+          this.t('resourceTable.groupLabel.project', { name: row.project?.nameDisplay }, true),
+          { ALLOWED_TAGS: ['span'] }
+        );
       }
 
       return row.groupByLabel;
@@ -343,7 +365,19 @@ export default {
       :show-incremental-loading-indicator="showIncrementalLoadingIndicator"
       :load-resources="loadResources"
       :load-indeterminate="loadIndeterminate"
-    />
+    >
+      <template
+        v-if="showCreateNsButton"
+        slot="extraActions"
+      >
+        <n-link
+          :to="createNamespaceLocationFlatList()"
+          class="btn role-primary mr-10"
+        >
+          {{ t('projectNamespaces.createNamespace') }}
+        </n-link>
+      </template>
+    </Masthead>
     <ResourceTable
       ref="table"
       class="table"
@@ -417,12 +451,12 @@ export default {
           </span>
           <i
             v-if="row.injectionEnabled"
-            v-tooltip="t('projectNamespaces.isIstioInjectionEnabled')"
+            v-clean-tooltip="t('projectNamespaces.isIstioInjectionEnabled')"
             class="icon icon-istio ml-5"
           />
           <i
             v-if="row.hasSystemLabels"
-            v-tooltip="getPsaTooltip(row)"
+            v-clean-tooltip="getPsaTooltip(row)"
             class="icon icon-lock ml-5"
           />
         </div>
@@ -503,7 +537,7 @@ export default {
 <style lang="scss">
   .psa-tooltip {
     // These could pop up a lot as the mouse moves around, keep them as small and unintrusive as possible
-    // (easier to test with v-tooltip="{ content: getPSA(row), autoHide: false, show: true }")
+    // (easier to test with v-clean-tooltip="{ content: getPSA(row), autoHide: false, show: true }")
     margin: 3px 0;
     padding: 0 8px 0 22px;
   }

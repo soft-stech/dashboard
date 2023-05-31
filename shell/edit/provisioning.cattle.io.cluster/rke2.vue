@@ -69,6 +69,7 @@ import S3Config from './S3Config';
 import SelectCredential from './SelectCredential';
 import AdvancedSection from '@shell/components/AdvancedSection.vue';
 import { ELEMENTAL_SCHEMA_IDS, KIND, ELEMENTAL_CLUSTER_PROVIDER } from '../../config/elemental-types';
+import AgentConfiguration, { cleanAgentConfiguration } from './AgentConfiguration';
 
 const PUBLIC = 'public';
 const PRIVATE = 'private';
@@ -76,6 +77,28 @@ const ADVANCED = 'advanced';
 
 const HARVESTER = 'harvester';
 const HARVESTER_CLOUD_PROVIDER = 'harvester-cloud-provider';
+
+const NETBIOS_TRUNCATION_LENGTH = 15;
+
+/**
+ * Classes to be adopted by the node badges in Machine pools
+ */
+const NODE_TOTAL = {
+  error: {
+    color: 'bg-error',
+    icon:  'icon-x',
+  },
+  warning: {
+    color: 'bg-warning',
+    icon:  'icon-warning',
+  },
+  success: {
+    color: 'bg-success',
+    icon:  'icon-checkmark'
+  }
+};
+const CLUSTER_AGENT_CUSTOMIZATION = 'clusterAgentDeploymentCustomization';
+const FLEET_AGENT_CUSTOMIZATION = 'fleetAgentDeploymentCustomization';
 
 export default {
   components: {
@@ -87,6 +110,7 @@ export default {
     BadgeState,
     Banner,
     Checkbox,
+    AgentConfiguration,
     ClusterMembershipEditor,
     CruResource,
     DrainOptions,
@@ -254,6 +278,18 @@ export default {
 
       this.userChartValues[key] = value;
     });
+
+    // Ensure we have empty models for the two agent configurations
+
+    // Cluster Agent Configuration
+    if ( !this.value.spec[CLUSTER_AGENT_CUSTOMIZATION]) {
+      set(this.value.spec, CLUSTER_AGENT_CUSTOMIZATION, {});
+    }
+
+    // Fleet Agent Configuration
+    if ( !this.value.spec[FLEET_AGENT_CUSTOMIZATION] ) {
+      set(this.value.spec, FLEET_AGENT_CUSTOMIZATION, {});
+    }
   },
 
   data() {
@@ -286,13 +322,15 @@ export default {
     const lastDefaultPodSecurityPolicyTemplateName = this.value.spec.defaultPodSecurityPolicyTemplateName;
     const previousKubernetesVersion = this.value.spec.kubernetesVersion;
 
+    const truncateLimit = this.value.defaultHostnameLengthLimit;
+
     return {
       loadedOnce:                      false,
       lastIdx:                         0,
       allPSPs:                         null,
       allPSAs:                         [],
       nodeComponent:                   null,
-      credentialId:                    null,
+      credentialId:                    '',
       credential:                      null,
       machinePools:                    null,
       rke2Versions:                    null,
@@ -321,6 +359,10 @@ export default {
       cisOverride:           false,
       cisPsaChangeBanner:    false,
       psps:                  null, // List of policies if any
+      truncateHostnames:     truncateLimit === NETBIOS_TRUNCATION_LENGTH,
+      truncateLimit,
+      busy:                  false,
+      machinePoolValidation: {} // map of validation states for each machine pool
     };
   },
 
@@ -335,6 +377,10 @@ export default {
 
     rkeConfig() {
       return this.value.spec.rkeConfig;
+    },
+
+    hostnameTruncationManuallySet() {
+      return this.truncateLimit && this.truncateLimit !== NETBIOS_TRUNCATION_LENGTH;
     },
 
     /**
@@ -662,7 +708,18 @@ export default {
         return false;
       }
 
+      if (this.customCredentialComponentRequired === false) {
+        return false;
+      }
+
       return true;
+    },
+
+    /**
+     * Only for extensions - extension can register a 'false' cloud credential to indicate that a cloud credential is not needed
+     */
+    customCredentialComponentRequired() {
+      return this.$plugin.getDynamic('cloud-credential', this.provider);
     },
 
     hasMachinePools() {
@@ -674,7 +731,7 @@ export default {
     },
 
     unremovedMachinePools() {
-      return this.machinePools.filter(x => !x.remove);
+      return (this.machinePools || []).filter(x => !x.remove);
     },
 
     machineConfigSchema() {
@@ -703,11 +760,11 @@ export default {
 
       for ( const role of roles ) {
         counts[role] = 0;
-        out.color[role] = 'bg-success';
-        out.icon[role] = 'icon-checkmark';
+        out.color[role] = NODE_TOTAL.success.color;
+        out.icon[role] = NODE_TOTAL.success.icon;
       }
 
-      for ( const row of this.machinePools ) {
+      for ( const row of this.machinePools || [] ) {
         if ( row.remove ) {
           continue;
         }
@@ -729,27 +786,27 @@ export default {
       }
 
       if ( counts.etcd === 0 ) {
-        out.color.etcd = 'bg-error';
-        out.icon.etcd = 'icon-x';
+        out.color.etcd = NODE_TOTAL.error.color;
+        out.icon.etcd = NODE_TOTAL.error.icon;
       } else if ( counts.etcd === 1 || counts.etcd % 2 === 0 || counts.etcd > 7 ) {
-        out.color.etcd = 'bg-warning';
-        out.icon.etcd = 'icon-warning';
+        out.color.etcd = NODE_TOTAL.warning.color;
+        out.icon.etcd = NODE_TOTAL.warning.icon;
       }
 
       if ( counts.controlPlane === 0 ) {
-        out.color.controlPlane = 'bg-error';
-        out.icon.controlPlane = 'icon-x';
+        out.color.controlPlane = NODE_TOTAL.error.color;
+        out.icon.controlPlane = NODE_TOTAL.error.icon;
       } else if ( counts.controlPlane === 1 ) {
-        out.color.controlPlane = 'bg-warning';
-        out.icon.controlPlane = 'icon-warning';
+        out.color.controlPlane = NODE_TOTAL.warning.color;
+        out.icon.controlPlane = NODE_TOTAL.warning.icon;
       }
 
       if ( counts.worker === 0 ) {
-        out.color.worker = 'bg-error';
-        out.icon.worker = 'icon-x';
+        out.color.worker = NODE_TOTAL.error.color;
+        out.icon.worker = NODE_TOTAL.error.icon;
       } else if ( counts.worker === 1 ) {
-        out.color.worker = 'bg-warning';
-        out.icon.worker = 'icon-warning';
+        out.color.worker = NODE_TOTAL.warning.color;
+        out.icon.worker = NODE_TOTAL.warning.icon;
       }
 
       return out;
@@ -972,6 +1029,17 @@ export default {
         return false;
       }
     },
+
+    validationPassed() {
+      const validRequiredPools = this.hasMachinePools ? this.hasRequiredNodes() : true;
+
+      let base = (this.provider === 'custom' || this.isElementalCluster || !!this.credentialId);
+
+      // and in all of the validation statuses for each machine pool
+      Object.values(this.machinePoolValidation).forEach(v => (base = base && v));
+
+      return validRequiredPools && base;
+    },
   },
 
   watch: {
@@ -1053,6 +1121,7 @@ export default {
   created() {
     this.registerBeforeHook(this.saveMachinePools, 'save-machine-pools');
     this.registerBeforeHook(this.setRegistryConfig, 'set-registry-config');
+    this.registerBeforeHook(this.agentConfigurationCleanup, 'cleanup-agent-config');
     this.registerAfterHook(this.cleanupMachinePools, 'cleanup-machine-pools');
     this.registerAfterHook(this.saveRoleBindings, 'save-role-bindings');
   },
@@ -1061,6 +1130,22 @@ export default {
     nlToBr,
     set,
 
+    agentConfigurationCleanup() {
+      // Clean agent configuration objects, so we only send values when the user has configured something
+      cleanAgentConfiguration(this.value.spec, CLUSTER_AGENT_CUSTOMIZATION);
+      cleanAgentConfiguration(this.value.spec, FLEET_AGENT_CUSTOMIZATION);
+    },
+
+    /**
+     * set instanceNameLimit to 15 to all pool machine if truncateHostnames checkbox is clicked
+     */
+    truncateName() {
+      if (this.truncateHostnames) {
+        this.value.defaultHostnameLengthLimit = NETBIOS_TRUNCATION_LENGTH;
+      } else {
+        this.value.removeDefaultHostnameLengthLimit();
+      }
+    },
     /**
      * Define PSP deprecation and restrict use of PSP based on min k8s version and current/edited mode
      */
@@ -1072,6 +1157,10 @@ export default {
       return isRequiredVersion;
     },
 
+    /**
+     * Get machine pools from the cluster configuration
+     * this.value.spec.rkeConfig.machinePools
+     */
     async initMachinePools(existing) {
       const out = [];
 
@@ -1269,8 +1358,11 @@ export default {
       }
     },
 
-    validationPassed() {
-      return (this.provider === 'custom' || this.isElementalCluster || !!this.credentialId);
+    /**
+     * Ensure that all the existing node roles pool are at least 1 each
+     */
+    hasRequiredNodes() {
+      return this.nodeTotals?.color && Object.values(this.nodeTotals.color).every(color => color !== NODE_TOTAL.error.color);
     },
 
     cancelCredential() {
@@ -1325,7 +1417,18 @@ export default {
       });
     },
 
+    // Set busy before save and clear after save
     async saveOverride(btnCb) {
+      this.$set(this, 'busy', true);
+
+      return await this._doSaveOverride((done) => {
+        this.$set(this, 'busy', false);
+
+        return btnCb(done);
+      });
+    },
+
+    async _doSaveOverride(btnCb) {
       if ( this.errors ) {
         clear(this.errors);
       }
@@ -1421,7 +1524,20 @@ export default {
         delete this.value.spec.rkeConfig.machineGlobalConfig.profile;
       }
 
+      // store the current data for fleet and cluster agent so that we can re-apply it later if the save fails
+      // we also have a before hook (check created() hooks) where the cleanup of the data occurs
+      const clusterAgentDeploymentCustomization = JSON.parse(JSON.stringify(this.value.spec[CLUSTER_AGENT_CUSTOMIZATION]));
+      const fleetAgentDeploymentCustomization = JSON.parse(JSON.stringify(this.value.spec[FLEET_AGENT_CUSTOMIZATION]));
+
       await this.save(btnCb);
+
+      // comes from createEditView mixin
+      // if there are any errors saving, restore the agent config data
+      if (this.errors?.length) {
+        // Ensure the agent configuration is set back to the values before we changed (cleaned) it
+        set(this.value.spec, CLUSTER_AGENT_CUSTOMIZATION, clusterAgentDeploymentCustomization);
+        set(this.value.spec, FLEET_AGENT_CUSTOMIZATION, fleetAgentDeploymentCustomization);
+      }
     },
     // create a secret to reference the harvester cluster kubeconfig in rkeConfig
     async createKubeconfigSecret(kubeconfig = '') {
@@ -1947,6 +2063,11 @@ export default {
 
           this.previousKubernetesVersion = value;
         }
+
+        // If Harvester driver, reset cloud provider if not compatible
+        if (this.isHarvesterDriver && this.mode === _CREATE && this.isHarvesterIncompatible) {
+          this.setHarvesterDefaultCloudProvider();
+        }
       }
     },
 
@@ -1957,6 +2078,16 @@ export default {
       this.lastDefaultPodSecurityPolicyTemplateName = value;
     },
 
+    /**
+     * Track Machine Pool validation status
+     */
+    machinePoolValidationChanged(id, value) {
+      if (value === undefined) {
+        this.$delete(this.machinePoolValidation, id);
+      } else {
+        this.$set(this.machinePoolValidation, id, value);
+      }
+    }
   },
 };
 </script>
@@ -1972,7 +2103,7 @@ export default {
     v-else
     ref="cruresource"
     :mode="mode"
-    :validation-passed="validationPassed() && fvFormIsValid"
+    :validation-passed="validationPassed && fvFormIsValid"
     :resource="value"
     :errors="errors"
     :cancel-event="true"
@@ -2001,6 +2132,7 @@ export default {
       :provider="provider"
       :cancel="cancelCredential"
       :showing-form="showForm"
+      class="mt-20"
     />
 
     <div
@@ -2038,21 +2170,21 @@ export default {
             class="pull-right"
           >
             <BadgeState
-              v-tooltip="nodeTotals.tooltip.etcd"
+              v-clean-tooltip="nodeTotals.tooltip.etcd"
               :color="nodeTotals.color.etcd"
               :icon="nodeTotals.icon.etcd"
               :label="nodeTotals.label.etcd"
               class="mr-10"
             />
             <BadgeState
-              v-tooltip="nodeTotals.tooltip.controlPlane"
+              v-clean-tooltip="nodeTotals.tooltip.controlPlane"
               :color="nodeTotals.color.controlPlane"
               :icon="nodeTotals.icon.controlPlane"
               :label="nodeTotals.label.controlPlane"
               class="mr-10"
             />
             <BadgeState
-              v-tooltip="nodeTotals.tooltip.worker"
+              v-clean-tooltip="nodeTotals.tooltip.worker"
               :color="nodeTotals.color.worker"
               :icon="nodeTotals.icon.worker"
               :label="nodeTotals.label.worker"
@@ -2075,6 +2207,7 @@ export default {
               :name="obj.id"
               :label="obj.pool.name || '(Not Named)'"
               :show-header="false"
+              :error="!machinePoolValidation[obj.id]"
             >
               <MachinePool
                 ref="pool"
@@ -2085,7 +2218,9 @@ export default {
                 :credential-id="credentialId"
                 :idx="idx"
                 :machine-pools="machinePools"
+                :busy="busy"
                 @error="e=>errors = e"
+                @validationChanged="v=>machinePoolValidationChanged(obj.id, v)"
               />
             </Tab>
           </template>
@@ -2469,7 +2604,7 @@ export default {
           <h3>
             {{ t('cluster.rke2.address.header') }}
             <i
-              v-tooltip="t('cluster.rke2.address.tooltip')"
+              v-clean-tooltip="t('cluster.rke2.address.tooltip')"
               class="icon icon-info"
             />
           </h3>
@@ -2539,6 +2674,27 @@ export default {
                 :mode="mode"
                 :label="t('cluster.rke2.address.nodePortRange.label')"
               />
+            </div>
+            <div
+              class="col span-6"
+            >
+              <Checkbox
+                v-if="!isView || isView && !hostnameTruncationManuallySet"
+                v-model="truncateHostnames"
+                class="mt-20"
+                :disabled="isEdit || isView || hostnameTruncationManuallySet"
+                :mode="mode"
+                :label="t('cluster.rke2.truncateHostnames')"
+                @input="truncateName"
+              />
+              <Banner
+                v-if="hostnameTruncationManuallySet"
+                color="info"
+              >
+                <div class="text">
+                  {{ t('cluster.machinePool.truncationCluster', { limit: truncateLimit }) }}
+                </div>
+              </Banner>
             </div>
           </div>
 
@@ -2741,7 +2897,7 @@ export default {
             <h3>
               {{ t('cluster.addOns.additionalManifest.title') }}
               <i
-                v-tooltip="t('cluster.addOns.additionalManifest.tooltip')"
+                v-clean-tooltip="t('cluster.addOns.additionalManifest.tooltip')"
                 class="icon icon-info"
               />
             </h3>
@@ -2753,6 +2909,30 @@ export default {
               class="yaml-editor"
             />
           </div>
+        </Tab>
+
+        <!-- Cluster Agent Configuration -->
+        <Tab
+          name="clusteragentconfig"
+          label-key="cluster.agentConfig.tabs.cluster"
+        >
+          <AgentConfiguration
+            v-model="value.spec.clusterAgentDeploymentCustomization"
+            type="cluster"
+            :mode="mode"
+          />
+        </Tab>
+
+        <!-- Fleet Agent Configuration -->
+        <Tab
+          name="fleetagentconfig"
+          label-key="cluster.agentConfig.tabs.fleet"
+        >
+          <AgentConfiguration
+            v-model="value.spec.fleetAgentDeploymentCustomization"
+            type="fleet"
+            :mode="mode"
+          />
         </Tab>
 
         <!-- Advanced -->

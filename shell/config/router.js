@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import { normalizeURL } from 'ufo';
-import { interopDefault } from '../nuxt/utils';
+import { interopDefault } from '../utils/nuxt';
 import scrollBehavior from '../utils/router.scrollBehavior.js';
 
 const emptyFn = () => {};
@@ -10,8 +10,8 @@ Vue.use(Router);
 
 export const routerOptions = {
   mode:                 'history',
-  // Note: router base comes from the VUE_APP_ROUTER_BASE env var
-  base:                 process.env.VUE_APP_ROUTER_BASE || '/',
+  // Note: router base comes from the ROUTER_BASE env var
+  base:                 process.env.routerBase || '/',
   linkActiveClass:      'nuxt-link-active',
   linkExactActiveClass: 'nuxt-link-exact-active',
   scrollBehavior,

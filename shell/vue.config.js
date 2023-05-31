@@ -4,7 +4,16 @@ const serveStatic = require('serve-static');
 const webpack = require('webpack');
 const { generateDynamicTypeImport } = require('./pkg/auto-import');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+// Suppress info level logging messages from http-proxy-middleware
+// This hides all of the "[HPM Proxy created] ..." messages
+const oldInfoLogger = console.info; // eslint-disable-line no-console
+
+console.info = () => {}; // eslint-disable-line no-console
+
 const { createProxyMiddleware } = require('http-proxy-middleware');
+
+console.info = oldInfoLogger; // eslint-disable-line no-console
 
 // This is currently hardcoded to avoid importing the TS
 // const { STANDARD } = require('./config/private-label');
@@ -78,31 +87,13 @@ module.exports = function(dir, _appConfig) {
 
   const appConfig = _appConfig || {};
   const excludes = appConfig.excludes || [];
-  const autoLoad = appConfig.autoLoad || [];
 
   const serverMiddleware = [];
-  const autoLoadPackages = [];
   const watcherIgnores = [
     /.shell/,
     /dist-pkg/,
     /scripts\/standalone/
   ];
-
-  autoLoad.forEach((pkg) => {
-    // Need the version number of each file
-    const pkgPackageFile = require(path.join(dir, 'pkg', pkg, 'package.json'));
-    const pkgRef = `${ pkg }-${ pkgPackageFile.version }`;
-
-    autoLoadPackages.push({
-      name:    `app-autoload-${ pkgRef }`,
-      content: `/pkg/${ pkgRef }/${ pkgRef }.umd.min.js`
-    });
-
-    // Anything auto-loaded should also be excluded
-    if (!excludes.includes(pkg)) {
-      excludes.push(pkg);
-    }
-  });
 
   // Find any UI packages in node_modules
   const NM = path.join(dir, 'node_modules');
@@ -257,9 +248,6 @@ module.exports = function(dir, _appConfig) {
     resourceBase += '/';
   }
 
-  // Store the Router Base as env variable that we can use in `nuxt/router.js`
-  process.env.VUE_APP_ROUTER_BASE = routerBasePath;
-
   console.log(`Build: ${ dev ? 'Development' : 'Production' }`); // eslint-disable-line no-console
 
   if ( !dev ) {
@@ -321,6 +309,13 @@ module.exports = function(dir, _appConfig) {
       before(app, server) {
         const socketProxies = {};
 
+        // Close down quickly in response to CTRL + C
+        process.once('SIGINT', () => {
+          server.close();
+          console.log('\n'); // eslint-disable-line no-console
+          process.exit(1);
+        });
+
         Object.keys(proxy).forEach((p) => {
           const px = createProxyMiddleware({
             ...proxy[p],
@@ -371,7 +366,7 @@ module.exports = function(dir, _appConfig) {
 
     pages: {
       index: {
-        entry:    path.join(SHELL_ABS, '/nuxt/client.js'),
+        entry:    path.join(SHELL_ABS, '/initialize/client.js'),
         template: path.join(SHELL_ABS, '/public/index.html')
       }
     },
@@ -402,6 +397,8 @@ module.exports = function(dir, _appConfig) {
         'process.env.rancherEnv':      JSON.stringify(rancherEnv),
         'process.env.harvesterPkgUrl': JSON.stringify(process.env.HARVESTER_PKG_URL),
         'process.env.api':             JSON.stringify(api),
+        // Store the Router Base as env variable that we can use in `shell/config/router.js`
+        'process.env.routerBase':      JSON.stringify(routerBasePath),
 
         // This is a replacement of the nuxt publicRuntimeConfig
         'nuxt.publicRuntimeConfig': JSON.stringify({
@@ -410,8 +407,8 @@ module.exports = function(dir, _appConfig) {
         }),
       }));
 
-      // The static assets need to be in the built public folder in order to get served (primarily the favicon for now)
-      config.plugins.push(new CopyWebpackPlugin([{ from: path.join(SHELL_ABS, 'static'), to: 'public' }]));
+      // The static assets need to be in the built assets directory in order to get served (primarily the favicon)
+      config.plugins.push(new CopyWebpackPlugin([{ from: path.join(SHELL_ABS, 'static'), to: '.' }]));
 
       config.resolve.extensions.push(...['.tsx', '.ts', '.js', '.vue', '.scss']);
       config.watchOptions = config.watchOptions || {};
@@ -539,20 +536,6 @@ module.exports = function(dir, _appConfig) {
           test: /\.md$/,
           use:  [
             {
-              loader:  'url-loader',
-              options: {
-                name:     '[path][name].[ext]',
-                limit:    1,
-                esModule: false
-              },
-            }
-          ]
-        },
-        // Prevent warning in log with the md files in the content folder
-        {
-          test: /\.md$/,
-          use:  [
-            {
               loader:  'frontmatter-markdown-loader',
               options: { mode: ['body'] }
             }
@@ -561,6 +544,19 @@ module.exports = function(dir, _appConfig) {
       ];
 
       config.module.rules.push(...loaders);
+
+      // Update vue-loader to set whitespace to 'preserve'
+      // This was the setting with nuxt, but is not the default with vue cli
+      // Need to find the vue loader in the webpack config and update the setting
+      config.module.rules.forEach((loader) => {
+        if (loader.use) {
+          loader.use.forEach((use) => {
+            if (use.loader.includes('vue-loader')) {
+              use.options.compilerOptions.whitespace = 'preserve';
+            }
+          });
+        }
+      });
     },
   };
 

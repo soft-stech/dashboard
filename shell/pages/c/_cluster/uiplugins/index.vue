@@ -400,6 +400,13 @@ export default {
   },
 
   methods: {
+    async refreshCharts() {
+      await this.$store.dispatch('catalog/load');
+      const c = this.$store.getters['catalog/rawCharts'];
+
+      this.charts = Object.values(c);
+    },
+
     async updateInstallStatus() {
       let hasService;
 
@@ -413,6 +420,10 @@ export default {
         hasService = !!service;
       } catch (e) {
         hasService = false;
+      }
+
+      if (hasService) {
+        this.refreshCharts();
       }
 
       Vue.set(this, 'hasService', hasService);
@@ -671,7 +682,7 @@ export default {
                   <span>{{ plugin.displayVersion }}</span>
                   <span
                     v-if="plugin.upgrade"
-                    v-tooltip="t('plugins.upgradeAvailable')"
+                    v-clean-tooltip="t('plugins.upgradeAvailable')"
                   > -> {{ plugin.upgrade }}</span>
                   <p
                     v-if="plugin.incompatibleDisclaimer"
@@ -694,13 +705,13 @@ export default {
               >
                 <div
                   v-if="!plugin.certified"
-                  v-tooltip="t('plugins.descriptions.third-party')"
+                  v-clean-tooltip="t('plugins.descriptions.third-party')"
                 >
                   {{ t('plugins.labels.third-party') }}
                 </div>
                 <div
                   v-if="plugin.experimental"
-                  v-tooltip="t('plugins.descriptions.experimental')"
+                  v-clean-tooltip="t('plugins.descriptions.experimental')"
                 >
                   {{ t('plugins.labels.experimental') }}
                 </div>
@@ -710,7 +721,7 @@ export default {
               <div class="plugin-actions">
                 <template v-if="plugin.error">
                   <div
-                    v-tooltip="plugin.error"
+                    v-clean-tooltip="plugin.error"
                     class="plugin-error"
                   >
                     <i class="icon icon-warning" />
@@ -719,7 +730,7 @@ export default {
                 <!-- plugin status -->
                 <div
                   v-if="plugin.helmError"
-                  v-tooltip="t('plugins.helmError')"
+                  v-clean-tooltip="t('plugins.helmError')"
                   class="plugin-error"
                 >
                   <i class="icon icon-warning" />

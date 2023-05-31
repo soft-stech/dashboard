@@ -83,7 +83,12 @@ export const SETTING = {
    * both pre and post log in. If not present defaults to the usual process
    */
   THEME:                                'ui-theme',
-  SYSTEM_NAMESPACES:                    'system-namespaces'
+  SYSTEM_NAMESPACES:                    'system-namespaces',
+  /**
+   * Cluster Agent configuration
+   */
+  CLUSTER_AGENT_DEFAULT_AFFINITY:       'cluster-agent-default-affinity',
+  FLEET_AGENT_DEFAULT_AFFINITY:         'fleet-agent-default-affinity',
 };
 
 // These are the settings that are allowed to be edited via the UI
@@ -140,6 +145,10 @@ export const ALLOWED_SETTINGS: GlobalSetting = {
 };
 
 export const DEFAULT_PERF_SETTING = {
+  inactivity: {
+    enabled:   false,
+    threshold: 900,
+  },
   incrementalLoading: {
     enabled:   true,
     threshold: 1500,
@@ -150,9 +159,6 @@ export const DEFAULT_PERF_SETTING = {
   },
   disableWebsocketNotification: true,
   garbageCollection:            GC_DEFAULTS,
-  forceNsFilter:                {
-    enabled:   false,
-    threshold: 1500,
-  },
-  advancedWorker: { enabled: false },
+  forceNsFilterV2:              { enabled: false },
+  advancedWorker:               { enabled: false },
 };

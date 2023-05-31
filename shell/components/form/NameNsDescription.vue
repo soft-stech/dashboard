@@ -330,7 +330,7 @@ export default {
       }
 
       if (this.namespaced) {
-        this.$emit('isNamespaceNew', !val || (this.namespaces && !this.namespaces.find(n => n.value === val)));
+        this.$emit('isNamespaceNew', !val || (this.options && !this.options.find(n => n.value === val)));
       }
 
       if (this.namespaceKey) {
@@ -390,7 +390,7 @@ export default {
         @click="cancelCreateNamespace"
       >
         <i
-          v-tooltip="t('generic.cancel')"
+          v-clean-tooltip="t('generic.cancel')"
           class="icon icon-close align-value"
         />
       </button>

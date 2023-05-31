@@ -1,32 +1,39 @@
-import Steve from '@shell/plugins/steve';
-import {
-  COUNT, NAMESPACE, NORMAN, MANAGEMENT, FLEET, UI, VIRTUAL_HARVESTER_PROVIDER, DEFAULT_WORKSPACE
-} from '@shell/config/types';
-import { CLUSTER as CLUSTER_PREF, NAMESPACE_FILTERS, LAST_NAMESPACE, WORKSPACE } from '@shell/store/prefs';
-import { allHash, allHashSettled } from '@shell/utils/promise';
-import { ClusterNotFoundError, ApiError } from '@shell/utils/error';
-import { sortBy } from '@shell/utils/sort';
-import { filterBy, findBy } from '@shell/utils/array';
-import { BOTH, CLUSTER_LEVEL, NAMESPACED } from '@shell/store/type-map';
-import { NAME as EXPLORER } from '@shell/config/product/explorer';
-import { TIMED_OUT, LOGGED_OUT, _FLAGGED, UPGRADED } from '@shell/config/query-params';
-import { setBrand, setVendor } from '@shell/config/private-label';
-import { addParam } from '@shell/utils/url';
-import { SETTING } from '@shell/config/settings';
-import semver from 'semver';
 import { BACK_TO } from '@shell/config/local-storage';
-import { STEVE_MODEL_TYPES } from '@shell/plugins/steve/getters';
-import { BY_TYPE } from '@shell/plugins/dashboard-store/classify';
+import { setBrand, setVendor } from '@shell/config/private-label';
+import { NAME as EXPLORER } from '@shell/config/product/explorer';
+import { LOGGED_OUT, TIMED_OUT, UPGRADED, _FLAGGED } from '@shell/config/query-params';
+import { SETTING } from '@shell/config/settings';
 import {
-  NAMESPACE_FILTER_ALL_USER as ALL_USER,
-  NAMESPACE_FILTER_ALL_SYSTEM as ALL_SYSTEM,
+  COUNT,
+  DEFAULT_WORKSPACE,
+  FLEET,
+  MANAGEMENT,
+  NAMESPACE, NORMAN,
+  UI, VIRTUAL_HARVESTER_PROVIDER
+} from '@shell/config/types';
+import { BY_TYPE } from '@shell/plugins/dashboard-store/classify';
+import Steve from '@shell/plugins/steve';
+import { STEVE_MODEL_TYPES } from '@shell/plugins/steve/getters';
+import { CLUSTER as CLUSTER_PREF, LAST_NAMESPACE, NAMESPACE_FILTERS, WORKSPACE } from '@shell/store/prefs';
+import { BOTH, CLUSTER_LEVEL, NAMESPACED } from '@shell/store/type-map';
+import { filterBy, findBy } from '@shell/utils/array';
+import { ApiError, ClusterNotFoundError } from '@shell/utils/error';
+import { gcActions, gcGetters } from '@shell/utils/gc/gc-root-store';
+import {
   NAMESPACE_FILTER_ALL_ORPHANS as ALL_ORPHANS,
-  NAMESPACE_FILTER_NAMESPACED_YES as NAMESPACED_YES,
+  NAMESPACE_FILTER_ALL_SYSTEM as ALL_SYSTEM,
+  NAMESPACE_FILTER_ALL_USER as ALL_USER,
   NAMESPACE_FILTER_NAMESPACED_NO as NAMESPACED_NO,
   NAMESPACE_FILTER_NAMESPACED_PREFIX as NAMESPACED_PREFIX,
+  NAMESPACE_FILTER_NAMESPACED_YES as NAMESPACED_YES,
   splitNamespaceFilterKey,
+  NAMESPACE_FILTER_NS_FULL_PREFIX,
 } from '@shell/utils/namespace-filter';
-import { gcActions, gcGetters } from '@shell/utils/gc/gc-root-store';
+import { allHash, allHashSettled } from '@shell/utils/promise';
+import { sortBy } from '@shell/utils/sort';
+import { addParam } from '@shell/utils/url';
+import semver from 'semver';
+import { STORE } from '@shell/store/store-types';
 
 // Disables strict mode for all store instances to prevent warning about changing state outside of mutations
 // because it's more efficient to do that sometimes.
@@ -36,19 +43,19 @@ export const BLANK_CLUSTER = '_';
 
 export const plugins = [
   Steve({
-    namespace:      'management',
+    namespace:      STORE.MANAGEMENT,
     baseUrl:        '/v1',
     modelBaseClass: BY_TYPE,
     supportsStream: false, // true, -- Disabled due to report that it's sometimes much slower in Chrome
   }),
   Steve({
-    namespace:      'cluster',
+    namespace:      STORE.CLUSTER,
     baseUrl:        '', // URL is dynamically set for the selected cluster
     supportsStream: false, // true, -- Disabled due to report that it's sometimes much slower in Chrome
     supportsGc:     true, // Enable garbage collection for this store only
   }),
   Steve({
-    namespace:      'rancher',
+    namespace:      STORE.RANCHER,
     baseUrl:        '/v3',
     supportsStream: false, // The norman API doesn't support streaming
     modelBaseClass: STEVE_MODEL_TYPES.NORMAN,
@@ -220,7 +227,6 @@ export const state = () => {
   return {
     managementReady:         false,
     clusterReady:            false,
-    isMultiCluster:          false,
     isRancher:               false,
     namespaceFilters:        [],
     activeNamespaceCache:    {}, // Used to efficiently check if a resource should be displayed
@@ -236,7 +242,6 @@ export const state = () => {
     serverVersion:           null,
     systemNamespaces:        [],
     isSingleProduct:         undefined,
-    namespaceFilterMode:     null,
   };
 };
 
@@ -245,8 +250,14 @@ export const getters = {
     return state.clusterReady === true;
   },
 
-  isMultiCluster(state) {
-    return state.isMultiCluster === true;
+  isMultiCluster(state, getters) {
+    const clusters = getters['management/all'](MANAGEMENT.CLUSTER);
+
+    if (clusters.length === 1 && clusters[0].metadata?.name === 'local') {
+      return false;
+    } else {
+      return true;
+    }
   },
 
   isRancher(state) {
@@ -271,15 +282,6 @@ export const getters = {
 
   systemNamespaces(state) {
     return state.systemNamespaces;
-  },
-
-  /**
-   * Namespace Filter Mode supplies a resource type to the NamespaceFilter.
-   *
-   * Only one of the resource type is allowed to be selected
-   */
-  namespaceFilterMode(state) {
-    return state.namespaceFilterMode;
   },
 
   currentCluster(state, getters) {
@@ -367,34 +369,6 @@ export const getters = {
     return state.namespaceFilters.filter(x => !`${ x }`.startsWith(NAMESPACED_PREFIX)).length === 0;
   },
 
-  isSingleNamespace(state, getters) {
-    const product = getters['currentProduct'];
-
-    if ( !product ) {
-      return false;
-    }
-
-    if ( product.showWorkspaceSwitcher ) {
-      return false;
-    }
-
-    if ( getters.isAllNamespaces ) {
-      return false;
-    }
-
-    const filters = state.namespaceFilters;
-
-    if ( filters.length !== 1 ) {
-      return false;
-    }
-
-    if (filters[0].startsWith('ns://')) {
-      return filters[0];
-    }
-
-    return false;
-  },
-
   isMultipleNamespaces(state, getters) {
     const product = getters['currentProduct'];
 
@@ -416,7 +390,7 @@ export const getters = {
       return true;
     }
 
-    return !filters[0].startsWith('ns://');
+    return !filters[0].startsWith(NAMESPACE_FILTER_NS_FULL_PREFIX);
   },
 
   namespaceFilters(state) {
@@ -586,12 +560,10 @@ export const getters = {
 };
 
 export const mutations = {
-  managementChanged(state, { ready, isMultiCluster, isRancher }) {
+  managementChanged(state, { ready, isRancher }) {
     state.managementReady = ready;
-    state.isMultiCluster = isMultiCluster;
     state.isRancher = isRancher;
   },
-
   clusterReady(state, ready) {
     state.clusterReady = ready;
   },
@@ -615,10 +587,6 @@ export const mutations = {
     // const notFilterNamespaces = this.$store.getters[`type-map/optionsFor`](resource).notFilterNamespace || [];
     // const allNamespaces = this.$store.getters[`${ this.currentProduct.inStore }/filterNamespace`](notFilterNamespaces);
     state.allNamespaces = namespace;
-  },
-
-  setNamespaceFilterMode(state, mode) {
-    state.namespaceFilterMode = mode;
   },
 
   pageActions(state, pageActions) {
@@ -743,11 +711,7 @@ export const actions = {
 
     res = await allHash(promises);
     dispatch('i18n/init');
-    let isMultiCluster = true;
-
-    if ( res.clusters.length === 1 && res.clusters[0].metadata?.name === 'local' ) {
-      isMultiCluster = false;
-    }
+    const isMultiCluster = getters['isMultiCluster'];
 
     const pl = res.settings?.find(x => x.id === 'ui-pl')?.value;
     const brand = res.settings?.find(x => x.id === SETTING.BRAND)?.value;
@@ -769,7 +733,6 @@ export const actions = {
 
     commit('managementChanged', {
       ready: true,
-      isMultiCluster,
       isRancher,
     });
 
@@ -963,10 +926,6 @@ export const actions = {
     commit('updateNamespaces', { filters: ids });
   },
 
-  setNamespaceFilterMode({ commit }, mode) {
-    commit('setNamespaceFilterMode', mode);
-  },
-
   async cleanNamespaces({ getters, dispatch }) {
     // Initialise / Remove any filters that the user no-longer has access to
     await dispatch('management/findAll', { type: MANAGEMENT.CLUSTER }); // So they can be got byId below
@@ -1120,6 +1079,17 @@ export const actions = {
 
   setIsSingleProduct({ commit }, isSingleProduct) {
     commit(`setIsSingleProduct`, isSingleProduct);
+  },
+
+  unsubscribe( { state, dispatch }) {
+    // It would be nice to grab all vuex module stores that we've registered, apparently this is only possible via the
+    // internal properties store._modules.root._children.
+    // So instead loop through all state entries to find stores
+    return Object.entries(state).filter(([storeName, storeState]) => {
+      if (storeState?.allowStreaming) {
+        dispatch(`${ storeName }/unsubscribe`);
+      }
+    });
   },
 
   ...gcActions

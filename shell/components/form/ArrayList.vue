@@ -206,7 +206,7 @@ export default {
           {{ title }}
           <i
             v-if="showProtip"
-            v-tooltip="protip"
+            v-clean-tooltip="protip"
             class="icon icon-info"
           />
         </h3>
@@ -224,7 +224,7 @@ export default {
       <div
         v-for="(row, idx) in rows"
         :key="idx"
-        data-testid="array-list-box"
+        :data-testid="`array-list-box${ idx }`"
         class="box"
       >
         <slot

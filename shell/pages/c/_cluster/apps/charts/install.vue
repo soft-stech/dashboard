@@ -1191,16 +1191,29 @@ export default {
         }
       }
 
-      /* Chart custom UI components have the ability to edit CRD chart values
-        apply those values in addition to the global values being copied over frm the primary chart
+      /* Chart custom UI components have the ability to edit CRD chart values eg gatekeeper-crd has values.enableRuntimeDefaultSeccompProfile
+        like the main chart, only CRD values that differ from defaults should be sent on install/upgrade
+        CRDs should be installed with the same global values as the main chart
       */
       for (const versionInfo of this.autoInstallInfo) {
+        // allValues are the values potentially changed in the installation ui: any previously customized values + defaults
+        // values are default values from the chart
+        const { allValues, values: crdValues } = versionInfo;
+
+        // only save crd values that differ from the defaults defined in chart values.yaml
+        const customizedCrdValues = diff(crdValues, allValues);
+
+        // CRD globals should be overwritten by main chart globals
+        // we want to avoid including globals present on crd values and not main chart values
+        // that covers the scenario where a global value was customized on a previous install (and so is present in crd global vals) and the user has reverted it to default on this update (no longer present in main chart global vals)
+        const crdValuesToInstall = { ...customizedCrdValues, global: values.global };
+
         out.charts.unshift({
           chartName:   versionInfo.chart.name,
           version:     versionInfo.chart.version,
           releaseName: versionInfo.chart.annotations[CATALOG_ANNOTATIONS.RELEASE_NAME] || chart.name,
           projectId:   this.project,
-          values:      merge(this.addGlobalValuesTo({ global: values.global }), versionInfo.values)
+          values:      crdValuesToInstall
         });
       }
       /*
@@ -1525,6 +1538,7 @@ export default {
             </button>
           </div>
         </div>
+
         <div class="scroll__container">
           <div class="scroll__content">
             <!-- Values (as Custom Component in ./shell/charts/) -->
@@ -1711,7 +1725,7 @@ export default {
         {{ t('catalog.install.steps.helmValues.chartInfo.label') }}
         <div class="slideIn__header__buttons">
           <div
-            v-tooltip="t('catalog.install.slideIn.dock')"
+            v-clean-tooltip="t('catalog.install.slideIn.dock')"
             class="slideIn__header__button"
             @click="showSlideIn = false; showReadmeWindow()"
           >
@@ -1767,7 +1781,6 @@ export default {
           </div>
         </div>
       </div>
-
       <Banner
         color="warning"
         class="description"
@@ -1801,7 +1814,7 @@ export default {
 
   .install-steps {
     padding-top: 0;
-
+    height: 0;
     position: relative;
     overflow: hidden;
 
@@ -1945,17 +1958,17 @@ export default {
   .scroll {
     &__container {
       $yaml-height: 200px;
+      min-height: $yaml-height;
+      margin-bottom: 60px;
+      overflow: auto;
       display: flex;
       flex: 1;
-      min-height: $yaml-height;
-      height: 0;
     }
     &__content {
       display: flex;
       flex: 1;
       overflow: auto;
     }
-
   }
 
   ::v-deep .yaml-editor {
@@ -1965,8 +1978,8 @@ export default {
 .outer-container {
   display: flex;
   flex-direction: column;
-  flex: 1;
   padding: 0;
+  overflow: auto;
 }
 
 .header {
@@ -2039,10 +2052,11 @@ export default {
 }
 
 .os-label {
-  position: absolute;
+  position: relative;
   background-color: var(--warning-banner-bg);
   color:var(--warning);
   margin-top: 5px;
+  top: 21px;
 }
 
 </style>
