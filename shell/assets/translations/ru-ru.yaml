@@ -22,7 +22,7 @@ generic:
   disabled: Отключено
   done: Готово
   enabled: Включено
-  here: here
+  here: здесь
   id: ID
   ignored: Игнорируется
   invalidCron: Некорректное расписание cron
@@ -456,13 +456,13 @@ authConfig:
     objectClass: Класс объекта
     password: Пароль
     port: Порт
-    protocol: Protocol
+    protocol: Протокол
     protocols:
-      starttls: Start TLS
+      starttls: Начать TLS
       ldap: LDAP
       tls: LDAPS (TLS)
     customizeSchema: Настроить схему
-    oktaSchema: 'The defaults below are for a generic OpenLDAP server. For more information on the values to use when using the Okta LDAP interface, see: <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.okta.com/en-us/Content/Topics/Directory/LDAP-interface-connection-settings.htm">Okta LDAP Interface connection settings</a>'
+    oktaSchema: 'Приведенные ниже значения по умолчанию предназначены для общего серверу OpenLDAP. Для получения дополнительной информации о значениях, которые следует использовать при использовании интерфейса LDAP Okta, смотрите: <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.okta.com/en-us/Content/ Topics/Directory/LDAP-interface-connection-settings.htm">Okta LDAP Interface connection settings</a>'
     users: Пользователи
     groups: Группы
     searchAttribute: Атрибут поиска
@@ -508,12 +508,12 @@ authConfig:
     showLdap: Настроить OpenLDAP сервер
     userName: Поле имени пользователя
     search:
-      title: User and Group Search
-      message: The SAML Protocol does not support search or lookup for users or groups. In order to enabled search, an OpenLDAP server must be configured.
-      on: LDAP User and Group search has been configured
-      off: LDAP User and Group search is not configured
-      show: Show details
-      hide: Hide details
+      title: Поиск по пользователям и группам
+      message: Протокол SAML не поддерживает поиск пользователей или групп. Для того, чтобы сделать поиск доступным, требуется настроить OpenLDAP сервер.
+      on: LDAP поиск по пользователям и группам настроен
+      off: LDAP поиск по пользователям и группам не настроен
+      show: Показать детали
+      hide: Скрыть детали
   azuread:
     tenantId: ID жильца
     applicationId: ID приложения
@@ -833,9 +833,9 @@ catalog:
     errors:
       clusterToolExists: Этот чарт имеет фиксированное пространство имен и имя. Подходящее <a href="{url}">приложение</a> было найдено и любые изменения будут внесены в него.
     banner:
-      legacy: "PSP Removal: Before upgrading a cluster to Kubernetes 1.25+, please ensure you review your Helm applications for Pod Security Policies and update them accordingly"
-    enablePSP: Enable Pod Security Policies
-    global: Global
+      legacy: "Удаление PSP: Перед обновлением кластера до версии Kubernetes 1.25+, проверьте ваши приложения Helm относительно политик безопасности подов и обновите их соответствующим образом"
+    enablePSP: Включить политики безопасности подов
+    global: Глобально
   charts:
     all: Все
     categories:
@@ -1278,7 +1278,7 @@ cluster:
       affinity:
         namespaces:
           placeholder: например, default,system,base
-      installGuestAgent: Install guest agent
+      installGuestAgent: Установить гостевой агент
   description:
     label: Описание кластера
     placeholder: Любой текст, который лучше описывает данный кластер
@@ -1327,9 +1327,9 @@ cluster:
   manageAction: Управление
   kubernetesVersion:
     label: Версия Kubernetes
-    current: (current)
-    experimental: экспериментальная
-    deprecated: устаревшая
+    current: (текущая)
+    experimental: (экспериментальная)
+    deprecated: (устаревшая)
     deprecatedPatches: Показать устаревшие версии патчей Kubernetes
     deprecatedPatchWarning: Рекоммендуется использовать последнюю версию патча для каждой минорной версии Kubernetes. Устаревшие версии патчей могут быть полезны при миграции.
   toolsTip: Используйте новый Cluster Tools для управления и установки Monitoring, Logging и других инструментов
@@ -1361,10 +1361,10 @@ cluster:
       availabilityZone:
         label: Зона доступности
         description: Зоны доступности защищают приложения от полных сбоев дата-центра Azure.
-        publicIpAndSKUWarning: Availability zones require Static Public IP and Use Standard SKU for Public IP to be enabled.
-        publicIpWarning: Availability zones require Static Public IP to be enabled.
-        standardSKUWarning: Availability zones require Use Standard SKU for Public IP to be enabled.
-        managedDisksWarning: Availability zones require Managed Disks to be enabled.
+        publicIpAndSKUWarning: Для зон доступности требуется включить статический публичный IP и использование стандартного SKU для публичного IP.
+        publicIpWarning: Для зон доступности требуются включить статический публичный IP.
+        standardSKUWarning: Для зон доступности требуются включить использование стандартного SKU для публичного IP.
+        managedDisksWarning: Для зон доступности требуются включить управляемые диски.
       dns:
         help: Уникальный DNS-лэйбл для публичного IP-адреса.
         label: DNS-лэйбл
@@ -1401,14 +1401,14 @@ cluster:
         staticPublicIp:
           label: Статический публичный IP
         standardSKU:
-          label: Use Standard SKU for Public IP
+          label: Использовать стандартный SKU для публичного IP
       resourceGroup:
         label: Группа ресурсов
       sections:
-        availabilitySetConfiguration: Availability Set Configuration
-        purchasePlan: Purchase Plan
-        network: Network
-        disks: Disks
+        availabilitySetConfiguration: Конфигурация группы доступности
+        purchasePlan: План покупки
+        network: Сеть
+        disks: Диски
       size:
         label: Размер ВМ
         tooltip: При активации ускоренного сетевого взаимодействия, не все размеры доступны.
@@ -1613,25 +1613,25 @@ cluster:
       tooltip: "Дополнительный YAML манифест Kubernetes для применения к кластеру при запуске"
   agentConfig:
     tabs:
-      cluster: Cluster Agent
-      fleet: Fleet Agent
+      cluster: Агент кластера
+      fleet: Агент Fleet
     groups:
-      deploymentLabels: Deployment Labels
-      selector: Selector
-      podAffinity: Affinity
-      podTolerations: Tolerations
-      podRequestsAndLimits: Requests and Limits
+      deploymentLabels: Лэйблы развёртывания
+      selector: Селектор
+      podAffinity: Привязка
+      podTolerations: Допуски
+      podRequestsAndLimits: Запросы и ограничения
     subGroups:
-      podAffinityAnti: Pod Affinity/Anti-Affinity
-      nodeAffinity: Node Affinity
+      podAffinityAnti: Привязка к подам/анти-привязка
+      nodeAffinity: Привязка к нодам
     banners:
-      advanced: These are advanced configuration options. Generally, they should be left as-is.
-      tolerations: Additional Pod Tolerations will be added to the default Tolerations applied by Rancher.
-      limits: Pod Requests and Limits do not have a default configuration.
-      windowsCompatibility: "We do not recommended removing the Node Affinity rule that prevents the <b>agent</b> from running on Windows nodes as this is not a supported configuration."
+      advanced: Это расширенные настройки конфигурации. Как правило, их следует оставить без изменений.
+      tolerations: Дополнительные допуски для подов будут добавлены к допускам по умолчанию, которые применяет Rancher.
+      limits: Отсутствует конфигурация по умолчанию для запросов и ограничений подов.
+      windowsCompatibility: "Не рекомендуется удалять правило привязки к нодам, которое не позволяет <b>агенту</b> работать на нодах Windows, поскольку такая конфигурация не поддерживается."
     affinity:
-      default: Use default affinity rules defined by Rancher
-      custom: Use custom affinity rules
+      default: Использовать правила привязки по умолчанию, определённые Rancher
+      custom: Использовать настраиваемые правила привязки
   advanced:
     argInfo:
       title: Дополнительные Kubelet аргументы
@@ -1723,8 +1723,8 @@ cluster:
     noAccessBanner: "Недостаточно прав для просмотра конфигурации машинного пула."
     configNotFound: "Данная конфигурация машинного пула не найдена. Рекомендуем создать новый кластер с желаемой конфигурацией."
     noPoolsDisclaimer: Нет заданных машинных пулов, нажмите на плюс, чтобы добавить.
-    truncationPool: "Hostname truncation has been manually configured for this pool to {limit}"
-    truncationCluster: "Hostname truncation has been manually configured for this cluster to {limit}"
+    truncationPool: "Усечение имени хоста для данного пула выставлено вручную в {limit}"
+    truncationCluster: "Усечение имени хоста для данного кластера выставлено вручную в {limit}"
 
     autoReplace:
       label: Автоматическая замена
@@ -1814,14 +1814,14 @@ cluster:
     create-template: Использовать шаблон каталога для создания кластера
     register-custom: Импортировать любой Kubernetes кластер
   rke2:
-   banner:
-      psaChange: PSACT is now set to Rancher default automatically
-      cisOverride: Changing this setting may affect cluster security as it overrides default CIS settings
-      cisUnsupported: The selected Kubernetes Version no longer supports CIS Profile "{cisProfile}". Please select a supported profile. We recommend reviewing the <a href="https://docs.rke2.io/security/hardening_guide" target="_blank" rel="noopener noreferrer nofollow">documentation</a> to evaluate the impact of changing the CIS Profile.
+    banner:
+      psaChange: PSACT теперь автоматически установлено в значение по умолчанию Rancher
+      cisOverride: Изменение этого параметра может повлиять на безопасность кластера, поскольку переопределяются параметры CIS по умолчанию
+      cisUnsupported: Выбранная версия Kubernetes больше не поддерживает профиль CIS "{cisProfile}". Пожалуйста, выберите поддерживаемый профиль. Проверьте <a href="https://docs.rke2.io/security/hardening_guide" target="_blank" rel="noopener noreferrer nofollow">документацию,</a> чтобы оценить влияние изменения профиля CIS.
     modal:
       pspChange:
-        title: Pod Security Policy deprecation
-        body: Kubernetes has removed support for Pod Security Policies (PSPs) starting with version 1.25. If your cluster has PodSecurityPolicy admission controller enabled via "kube-apiserver-arg.enable-admission-plugins" in Cluster YAML, it has to be <i>manually</i> removed before proceeding with the upgrade. Additionally, any PSPs that may be present in the cluster will no longer be available/enforced. Do you want to proceed?
+        title: Устаревание политики безопасности подов
+        body: Начиная с версии 1.25, Kubernetes не поддерживает Политики безопасности подов (PSP). Если Ваш кластер содержит контроллер доступа PodSecurityPolicy, включенный посредством "kube-apiserver-arg.enable-admission-plugins" в YAML кластера, его необходимо удалить <i>вручную,</i> прежде чем продолжать обновление. Кроме того, любые PSP, присутствующие в кластере, больше не будут доступны/принудительно применены. Хотите продолжить?
     snapshots:
       suffix: снапшотов на одну ноду
     systemService:
@@ -1840,9 +1840,9 @@ cluster:
     security:
       header: Безопасность
     cis:
-      server: Server CIS Profile
-      agent: CIS Profile
-      override: Allow the default Pod Security Admission Configuration Template to be overridden when using a CIS Profile
+      server: CIS профиль сервера
+      agent: CIS профиль
+      override: Позволяет переопределять шаблон по умолчанию конфигурации Pod Security Admission при использовании CIS профиля
     defaultPodSecurityPolicyTemplateName:
       label: Политика безопасности подов по умолчанию
       option: RKE Default
@@ -1851,25 +1851,25 @@ cluster:
       option:
         none: (None)
         default: Default - RKE2 Embedded
-    cisProfile:
+  cisProfile:
       option: (None)
-    enableNetworkPolicy:
+  enableNetworkPolicy:
       label: Изоляция сети проекта
       warning: По умолчанию контроллер входящего трафика не сможет направлять запросы к подам на других нодах.
-    workNode:
+  workNode:
       label: Worker ноды
-    controlPlaneConcurrency:
+  controlPlaneConcurrency:
       label: Согласованность Control Plane
       toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
-    workerConcurrency:
+  workerConcurrency:
       label: Согласованность Worker
       toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
-    drain:
+  drain:
       label: Освобождение нод
       toolTip: Освобождение превентивно удаляет поды на каждой ноде, чтобы на обновляемых нодах не было запущенных рабочих нагрузок. Обновление без освобождения выполняется быстрее и вызывает меньше изменений, но поды все равно могут быть перезапущены в зависимости от выполняемого обновления.
-    deleteEmptyDir: "По умолчанию поды, использующие тома emptyDir, будут удалены при обновлении. Это может повлиять на операции, зависящие от томов emptyDir, сохраняющихся в течение жизненного цикла подов."
-    truncateHostnames: Truncate hostnames to 15 characters for NetBIOS compatibility.
-    address:
+  deleteEmptyDir: "По умолчанию поды, использующие тома emptyDir, будут удалены при обновлении. Это может повлиять на операции, зависящие от томов emptyDir, сохраняющихся в течение жизненного цикла подов."
+  truncateHostnames: Усекать имя хоста до 15 символов для совместимости с NetBIOS.
+  address:
       tooltip: Сетевые значения кластера нельзя изменить после того, как кластер будет создан.
       header: Адресация
       clusterCidr:
@@ -1892,7 +1892,7 @@ cluster:
       ipv6:
         warning: Похоже, вы используете IPv6 CIDR. Драйвер ноды может требовать дополнительной конфигурации для его поддержки.
         enable: Включить поддержку IPv6
-    etcd:
+  etcd:
       disableSnapshots:
         label: Автоматические снапшоты
       snapshotScheduleCron:
@@ -1906,7 +1906,7 @@ cluster:
   k3s:
     systemService:
       coredns: "CoreDNS"
-      local-storage: "Local Storage"
+      local-storage: "Локальное хранилище"
       metrics-server: "Сервер метрик"
       servicelb: "Klipper Service LB"
       traefik: "Traefik Ingress"
@@ -2082,7 +2082,7 @@ fleet:
     gitOpsScale: GitOps в масштабе.
     learnMore: Изучить подробнее.
     learnMoreLink: https://fleet.rancher.io
-    noRepo: "У вас нет Git Репозиториев в ваших рабочих местах"
+    noRepo: "У вас нет Git Репозиториев в ваших рабочих средах"
     getStarted: Приступить к работе
     thereIsMore: |-
       {count, plural,
@@ -2145,12 +2145,12 @@ fleet:
       placeholder: "напр. https://github.com/rancher/fleet-examples.git"
       addRepo: Добавить репозиторий
       noRepos: Репозитории не были добавлены
-      noWorkspaces: There are no workspaces. <br/> Please create a workspace before adding repositories
-      protocolBanner: Enter a valid HTTPS or SSH URL to a git repository.
+      noWorkspaces: Нет рабочих сред. <br/> Пожалуйста, создайте рабочую среду, прежде чем добавлять репозитории
+      protocolBanner: Введите корректный HTTPS или SSH URL на Git репозиторий.
     resources:
-      label: "Resource Handling"
-      keepResources: Keep resources after deletion
-      resourceBanner: When enabled above, resources will be kept when deleting a GitRepo or Bundle - only Helm release secrets will be deleted.
+      label: "Управление ресурсами"
+      keepResources: Сохранять ресурсы после удаления
+      resourceBanner: Если выбрана опция выше, ресурсы будут сохранены при удалении GitRepo или Bundle - будут удалены только secret'ы релизов Helm.
     add:
       steps:
         repoInfo:
@@ -2224,14 +2224,14 @@ fleet:
     errors: Ошибки
   workspaces:
     tabs:
-      restrictions: Allowed Target Namespaces
-    timeout: Workspace creation timeout. It's possible the workspace was created. We suggest checking the workspace page before trying to create another.
+      restrictions: Разрешенные целевые пространства имён
+    timeout: Истекло время создания рабочей среды. Возможно, рабочая среда была создана. Проверьте страницу рабочих сред, прежде чем создавать ещё одну.
   restrictions:
     addTitle: "allowedTargetNamespaces"
-    addLabel: Add
+    addLabel: Добавить
     banner: "{count, plural,
-      =0 { Adding namespaces here will create a GitRepoRestriction. }
-      other { Only the Git Repo Restriction's <code>allowedTargetNamespaces</code> is managed here. You can make additional changes to the Git Repo Restriction}
+      =0 { Добавление пространств имён сюда создаст GitRepoRestriction. }
+      other { Здесь осуществляется управление олько Git Repo Restriction's <code>allowedTargetNamespaces</code>. Вы можете внести дополнительные изменение в Git Repo Restriction}
       }"
 footer:
   docs: Документация
@@ -2241,7 +2241,7 @@ footer:
   slack: Slack
 
 gatekeeperConstraint:
-  downloadViolations: Download Violations
+  downloadViolations: Скачать нарушения
   match:
     title: Совпадения
   tab:
@@ -2270,10 +2270,10 @@ gatekeeperConstraint:
       title: Параметры
   template: Шаблон
   enforcement:
-    action: Enforcement Action
+    action: Принудительное действие
   violations:
     title: Нарушения
-    notAll: Not all are shown due to the configured OPA Gatekeeper constraint violation limit - the constraint only includes details for {shown}
+    notAll: Не все нарушения показаны согласно настройкам предела нарушений ограничений OPA Gatekeeper - ограничения включают детали только для {shown}
 
 gatekeeperIndex:
   poweredBy: OPA Gatekeeper
@@ -2281,9 +2281,9 @@ gatekeeperIndex:
   violations: Нарушения
 
 gatekeeperInstall:
-  auditInterval: Auto Interval
-  constraintViolationsLimit: Constraint Violations Limit
-  runtimeDefaultSeccompProfile: Enable Runtime Default Seccomp Profile
+  auditInterval: Авто-интервал
+  constraintViolationsLimit: Предел нарушений ограничений
+  runtimeDefaultSeccompProfile: Включить Runtime Seccomp-профиль по умолчанию
 
 glance:
   created: Создано
@@ -2652,7 +2652,7 @@ istio:
   kiali: Kiali включен
   pilot: Pilot включен
   policy: Policy включен
-  pilotRequired: Pilot must be enabled in order to enable Kiali
+  pilotRequired: Для включения Kiali необходимо включить Pilot
   poweredBy: Разработано <a target="_blank" rel="noopener noreferrer nofollow" href='https://istio.io/latest/'>Istio</a>
   telemetry: Телеметрия включена
   titles:
@@ -2783,9 +2783,9 @@ logging:
     verifySsl: Проверить SSL
     sslVersion: Версия SSL
     suppressTypeName:
-      label: Suppress Type Names
-      elasticSearchTips: Suppress type names by default to be compatible with log server. You should enable it for Elasticsearch >= 8.0.0
-      openSearchTips: Suppress type names by default to be compatible with log server. You should enable it for OpenSearch >= 2.0.0
+      label: Скрыть имена типов
+      elasticSearchTips: Скрыть имена типов по умолчанию для совместимости с сервером логов. Это необходимо включить для Elasticsearch >= 8.0.0
+      openSearchTips: Скрыть имена типов по умолчанию для совместимости с сервером логов. Это необходимо включить для OpenSearch >= 2.0.0
   redis:
     host: Хост
     port: Порт
@@ -2825,7 +2825,7 @@ logging:
     sslClientCertKey: Ключ сертификата из Secret
   loki:
     url: URL
-    urlInvalid: Incorrect URL format. Please  check and correct your URL format before saving.
+    urlInvalid: Неверный формат URL. Проверьте и исправьте формат URL перед сохранением.
     tenant: Клиент
     username: Пользователь из Secret
     password: Пароль из Secret
@@ -3027,8 +3027,8 @@ members:
   clusterMembers: Участники кластера
   clusterAndProject: Участники кластера и проекта
   createActionLabel: Добавить
-  clusterMemebership: Cluster Membership
-  projectMembership: Project Membership
+  clusterMemebership: Членство в кластере
+  projectMembership: Членство в проекте
   clusterPermissions:
     noDescription: Пользователь создан - нет описания
     label: Разрешения кластера
@@ -3053,7 +3053,7 @@ members:
     custom:
       label: Настраиваемый
       description: Выберите индивидуальные роли для данного пользователя.
-      lockedRole: This role is locked.
+      lockedRole: Эта роль заблокирована.
   localClusterWarning: "Внимание! Rancher использует этот кластер как хранилище данных. Доступ для записи к данному кластеру должны иметь только администраторы. Пользователи с доступом для записи к данному кластеру могут воспользоваться им, чтобы выдать себе доступ к любой части этой установки."
   noRolesAssigned: Нет пользователей, назначенных на этот проект.
 
@@ -3089,7 +3089,7 @@ monitoring:
       radio:
         label: Настроить Secret
     validation:
-      duplicatedReceiverName: A receiver with the name {name} already exists.
+      duplicatedReceiverName: Получатель с именем {name} уже существует.
     templates:
       keyLabel: Имя файла
       label: Файлы шаблонов
@@ -3383,10 +3383,10 @@ nameNsDescription:
     placeholder: "Уникальное имя"
   namespace:
     label: Пространство имён
-    placeholder: "заполнитель"
+    placeholder: ""
   workspace:
     label: Рабочее пространство
-    placeholder: "заполнитель"
+    placeholder: ""
   description:
     label: Описание
     placeholder: Произвольный текст, который лучше описывает этот ресурс
@@ -3396,7 +3396,7 @@ namespace:
   resourceQuotas: Квоты ресурсов
   project:
     label: Проект
-    none: (None)
+    none: (Нет)
   resources: Ресурсы
   enableAutoInjection: Включить автоматические инъекции Istio
   disableAutoInjection: Выключить автоматические инъекции Istio
@@ -3497,8 +3497,8 @@ networkpolicy:
   labelsAnnotations:
     label: Лэйблы & примечания
   rules:
-    pod: Pod
-    namespace: Namespace
+    pod: Под
+    namespace: Пространство имён
     ruleLabel: Правило {index}
     addPort: Добавить разрешенный порт
     type: Тип правила
@@ -3526,7 +3526,7 @@ networkpolicy:
     namespaceSelector:
       label: Селектор пространств имён
     namespaceAndPodSelector:
-      label: Namespace/Pod Selector
+      label: Пространство имн/Селектор подов
   config:
     label: Конфигурация
   selectors:
@@ -3547,16 +3547,16 @@ networkpolicy:
           other {Совпадает с {matched, number} из {total, number} существующих пространств имён, включая "{sample}"}
         }
     matchingNamespacesAndPods:
-      tooltip: A single entry rule that specifies both Namespace Selector and Pod Selector that selects particular Pods within particular namespaces
+      tooltip: Single-entry правило, в котором указаны и селектор пространств имён, и селектор подов, который выбирает определённые поды в определенных пространствах имён.
       matchesSome: |-
         {matchedPods, plural,
-          =0 {Matches 0 of {totalPods, number} pods}
-          =1 {Matches 1 of {totalPods, number} pods: "{samplePods}"}
-          other {Matches {matchedPods, number} of {totalPods, number} existing pods, including "{samplePods}"}
-        } in {matchedNamespaces, plural,
-          =0 {0 of {totalNamespaces, number} namespaces}
-          =1 {1 of {totalNamespaces, number} namespaces: "{sampleNamespaces}"}
-          other {{matchedNamespaces, number} of {totalNamespaces, number} existing namespaces, including "{sampleNamespaces}"}
+          =0 {Совпадает с 0 из {totalPods, number} пода/подов}
+          =1 {Совпадает с 1 из {totalPods, number} пода/подов: "{samplePods}"}
+          other {Совпадает с {matchedPods, number} из {totalPods, number} существующих подов, включая "{samplePods}"}
+        } в {matchedNamespaces, plural,
+          =0 {0 из {totalNamespaces, number} пространств(е) имён}
+          =1 {1 из {totalNamespaces, number} пространств(е) имён: "{sampleNamespaces}"}
+          other {{matchedNamespaces, number} из {totalNamespaces, number} существующих пространств имён, включая "{sampleNamespaces}"}
         }
 node:
   list:
@@ -3568,9 +3568,9 @@ node:
     poolDescription:
       noSize: Нет размера
       noLocation: Нет месторасположения
-    nodeLabels: Labels
-    hideLabels: Show less
-    showLabels: Show more
+    nodeLabels: Лэйблы
+    hideLabels: Показать меньше
+    showLabels: ПОказать больше
   detail:
     detailTop:
       containerRuntime: Среда выполнения контейнера
@@ -3977,18 +3977,18 @@ podDisruptionBudget:
     label: Макс. доступных подов
 
 inactivity:
-  title: Session expiring
-  titleExpired: Session expired
-  banner: Your session is about to expire due to inactivity. Any unsaved changes will be lost.
-  bannerExpired: Your session has expired in this tab due to inactivity.
-  content: Click “Resume Session” to keep the session in this tab active or refresh the browser after the session has expired.
-  contentExpired: To return to this page click “Refresh” below or refresh the browser.
-  cta: Resume Session
-  ctaExpired: Refresh
+  title: Продолжительность сессии
+  titleExpired: Сессия истекла
+  banner: Сессия скоро истечёт по причине отсутствия активности. Все несохранённые изменения будут потеряны.
+  bannerExpired: В данном табе сессия истекла по причине отсутствия активности.
+  content: Нажмите “Возобновить сессию”, чтобы оставить сессию в данном табе активной или обновите страницу браузера после истечения сессии.
+  contentExpired: Для возврата на эту страницу нажмите “Обновить” ниже или обновите страницу браузера.
+  cta: Возобновить сессию
+  ctaExpired: Обновить
 
 # Rancher Extensions
 plugins:
-  incompatibleDisclaimer: "The latest version of this extension ({ version }) is not compatible with the current Rancher version ({ rancherVersion })."
+  incompatibleDisclaimer: "Последняя версия данного расширения ({ version }) несовместима с текущей версией Rancher ({ rancherVersion })."
   labels:
     builtin: Встроенное
     experimental: Экспериментальное
@@ -4022,7 +4022,7 @@ plugins:
     detail: Детали
     versions: Версии
     versionError: Не удалось загрузить информацию о версии
-    requiresVersion: "Requires Rancher {version}"
+    requiresVersion: "Требуется Rancher {version}"
   empty:
     all: Нет ни установленных, ни доступных расширений
     available: Нет доступных расширений
@@ -4251,7 +4251,7 @@ projectNamespaces:
   label: Проекты/Пространства имен
   noNamespaces: Не задано ни одно пространство имен
   noProjectNoNamespaces: Все пространства имен в проекте
-  isIstioInjectionEnabled: Istio automatic sidecar injection is enabled for this namespace
+  isIstioInjectionEnabled: Для этого пространства имен включено автоматическое внедрение дополнений Istio
 
 prometheusRule:
   alertingRules:
@@ -4589,7 +4589,7 @@ resourceList:
     create: Создать
     createFromYaml: Создать из YAML
     createResource: "Создать {resourceName}"
-  nsFiltering: "Слишком много {resource}.<br>Пожалуйста, отфильтруйте их, выбрав пространство имен выше."
+  nsFiltering: "Слишком много {resource}.<br>Пожалуйста, отфильтруйте их, выбрав пространство имён выше."
   nsFilterToolTip: "Слишком много ресурсов, фильтрация ограничена одним {mode}."
 resourceLoadingIndicator:
   loading: Загрузка
@@ -4597,10 +4597,10 @@ resourceLoadingIndicator:
 resourceTable:
   groupBy:
     none: Плоский список
-    namespace: Группировка по пространству имен
+    namespace: Группировка по пространству имён
     project: Группировка по проектам
     node: Группировка по нодам
-    role: Group by Role
+    role: Группировка по роли
     cluster: Группировка по кластерам
   groupLabel:
     cluster: "<span>Кластер:</span> {name}"
@@ -4608,11 +4608,11 @@ resourceTable:
     namespace: "<span>Пространство имён:</span> {name}"
     notInAMachinePool: "Не в развертывании"
     machinePool: "<span>Пул:</span> {name}"
-    notInANamespace: Не имеет пространства имен
+    notInANamespace: Не имеет пространства имён
     notInAProject: Не в проекте
     project: "<span>Проект:</span> {name}"
-    notInAWorkspace: Не в рабочем пространстве
-    workspace: "<span>Рабочее пространство:</span> {name}"
+    notInAWorkspace: Не в рабочей среде
+    workspace: "<span>Рабочая среда:</span> {name}"
     notInANodePool: "Не в пуле"
     nodePool: "<span>Пул:</span> {name}"
     node: "<span>Нода:</span> {name}"
@@ -5246,7 +5246,7 @@ tableHeaders:
   clusterGroups: Группы кластеров
   commit: Commit
   condition: Состояние
-  constraint: Constraint
+  constraint: Ограничение
   completions: Завершения
   count: Количество
   createdAt: Создано
@@ -5365,8 +5365,8 @@ tableHeaders:
   reason: Причина
   receivers: Получатели
   receiverTypes: Типы получателей
-  reclaimPolicy: Reclaim Policy
-  registrationNamespace: Пространство имен регистрации
+  reclaimPolicy: Политика Reclaim
+  registrationNamespace: Пространство имён регистрации
   repo: Репозиторий
   repositories: Репозитории
   repoName: Имя репозитория
@@ -5412,7 +5412,7 @@ tableHeaders:
   target: Цель
   targetKind: Тип цели
   targetPort: Цель
-  template: Template
+  template: Шаблон
   type: Тип
   updated: Обновлено
   up-to-date: Актуально
@@ -5954,9 +5954,9 @@ workload:
       affinityOption: Affinity
       antiAffinityOption: Anti-Affinity
       matchFields:
-        label: Fields
+        label: Поля
       matchExpressions:
-        label: Expressions
+        label: Выражения
         addRule: Добавить правило
         doesNotExist: не установлено
         exists: установлено
@@ -5965,8 +5965,8 @@ workload:
         inNamespaces: "Поды в этих пространствах имен:"
         key: Ключ
         lessThan: <
-        matchType: Match Type
-        namespaces: Пространства имен
+        matchType: Совпадает с типом
+        namespaces: Пространства имён
         notIn: нет в списке
         operator: Оператор
         value: Значение
@@ -5981,7 +5981,7 @@ workload:
       schedulingRules: Запуск подов на ноде (нодах), соответствующих правилам планирования
       specificNode: Запуск подов на определенной ноде (нодах)
       thisPodNamespace: Пространство имен этого пода
-      allNamespaces: All namespaces
+      allNamespaces: Все пространства имён
       topologyKey:
         label: Топологический ключ
         placeholder: например, failure-domain.beta.kubernetes.io/zone
@@ -5993,7 +5993,7 @@ workload:
       className: Название класса приоритетов
       priority: Приоритет
     terminationGracePeriodSeconds: Termination Grace Period
-    terminationGracePeriodSecondsTip: Время, необходимое для нормального завершения работы стручка.
+    terminationGracePeriodSecondsTip: Время, необходимое для нормального завершения работы пода.
     titles:
       advanced: Продвинутые
       nodeScheduling: Расписание ноды
@@ -6004,7 +6004,7 @@ workload:
       tolerations: Допуски
       limits: Лимиты и резервирование
     tolerations:
-      addToleration: Add Toleration
+      addToleration: Добавить допуск
       effect: Эффект
       effectOptions:
         all: Все
@@ -6028,7 +6028,7 @@ workload:
       configMap: ConfigMap
       hostPath: Bind-Mount
       persistentVolumeClaim: Persistent Volume Claim
-      createPVC: Create Persistent Volume Claim
+      createPVC: Создать Persistent Volume Claim
       csi: CSI
       nfs: NFS
       awsElasticBlockStore: Amazon EBS Disk
@@ -6067,8 +6067,8 @@ workload:
       volumeID: ID тома
       partition: Раздел
       pdName: Имя постоянного диска
-      storagePolicyID: Storage Policy ID
-      storagePolicyName: Storage Policy Name
+      storagePolicyID: ID политики хранилища
+      storagePolicyName: Имя политики хранилища
       volumePath: Путь тома
     defaultMode: Режим по умолчанию
     driver: драйвер
@@ -6129,7 +6129,7 @@ workload:
       label: Максимально недоступных
       tip: Максимальное количество подов, которые могут быть недоступны в любой момент времени.
     minReadySeconds:
-      label: Minimum Ready
+      label: Минимальная готовность
       tip: Минимальная продолжительность готовности пода без сбоя контейнеров, чтобы он считался доступным.
     podManagementPolicy:
       label: Политика управления подами
@@ -6346,13 +6346,13 @@ typeLabel:
     }
   management.cattle.io.clusterroletemplatebinding: |-
     {count, plural,
-      one { Участник кластера }
-      other { Участники кластера }
+      one { Членство в кластере }
+      other { Членства в кластере }
     }
   projectroletemplatebinding: |-
     {count, plural,
-      one { Project Membership }
-      other { Project Memberships }
+      one { Членство в проекте }
+      other { Членства в проекте }
     }
   management.cattle.io.feature: |-
     {count, plural,
@@ -6983,7 +6983,7 @@ performance:
       Если этот параметр включен, ресурсы будут отображаться быстрее, но загрузка всего набора ресурсов может занять немного больше времени. Этот параметр применяется только к ресурсам, поступающим из Kubernetes API
     checkboxLabel: Включить инкрементную загрузку
     inputLabel: Порог ресурса
-    incompatibleDescription: "Incremental Loading is incomaptible with Namespace/Project filtering. Enabling this will disable it."
+    incompatibleDescription: "Инкрементальная загрузка несовместима с фильтрацией пространства имён/проекта. При её включении фильтрация будет выключена."
   manualRefresh:
     label: Обновление вручную
     setting: Вы можете настроить порог, выше которого будет доступно ручное обновление.
@@ -6992,7 +6992,7 @@ performance:
       Если этот параметр включен, данные списка не будут обновляться автоматически, вместо этого пользователь должен вручную инициировать обновление представления списка. Этот параметр применяется только к ресурсам, поступающим из Kubernetes API.
     checkboxLabel: Включить ручное обновление данных для списков
     inputLabel: Порог ресурса
-    incompatibleDescription: "Manual Refresh is incomaptible with Namespace/Project filtering. Enabling this will disable it."
+    incompatibleDescription: "Ручное обновление несовместимо с фильтрацией пространства имён/проекта. При его включении фильтрация будет выключена."
   websocketNotification:
     label: Уведомления через веб-сокеты
     description: |-
@@ -7023,18 +7023,18 @@ performance:
     label: Требовать фильтрацию по пространству имён
     description: Когда в списке слишком много ресурсов, чтобы их отобразить, требовать от пользователя выбрать одно пространство имён и получать ресурсы только из него.
     checkboxLabel: Включить обязательную фильтрацию по пространству имён
-    incompatibleDescription: "Required Namespace / Project Filtering is incomaptible with Manual Refresh and Incremental Loading. Enabling this will disable them."
+    incompatibleDescription: "Требуемая фильтрация по пространству имён / проекту несовместима с ручным обновлением и инкрементальной загрузкой. При её включении они будут выключены."
   advancedWorker:
     label: Websocket Web Worker
     description: Обновления ресурсов, передаваемые в UI, поступают через веб-сокеты и обрабатываются в потоке UI. Включите этот параметр, чтобы обрабатывать обновления кластера через веб-сокеты в Web Worker в отдельном потоке. Это должно повысить отзывчивость UI в системах, где ресурсы часто меняются.
     checkboxLabel: Включить расширенные настройки веб-сокетов в Web Worker
   inactivity:
-    title: Inactivity
-    checkboxLabel: Enable inactivity session expiration
-    inputLabel: Inactivity timeout (minutes)
-    information: To change the automatic logout behaviour, edit the authorisation and/or session token timeout values (<code>auth-user-session-ttl-minutes</code> and <code>auth-token-max-ttl-minutes</code>) in the Settings page.
-    description: When enabled and the user is inactive past the specified timeout, the UI will no longer fresh page content and the user must reload the page to continue.
-    authUserTTL: This timeout cannot be higher than the user session timeout auth-user-session-ttl-minutes, which is currently {current} minutes.
+    title: Отсутствие активности
+    checkboxLabel: Включить завершение сессии при отсутствии активности
+    inputLabel: Время ожидания при отсутствии активности (минуты)
+    information: Для изменения поведения автоматического выхода из системы, отредактируйте значения времени ожидания токена авторизации и/или сеанса (<code>auth-user-session-ttl-minutes</code> и <code>auth-token-max-ttl-minutes</code>) на странице настроек.
+    description: Если этот параметр включен и пользователь неактивен в течение указанного времени ожидания, пользовательский интерфейс больше не будет обновлять содержимое страницы, и пользователю потребуется перезагрузить страницу, чтобы продолжить.
+    authUserTTL: Это время ожидания не может превышать время ожидания пользовательской сессии auth-user-session-ttl-minutes, которое сейчас составляет {current} минут.
 
 banner:
   label: Фиксированные баннеры
@@ -7274,4 +7274,4 @@ vncConsole:
 
 networkAttachmentDefinition:
   tabs:
-    config: Config
+    config: Конфигурация
