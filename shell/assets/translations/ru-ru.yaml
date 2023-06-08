@@ -166,14 +166,14 @@ nav:
     Scheduling: Планирование
     Storage: Хранилище
   ns:
-    all: Все пространства имен
+    all: Все пространства имён
     clusterLevel: Только ресурсы кластера
     namespace: "{name}"
-    namespaced: Только ресурсы пространства имен
+    namespaced: Только ресурсы пространства имён
     orphan: Не в проекте
     project: "Проект: {name}"
-    system: Только системные пространства имен
-    user: Только пользовательские пространства имен
+    system: Только системные пространства имён
+    user: Только пользовательские пространства имён
   apps: Приложения
   categories:
     explore: Обзор кластера
@@ -218,10 +218,10 @@ product:
   neuvector: NeuVector
   harvesterManager: Управление виртуализацией
   rancher: Rancher
-  legacy: Legacy
+  legacy: Легаси
   uiplugins: Расширения
   elemental: Управление ОС
-  plugins: Plugins
+  plugins: Плагины
 
 suffix:
   percent: "%"
@@ -368,7 +368,7 @@ authConfig:
         label: Наименование приложения
         value: "Все, что вам хочется, к примеру. Мой {vendor}"
       callback:
-        label: callback URL для авторизации
+        label: Callback URL для авторизации
       description:
         label: Описание приложения
         value: "Не обязательно, можно оставить пустым"
@@ -432,12 +432,12 @@ authConfig:
     openldap: Настроить сервер OpenLDAP
     defaultLoginDomain:
       label: Домен для входа по умолчанию
-      placeholder: например mycompany
+      placeholder: например, mycompany
       hint: Этот домен будет использоваться, если пользователь войдет в систему, не указав его.
     cert: Сертификат
     disabledStatusBitmask: Битовая маска отключенного состояния
-    groupDNAttribute: Аттрибут группы DN
-    groupMemberMappingAttribute: Аттрибут сопоставления группы пользователя
+    groupDNAttribute: Атрибут группы DN
+    groupMemberMappingAttribute: Атрибут сопоставления группы пользователя
     groupMemberUserAttribute: Атрибут пользователя члена группы
     groupSearchBase:
       label: Начальный запрос групп
@@ -446,8 +446,8 @@ authConfig:
       label: Имя хоста/IP
       placeholder: например server1,server2
       hint: Несколько серверов можно указать в виде списка, разделенного запятыми.
-    loginAttribute: Аттрибут логина
-    nameAttribute: Аттрибут имени
+    loginAttribute: Атрибут логина
+    nameAttribute: Атрибут имени
     nestedGroupMembership:
       label: Членство во вложенной группе
       options:
@@ -598,7 +598,7 @@ asyncButton:
     success: Создано
     waiting: Создание&hellip;
   default:
-    action: Действие
+    action: Применить
     error: Ошибка
     success: Успех
     waiting: Ожидание
@@ -725,9 +725,9 @@ backupRestoreOperator:
   backupFilename: Имя файла бэкапа
   deleteTimeout:
     label: Таймаут удаления
-    tip: Seconds to wait for a resource delete to succeed before removing finalizers to force deletion.
+    tip: Количество секунд времени ожидания успешного удаления ресурса, перед удалением финализаторов для принудительного удаления.
   deployment:
-    rancherNamespace: Пространство имен Rancher ResourceSet
+    rancherNamespace: Пространство имён Rancher ResourceSet
     size: Размер
     storage:
       label: Хранилище по умолчанию
@@ -738,7 +738,7 @@ backupRestoreOperator:
         pickSC: Использовать существующий класс хранилища
         s3: использовать S3-совместимое хранилище
       persistentVolume:
-        label: Persistent Volume
+        label: Постоянный том
       storageClass:
         label: Класс хранилища
       tip: "Настройка хранилища, где по умолчанию сохраняются все резервные копии. У вас будет возможность переопределить это для каждой резервной копии, но будет ограничено использованием S3-совместимого хранилища объектов."
@@ -746,7 +746,7 @@ backupRestoreOperator:
   encryption: Шифрование
   encryptionConfigName:
     backuptip: "Любой секрет в пространстве имен <code>cattle-resource-system</code>, имеющий <code>encryption-provider-config.yaml</code> ключ. <br/> Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher."
-    label: Encryption Config Secret
+    label: Secret конфигурации шифрования
     options:
       none: Хранить содержимое незашифрованной резервной копии
       secret: 'Шифрование резервных копий с помощью <a target="_blank" rel="noopener noreferrer nofollow" href="https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#understanding-the-encryption-at-rest-configuration">Encryption Config Secret</a> (Рекомендуется)'
@@ -754,7 +754,7 @@ backupRestoreOperator:
     warning: "Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher."
   lastBackup: Последняя резервная копия
   nextBackup: Следующая резервная копия
-  noResourceSet: вы должны задать ResourceSet в этом пространстве имен для создания резервной копии CR.
+  noResourceSet: Вы должны задать ResourceSet в этом пространстве имён для создания резервной копии CR.
   prune:
     label: Prune
     tip: Удалить ресурсы, управляемые Rancher, которые отсутствуют в резервной копии. (Рекомендуется)
@@ -953,9 +953,9 @@ catalog:
         description: Указание дополнительных параметров развертывания
     version: Версия
     versions:
-      current: "{ver} (Current)"
-      linux: "{ver} (Linux-only)"
-      windows: "{ver} (Windows-only)"
+      current: "{ver} (текущий)"
+      linux: "{ver} (только Linux)"
+      windows: "{ver} (только Windows)"
   operation:
     tableHeaders:
       action: Действие
@@ -1186,12 +1186,12 @@ cluster:
         placeholder: Ваш токен доступа Linode API
     pnap:
       clientIdentifier:
-        label: Client ID
-        placeholder: Your Client ID
+        label: Клиентский ID
+        placeholder: Ваш клиентский ID
       clientSecret:
-        help: From <a href="https://bmc.phoenixnap.com/credentials/" target="_blank" rel="nofollow noreferrer noopener">phoenixNAP BMC Portal</a> API Credentials
-        label: Client Secret
-        placeholder: Your Client Secret
+        help: Из <a href="https://bmc.phoenixnap.com/credentials/" target="_blank" rel="nofollow noreferrer noopener">phoenixNAP BMC Portal</a> API Credentials
+        label: Клиентский Secret
+        placeholder: Ваш клиентский Secret
     name:
       label: Название учетных данных
       placeholder: Название для этих учетных данных (необязательно)
@@ -1251,19 +1251,19 @@ cluster:
       disk: Диск
       image: Образ
       network:
-        title: Networks
-        network: Network
-        addNetwork: Add Network
-        networkName: Network Name
-        macAddress: Mac Address
-        macFormat: "Invalid MAC address format."
+        title: Сети
+        network: Сеть
+        addNetwork: Добавить сеть
+        networkName: Имя сети
+        macAddress: MAC-адрес
+        macFormat: "Некорректный формат MAC-адреса."
       volume:
-        title: Volumes
-        volume: Volume
-        imageVolume: Image Volume
-        addVolume: Add Volume
-        addVMImage: Add VM Image
-        storageClass: Storage Class
+        title: Тома
+        volume: Том
+        imageVolume: Том образа
+        addVolume: Добавить том
+        addVMImage: Добавить образ ВМ
+        storageClass: Класс хранилища
       sshUser: SSH пользователь
       userData:
         label: Шаблон данных пользователя
@@ -1448,10 +1448,10 @@ cluster:
           so {Хранилище: }
           standard {Стандартный: }
           other {}
-        }{memoryGb} GB, {vcpus, plural,
+        }{memoryGb} Гб, {vcpus, plural,
           =1 {# vCPU}
           other {# vCPU}
-        }, {disk} GB диск ({value})
+        }, {disk} Гб диск ({value})
       tags:
         label: Droplet теги
         placeholder: например, my_server
@@ -1460,7 +1460,7 @@ cluster:
         {label}, {vcpus, plural,
           =1 {# vCPU}
           other {# vCPU}
-        }, {disk} GB диск ({value})
+        }, {disk} Гб диск ({value})
     vsphere:
       hostOptions:
         any: Любой
@@ -1587,25 +1587,25 @@ cluster:
       tagTitle: EC2 теги
     pnap:
       serverLocation:
-        label: Location
+        label: Расположение
       serverType:
-        label: Type
+        label: Тип
       serverCpu:
         label: CPU
       serverCoresPerCpu:
-        label: Cores per CPU
+        label: Ядер на CPU
       serverCpuCount:
-        label: CPU Count
+        label: Количество CPU
       serverCpuFrequency:
-        label: CPU Frequency [GHz]
+        label: Частота CPU [GHz]
       serverRam:
-        label: RAM [GB]
+        label: RAM [Гб]
       serverStorage:
-        label: Storage
+        label: Хранилище
       serverNetwork:
-        label: Network
+        label: Сеть
       serverOs:
-        label: OS
+        label: ОС
   addOns:
     dependencyBanner: Конфигурации аддонов могут отличаться для разных версий Kubernetes. Изменение версии Kubernetes может привести к сбросу значений, приведенных ниже.
     additionalManifest:
@@ -2155,9 +2155,9 @@ fleet:
       steps:
         repoInfo:
           label: Детали репозитория
-          title: Укажите Git репозиторий для добавления в fleet
+          title: Укажите Git репозиторий для добавления во Fleet
           subtext: "Добавить детали репозитория"
-          description: Fleet будет постоянно отслеживать изменения в Git репозитории указанном ниже и синхронизировать содержащиеся в нем ресурсы  you configure below and synchronise the resources contained in it to the configured targets.
+          description: Fleet будет постоянно отслеживать изменения в Git репозитории указанном ниже и синхронизировать содержащиеся в нем ресурсы c заданной целью.
         targetInfo:
           label: Детали цели
           title: Укажите цель для синхронизации этого репозитория
@@ -2176,7 +2176,7 @@ fleet:
       placeholder: "Необязательно: Использовать сервис аккаунт в целевых кластерах"
     targetNamespace:
       label: Целевое пространство имен
-      placeholder: "Необязательно: Требовать, чтобы все ресурсы были в одном пространстве имен"
+      placeholder: "Необязательно: Требовать, чтобы все ресурсы были в одном пространстве имён"
     target:
       selectLabel: Цель
       advanced: Расширенный
@@ -2201,7 +2201,7 @@ fleet:
       cluster: Нет доступных кластеров
     workspace:
       label: Рабочее пространство
-      addWorkspace: Create a workspace
+      addWorkspace: Создать рабочее пространство
   clusterGroup:
     selector:
       label: Выбор кластера
@@ -2343,8 +2343,8 @@ growl:
     message: "Соединение до {url} было восстановлено на попытке #{tries}."
     title: Websocket переподключены
   podSecurity:
-    message: "The creation of this Pod would violate existing restricted policies for the adopted Namespace"
-    title: PodSecurity violation
+    message: "Создание этого пода нарушит существующие ограниченные политики в выбранном пространстве имён"
+    title: Нарушение PodSecurity
 
 hpa:
   detail:
@@ -2401,13 +2401,13 @@ hpa:
     custom: Для использования пользовательских метрик с НРА необходимо развернуть настраиваемый сервер метрик, такой как prometheus адаптер.
     external: Для использования внешних метрик с НРА необходимо развернуть внешний сервер метрик, такой как prometheus адаптер.
     noMetric: Для использования метрик ресурсов с НРА необходимо развернуть сервер метрик.
-    resource: The selected target reference does not have the correct resource requests on the spec. Without this the HPA metric will have no effect.
+    resource: Выбранная целевая ссылка не содержит корректных запросов ресурсов в спецификации. Без этого метрика HPA не будет иметь никакого эффекта.
   workloadTab:
     current: Текущие копии
     last: Время последнего масштабирования
     max: Максимум копий
     min: Минимум копий
-    targetReference: Target Reference
+    targetReference: Целевая ссылка
 
 import:
   title: Импортировать YAML
@@ -2425,9 +2425,9 @@ ingress:
     addCertificate: Добавить сертификат
     addHost: Добавить хост
     certificate:
-      label: Certificate - Secret Name
-      doesntExist: The selected certificate does not exist
-    defaultCertLabel: Default Ingress Controller Certificate
+      label: Сертификат - Имя Secret
+      doesntExist: Выбранный сертификат не существует
+    defaultCertLabel: Сертификат контроллера Ingress по умолчанию
     headers:
       certificate: Сертификат
       hosts: Хосты
@@ -2490,21 +2490,21 @@ istio:
   links:
     kiali:
       label: Kiali
-      description: 'Visualization of services within a service mesh and how they are connected. For Kiali to display data, you need Prometheus installed. If you need a monitoring solution, install <a tabindex="0" href="{link}">{vendor} monitoring</a>.'
+      description: 'Визуализация сервисов в сервисной сетке и того, как они связаны. Для отображения данных Kiali, требуется установить Prometheus. Если требуется решение для мониторинга, установите <a tabindex="0" href="{link}">мониторинг {vendor} </a>.'
     jaeger:
       label: Jaeger
-      description: Monitor and Troubleshoot microservices-based distributed systems.
+      description: Мониторинг и устранение неполадок в распределенных системах на основе микросервисов
     disabled: "{app} не установлено"
-  cni: Enabled CNI
+  cni: Включённый CNI
   customOverlayFile:
-    label: Custom Overlay File
-    tip: 'The <a target="_blank" rel="noopener noreferrer nofollow" href="https://istio.io/latest/docs/setup/additional-setup/customize-installation/#patching-the-output-manifest">overlay file</a> allows for additional configuration on top of the base {vendor} Istio installation. You can utilize the <a href="https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/" target="_blank" rel="noopener noreferrer nofollow" >IstioOperator API</a> to make changes and additions for all components and apply those changes via this overlay YAML file.'
-  description: '{vendor} Istio helm chart installs a minimal Istio configuration for you to get started integrating with your applications. If you would like to get additional information about Istio, visit <a target="_blank" href="https://istio.io/latest/docs/concepts/what-is-istio" rel="noopener noreferrer nofollow">https://istio.io/latest/docs/concepts/what-is-istio/</a>'
+    label: Пользовательский Overlay-файл
+    tip: '<a target="_blank" rel="noopener noreferrer nofollow" href="https://istio.io/latest/docs/setup/additional-setup/customize-installation/#patching-the-output-manifest">Overlay-файл</a> позволяет выполнять дополнительную настройку поверх базовой установки {vendor} Istio. Вы можете использовать <a href="https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/" target="_blank" rel="noopener noreferrer nofollow" >IstioOperator API</a>, чтобы вносить изменения и дополнения во все компоненты и применять эти изменения посредством данного YAML overlay-файла.'
+  description: '{vendor} Istio helm чарт устанавливает минимальную конфигурацию Istio configuration для начала интеграции с вашими приложениями. Для дополнительной информации об Istio, посетите <a target="_blank" href="https://istio.io/latest/docs/concepts/what-is-istio" rel="noopener noreferrer nofollow">https://istio.io/latest/docs/concepts/what-is-istio/</a>'
   destinationRule:
     title:
-      new: Add Destination Rule
-      edit: Edit Destination Rule
-      view: "Destination Rule: {name}"
+      new: Добавить правило пунктов назначения
+      edit: Изменить правило пунктов назначения
+      view: "Правило пунктов назначения: {name}"
     port:
       label: Порт
       placeholder: напр. 8080 или myport
@@ -2573,7 +2573,7 @@ istio:
         help: Максимальное количество запросов на подключение к бэкенду. Установка этого параметра в 1 выключает keep alive.
       maxRetries:
         label: Максимальное кол-во повторных попыток HTTP
-        placeholder: e.g. 1024
+        placeholder: напр. 1024
         help: Максимальное число повторных попыток, которые могут быть невыполненными для всех узлов в кластере в данный момент времени.
       connectTimeout:
         label: Таймаут TCP соединения
@@ -2584,24 +2584,24 @@ istio:
         placeholder: напр. 1024
         help: Максимальное число HTTP1 /TCP соединений с конечным хостом.
     outlierDetection:
-      label: Outlier Detection
-      detail: Configure eviction of unhealthy hosts from the load balancing pool
+      label: Обнаружение исключений
+      detail: Настройте исключение неработоспособных хостов из пула балансировки нагрузки.
       baseEjectionTime:
-        label: Base Ejection Time
+        label: Базовое время исключения
         placeholder: напр. 30s
-        help: Minimum ejection duration. A host will remain ejected for a period equal to the product of minimum ejection duration and the number of times the host has been ejected.
+        help: Минимальная продолжительность исключения. Хост будет оставаться исключённым в течение периода, равного произведению минимальной продолжительности исключения и количества раз, когда хост был исключён.
       consecutiveErrors:
-        label: Consecutive Errors
+        label: Последовательные ошибки
         placeholder: напр. 5
-        help: Number of errors before a host is ejected from the connection pool.
+        help: Количество ошибок до того, как хост исключается из пула соединений.
       interval:
         label: Интервал
         placeholder: напр. 10s
-        help: Time interval between ejection sweep analysis.
+        help: Временной интервал между свип-анализом исключения.
       maxEjectionPercent:
-        label: Max Ejection Percent
+        label: Максимальный процент исключения
         placeholder: напр. 10
-        help: Maximum % of hosts in the load balancing pool for the upstream service that can be ejected.
+        help: Минимальный % хостов в пуле балансировки нагрузки для вышестоящей службы, которая может быть исключена.
     subsets:
       label: Подмножества
       noSubsets: Нет подмножеств
@@ -2621,13 +2621,13 @@ istio:
         none:
           label: Ничего
         istio:
-          label: Istio Mutual - Secure connections to the upstream using mutual TLS by Istio
+          label: Двусторонний Istio -  Безопасные соединения с вышестоящему уровню, использующие двусторонний TLS от Istio
         disable:
-          label: Disable - Do not setup a TLS connection to the upstream endpoint
+          label: Выключено - Не устанавливать TLS-соединение с вышестоящим endpoint
         simple:
-          label: Simple - Originate a TLS connection to the upstream endpoint
+          label: Односторонний - Установить TLS-соединение с вышестоящим endpoint
         mutual:
-          label: Mutual - Secure connections to the upstream using mutual TLS by presenting client certificates for authentication
+          label: Двусторонний - Безопасные соединения с вышестоящему уровню, использующие двусторонний TLS путем предоставления клиентских сертификатов для аутентификации
       clientCertificate:
         label: Сертификат клиента
         placeholder: напр. /etc/certs/myclientcert.pem
@@ -2643,9 +2643,9 @@ istio:
         label: SNI
         placeholder: напр. nginx.example.com
       subjectAltNames:
-        label: Subject Alternative Names
+        label: Альтернативные имена объекта
         placeholder: напр. example.com
-        add: Add Subject Alternative Name
+        add: Добавить альтернативное имя объекта
   egressGateway: Egress Gateway включен
   ingressGateway: Ingress Gateway включен
   istiodRemote: istiodRemote включен
@@ -4202,7 +4202,7 @@ project:
   psp:
     default: Значение по умолчанию кластера
     label: Политика безопасности подов
-    current: "{value} (Current)"
+    current: "{value} (текущая)"
 
 projectMembers:
   project:
@@ -4395,12 +4395,12 @@ rbac:
   roletemplate:
     label: Роли
     newUserDefault:
-      "no": ложь
+      "no": Нет
       tooltip: Это не влияет на уже существующие привязки к роли.
     locked:
       label: Заблокировано
       "yes": "Да: Новым привязкам не разрешается использовать эту роль"
-      "no": ложь
+      "no": Нет
     tabs:
       grantResources:
         label: Предоставить ресурсы
@@ -4637,7 +4637,7 @@ resourceYaml:
     hideDiff: Скрыть различия
     unified: Унифицированный
     split: Разделить
-    
+
 secret:
   authentication: Аутентификация
   certificate:
@@ -4656,7 +4656,7 @@ secret:
     password: Пароль
     username: Имя пользователя
   basic:
-    password: Password
+    password: Пароль
     username: Имя пользователя
   ssh:
     keys: Ключи
@@ -4677,11 +4677,11 @@ secret:
     "kubernetes.io/basic-auth": "HTTP Basic Auth"
     "kubernetes.io/ssh-auth": "SSH ключ"
     "kubernetes.io/tls": "TLS Сертификат"
-    "bootstrap.kubernetes.io/token": "Bootstrap Token"
+    "bootstrap.kubernetes.io/token": "Токен Bootstrap"
     "istio.io/key-and-cert": "Сертификат Istio"
     "helm.sh/release.v1": "Релиз Helm"
     "fleet.cattle.io/cluster-registration-values": "Fleet Кластер"
-    "provisioning.cattle.io/cloud-credential": "Cloud Credential"
+    "provisioning.cattle.io/cloud-credential": "Облачные учётные данные"
     "rke.cattle.io/auth-config": "Конфигурация авторизации RKE"
   initials:
     "opaque": "O"
@@ -4724,7 +4724,7 @@ selectOrCreateAuthSecret:
     basic: HTTP Basic Auth
     ssh: SSH ключ
     aws: AWS/S3
-    custom: Имя секрета
+    custom: Имя Secret
   s3:
     accessKey: Ключ доступа
     secretKey: Секретный ключ
@@ -4733,16 +4733,16 @@ selectOrCreateAuthSecret:
     privateKey: Приватный ключ
   basic:
     username: Имя пользователя
-    password: Password
-  namespaceGroup: "Пространство имен: {name}"
-  chooseExisting: "Выберите существующий секрет:"
-  createSsh: Создать секретного ключа SSH
-  createBasic: Создать секрет HTTP Basic Auth
-  createS3: Создать S3-совместимый секрет авторизации
+    password: Пароль
+  namespaceGroup: "Пространство имён: {name}"
+  chooseExisting: "Выберите существующий Secret:"
+  createSsh: Создать Secret ключа SSH
+  createBasic: Создать HTTP Basic Auth Secret
+  createS3: Создать S3-совместимый Secret авторизации
 
 serviceAccount:
   automount: Токен учетной записи сервиса Automount
-  imagePullSecrets: Image Pull Secrets
+  imagePullSecrets: Secret'ы пула образов
   tabs:
     serviceAccount:
       label: Сервисный аккаунт
@@ -4800,7 +4800,7 @@ servicesPage:
     title: Конфигурация дополнений
     ipam:
       label: IPAM
-   
+
   ips:
     define: Сервисные порты
     clusterIpHelpText: IP-адрес кластера должен находиться в диапазоне CIDR, настроенном для сервера API.
@@ -4899,8 +4899,12 @@ sortableTable:
     resource: |-
       {pages, plural,
       =0 {Нет {pluralLabel}}
-      =1 {{count} {count, plural, =1 {{singularLabel}} еще {{pluralLabel}}}}
-      other {{from} - {to} из {count} {pluralLabel}}}
+      =1 {{count} {count, plural, 
+                  =1 {{singularLabel}} 
+                  other {{pluralLabel}}
+                  }
+      }
+      other {{from} - {to} из {count} {pluralLabel}}
   search: Фильтр
   in: в
   addFilter: Добавить фильтр
@@ -4930,16 +4934,16 @@ storageClass:
       enabled: Включено
       disabled: Отключено
     volumeBindingMode:
-      label: Volume Binding Mode
+      label: Режим привязки тома
       now: Привязка и предоставление постоянного тома после создания PersistentVolumeClaim
       later: Привязка и предоставление постоянного тома после создания Pod с использованием PersistentVolumeClaim
     mountOptions:
       label: Варианты монтирования
       addLabel: Добавить вариант
   aws-ebs:
-    title: Amazon EBS Disk
+    title: Диск Amazon EBS
     volumeType:
-      label: Volume Type
+      label: Тип тома
       gp2: GP2 - General Purpose SSD
       gp3: GP3 - General Purpose SSD
       io1: IO1 - Provisioned IOPS SSD
@@ -4965,7 +4969,7 @@ storageClass:
       automatic: "Автоматически: Генерировать ключ"
       manual: "Вручную: Используйте определенный ключ (полный ARN)"
   azure-disk:
-    title: Azure Disk
+    title: Диск Azure
     storageAccountType:
       label: Тип учетной записи хранилища
       placeholder: напр. Standard_LRS
@@ -4975,7 +4979,7 @@ storageClass:
       dedicated: Выделенный (неуправляемый диск)
       managed: Управляемый
   azure-file:
-    title: Azure File
+    title: Файл Azure
     skuName:
       label: Название Sku
       placeholder: напр. Standard_LRS
@@ -4988,8 +4992,8 @@ storageClass:
   gce-pd:
     title: Google Persistent Disk
     volumeType:
-      label: Volume Type
-      standard: Standard
+      label: Тип тома
+      standard: Стандартный
       ssd: SSD
     filesystemType:
       label: Тип файловой системы
@@ -5233,12 +5237,12 @@ tableHeaders:
   bundlesReady: Готовые комплекты
   bundleDeploymentsReady: Развертывания
   builtin: Встроенный
-  chart: чарт
+  chart: Чарт
   capacity: Мощность
   current: Текущий
   clusterCreatorDefault: Создатель кластера по умолчанию
-  clusterFlow: Cluster Flow
-  clusterOutput: Cluster Output
+  clusterFlow:  Flow кластера
+  clusterOutput: Вывод кластера
   cluster: Кластер
   clusters: Кластеры
   cluster-Name: Кластер
@@ -5295,7 +5299,7 @@ tableHeaders:
   internalExternalIp: Внешний/внутренний IP
   ipaddress: IP Адрес
   internalIpSameAsExternal: Аналогично внешнему
-  jobs: Jobs
+  jobs: Job'ы
   key: Ключ
   keys: Данные
   labels: Лэйблы
@@ -5416,7 +5420,7 @@ tableHeaders:
   type: Тип
   updated: Обновлено
   up-to-date: Актуально
-  upgrade: Обновляемый
+  upgrade: Обновление
   url: URL
   users: Пользователи
   userDisplayName: Отображаемое имя
@@ -5717,9 +5721,9 @@ workload:
         tcp: TCP-соединение успешно открывается
         exec: Команда, запущенная внутри контейнера, завершается со статусом 0
     image: Образ контейнера
-    imagePullPolicy: Pull Policy
-    imagePullSecrets: Pull Secrets
-    init: Init Container
+    imagePullPolicy: Политика пула
+    imagePullSecrets: Secret'ы пула
+    init: Init-контейнер
     lifecycleHook:
       postStart:
         label: PostStart
@@ -5789,7 +5793,7 @@ workload:
       addGroupIDs: Добавить ID групп
       allowPrivilegeEscalation:
         label: Расширение привилегий
-        "false": ложь
+        "false": Нет
         "true": "Да: контейнер может получить больше привилегий, чем его родительский процесс"
       dropCapabilities: Drop Capabilities
       fsGroup: Группа файловой системы
@@ -5798,21 +5802,21 @@ workload:
       podFsGroup: Группа файловой системы пода
       privileged:
         label: Привилегированный
-        "false": ложь
+        "false": Нет
         "true": "Да: контейнер имеет полный доступ к хосту"
       readOnlyRootFilesystem:
         label: Корневая файловая система, доступная только для чтения
-        "false": ложь
+        "false": Нет
         "true": "Да: контейнер имеет корневую файловую систему, доступную только для чтения"
       runAsGroup: Запустить как ID группы
       runAsNonRoot:
         label: Запустить без рута
-        "false": ложь
+        "false": Нет
         "true": "Да: контейнер должен запускаться от имени пользователя, не являющегося пользователем root"
       runAsNonRootOptions:
         noOption: "Нет"
         yesOption: "Да: контейнеры должны запускаться от имени не root-пользователя"
-      runAsUser: Run as User ID
+      runAsUser: Запустить от имени пользовательского ID
       shareProcessNamespace: Совместное использование пространства имен одного процесса
       supplementalGroups: Дополнительные идентификаторы групп
       sysctls: Sysctls
@@ -5827,7 +5831,7 @@ workload:
       env: Переменные окружения
       events: События
       general: Общее
-      healthCheck: Health Check
+      healthCheck: Проверка работоспособности
       image: Образ
       lifecycle: Хуки жизненного цикла
       networking: Сетевое взаимодействие
@@ -5839,10 +5843,10 @@ workload:
       nodeScheduling: Расписание ноды
       ports: Порты
       resources: Ресурсы
-      securityContext: Security Context
+      securityContext: Контекст безопасности
       status: Статус
-      volumeClaimTemplates: Volume Claim Templates
-      upgrading: Scaling and Upgrade Policy
+      volumeClaimTemplates: Шаблоны Volume Claim
+      upgrading: Политика масштабирования и обновления
   cronSchedule: Расписание
   detail:
     services: Сервисы
@@ -5992,7 +5996,7 @@ workload:
     priority:
       className: Название класса приоритетов
       priority: Приоритет
-    terminationGracePeriodSeconds: Termination Grace Period
+    terminationGracePeriodSeconds: Период отсрочки завершения
     terminationGracePeriodSecondsTip: Время, необходимое для нормального завершения работы пода.
     titles:
       advanced: Продвинутые
@@ -6016,7 +6020,7 @@ workload:
       operatorOptions:
         equal: =
         exists: Существует
-      tolerationSeconds: Toleration Seconds
+      tolerationSeconds: Toleration в секундах
       value: Значение
   serviceAccountName:
     label: Имя сервисного аккаунта
@@ -6036,10 +6040,10 @@ workload:
       azureFile: Azure File
       gcePersistentDisk: Google Persistent Disk
       driver.longhorn.io: Longhorn
-      vsphereVolume: VMWare vSphere Volume
+      vsphereVolume: Том VMWare vSphere
       emptyDir: Пустая директория
     addClaim: Добавить требование
-    addMount: Add Mount
+    addMount: Добавить Mount
     addVolume: Добавить том
     selectVolume: Выбрать том
     noVolumes: Тома появятся здесь после их добавления на вкладке Под
@@ -6393,7 +6397,7 @@ typeLabel:
   monitoring.coreos.com.prometheus: |-
     {count, plural,
       one { Prometheus }
-      other { Prometheis }
+      other { Prometheus'ы }
     }
   helm.cattle.io.projecthelmchart: |-
     {count, plural,
@@ -7238,7 +7242,7 @@ legacy:
   configuration: Конфигурация
   globalDnsEntries: Глобальные DNS-записи
   globalDnsProviders: Глобальные DNS-провайдеры
-  notifiers: Notifiers
+  notifiers: Уведомители
   monitoring: Мониторинг
   psps: Политики безопасности подов
   secrets: Secret'ы
