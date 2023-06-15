@@ -1274,7 +1274,7 @@ cluster:
       kubeconfigContent:
         label: KubeconfigContent
       placeholder: "Пространство имён/Имя"
-      cluster: Imported Harvester Cluster
+      cluster: Импортированный Harvester-кластер
       installGuestAgent: Установить гостевой агент
   description:
     label: Описание кластера
@@ -1833,7 +1833,7 @@ cluster:
       label: Облачный провайдер
       header: Конфигурация облачного провайдера
       defaultValue:
-        label: Default - RKE2 Embedded
+        label: По умолчанию - встроенный RKE2
     security:
       header: Безопасность
     cis:
@@ -3991,14 +3991,14 @@ plugins:
     builtin: Встроенное
     experimental: Экспериментальное
     third-party: Стороннее
-    image: Image
+    image: Образ
     installing: Установка...
     uninstalling: Удаление...
   descriptions:
     experimental: Это расширение помечено как экспериментальное
     third-party: Это расширение предоставлено сторонним разработчиком
     built-in: Это встроенное расширение
-    image: This Extension Image has been loaded manually
+    image: Этот образ расширения был загружен вручную
   error:
     title: Ошибка при загрузке расширения
     message: Не удалось загрузить код расширения
@@ -4028,53 +4028,53 @@ plugins:
     available: Нет доступных расширений
     installed: Нет установленных расширений
     updates: Нет доступных обновлений для установленных расширений
-    images: No Extension Images installed
+    images: Нет установленных образов расширений
   loadError: Произошла ошибка при загрузке кода для этого расширения
   helmError: "Произошла ошибка при установке расширения с помощью Helm"
   manageRepos: Управление репозиториями
-  manageCharts: Manage Extension Charts
+  manageCharts: Управление чартами расширений
   manageCatalog:
-    label: Manage Extension Catalogs
-    title: Extension
-    subtitle: Catalogs
+    label: Управление каталогами расширений
+    title: Расширение
+    subtitle: Каталоги
     imageLoad:
-      load: Import Extension Catalog
-      prompt: An Extension Catalog contains extension assets bundled into an image, importing will take the image and host a Helm repository to act as a catalog for custom built Extensions.
+      load: Импортировать каталог расширений
+      prompt: Каталог расширений содержит ресурсы расширений, объединённые в образ, импорт возьмёт этот образ и разместит Helm-репозиторий, чтобы функционировать как каталог для настраиваемых расширений.
       fields:
         image:
-          label: Catalog Image Reference
-          placeholder: "e.g. hub.docker.io/example-org/my-image:latest"
+          label: Сслыка на образ каталога
+          placeholder: "напр. hub.docker.io/example-org/my-image:latest"
         secrets:
-          banner: "If the registry that hosts the Catalog Image requires Pull Secrets, they must be created in the following namespace:<pre>cattle-ui-plugin-system</pre>"
-      banner: This will create an Deployment, Service, and Helm repository to serve the extension charts.
+          banner: "Если регистри, в котором размещён данный образ каталога, требует Pull Secrets, они должны быть созданы в следующем пространстве имён:<pre>cattle-ui-plugin-system</pre>"
+      banner: Будут созданы развёртывание, сервис и Helm-репозиторий для обслуживания чартов расширений.
       imageVersion:
-        title: Image Version Not Found
-        message: Unable to determine image version from {image}, defaulting to latest
+        title: Версия образа не найдена
+        message: Не удаётся определить версию образа из {image}, по умолчанию выбрана новейшая
       error:
         exists:
           deployment:
-            title: Deployment Conflict
-            message: A container with the image {image} already exists
+            title: Конфликт развёртывания
+            message: Контейнер с данным образом {image} уже существует
           service:
-            title: Service Conflict
-            message: A service with the name {svc} already exists
+            title: Конфликт сервиса
+            message: Сервис с данным именем {svc} уже существует
           repo:
-            title: Helm Repository Conflict
-            message: A repository with the name {repo} already exists
+            title: Конфликт репозитория Helm
+            message: Репозиторий с данным именем {repo} уже существует
       success:
-        title: "Imported Extension Catalog from: {name}"
-        message: Extension Catalog image was imported successfully
+        title: "Импортирован каталог расширений из: {name}"
+        message: Образ каталога расширений был успешно импортирован
     headers:
       image:
-        name: images
-        label: Deployment Image
+        name: образы
+        label: Образ развёртывания
       cacheState:
         name: cacheState
-        label: Cache State
+        label: Состояние кэша
   tabs:
     all: Все
     available: Доступные
-    images: Images
+    images: Образы
     installed: Установленные
     updates: Обновления
   title: Расширения
@@ -4097,7 +4097,7 @@ plugins:
     label: Удалить
     title: "Удалить расширение: {name}"
     prompt: "Вы уверены, что хотите удалить данное расширение?"
-    custom: "Are you sure that you want to uninstall this Extension Image? This will also remove any Extensions provided by this image."
+    custom: "Вы уверены, что хотите удалить данный образ расширений? Все расширения, предоставленные этим образом, также будут удалены."
   upgradeAvailable: Доступна более новая версия этого расширения
   reload: Расширения изменены - требуется перезагрузка
   safeMode:
