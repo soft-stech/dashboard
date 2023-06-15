@@ -99,7 +99,7 @@ generic:
   experimental: Экспериментальный
 
   deprecated: Устаревший
-  placeholder: "пример {text}"
+  placeholder: "напр. {text}"
   moreInfo: Больше информации
   selectors:
     label: Список
@@ -462,7 +462,7 @@ authConfig:
       ldap: LDAP
       tls: LDAPS (TLS)
     customizeSchema: Настроить схему
-    oktaSchema: 'Приведенные ниже значения по умолчанию предназначены для общего серверу OpenLDAP. Для получения дополнительной информации о значениях, которые следует использовать при использовании интерфейса LDAP Okta, смотрите: <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.okta.com/en-us/Content/ Topics/Directory/LDAP-interface-connection-settings.htm">Okta LDAP Interface connection settings</a>'
+    oktaSchema: 'Приведенные ниже значения по умолчанию предназначены для общего серверу OpenLDAP. Для получения дополнительной информации о значениях, которые следует использовать при использовании интерфейса LDAP Okta, смотрите: <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.okta.com/en-us/Content/Topics/Directory/LDAP-interface-connection-settings.htm">Okta LDAP Interface connection settings</a>'
     users: Пользователи
     groups: Группы
     searchAttribute: Атрибут поиска
@@ -515,7 +515,7 @@ authConfig:
       show: Показать детали
       hide: Скрыть детали
   azuread:
-    tenantId: ID жильца
+    tenantId: Tenant ID
     applicationId: ID приложения
     endpoint: endpoint
     graphEndpoint: Graph endpoint
@@ -1274,10 +1274,7 @@ cluster:
       kubeconfigContent:
         label: KubeconfigContent
       placeholder: "Пространство имён/Имя"
-      cluster: Кластер
-      affinity:
-        namespaces:
-          placeholder: например, default,system,base
+      cluster: Imported Harvester Cluster
       installGuestAgent: Установить гостевой агент
   description:
     label: Описание кластера
@@ -1597,7 +1594,7 @@ cluster:
       serverCpuCount:
         label: Количество CPU
       serverCpuFrequency:
-        label: Частота CPU [GHz]
+        label: Частота CPU [ГГц]
       serverRam:
         label: RAM [Гб]
       serverStorage:
@@ -1656,8 +1653,8 @@ cluster:
     os: "Попытка добавить {newOS} worker ноду в кластер с одной или несколькими {existingOS} worker нодами: для некоторых установленных приложений может потребоваться обновление или удаление."
     rke2-k3-reprovisioning: 'Внесение изменений в конфигурацию кластера может привести к reprovisioning нод. Больше информации Вы можете найти в <a target="blank" href="{docsBase}/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/rke1-vs-rke2-differences" target="_blank" rel="noopener nofollow">документации</a>.'
     desiredNodeGroupWarning: Доступно 0 нод для запуска агента кластера. Кластер не будет активирован, пока нет как минимум одной доступной ноды.
-    invalidPsps: You have one or more PodSecurityPolicy resource(s) in this cluster. Pod Security Policies are not available in Kubernetes v1.25.
-    haveArgInfo: Configuration information is not available for the selected Kubernetes version.  The options available in this screen will be limited, you may want to use the YAML editor.
+    invalidPsps: В данном кластере имеется один или более PodSecurityPolicy русурсов. Pod Security Policies недоступны в Kubernetes v1.25.
+    haveArgInfo: Конфигурационная информация недосупна для выбранной версии Kubernetes. Параметры, доступные на этом экране, будут ограничены, может потребоваться использование YAML-редактора.
     deprecatedPsp: Pod Security Policies помечены как устаревшие в Kubernetes v1.21, и будут удалены в Kubernetes v1.25.
     removedPsp: Pod Security Policies были удалены Kubernetes v1.25,  используйте вместо них PodSecurity Admission.
   rkeTemplateUpgrade: Доступно обновление для ревизии шаблона {name}
@@ -1759,7 +1756,7 @@ cluster:
     baidu: Baidu CCE
     cloudca: Cloud.ca
     cloudscale: Cloudscale
-    custom: Custom
+    custom: Пользовательский
     digitalocean: DigitalOcean
     docker: Docker
     eks: Amazon EKS
@@ -1770,13 +1767,13 @@ cluster:
     gke: Google GKE
     harvester: Harvester
     huaweicce: Huawei CCE
-    import: Generic
-    imported: Imported
+    import: Общий
+    imported: Импортированный
     k3s: K3s
     kubeAdmin: KubeADM
     linode: Linode
     linodelke: Linode LKE
-    local: Local
+    local: Локальный
     minikube: Minikube
     oci: Oracle OCI
     openstack: OpenStack
@@ -1785,7 +1782,7 @@ cluster:
     oracle: Oracle
     oracleoke: Oracle OKE
     otc: Open Telekom Cloud
-    other: Other
+    other: Другое
     packet: Equinix Metal
     pinganyunecs: Pinganyun ECS
     pnap: phoenixNAP
@@ -1794,7 +1791,7 @@ cluster:
     rke2: RKE2
     rke: RKE1
     rkeWindows: Windows (только RKE1)
-    s3: S3-Compatible
+    s3: S3-совместимый
     softlayer: IBM Cloud
     tencenttke: Tencent TKE
     upcloud: UpCloud
@@ -1845,14 +1842,14 @@ cluster:
       override: Позволяет переопределять шаблон по умолчанию конфигурации Pod Security Admission при использовании CIS профиля
     defaultPodSecurityPolicyTemplateName:
       label: Политика безопасности подов по умолчанию
-      option: RKE Default
+      option: Значение RKE по умолчанию
     defaultPodSecurityAdmissionConfigurationTemplateName:
       label: Pod Security Admission по умолчанию
       option:
-        none: (None)
-        default: Default - RKE2 Embedded
+        none: (Нет)
+        default: По умолчанию - встроенный RKE2
   cisProfile:
-      option: (None)
+      option: (Нет)
   enableNetworkPolicy:
       label: Изоляция сети проекта
       warning: По умолчанию контроллер входящего трафика не сможет направлять запросы к подам на других нодах.
@@ -2021,6 +2018,7 @@ containerResourceLimit:
   memPlaceholder: напр. 128
   requestsCpu: Резервирование CPU
   requestsMemory: Резервирование памяти
+
 
 resource:
   errors:
@@ -2231,7 +2229,7 @@ fleet:
     addLabel: Добавить
     banner: "{count, plural,
       =0 { Добавление пространств имён сюда создаст GitRepoRestriction. }
-      other { Здесь осуществляется управление олько Git Repo Restriction's <code>allowedTargetNamespaces</code>. Вы можете внести дополнительные изменение в Git Repo Restriction}
+      other { Здесь управляется только параметр <code>allowedTargetNamespaces</code> ограничения Git-репозитория. Вы можете вносить дополнительные изменения в ограничение Git-репозитория.}
       }"
 footer:
   docs: Документация
@@ -2343,7 +2341,7 @@ growl:
     message: "Соединение до {url} было восстановлено на попытке #{tries}."
     title: Websocket переподключены
   podSecurity:
-    message: "Создание этого пода нарушит существующие ограниченные политики в выбранном пространстве имён"
+    message: "Создание этого пода нарушает существующие ограниченния для выбранного пространства имён"
     title: Нарушение PodSecurity
 
 hpa:
@@ -2499,7 +2497,7 @@ istio:
   customOverlayFile:
     label: Пользовательский Overlay-файл
     tip: '<a target="_blank" rel="noopener noreferrer nofollow" href="https://istio.io/latest/docs/setup/additional-setup/customize-installation/#patching-the-output-manifest">Overlay-файл</a> позволяет выполнять дополнительную настройку поверх базовой установки {vendor} Istio. Вы можете использовать <a href="https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/" target="_blank" rel="noopener noreferrer nofollow" >IstioOperator API</a>, чтобы вносить изменения и дополнения во все компоненты и применять эти изменения посредством данного YAML overlay-файла.'
-  description: '{vendor} Istio helm чарт устанавливает минимальную конфигурацию Istio configuration для начала интеграции с вашими приложениями. Для дополнительной информации об Istio, посетите <a target="_blank" href="https://istio.io/latest/docs/concepts/what-is-istio" rel="noopener noreferrer nofollow">https://istio.io/latest/docs/concepts/what-is-istio/</a>'
+  description: 'Helm-чарт {vendor} для Istio устанавливает минимальную конфигурацию Istio, чтобы Вы могли начать интеграцию Вашими приложениями. Если Вы хотите получить дополнительную информацию об Istio, посетите <a target="_blank" href="https://istio.io/latest/docs/concepts/what-is-istio" rel="noopener noreferrer nofollow">https://istio.io/latest/docs/concepts/what-is-istio/</a>'
   destinationRule:
     title:
       new: Добавить правило пунктов назначения
@@ -3570,7 +3568,7 @@ node:
       noLocation: Нет месторасположения
     nodeLabels: Лэйблы
     hideLabels: Показать меньше
-    showLabels: ПОказать больше
+    showLabels: Показать больше
   detail:
     detailTop:
       containerRuntime: Среда выполнения контейнера
@@ -3980,8 +3978,8 @@ inactivity:
   title: Продолжительность сессии
   titleExpired: Сессия истекла
   banner: Сессия скоро истечёт по причине отсутствия активности. Все несохранённые изменения будут потеряны.
-  bannerExpired: В данном табе сессия истекла по причине отсутствия активности.
-  content: Нажмите “Возобновить сессию”, чтобы оставить сессию в данном табе активной или обновите страницу браузера после истечения сессии.
+  bannerExpired: В данной вкладке сессия истекла по причине отсутствия активности.
+  content: Нажмите “Возобновить сессию”, чтобы оставить сессию в данной вкладке активной или обновите страницу браузера после истечения сессии.
   contentExpired: Для возврата на эту страницу нажмите “Обновить” ниже или обновите страницу браузера.
   cta: Возобновить сессию
   ctaExpired: Обновить
@@ -3993,12 +3991,14 @@ plugins:
     builtin: Встроенное
     experimental: Экспериментальное
     third-party: Стороннее
+    image: Image
     installing: Установка...
     uninstalling: Удаление...
   descriptions:
     experimental: Это расширение помечено как экспериментальное
     third-party: Это расширение предоставлено сторонним разработчиком
     built-in: Это встроенное расширение
+    image: This Extension Image has been loaded manually
   error:
     title: Ошибка при загрузке расширения
     message: Не удалось загрузить код расширения
@@ -4028,12 +4028,53 @@ plugins:
     available: Нет доступных расширений
     installed: Нет установленных расширений
     updates: Нет доступных обновлений для установленных расширений
+    images: No Extension Images installed
   loadError: Произошла ошибка при загрузке кода для этого расширения
   helmError: "Произошла ошибка при установке расширения с помощью Helm"
   manageRepos: Управление репозиториями
+  manageCharts: Manage Extension Charts
+  manageCatalog:
+    label: Manage Extension Catalogs
+    title: Extension
+    subtitle: Catalogs
+    imageLoad:
+      load: Import Extension Catalog
+      prompt: An Extension Catalog contains extension assets bundled into an image, importing will take the image and host a Helm repository to act as a catalog for custom built Extensions.
+      fields:
+        image:
+          label: Catalog Image Reference
+          placeholder: "e.g. hub.docker.io/example-org/my-image:latest"
+        secrets:
+          banner: "If the registry that hosts the Catalog Image requires Pull Secrets, they must be created in the following namespace:<pre>cattle-ui-plugin-system</pre>"
+      banner: This will create an Deployment, Service, and Helm repository to serve the extension charts.
+      imageVersion:
+        title: Image Version Not Found
+        message: Unable to determine image version from {image}, defaulting to latest
+      error:
+        exists:
+          deployment:
+            title: Deployment Conflict
+            message: A container with the image {image} already exists
+          service:
+            title: Service Conflict
+            message: A service with the name {svc} already exists
+          repo:
+            title: Helm Repository Conflict
+            message: A repository with the name {repo} already exists
+      success:
+        title: "Imported Extension Catalog from: {name}"
+        message: Extension Catalog image was imported successfully
+    headers:
+      image:
+        name: images
+        label: Deployment Image
+      cacheState:
+        name: cacheState
+        label: Cache State
   tabs:
     all: Все
     available: Доступные
+    images: Images
     installed: Установленные
     updates: Обновления
   title: Расширения
@@ -4056,6 +4097,7 @@ plugins:
     label: Удалить
     title: "Удалить расширение: {name}"
     prompt: "Вы уверены, что хотите удалить данное расширение?"
+    custom: "Are you sure that you want to uninstall this Extension Image? This will also remove any Extensions provided by this image."
   upgradeAvailable: Доступна более новая версия этого расширения
   reload: Расширения изменены - требуется перезагрузка
   safeMode:
@@ -4203,6 +4245,7 @@ project:
     default: Значение по умолчанию кластера
     label: Политика безопасности подов
     current: "{value} (текущая)"
+
 
 projectMembers:
   project:
@@ -4627,6 +4670,7 @@ resourceTabs:
     from: На кого ссылается
     to: Относится к
 
+
 resourceYaml:
   errors:
     namespaceRequired: Этот ресурс имеет пространство имен, поэтому необходимо указать пространство имен.
@@ -4800,6 +4844,12 @@ servicesPage:
     title: Конфигурация дополнений
     ipam:
       label: IPAM
+    useShareIP:
+      label: Использовать общий IP
+    useIpam:
+      label: Использовать IPAM
+    shareIP:
+      label: Поделиться IP LB
 
   ips:
     define: Сервисные порты
@@ -4899,11 +4949,7 @@ sortableTable:
     resource: |-
       {pages, plural,
       =0 {Нет {pluralLabel}}
-      =1 {{count} {count, plural, 
-                  =1 {{singularLabel}} 
-                  other {{pluralLabel}}
-                  }
-      }
+      =1 {{count} {count, plural, =1 {{singularLabel}} other {{pluralLabel}}}}
       other {{from} - {to} из {count} {pluralLabel}}
   search: Фильтр
   in: в
@@ -7040,6 +7086,7 @@ performance:
     description: Если этот параметр включен и пользователь неактивен в течение указанного времени ожидания, пользовательский интерфейс больше не будет обновлять содержимое страницы, и пользователю потребуется перезагрузить страницу, чтобы продолжить.
     authUserTTL: Это время ожидания не может превышать время ожидания пользовательской сессии auth-user-session-ttl-minutes, которое сейчас составляет {current} минут.
 
+
 banner:
   label: Фиксированные баннеры
   settingName: Баннеры
@@ -7175,6 +7222,8 @@ customLinks:
     issues: Сообщить о проблеме
     getStarted: Начать
     commercialSupport: Коммерческая поддержка
+
+
 
 ##############################
 ### Support Page
