@@ -664,7 +664,7 @@ asyncButton:
     waiting: Приостановка оркестрации
     description: Новые версии не будут развернуты, так как оркестровка временно приостановлена. Чтобы развернуть новые версии, возобновите оркестровку.
   refresh:
-    action: "Действие"
+    action: "Применить"
     actionIcon: обновить
     error: "Ошибка"
     errorIcon: ошибка
@@ -4950,7 +4950,7 @@ sortableTable:
       {pages, plural,
       =0 {Нет {pluralLabel}}
       =1 {{count} {count, plural, =1 {{singularLabel}} other {{pluralLabel}}}}
-      other {{from} - {to} из {count} {pluralLabel}}
+      other {{from} - {to} из {count} {pluralLabel}}}
   search: Фильтр
   in: в
   addFilter: Добавить фильтр
