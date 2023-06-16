@@ -1359,9 +1359,9 @@ cluster:
         label: Зона доступности
         description: Зоны доступности защищают приложения от полных сбоев дата-центра Azure.
         publicIpAndSKUWarning: Для зон доступности требуется включить статический публичный IP и использование стандартного SKU для публичного IP.
-        publicIpWarning: Для зон доступности требуются включить статический публичный IP.
-        standardSKUWarning: Для зон доступности требуются включить использование стандартного SKU для публичного IP.
-        managedDisksWarning: Для зон доступности требуются включить управляемые диски.
+        publicIpWarning: Для зон доступности требуется включить статический публичный IP.
+        standardSKUWarning: Для зон доступности требуется включить использование стандартного SKU для публичного IP.
+        managedDisksWarning: Для зон доступности требуется включить управляемые диски.
       dns:
         help: Уникальный DNS-лэйбл для публичного IP-адреса.
         label: DNS-лэйбл
@@ -1653,7 +1653,7 @@ cluster:
     os: "Попытка добавить {newOS} worker ноду в кластер с одной или несколькими {existingOS} worker нодами: для некоторых установленных приложений может потребоваться обновление или удаление."
     rke2-k3-reprovisioning: 'Внесение изменений в конфигурацию кластера может привести к reprovisioning нод. Больше информации Вы можете найти в <a target="blank" href="{docsBase}/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/rke1-vs-rke2-differences" target="_blank" rel="noopener nofollow">документации</a>.'
     desiredNodeGroupWarning: Доступно 0 нод для запуска агента кластера. Кластер не будет активирован, пока нет как минимум одной доступной ноды.
-    invalidPsps: В данном кластере имеется один или более PodSecurityPolicy русурсов. Pod Security Policies недоступны в Kubernetes v1.25.
+    invalidPsps: В данном кластере имеется один или более PodSecurityPolicy ресурсов. Pod Security Policies недоступны в Kubernetes v1.25.
     haveArgInfo: Конфигурационная информация недосупна для выбранной версии Kubernetes. Параметры, доступные на этом экране, будут ограничены, может потребоваться использование YAML-редактора.
     deprecatedPsp: Pod Security Policies помечены как устаревшие в Kubernetes v1.21, и будут удалены в Kubernetes v1.25.
     removedPsp: Pod Security Policies были удалены Kubernetes v1.25,  используйте вместо них PodSecurity Admission.
@@ -2619,13 +2619,13 @@ istio:
         none:
           label: Ничего
         istio:
-          label: Двусторонний Istio -  Безопасные соединения с вышестоящему уровню, использующие двусторонний TLS от Istio
+          label: Двусторонний Istio -  Безопасные соединения к вышестоящему уровню, использующие двусторонний TLS от Istio
         disable:
           label: Выключено - Не устанавливать TLS-соединение с вышестоящим endpoint
         simple:
           label: Односторонний - Установить TLS-соединение с вышестоящим endpoint
         mutual:
-          label: Двусторонний - Безопасные соединения с вышестоящему уровню, использующие двусторонний TLS путем предоставления клиентских сертификатов для аутентификации
+          label: Двусторонний - Безопасные соединения к вышестоящему уровню, использующие двусторонний TLS путем предоставления клиентских сертификатов для аутентификации
       clientCertificate:
         label: Сертификат клиента
         placeholder: напр. /etc/certs/myclientcert.pem
@@ -3524,7 +3524,7 @@ networkpolicy:
     namespaceSelector:
       label: Селектор пространств имён
     namespaceAndPodSelector:
-      label: Пространство имн/Селектор подов
+      label: Пространство имён/Селектор подов
   config:
     label: Конфигурация
   selectors:
@@ -3552,8 +3552,8 @@ networkpolicy:
           =1 {Совпадает с 1 из {totalPods, number} пода/подов: "{samplePods}"}
           other {Совпадает с {matchedPods, number} из {totalPods, number} существующих подов, включая "{samplePods}"}
         } в {matchedNamespaces, plural,
-          =0 {0 из {totalNamespaces, number} пространств(е) имён}
-          =1 {1 из {totalNamespaces, number} пространств(е) имён: "{sampleNamespaces}"}
+          =0 {0 из {totalNamespaces, number} пространств(а) имён}
+          =1 {1 из {totalNamespaces, number} пространств(а) имён: "{sampleNamespaces}"}
           other {{matchedNamespaces, number} из {totalNamespaces, number} существующих пространств имён, включая "{sampleNamespaces}"}
         }
 node:
