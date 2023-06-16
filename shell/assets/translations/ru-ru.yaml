@@ -118,6 +118,7 @@ locale:
   none: (None)
 
 nav:
+  harvesterDashboard: Дашборд Harvester
   backToRancher: Управление кластером
   clusterTools: Инструменты кластера
   kubeconfig:
@@ -180,6 +181,7 @@ nav:
     multiCluster: Глобальные приложения
     legacy: Устаревшие приложения
     configuration: Конфигурация
+    hci: HCI
   search:
     placeholder: Начните писать для поиска кластера
     noResults: Не найдено кластеров
@@ -1285,7 +1287,8 @@ cluster:
       label: Это Harvester кластер - включить Harvester фича-флаг для управления им
       state: Предупреждение
       cloudProvider:
-        incompatible: Вы не можете выбрать облачный провайдер Harvester т.к. текущая версия Harvester не совместима с выбранной версией RKE2 Kubernetes, нажмите <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">здесь</a>, чтобы узнать, какие версии Kubernetes поддерживаются.
+        incompatible:
+          Вы не можете выбрать облачный провайдер Harvester т.к. текущая версия Harvester не совместима с выбранной версией RKE2 Kubernetes, нажмите <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">здесь</a>, чтобы узнать, какие версии Kubernetes поддерживаются.
     clusterWarning: |-
       Есть {count, plural,
       =1 {1 Harvester кластер, который не отображен}
@@ -1849,57 +1852,57 @@ cluster:
         none: (Нет)
         default: По умолчанию - встроенный RKE2
   cisProfile:
-      option: (Нет)
+    option: (Нет)
   enableNetworkPolicy:
-      label: Изоляция сети проекта
-      warning: По умолчанию контроллер входящего трафика не сможет направлять запросы к подам на других нодах.
+    label: Изоляция сети проекта
+    warning: По умолчанию контроллер входящего трафика не сможет направлять запросы к подам на других нодах.
   workNode:
-      label: Worker ноды
+    label: Worker ноды
   controlPlaneConcurrency:
-      label: Согласованность Control Plane
-      toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
+    label: Согласованность Control Plane
+    toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
   workerConcurrency:
-      label: Согласованность Worker
-      toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
+    label: Согласованность Worker
+    toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
   drain:
-      label: Освобождение нод
-      toolTip: Освобождение превентивно удаляет поды на каждой ноде, чтобы на обновляемых нодах не было запущенных рабочих нагрузок. Обновление без освобождения выполняется быстрее и вызывает меньше изменений, но поды все равно могут быть перезапущены в зависимости от выполняемого обновления.
+    label: Освобождение нод
+    toolTip: Освобождение превентивно удаляет поды на каждой ноде, чтобы на обновляемых нодах не было запущенных рабочих нагрузок. Обновление без освобождения выполняется быстрее и вызывает меньше изменений, но поды все равно могут быть перезапущены в зависимости от выполняемого обновления.
   deleteEmptyDir: "По умолчанию поды, использующие тома emptyDir, будут удалены при обновлении. Это может повлиять на операции, зависящие от томов emptyDir, сохраняющихся в течение жизненного цикла подов."
   truncateHostnames: Усекать имя хоста до 15 символов для совместимости с NetBIOS.
   address:
-      tooltip: Сетевые значения кластера нельзя изменить после того, как кластер будет создан.
-      header: Адресация
-      clusterCidr:
-        label: CIDR кластера
-      serviceCidr:
-        label: CIDR сервисов
-      dns:
-        label: DNS кластера
-      domain:
-        label: Домен кластера
-      nodePortRange:
-        label: Диапазон сервисных портов NodePort
-      tlsSan:
-        label: Альтернативные имена TLS
-      fqdn:
-        toolTip: FQDN, который будет разрешаться в исправные ноды Control Plane кластера.
-      caCerts:
-        label: CA сертификаты
-        toolTip: Сертификаты, необходимые клиенту для успешной проверки действительности сертификата, возвращенного Endpoint.
-      ipv6:
-        warning: Похоже, вы используете IPv6 CIDR. Драйвер ноды может требовать дополнительной конфигурации для его поддержки.
-        enable: Включить поддержку IPv6
+    tooltip: Сетевые значения кластера нельзя изменить после того, как кластер будет создан.
+    header: Адресация
+    clusterCidr:
+      label: CIDR кластера
+    serviceCidr:
+      label: CIDR сервисов
+    dns:
+      label: DNS кластера
+    domain:
+      label: Домен кластера
+    nodePortRange:
+      label: Диапазон сервисных портов NodePort
+    tlsSan:
+      label: Альтернативные имена TLS
+    fqdn:
+      toolTip: FQDN, который будет разрешаться в исправные ноды Control Plane кластера.
+    caCerts:
+      label: CA сертификаты
+      toolTip: Сертификаты, необходимые клиенту для успешной проверки действительности сертификата, возвращенного Endpoint.
+    ipv6:
+      warning: Похоже, вы используете IPv6 CIDR. Драйвер ноды может требовать дополнительной конфигурации для его поддержки.
+      enable: Включить поддержку IPv6
   etcd:
-      disableSnapshots:
-        label: Автоматические снапшоты
-      snapshotScheduleCron:
-        label: Cron-расписание
-      snapshotRetention:
-        label: Оставлять последний
-      exportMetric:
-        label: Метрики
-        false: Доступно только внутри кластера
-        true: Доступно для публичного интерфейса
+    disableSnapshots:
+      label: Автоматические снапшоты
+    snapshotScheduleCron:
+      label: Cron-расписание
+    snapshotRetention:
+      label: Оставлять последний
+    exportMetric:
+      label: Метрики
+      false: Доступно только внутри кластера
+      true: Доступно для публичного интерфейса
   k3s:
     systemService:
       coredns: "CoreDNS"
@@ -7168,6 +7171,7 @@ resourceQuota:
     resourceType: Тип ресурса
   helpText: Настройте, сколько ресурсов может потреблять пространство имён всего.
   helpTextDetail: Количество ресурсов, которые пространство имён может потреблять всего.
+  helpTextHarvester: Виртуальные машины должны резервировать дополнительные ресурсы памяти.
   configMaps: Карты конфигурации
   limitsCpu: Лимит CPU
   limitsMemory: Лимит памяти
