@@ -1,6 +1,9 @@
 import { ProductFunction } from './plugin';
 import { RouteConfig, Location } from 'vue-router';
 
+// Cluster Provisioning types
+export * from './types-provisioning';
+
 // package.json metadata
 export interface PackageMetadata {
   name: string;
@@ -62,6 +65,7 @@ export enum PanelLocation {
 /** Enum regarding tab locations that are extensionable in the UI */
 export enum TabLocation {
   RESOURCE_DETAIL = 'tab', // eslint-disable-line no-unused-vars
+  CLUSTER_CREATE_RKE2 = 'cluster-create-rke2', // eslint-disable-line no-unused-vars
 }
 
 /** Enum regarding card locations that are extensionable in the UI */
@@ -97,7 +101,7 @@ export type Action = {
   svg?: Function;
   icon?: string;
   multiple?: boolean;
-  enabled?: (ctx: any) => boolean;
+  enabled?: Function | boolean;
   invoke: (opts: ActionOpts, resources: any[]) => void | boolean | Promise<boolean>;
 };
 
@@ -134,7 +138,21 @@ export type LocationConfig = {
   namespace?: string[],
   cluster?: string[],
   id?: string[],
-  mode?: string[]
+  mode?: string[],
+  /**
+   * path match from URL (excludes host address)
+   */
+  path?: { [key: string]: string | boolean}[],
+  /**
+   * Query Params from URL
+   */
+  queryParam?: { [key: string]: string},
+  /**
+   * Context specific params.
+   *
+   * Components can provide additional context specific params that this value must match
+   */
+  context?: { [key: string]: string},
 };
 
 export interface ProductOptions {
@@ -346,6 +364,23 @@ export interface ConfigureTypeOptions {
   // showConfigView
 }
 
+export interface ConfigureVirtualTypeOptions extends ConfigureTypeOptions {
+  /**
+   * The translation key displayed anywhere this type is referenced
+   */
+  labelKey: string;
+
+  /**
+   * An identifier that should be unique across all types
+   */
+  name: string;
+
+  /**
+   * The route that this type should correspond to {@link PluginRouteConfig} {@link RouteConfig}
+   */
+  route: PluginRouteConfig | RouteConfig;
+}
+
 export interface DSLReturnType {
   /**
    * Register multiple types by name and place them all in a group if desired. Primarily used for grouping things in the cluster explorer navigation.
@@ -387,6 +422,13 @@ export interface DSLReturnType {
   mapGroup: (groupName: string, label: string) => void;
 
   /**
+   * Create and configure a myriad of options for a type
+   * @param options {@link ConfigureVirtualTypeOptions}
+   * @returns {@link void}
+   */
+  virtualType: (options: ConfigureVirtualTypeOptions) => void;
+
+  /**
    * Leaving these here for completeness but I don't think these should be advertised as useable to plugin creators.
    */
   // componentForType: (type: string, replacementType: string)
@@ -399,7 +441,6 @@ export interface DSLReturnType {
   // moveType: (match, group)
   // setGroupDefaultType: (input, defaultType)
   // spoofedType: (obj)
-  // virtualType: (obj)
   // weightGroup: (input, weight, forBasic)
   // weightType: (input, weight, forBasic)
 }
@@ -516,7 +557,7 @@ export interface IPlugin {
    * @param {String} name unique name of 'something'
    * @param {Function} fn function that dynamically loads the module for the thing being registered
    */
-  register(type: string, name: string, fn: Function): void;
+  register(type: string, name: string, fn: Function | Boolean): void;
 
   /**
    * Will return all of the configuration functions used for creating a new product.

@@ -14,7 +14,7 @@ export default {
 
   async fetch() {
     const provClusters = await this.$store.dispatch('management/findAll', { type: CAPI.RANCHER_CLUSTER });
-    const readyClusters = provClusters.filter(c => c.mgmt?.isReady);
+    const readyClusters = provClusters.filter((c) => c.mgmt?.isReady);
     const clusterForCounts = filterHiddenLocalCluster(filterOnlyKubernetesClusters(readyClusters, this.$store), this.$store);
     const finalCounts = [];
     const promises = [];
@@ -162,9 +162,8 @@ export default {
     },
 
     downloadData(btnCb) {
-      const date = new Date().toLocaleDateString();
-      const time = new Date().toLocaleTimeString();
-      const fileName = `rancher-diagnostic-data-${ date }-${ time.replaceAll(':', '_') }.json`;
+      // simplify filename due to e2e tests
+      const fileName = 'rancher-diagnostic-data.json';
       const data = {
         systemInformation: this.systemInformation,
         logs:              this.latestLogs,
@@ -181,8 +180,8 @@ export default {
     setResourceResponseTiming(responseTimes) {
       responseTimes?.forEach((res) => {
         if ( res.outcome === 'success' ) {
-          const cluster = this.finalCounts.find(c => c.capiId === res.item.capiId);
-          const countIndex = cluster?.counts?.findIndex(c => c.resource === res.item.resource);
+          const cluster = this.finalCounts.find((c) => c.capiId === res.item.capiId);
+          const countIndex = cluster?.counts?.findIndex((c) => c.resource === res.item.resource);
 
           if ( (countIndex && countIndex !== -1) || countIndex === 0 ) {
             this.$set(cluster?.counts[countIndex], 'durationMs', res.durationMs);
@@ -196,13 +195,13 @@ export default {
     },
 
     nodeCount(counts) {
-      const resource = counts.findIndex(c => c.resource === 'node');
+      const resource = counts.findIndex((c) => c.resource === 'node');
 
       return counts[resource]?.count;
     },
 
     toggleTable(area) {
-      const itemIndex = this.finalCounts.findIndex(item => item.id === area);
+      const itemIndex = this.finalCounts.findIndex((item) => item.id === area);
 
       this.finalCounts[itemIndex].isTableVisible = !this.finalCounts[itemIndex].isTableVisible;
     },
@@ -235,6 +234,7 @@ export default {
         'aws',
         'digitalocean',
         'linode',
+        'targetRoute', // contains circular references, isn't useful (added later to store)
       ];
 
       const clearListsKeys = [
@@ -316,10 +316,12 @@ export default {
         <AsyncButton
           mode="timing"
           class="mr-20"
+          data-testid="diagnostics-generate-response-times"
           @click="gatherResponseTimes"
         />
         <AsyncButton
           mode="diagnostic"
+          data-testid="diagnostics-download-diagnostic-package"
           @click="promptDownload"
         />
       </div>

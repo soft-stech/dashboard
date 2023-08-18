@@ -15,6 +15,10 @@ export default class LabeledSelectPo extends ComponentPo {
     });
   }
 
+  clickLabel(label: string) {
+    return this.getOptions().contains('li', label).click();
+  }
+
   /**
    * Checks selected option displays on dropdown
    * @param label
@@ -46,5 +50,13 @@ export default class LabeledSelectPo extends ComponentPo {
    */
   isClosed() {
     return this.getOptions().should('not.exist');
+  }
+
+  /**
+   * Filter list by typing name
+   * @returns
+   */
+  filterByName(name: string) {
+    return this.self().type(name);
   }
 }

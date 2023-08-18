@@ -17,6 +17,7 @@ import Loading from '@shell/components/Loading';
 import { HARVESTER_TYPES, RANCHER_TYPES } from '@shell/components/form/ResourceQuota/shared';
 import { HARVESTER_NAME as HARVESTER } from '@shell/config/features';
 import Labels from '@shell/components/form/Labels';
+import { randomStr } from '@shell/utils/string';
 
 export default {
   components: {
@@ -39,7 +40,7 @@ export default {
     if (this.$store.getters['management/schemaFor'](MANAGEMENT.PROJECT)) {
       this.projects = await this.$store.dispatch('management/findAll', { type: MANAGEMENT.PROJECT });
 
-      this.project = this.projects.find(p => p.id.includes(this.projectName));
+      this.project = this.projects.find((p) => p.id.includes(this.projectName));
     }
   },
 
@@ -58,6 +59,7 @@ export default {
       projects:                null,
       viewMode:                _VIEW,
       containerResourceLimits: this.value.annotations?.[CONTAINER_DEFAULT_RESOURCE_LIMIT] || this.getDefaultContainerResourceLimits(projectName),
+      rerenderNums:            randomStr(4),
       projectName,
       HARVESTER_TYPES,
       RANCHER_TYPES,
@@ -76,7 +78,7 @@ export default {
       let projects = this.$store.getters['management/all'](MANAGEMENT.PROJECT);
 
       // Filter out projects not for the current cluster
-      projects = projects.filter(c => c.spec?.clusterName === clusterId);
+      projects = projects.filter((c) => c.spec?.clusterName === clusterId);
       const out = projects.map((project) => {
         return {
           label: project.nameDisplay,
@@ -125,7 +127,7 @@ export default {
     },
 
     projectName(newProjectName) {
-      this.$set(this, 'project', this.projects.find(p => p.id.includes(newProjectName)));
+      this.$set(this, 'project', this.projects.find((p) => p.id.includes(newProjectName)));
     }
   },
 
@@ -149,9 +151,14 @@ export default {
       }
 
       const projects = this.$store.getters['management/all'](MANAGEMENT.PROJECT);
-      const project = projects.find(p => p.id.includes(projectName));
+      const project = projects.find((p) => p.id.includes(projectName));
 
       return project?.spec?.containerDefaultResourceLimit || {};
+    },
+
+    PSAChanged($event) {
+      this.value.setLabels($event);
+      this.rerenderNums = randomStr(4);
     }
   },
 };
@@ -242,6 +249,7 @@ export default {
         :weight="-1"
       >
         <Labels
+          :key="rerenderNums"
           default-container-class="labels-and-annotations-container"
           :value="value"
           :mode="mode"
@@ -258,7 +266,7 @@ export default {
           :labels="value.labels"
           :mode="mode"
           labels-prefix="pod-security.kubernetes.io/"
-          @updateLabels="value.setLabels($event)"
+          @updateLabels="PSAChanged"
         />
       </Tab>
     </Tabbed>
