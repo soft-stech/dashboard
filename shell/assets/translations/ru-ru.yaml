@@ -73,6 +73,7 @@ generic:
   techPreview: Превью
   type: Тип
   unknown: Неизвестный
+  upload: Загрузить
   provisioning: "—"
   key: Ключ
   value: Значение
@@ -197,6 +198,12 @@ nav:
     accountAndKeys: Аккаунт и API ключи
     logOut: Выйти
   failWhale:
+    authMiddleware: Auth Middleware
+    clusterNotFound: Кластер { clusterId } не найден
+    productNotFound: Продукт { productNotFound } не найден
+    resourceNotFound: Тип ресурсов { resource } не найден
+    resourceListNotFound: Тип ресурсов { resource } не найден, невозможно отобразить список
+    resourceIdNotFound: Ресурс { resource } с id { fqid } не найден, невозможно отобразить информацию о ресурсе
     reload: Перезагрузить
     separator: или
 
@@ -588,6 +595,10 @@ asyncButton:
     action: Применить
     success: Применено
     waiting: Применяем&hellip;
+  add:
+    action: Добавить
+    success: Добавлено
+    waiting: Добавляем&hellip;
   continue:
     action: Продолжить
     success: Сохранено
@@ -1332,7 +1343,6 @@ cluster:
     deprecated: (устаревшая)
     deprecatedPatches: Показать устаревшие версии патчей Kubernetes
     deprecatedPatchWarning: Рекоммендуется использовать последнюю версию патча для каждой минорной версии Kubernetes. Устаревшие версии патчей могут быть полезны при миграции.
-  toolsTip: Используйте новый Cluster Tools для управления и установки Monitoring, Logging и других инструментов
   legacyWarning: Включен флаг устаревших функций, но не все устаревшие функции поддерживаются в Kubernetes 1.21+.
   log:
     connecting: Подключение…
@@ -2150,8 +2160,10 @@ fleet:
       protocolBanner: Введите корректный HTTPS или SSH URL на Git репозиторий.
     resources:
       label: "Управление ресурсами"
-      keepResources: Сохранять ресурсы после удаления
-      resourceBanner: Если выбрана опция выше, ресурсы будут сохранены при удалении GitRepo или Bundle - будут удалены только secret'ы релизов Helm.
+      keepResources: Всегда сохранять ресурсы
+      keepResourcesBanner: Когда включена опция выше, при удалении  GitRepo или Bundle ресурсы будут сохранены, удалены будут только secret'ы релиза Helm.
+      correctDrift: Включить самовосстановление
+      correctDriftBanner: Когда включено, Fleet будет проверять, что ресурсы кластера всегда синхронизированы с git-репозиторием. Все изменения ресурсов, сделанные в кластере, будут утрачены.
     add:
       steps:
         repoInfo:
@@ -2390,11 +2402,32 @@ hpa:
     name:
       label: Имя референта
       placeholder: напр. php-apache
+  scaleDownRules:
+    label: Поведение при уменьшении масштаба
+    enable: Задать поведение при уменьшении масштаба
+  scaleUpRules:
+    label: Поведение при увеличении масштаба
+    enable: Задать поведение при увеличении масштаба
+  scalingRule:
+    policyHeader: Политики
+    addPolicy: Добавить политику
+    selectPolicy: Выбрать политику
+    selectPolicyTooltip: Выберите политику с максимальным значением, минимальным значением или отключите масштабирование.
+    stabilizationWindowSeconds: Окно стабилизации в секундах
+    stabilizationWindowSecondsTooltip: Количество секунд, в течение которых прошлые рекомендации должны учитываться при увеличении или уменьшении масштаба.
+    policy:
+      type: Тип
+      typeTooltip: Установите политику, основываясь на количестве подов для масштабирования или проценте текущих реплик для масштабирования.
+      value: Значение
+      valueTooltip: Количество изменений, разрешенных политикой.
+      periodSeconds: Период в секундах
+      periodSecondsTooltip: Временное окно, в течение которого политика должна сохраняться.
   tabs:
     labels: Лэйблы
     metrics: Метрики
     target: Цель
     workload: Рабочая нагрузка
+    behavior: Поведение
   types:
     cpu: CPU
     memory: Память
@@ -3009,6 +3042,7 @@ login:
     noResponse: "Нет ответа"
   error: Во время авторизации произошла ошибка. Пожалуйста, попытайтесь снова.
   clientError: Неправильное имя пользователя или пароль. Пожалуйста, попытайтесь снова.
+  specificError: 'Во время авторизации произошла ошибка: {msg}'
   useLocal: Использовать локального пользователя
   loginWithProvider: Войти с использованием {provider}
   username: Имя пользователя
@@ -3020,6 +3054,9 @@ login:
   useNonLocal: Использовать не локального пользователя
   remember:
     label: Запомнить имя пользователя
+
+logout:
+  message: Выход...
 
 managementNode:
   customName: Пользовательское имя
@@ -3480,7 +3517,10 @@ navLink:
         label: Лэйбл ссылки
       description:
         label: Описание ссылки
+    groupImage:
+      label: Изображение группы
       iconSrc:
+        tip: 'Высота изображения должна быть 21 пиксель при максимальной ширине в 200 пикселей. Максимальный размер файла - 20Кб. Допустимые форматы: JPEG, PNG, SVG.'
         label: Добавить изображение
 networkpolicy:
   egress:
@@ -3668,7 +3708,7 @@ persistentVolume:
       label: ID политики хранилища
       placeholder: например, sp1
   csi:
-    label: CSI (не поддерживается)
+    label: CSI
     suffix: (CSI)
     driver:
       label: Драйвер
@@ -3989,7 +4029,9 @@ inactivity:
 
 # Rancher Extensions
 plugins:
-  incompatibleDisclaimer: "Последняя версия данного расширения ({ version }) несовместима с текущей версией Rancher ({ rancherVersion })."
+  incompatibleRancherVersion: "Последняя версия данного расширения ({ version }) несовместима с текущей версией Rancher ({ rancherVersion })."
+  incompatibleKubeVersion: "Последняя версия данного расширения ({ version }) несовместима с текущей версией Kube ({ kubeVersion })."
+  currentInstalledVersionBlockedByKubeVersion: "Эта версия несовместима с текущей версией Kubernetes ({ kubeVersion }  Vs  { kubeVersionToCheck })."
   labels:
     builtin: Встроенное
     experimental: Экспериментальное
@@ -4010,6 +4052,7 @@ plugins:
     host: Это расширение несовместимо с данным приложением
     version: Это расширение несовместимо с данной версией Rancher
     load: При загрузке кода для этого расширения произошла ошибка
+    developerPkg: Это расширение было загружено изнутри, поэтому внешняя версия загружена не будет
   success:
     title: Загруженное расширение {name}
     message: Расширение успешно загружено
@@ -4025,7 +4068,8 @@ plugins:
     detail: Детали
     versions: Версии
     versionError: Не удалось загрузить информацию о версии
-    requiresVersion: "Требуется Rancher {version}"
+    requiresRancherVersion: "Требуется Rancher {version}"
+    requiresKubeVersion: "Требуется Kube версии {version}"
   empty:
     all: Нет ни установленных, ни доступных расширений
     available: Нет доступных расширений
@@ -4035,6 +4079,7 @@ plugins:
   loadError: Произошла ошибка при загрузке кода для этого расширения
   helmError: "Произошла ошибка при установке расширения с помощью Helm"
   manageRepos: Управление репозиториями
+  addRancherRepos: Добавить репозитории Rancher
   manageCharts: Управление чартами расширений
   manageCatalog:
     label: Управление каталогами расширений
@@ -4106,23 +4151,39 @@ plugins:
   safeMode:
     title: Безопасный режим расширений
     message: Расширения не были загружены
+  addRepos:
+    banner: Есть новые доступные репозитории расширений. Для подключения этих репозиториев нажмите кнопку справа.
+    bannerBtn: Добавить репозитории
+    title: Добавить репозитории расширений
+    prompt: Вы можете установить несколько репозиториев расширений Rancher, чтобы увеличить Ваш каталог расширений
   setup:
+    installed: Уже установлено
+    uninstalled: Уже удалено
     title: Поддержка расширений не включена
     prompt:
       cant: Автоматическая установка недоступна - не найдено необходимых чартов Helm
       can: Требуется установить оператор расширений
+      official: Официальный репозиторий расширений Rancher предоставляет расширения, выпущенные Rancher
+      partners: Партнёрский репозиторий расширений предоставляет расширения, выпущенные партнёрами Rancher
+      community: Репозиторий расширений сообщества предоставляет расширения, выпущенные сообществом Rancher
     install:
       title: Включить поддержку расширений?
-      prompt: Для включения поддержки расширений будут установлены чарты Helm
-      airgap: Репозиторий расширений Rancher предоставляет расширения, опубликованные Rancher. Отключите галку, если установка Rancher сделана по принципу air-gapped
-      addRancherRepo: Добавить репозиторий расширений Rancher
+      prompt: Будут установлены чарты Helm, необходимые для включения поддержки расширений
+      airgap: Эта функциональность НЕ должна быть включена при установке, если установка сделана по принципу air-gapped
+      addRancherRepo: Добавить официальный репозиторий расширений Rancher
+      addPartnersRancherRepo: Добавить партнёрский репозиторий расширений
+      addCommunityRancherRepo: Добавить репозиторий расширений сообщества
     remove:
       label: Отключить поддержку расширений
       title: Отключить поддержку расширений?
       prompt: Чарты Helm, активирующие поддержку расширений, будут удалены
       registry:
-        title: Удалить репозиторий расширений Rancher
-        prompt: Репозиторий расширений Rancher предоставляет расширения, опубликованные Rancher
+        official:
+          title: Удалить официальный репозиторий расширений Rancher
+        partners:
+          title: Удалить партнёрский репозиторий расширений
+        community:
+          title: Удалить репозиторий расширений сообщества
       crd:
         title: Удалить определение пользовательского ресурса расширений Rancher
         prompt: Установлено одно или более расширений - удаление CRD потребует переустановки этих расширений вручную, если поддержка расширений будет повторно включена впоследствии.
@@ -4439,7 +4500,6 @@ rbac:
   members:
     label: Пользователи
   roletemplate:
-    label: Роли
     newUserDefault:
       "no": Нет
       tooltip: Это не влияет на уже существующие привязки к роли.
@@ -5586,8 +5646,8 @@ validation:
       tooLongPrefix: '"{key}" не может иметь префикс длиннее {max} символов'
   minLength: '"{key}" должен содержать более {min} символов'
   maxLength: '"{key}" должен содержать менее {max} символов'
-  minValue: '"{key}" должно быть больше, чем {min}'
-  maxValue: '"{key}" должно быть меньше {max}'
+  minValue: '"{key}" должно быть равно или больше, чем {min}'
+  maxValue: '"{key}" должно быть равно или меньше, чем {max}'
   betweenLengths: '"{key}" должен содержать от {min} до {max} символов'
   betweenValues: '"{key}" должен быть между {min} и {max}'
   noSchema: Не найдено схемы для проверки
@@ -5711,6 +5771,7 @@ wm:
   containerShell:
     clear: Очистить
     containerName: "Контейнер: {label}"
+    failed: "Невозможно открыть shell для контейнера (ни одна из команд shell не была успешна)\n\r"
   kubectlShell:
     title: "Kubectl: {name}"
 
@@ -7323,11 +7384,88 @@ manager:
     label: Шаблоны нод
 
 auth:
+  roleTemplate: Шаблоны ролей
   config:
     label: Провайдер авторизации
 vncConsole:
   error:
     message: Подключение Web VNC консоли прервано
+
+gitPicker:
+  github:
+    label: GitHub
+    tableHeaders:
+      choose:
+        label: Выбрать
+      sha:
+        label: SHA
+      author:
+        label: Автор
+        unknown: Неизвестно
+      message:
+        label: Сообщение
+      date:
+        label: Дата
+    username:
+      label: Имя пользователя / Организация
+      inputLabel: Имя пользователя / Организация
+      tooltip: Имя пользователя / Организация Git-репозитория
+    branch:
+      label: Ветка
+      inputLabel: Ветка
+      tooltip: Ветка для развёртывания
+    repo:
+      label: Репозиторий
+      inputLabel: Репозиторий
+      tooltip: Репозиторий для развёртывания из него
+    commits:
+      label: Коммиты
+      tooltip: Коммиты для развёртывания из них
+    commit:
+      label: Коммит
+      inputLabel: Коммит
+    commitMessage:
+      label: Сообщение коммита
+    errors:
+      noAccount: Не найден аккаунт GitHub или организация. Пожалуйста, проверьте Ваш запрос и попробуйте снова.
+      noBranch: Ветка не найдена. Пожалуйста, проверьте Ваш запрос и попробуйте снова.
+  gitlab:
+    label: GitLab
+    tableHeaders:
+      choose:
+        label: Выбрать
+      sha:
+        label: SHA
+      author:
+        label: Автор
+        unknown: Неизвестно
+      message:
+        label: Сообщение
+      date:
+        label: Дата
+    username:
+      label: Имя пользователя / Организация
+      inputLabel: Имя пользователя / Организация
+      tooltip: Имя пользователя / Организация Git-репозитория
+    branch:
+      label: Ветка
+      inputLabel: Ветка
+      tooltip: Ветка для развёртывания
+    repo:
+      label: Репозиторий
+      inputLabel: Репозиторий
+      tooltip: Репозиторий для развёртывания из него
+    commits:
+      label: Коммиты
+      tooltip: Коммиты для развёртывания из них
+    commit:
+      label: Коммит
+      inputLabel: Коммит
+    commitMessage:
+      label: Сообщение коммита
+    errors:
+      noAccount:  Не найден аккаунт GitLab или организация. Пожалуйста, проверьте Ваш запрос и попробуйте снова.
+      noBranch:  Ветка не найдена. Пожалуйста, проверьте Ваш запрос и попробуйте снова.
 
 networkAttachmentDefinition:
   tabs:
