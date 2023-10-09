@@ -111,8 +111,8 @@ generic:
           =1 {Совпадений 1 из {total, number}: "{sample}"}
           other {Совпадений {matched, number} из {total, number}, включая "{sample}"}
         }
-  copyValue: Copy value
-  valueCopied: Value copied!
+  copyValue: Скопировать значение
+  valueCopied: Значение скопировано!
 
 locale:
   en-us: English
@@ -142,8 +142,8 @@ nav:
   rotateEncryptionKeys: Обновить ключи шифрования
   saveAsRKETemplate: Сохранить как шаблон RKE
   takeSnapshot: Сделать снэпшот
-  seeAllClusters: See all clusters
-  seeAllClustersCollapsed: See all
+  seeAllClusters: Увидеть все кластеры
+  seeAllClustersCollapsed: Увидеть всё
   group:
     cluster: Кластер
     inUse: Дополнительные ресурсы
@@ -190,7 +190,7 @@ nav:
   search:
     placeholder: Начните писать для поиска кластера
     noResults: Не найдено кластеров
-    clusters: clusters
+    clusters: кластер(а/ов)
   resourceSearch:
     label: Поиск ресурсов
     toolTip: Поиск ресурсов {key}
@@ -657,9 +657,9 @@ asyncButton:
     success: Сохранено
     waiting: Сохранение&hellip;
   editAndContinue:
-    action: Save and Continue
-    success: Saved
-    waiting: Saving&hellip;
+    action: Сохранить и продолжить
+    success: Сохранено
+    waiting: Сохранение&hellip;
   enable:
     action: Включить
     success: Включено
@@ -1144,7 +1144,7 @@ cluster:
     nodeRole:
       label: Роль ноды
       detail: Выберите, какие роли будет иметь данная нода в кластере. Кластер должен содержать как минимум одну ноду каждой роли.
-      warning: The cluster needs to have at least one node with each role to be usable.
+      warning: Кластер должен содержать как минимум одну ноду каждой роли, чтобы быть пригодным для использования.
     advanced:
       label: Расширенные настройки
       detail: Дополнительные настройки регистрации ноды. Часто требуется, чтобы эти значения отличались у каждой из зарегистрированных нод.
@@ -1682,8 +1682,8 @@ cluster:
     removedPsp: Pod Security Policies были удалены Kubernetes v1.25. Используйте вместо них PodSecurity Admission.
     machinePoolError: |-
       {count, plural,
-        =1 { {pool_name}: The provided value for {fields} was not found in the list of expected values. This can happen with clusters provisioned outside of Rancher or when options for the provider have changed. }
-        other { {pool_name}: The provided values for {fields} were not found in the list of expected values. This can happen with clusters provisioned outside of Rancher or when options for the provider have changed. }
+        =1 { {pool_name}: Заданное значение {fields} не найдено в списке ожидаемых значений. Это может происходить, если provisioning кластера осуществлён вне Rancher или когда изменились настройки провайдера. }
+        other { {pool_name}: Заданные значения для {fields} не найдены в списке ожидаемых значений. Это может происходить, если provisioning кластера осуществлён вне Rancher или когда изменились настройки провайдера. }
       }
   rkeTemplateUpgrade: Доступно обновление для ревизии шаблона {name}
 
@@ -1765,7 +1765,7 @@ cluster:
       searchPlaceholder: Начните вводить для поиска
       noResults: Результатов не найдено
   privateRegistry:
-    header: Registry for Rancher System Container Images
+    header: Регистри для образов системных контейнеров Rancher
     label: Включить регистри контейнеров на уровне кластера для образов системных контейнеров Rancher
     description: "Если включено, Rancher будет извлекать образы контейнеров из этого регистри во время выделения кластера. По умолчанию Rancher также будет использовать этот регистри при установке официальных Helm чарт приложений Rancher. Если отключен регистри контейнеров на уровне кластера, системные образы извлекаются из системного регистри по умолчанию, указанного в глобальных настройках."
     docsLinkRke2: 'За помощью в конфигурации приватных зеркал регистри обратитесь к <a href="https://docs.rke2.io/install/containerd_registry_configuration/" target="_blank">документации</a> RKE2.'
@@ -1849,8 +1849,8 @@ cluster:
         title: Устаревание политики безопасности подов
         body: <p>Начиная с версии 1.25, Kubernetes не поддерживает Политики безопасности подов (PSP). Если Ваш кластер содержит контроллер доступа PodSecurityPolicy, включенный посредством "kube-apiserver-arg.enable-admission-plugins" в YAML кластера, его необходимо удалить <i>вручную,</i> прежде чем продолжать обновление. Кроме того, любые PSP, присутствующие в кластере, больше не будут доступны/принудительно применены. Хотите продолжить?</p>
       editYamlMachinePool:
-        title: Save Machine Configurations
-        body: Machine Configurations define how machines in Pools are deployed.<br><br> They will be saved upfront to ensure valid Cluster YAML can be saved.
+        title: Сохранить конфигурации машин
+        body: Конфигурации машин определяют как развёрнуты машины в пулах.<br><br> Они будут сохранены заранее для проверки, что может быть сохранён корректный YAML кластера.
     snapshots:
       suffix: снапшотов на одну ноду
     systemService:
@@ -1866,7 +1866,7 @@ cluster:
       header: Конфигурация облачного провайдера
       defaultValue:
         label: По умолчанию - встроенный RKE2
-      unsupported: The current Cloud Provider is not supported by this version of Kubernetes. The Cloud Provider has been changed to External. Please use the Cloud Provider Config to supply an out-of-tree configuration as needed.
+      unsupported: Текущий облачный провайдер не поддерживается данной версией Kubernetes. Облачный провайдер был изменён на Сторонний. Пожалуйста, используйте конфигурацию облачного провайдера Используйте конфигурацию облачного провайдера для предоставления нестандартной (вне дерева) конфигурации, если это необходимо.
     security:
       header: Безопасность
     cis:
@@ -1882,7 +1882,7 @@ cluster:
         none: (Нет)
         default: По умолчанию - встроенный RKE2
     secretEncryption:
-      label: Encrypt Secrets
+      label: Secret'ы шифрования
     cisProfile:
       option: (Нет)
     enableNetworkPolicy:
@@ -1902,17 +1902,17 @@ cluster:
       toolTip: Освобождение превентивно удаляет поды на каждой ноде, чтобы на обновляемых нодах не было запущенных рабочих нагрузок. Обновление без освобождения выполняется быстрее и вызывает меньше изменений, но поды все равно могут быть перезапущены в зависимости от выполняемого обновления.
       deleteEmptyDir:
         warning: "По умолчанию поды, использующие тома emptyDir, будут удалены при обновлении. Это может повлиять на операции, зависящие от томов emptyDir, сохраняющихся в течение жизненного цикла подов."
-        label: Delete pods using emptyDir volumes
-        tooltip: emptyDir volumes are often used for ephemeral data, but the data will be permanently deleted.  Draining will fail if this is not set and there are pods using emptyDir.
+        label: Удалить поды, использующие тома emptyDir
+        tooltip: Тома emptyDir часто используются для временных данных, а данные будут безвозвратно удалены.  Освобождение не удастся, если данная настройка не выбрана и есть поды, использующие emptyDir.
       force:
-        label: Delete standalone pods
-        tooltip: Delete standalone pods which are not managed by a Workload controller (Deployment, Job, etc).  Draining will fail if this is not set and there are standalone pods.
+        label: Удалить автономные поды
+        tooltip: Удалить автономные поды, которые не управляются контроллером рабочих нагрузок (развёртывание, job и т.д.).  Освобождение не удастся, если данная настройка не выбрана и есть автономные поды.
       gracePeriod:
-        checkboxLabel: Override pod termination grace periods
-        inputLabel: Grace Period
+        checkboxLabel: Переписать периоды отсрочки завершения подов
+        inputLabel: Период отсрочки
       timeout:
-        checkboxLabel: Timeout after
-        inputLabel: Drain Timeout
+        checkboxLabel: Таймаут после
+        inputLabel: Таймаут освобождения
     truncateHostnames: Усекать имя хоста до 15 символов для совместимости с NetBIOS.
     address:
       tooltip: Сетевые значения кластера нельзя изменить после того, как кластер будет создан.
@@ -2250,7 +2250,7 @@ fleet:
     workspace:
       label: Рабочее пространство
       addWorkspace: Создать рабочее пространство
-    helmRepoURLRegex: Helm Repos (URL Regex)
+    helmRepoURLRegex: Репозитории Helm (URL Regex)
   clusterGroup:
     selector:
       label: Выбор кластера
@@ -2328,7 +2328,7 @@ gatekeeperIndex:
   poweredBy: OPA Gatekeeper
   unavailable: OPA + Gatekeeper не доступен в system-charts каталоге.
   violations: Нарушения
-  deprecated: The OPA Gatekeeper chart is deprecated as of Rancher 2.8 and will be removed in a future release. Please consider switching to <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.kubewarden.io">Kubewarden</a>.
+  deprecated: Чарт OPA Gatekeeper считается устаревшим с версии Rancher 2.8 и будет удалён в будущих релизах. Пожалуйста, рассмотрите возможность перехода на <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.kubewarden.io">Kubewarden</a>.
 
 gatekeeperInstall:
   auditInterval: Авто-интервал
@@ -2396,8 +2396,8 @@ growl:
     message: "Создание этого пода нарушает существующие ограниченния для выбранного пространства имён"
     title: Нарушение PodSecurity
   kubeApiHeaderWarning:
-    titleCreate: "{resourceType} Creation Warning"
-    titleUpdate: "{resourceType} Update Warning"
+    titleCreate: "Предупреждение создания {resourceType}"
+    titleUpdate: "Предупреждение обновления {resourceType}"
 
 hpa:
   detail:
@@ -4157,7 +4157,7 @@ plugins:
         name: образы
         label: Образ развёртывания
       repository:
-        label: Repository Name
+        label: Имя репозитория
   tabs:
     all: Все
     available: Доступные
@@ -4330,7 +4330,7 @@ probe:
     label: Порог успешного выполнения
     placeholder: "По умолчанию: 1"
   timeout:
-    label: Тайм-аут
+    label: Таймаут
     placeholder: "По умолчанию: 3"
   type:
     label: Тип
@@ -5673,9 +5673,9 @@ validation:
   output:
     logdna:
       apiKey: Требуется установить "Api Key".
-  invalidCron: Неверное расписание cron
-  invalidCidr: "Invalid CIDR"
-  invalidIP: "Invalid IP"
+  invalidCron: Некорректное расписание cron
+  invalidCidr: "Некорректный CIDR"
+  invalidIP: "Некорректный IP"
   k8s:
     name: Должен состоять из буквенно-цифровых символов нижнего регистра или '-', начинаться и заканчиваться буквенно-цифровым символом (например, 'my-name' или '123-abc').
     identifier:
@@ -5735,7 +5735,7 @@ validation:
       missingResource: Вы должны указать Ресурс для каждого ресурсного гранта
       missingApiGroup: Вы должны указать группу API для каждого гранта на ресурс
       missingOneResource: Вы должны указать по крайней мере один URL-адрес ресурса, URL-адрес не-ресурса или группу API для каждого гранта на ресурс
-      noResourceAndNonResource: Each rule may contain Resources or Non-Resource URLs but not both
+      noResourceAndNonResource: Каждое правило может содержать либо ресурсы, либо URL-адреса не-ресурсов, но не оба варианта одновременно
   service:
     externalName:
       none: Внешнее имя требуется для сервиса ExternalName.
@@ -6301,7 +6301,7 @@ workload:
         recreate: "Воссоздать: Убить ВСЕ поды, затем запустить новые поды."
         rollingUpdate: "Скользящее обновление: Создавать новые поды, пока не будет достигнуто максимальное превышение, прежде чем удалять старые поды. Не останавливайте больше подов, чем максимальное количество недоступных."
     terminationGracePeriodSeconds:
-      label: Termination Grace Period
+      label: Период отсрочки завершения
       tip: Продолжительность, необходимая поду для успешного завершения.
     title: Обновление
   tabs:
