@@ -21,6 +21,7 @@
     "autoscroll",
     "banzaicloud",
     "cacerts",
+    "CAPI",
     "chainable",
     "clusterroletemplatebindings",
     "Codecov",
@@ -34,6 +35,7 @@
     "kubectl",
     "Kubernetes",
     "kubevirt",
+    "mgmt",
     "neuvector",
     "nuxt",
     "overcommit",
@@ -42,13 +44,15 @@
     "projectsnamespaces",
     "protip",
     "PSPS",
+    "PVC",
     "pvcs",
     "shortkey",
+    "storageclass",
     "testid",
     "tolerations",
     "userpreferences",
     "virtualmachine",
     "vuex",
     "whatsnew"
-  ],
+  ]
 }
