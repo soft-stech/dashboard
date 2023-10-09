@@ -767,7 +767,7 @@ backupRestoreOperator:
       warning: 'Этот {type} не имеет своей политики "Сохранить".  Ваши резервные копии могут быть потеряны, если объем изменяется или становится несвязанным.'
   encryption: Шифрование
   encryptionConfigName:
-    backuptip: "Любой секрет в пространстве имен <code>cattle-resources-system</code>, имеющий <code>encryption-provider-config.yaml</code> ключ. <br/> Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher."
+    backuptip: "Любой секрет в пространстве имён <code>cattle-resources-system</code>, имеющий <code>encryption-provider-config.yaml</code> ключ. <br/> Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher."
     label: Secret конфигурации шифрования
     options:
       none: Хранить содержимое незашифрованной резервной копии
@@ -853,7 +853,7 @@ catalog:
       chartUrls: Чарт
       keywords: Ключевые слова
     errors:
-      clusterToolExists: Этот чарт имеет фиксированное пространство имен и имя. Подходящее <a href="{url}">приложение</a> было найдено и любые изменения будут внесены в него.
+      clusterToolExists: Этот чарт имеет фиксированное пространство имён и имя. Подходящее <a href="{url}">приложение</a> было найдено и любые изменения будут внесены в него.
     banner:
       legacy: "Удаление PSP: Перед обновлением кластера до версии Kubernetes 1.25+, проверьте ваши приложения Helm относительно политик безопасности подов и обновите их соответствующим образом"
     enablePSP: Включить политики безопасности подов
@@ -905,7 +905,7 @@ catalog:
       installGeneric: Установить чарт
       upgrade: "Обновить {name}"
     helm:
-      atomic: Atomic
+      atomic: Atomicпш
       description:
         label: Описание
         placeholder: напр. назначение helm команды
@@ -931,7 +931,7 @@ catalog:
             other { секунд }
           }
       wait: Подождите
-    namespaceIsInProject: "Пространство имен этого чарта, <code>{namespace}</code>, уже существует и не может быть добавлено в другой проект."
+    namespaceIsInProject: "Пространство имён этого чарта, <code>{namespace}</code>, уже существует и не может быть добавлено в другой проект."
     project: Установить в проект
     section:
       chartOptions: Редактировать настройки
@@ -951,8 +951,8 @@ catalog:
           true { приложение }
           false { чарт }
           }. Начните с установки некоторых основных сведений, используемых {vendor} для управления приложением.
-        nsCreationDescription: "Чтобы установить приложение в новое пространство имен, введите его имя в поле Пространство имен и выберите его."
-        createNamespace: "Будет создано пространство имен <code>{namespace}</code>."
+        nsCreationDescription: "Чтобы установить приложение в новое пространство имён, введите его имя в поле Пространство имён и выберите его."
+        createNamespace: "Будет создано пространство имён <code>{namespace}</code>."
       clusterTplVersion:
         label: Версия
         subtext: Выберите версию шаблона
@@ -982,7 +982,7 @@ catalog:
     tableHeaders:
       action: Действие
       releaseName: Имя релиза
-      releaseNamespace: Пространство имен релиза
+      releaseNamespace: Пространство имён релиза
   repo:
     action:
       refresh: Обновить
@@ -2223,7 +2223,7 @@ fleet:
       label: Имя сервис аккаунта
       placeholder: "Необязательно: Использовать сервис аккаунт в целевых кластерах"
     targetNamespace:
-      label: Целевое пространство имен
+      label: Целевое пространство имён
       placeholder: "Необязательно: Требовать, чтобы все ресурсы были в одном пространстве имён"
     target:
       selectLabel: Цель
@@ -2304,14 +2304,14 @@ gatekeeperConstraint:
           title: Выбор лэйбла
     namespaces:
       sub:
-        excludedNamespaces: Исключенные пространства имен
-        namespaces: Пространства имен
+        excludedNamespaces: Исключенные пространства имён
+        namespaces: Пространства имён
         namespaceSelector:
-          addNamespace: Добавить пространство имен
-          title: Выбор пространства имен
+          addNamespace: Добавить пространство имён
+          title: Выбор пространства имён
         scope:
           title: Область
-      title: Пространства имен
+      title: Пространства имён
     parameters:
       addParameter: Добавить параметр
       editAsForm: Редактировать как форму
@@ -2486,7 +2486,7 @@ hpa:
 import:
   title: Импортировать YAML
   defaultNamespace:
-    label: Пространство имен по умолчанию
+    label: Пространство имён по умолчанию
   success: |-
     Применено {count, plural,
     =1 {1 Ресурс}
@@ -2735,7 +2735,7 @@ istio:
     advanced: Расширенные настройки
     description: Описание
   tracing: Включен Jaeger Tracing (ограниченно)
-  v1Warning: Пожалуйста, удалите текущую версию Istio в <code>istio-system</code> пространстве имен перед установкой этой версии.
+  v1Warning: Пожалуйста, удалите текущую версию Istio в <code>istio-system</code> пространстве имён перед установкой этой версии.
 
 labels:
   addLabel: Добавить лэйбл
@@ -4237,7 +4237,7 @@ podSecurityAdmission:
     warn: Предупреждение
     usernames: Имена пользователей
     runtimeClasses: RuntimeClasses
-    namespaces: Пространства имен
+    namespaces: Пространства имён
     privileged: привилегированный
     baseline: базовый уровень
     restricted: с ограничениями
@@ -4392,12 +4392,12 @@ projectMembers:
     workloadsView: Просмотр рабочих нагрузок
 
 projectNamespaces:
-  createNamespace: Создать пространство имен
+  createNamespace: Создать пространство имён
   createProject: Создать проект
-  label: Проекты/Пространства имен
-  noNamespaces: Не задано ни одно пространство имен
-  noProjectNoNamespaces: Все пространства имен в проекте
-  isIstioInjectionEnabled: Для этого пространства имен включено автоматическое внедрение дополнений Istio
+  label: Проекты/Пространства имён
+  noNamespaces: Не задано ни одно пространство имён
+  noProjectNoNamespaces: Все пространства имён в проекте
+  isIstioInjectionEnabled: Для этого пространства имён включено автоматическое внедрение дополнений Istio
 
 prometheusRule:
   alertingRules:
@@ -4477,8 +4477,8 @@ promptRemove:
   attemptingToRemoveAuthConfig: "Вы пытаетесь отключить этого провайдера авторизации. <br><br> Помните, что все привязки шаблонов ролей кластера, привязки шаблонов ролей проекта, привязки глобальных ролей, пользователи, токены будут удалены. <br><br> Уверены что хотите продолжить?"
   protip: "Совет: Удерживайте клавишу {alternateLabel} при нажатии кнопки удалить, чтобы обойти это подтверждение"
   confirmName: "Введите <b>{nameToMatch}</b> ниже, для подтверждения:"
-  deleteAssociatedNamespaces: "Также удалить пространства имен этого проекта:"
-  willDeleteAssociatedNamespaces: "Это также удалит все пространства имен проекта: "
+  deleteAssociatedNamespaces: "Также удалить пространства имён этого проекта:"
+  willDeleteAssociatedNamespaces: "Это также удалит все пространства имён проекта: "
   confirmRelatedResource: "\nУдаление {type} приведет к удалению всех ресурсов этого конкретного {type}, и это невозможно откатить, вы уверены, что хотите продолжить удаление {names}?\n"
   promptConfirmation: "Не запрашивать повторное подтверждение при уменьшении маштабирования."
 
@@ -4570,8 +4570,8 @@ rbac:
         "yes": "Да: роль по умолчанию при создания нового кластера"
         defaultLabel: Создатель кластера по умолчанию
       NAMESPACE:
-        createButton: Создать роль проекта/пространства имен
-        label: Проекты/Пространства имен
+        createButton: Создать роль проекта/пространства имён
+        label: Проекты/Пространства имён
         "yes": "Да: Роль по умолчанию при создании нового проекта"
         defaultLabel: Создатель проекта по умолчанию
       RBAC_ROLE:
@@ -4686,7 +4686,7 @@ resourceDetail:
     description: Описание
     endpoints: Endpoint'ы
     labels: Лэйблы
-    namespaces: Пространства имен
+    namespaces: Пространства имён
     ownerReferences: |-
       {count, plural,
       =1 {Владелец}
@@ -4775,7 +4775,7 @@ resourceTabs:
 
 resourceYaml:
   errors:
-    namespaceRequired: Этот ресурс имеет пространство имен, поэтому необходимо указать пространство имен.
+    namespaceRequired: Этот ресурс имеет пространство имён, поэтому необходимо указать пространство имён.
   buttons:
     continue: Продолжить редактирование
     edit: Редактировать YAML
@@ -5194,7 +5194,7 @@ storageClass:
       label: REST Ключ пользователя
       placeholder: напр. password
     secretNamespace:
-      label: Пространство имен секрета
+      label: Пространство имён секрета
       placeholder: напр. default
     secretName:
       label: Имя секрета
@@ -5231,7 +5231,7 @@ storageClass:
       label: ID Администратора
       placeholder: напр. kube
     adminSecretNamespace:
-      label: Пространство имен секрета администратора
+      label: Пространство имён секрета администратора
       placeholder: напр. kube-system
     adminSecret:
       label: Секрет администратора
@@ -5243,7 +5243,7 @@ storageClass:
       label: ID Пользователя
       placeholder: напр. kube
     userSecretNamespace:
-      label: Пространство имен секрета пользователя
+      label: Пространство имён секрета пользователя
       placeholder: напр. default
     userSecretName:
       label: Имя секрета пользователя
@@ -5266,7 +5266,7 @@ storageClass:
       label: Регистри
       placeholder: "напр. 138.68.74.142:7861"
     adminSecretNamespace:
-      label: Пространство имен секрета администратора
+      label: Пространство имён секрета администратора
       placeholder: напр. kube-system
     adminSecretName:
       label: Имя секрета администратора
@@ -5344,7 +5344,7 @@ storageClass:
       label: Тип файловой системы
       placeholder: напр. ext4
     adminSecretNamespace:
-      label: Пространство имен секрета администратора
+      label: Пространство имён секрета администратора
       placeholder: напр. default
     adminSecretName:
       label: Имя секрета администратора
@@ -5949,8 +5949,8 @@ workload:
         "true": "Да: контейнер может получить больше привилегий, чем его родительский процесс"
       dropCapabilities: Drop Capabilities
       fsGroup: Группа файловой системы
-      hostIPC: Использовать пространство имен IPC хоста
-      hostPID: Использовать пространство имен PID хоста
+      hostIPC: Использовать пространство имён IPC хоста
+      hostPID: Использовать пространство имён PID хоста
       podFsGroup: Группа файловой системы пода
       privileged:
         label: Привилегированный
@@ -5969,7 +5969,7 @@ workload:
         noOption: "Нет"
         yesOption: "Да: контейнеры должны запускаться от имени не root-пользователя"
       runAsUser: Запустить от имени пользовательского ID
-      shareProcessNamespace: Совместное использование пространства имен одного процесса
+      shareProcessNamespace: Совместное использование пространства имён одного процесса
       supplementalGroups: Дополнительные идентификаторы групп
       sysctls: Sysctls
       sysctlsKey: Имя
@@ -6073,8 +6073,8 @@ workload:
       label: Имя хоста
       placeholder: например, web
     nameservers:
-      add: Добавить сервер имен
-      label: Серверы имен
+      add: Добавить сервер имён
+      label: Серверы имён
       placeholder: например, 1.1.1.1
     networkMode:
       label: Режим сети
@@ -6118,7 +6118,7 @@ workload:
         exists: установлено
         greaterThan: ">"
         in: в списке
-        inNamespaces: "Поды в этих пространствах имен:"
+        inNamespaces: "Поды в этих пространствах имён:"
         key: Ключ
         lessThan: <
         matchType: Совпадает с типом
@@ -6136,7 +6136,7 @@ workload:
       requireAny: "Требовать любое из:"
       schedulingRules: Запуск подов на ноде (нодах), соответствующих правилам планирования
       specificNode: Запуск подов на определенной ноде (нодах)
-      thisPodNamespace: Пространство имен этого пода
+      thisPodNamespace: Пространство имён этого пода
       allNamespaces: Все пространства имён
       topologyKey:
         label: Топологический ключ
@@ -6176,7 +6176,7 @@ workload:
       value: Значение
   serviceAccountName:
     label: Имя сервисного аккаунта
-    createMessage: Имя сервиса [ {name} ] не существует в этом пространстве имен, вам необходимо создать его вручную.
+    createMessage: Имя сервиса [ {name} ] не существует в этом пространстве имён, вам необходимо создать его вручную.
   serviceName: Имя сервиса
   storage:
     subtypes:
