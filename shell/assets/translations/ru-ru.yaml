@@ -111,6 +111,8 @@ generic:
           =1 {Совпадений 1 из {total, number}: "{sample}"}
           other {Совпадений {matched, number} из {total, number}, включая "{sample}"}
         }
+  copyValue: Copy value
+  valueCopied: Value copied!
 
 locale:
   en-us: English
@@ -140,6 +142,8 @@ nav:
   rotateEncryptionKeys: Обновить ключи шифрования
   saveAsRKETemplate: Сохранить как шаблон RKE
   takeSnapshot: Сделать снэпшот
+  seeAllClusters: See all clusters
+  seeAllClustersCollapsed: See all
   group:
     cluster: Кластер
     inUse: Дополнительные ресурсы
@@ -186,6 +190,7 @@ nav:
   search:
     placeholder: Начните писать для поиска кластера
     noResults: Не найдено кластеров
+    clusters: clusters
   resourceSearch:
     label: Поиск ресурсов
     toolTip: Поиск ресурсов {key}
@@ -651,6 +656,10 @@ asyncButton:
     action: Сохранить
     success: Сохранено
     waiting: Сохранение&hellip;
+  editAndContinue:
+    action: Save and Continue
+    success: Saved
+    waiting: Saving&hellip;
   enable:
     action: Включить
     success: Включено
@@ -758,7 +767,7 @@ backupRestoreOperator:
       warning: 'Этот {type} не имеет своей политики "Сохранить".  Ваши резервные копии могут быть потеряны, если объем изменяется или становится несвязанным.'
   encryption: Шифрование
   encryptionConfigName:
-    backuptip: "Любой секрет в пространстве имен <code>cattle-resource-system</code>, имеющий <code>encryption-provider-config.yaml</code> ключ. <br/> Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher."
+    backuptip: "Любой секрет в пространстве имен <code>cattle-resources-system</code>, имеющий <code>encryption-provider-config.yaml</code> ключ. <br/> Содержимое этого файла необходимо для выполнения восстановления из этой резервной копии и не хранится в архиве Rancher."
     label: Secret конфигурации шифрования
     options:
       none: Хранить содержимое незашифрованной резервной копии
@@ -1135,6 +1144,7 @@ cluster:
     nodeRole:
       label: Роль ноды
       detail: Выберите, какие роли будет иметь данная нода в кластере. Кластер должен содержать как минимум одну ноду каждой роли.
+      warning: The cluster needs to have at least one node with each role to be usable.
     advanced:
       label: Расширенные настройки
       detail: Дополнительные настройки регистрации ноды. Часто требуется, чтобы эти значения отличались у каждой из зарегистрированных нод.
@@ -1669,7 +1679,12 @@ cluster:
     invalidPsps: В данном кластере имеется один или более PodSecurityPolicy ресурсов. Pod Security Policies недоступны в Kubernetes v1.25.
     haveArgInfo: Конфигурационная информация недосупна для выбранной версии Kubernetes. Параметры, доступные на этом экране, будут ограничены, может потребоваться использование YAML-редактора.
     deprecatedPsp: Pod Security Policies помечены как устаревшие в Kubernetes v1.21, и будут удалены в Kubernetes v1.25.
-    removedPsp: Pod Security Policies были удалены Kubernetes v1.25,  используйте вместо них PodSecurity Admission.
+    removedPsp: Pod Security Policies были удалены Kubernetes v1.25. Используйте вместо них PodSecurity Admission.
+    machinePoolError: |-
+      {count, plural,
+        =1 { {pool_name}: The provided value for {fields} was not found in the list of expected values. This can happen with clusters provisioned outside of Rancher or when options for the provider have changed. }
+        other { {pool_name}: The provided values for {fields} were not found in the list of expected values. This can happen with clusters provisioned outside of Rancher or when options for the provider have changed. }
+      }
   rkeTemplateUpgrade: Доступно обновление для ревизии шаблона {name}
 
   availabilityWarnings:
@@ -1750,6 +1765,7 @@ cluster:
       searchPlaceholder: Начните вводить для поиска
       noResults: Результатов не найдено
   privateRegistry:
+    header: Registry for Rancher System Container Images
     label: Включить регистри контейнеров на уровне кластера для образов системных контейнеров Rancher
     description: "Если включено, Rancher будет извлекать образы контейнеров из этого регистри во время выделения кластера. По умолчанию Rancher также будет использовать этот регистри при установке официальных Helm чарт приложений Rancher. Если отключен регистри контейнеров на уровне кластера, системные образы извлекаются из системного регистри по умолчанию, указанного в глобальных настройках."
     docsLinkRke2: 'За помощью в конфигурации приватных зеркал регистри обратитесь к <a href="https://docs.rke2.io/install/containerd_registry_configuration/" target="_blank">документации</a> RKE2.'
@@ -1831,7 +1847,10 @@ cluster:
     modal:
       pspChange:
         title: Устаревание политики безопасности подов
-        body: Начиная с версии 1.25, Kubernetes не поддерживает Политики безопасности подов (PSP). Если Ваш кластер содержит контроллер доступа PodSecurityPolicy, включенный посредством "kube-apiserver-arg.enable-admission-plugins" в YAML кластера, его необходимо удалить <i>вручную,</i> прежде чем продолжать обновление. Кроме того, любые PSP, присутствующие в кластере, больше не будут доступны/принудительно применены. Хотите продолжить?
+        body: <p>Начиная с версии 1.25, Kubernetes не поддерживает Политики безопасности подов (PSP). Если Ваш кластер содержит контроллер доступа PodSecurityPolicy, включенный посредством "kube-apiserver-arg.enable-admission-plugins" в YAML кластера, его необходимо удалить <i>вручную,</i> прежде чем продолжать обновление. Кроме того, любые PSP, присутствующие в кластере, больше не будут доступны/принудительно применены. Хотите продолжить?</p>
+      editYamlMachinePool:
+        title: Save Machine Configurations
+        body: Machine Configurations define how machines in Pools are deployed.<br><br> They will be saved upfront to ensure valid Cluster YAML can be saved.
     snapshots:
       suffix: снапшотов на одну ноду
     systemService:
@@ -1847,6 +1866,7 @@ cluster:
       header: Конфигурация облачного провайдера
       defaultValue:
         label: По умолчанию - встроенный RKE2
+      unsupported: The current Cloud Provider is not supported by this version of Kubernetes. The Cloud Provider has been changed to External. Please use the Cloud Provider Config to supply an out-of-tree configuration as needed.
     security:
       header: Безопасность
     cis:
@@ -1861,58 +1881,73 @@ cluster:
       option:
         none: (Нет)
         default: По умолчанию - встроенный RKE2
-  cisProfile:
-    option: (Нет)
-  enableNetworkPolicy:
-    label: Изоляция сети проекта
-    warning: По умолчанию контроллер входящего трафика не сможет направлять запросы к подам на других нодах.
-  workNode:
-    label: Worker ноды
-  controlPlaneConcurrency:
-    label: Согласованность Control Plane
-    toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
-  workerConcurrency:
-    label: Согласованность Worker
-    toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
-  drain:
-    label: Освобождение нод
-    toolTip: Освобождение превентивно удаляет поды на каждой ноде, чтобы на обновляемых нодах не было запущенных рабочих нагрузок. Обновление без освобождения выполняется быстрее и вызывает меньше изменений, но поды все равно могут быть перезапущены в зависимости от выполняемого обновления.
-  deleteEmptyDir: "По умолчанию поды, использующие тома emptyDir, будут удалены при обновлении. Это может повлиять на операции, зависящие от томов emptyDir, сохраняющихся в течение жизненного цикла подов."
-  truncateHostnames: Усекать имя хоста до 15 символов для совместимости с NetBIOS.
-  address:
-    tooltip: Сетевые значения кластера нельзя изменить после того, как кластер будет создан.
-    header: Адресация
-    clusterCidr:
-      label: CIDR кластера
-    serviceCidr:
-      label: CIDR сервисов
-    dns:
-      label: DNS кластера
-    domain:
-      label: Домен кластера
-    nodePortRange:
-      label: Диапазон сервисных портов NodePort
-    tlsSan:
-      label: Альтернативные имена TLS
-    fqdn:
-      toolTip: FQDN, который будет разрешаться в исправные ноды Control Plane кластера.
-    caCerts:
-      label: CA сертификаты
-      toolTip: Сертификаты, необходимые клиенту для успешной проверки действительности сертификата, возвращенного Endpoint.
-    ipv6:
-      warning: Похоже, вы используете IPv6 CIDR. Драйвер ноды может требовать дополнительной конфигурации для его поддержки.
-      enable: Включить поддержку IPv6
-  etcd:
-    disableSnapshots:
-      label: Автоматические снапшоты
-    snapshotScheduleCron:
-      label: Cron-расписание
-    snapshotRetention:
-      label: Оставлять последний
-    exportMetric:
-      label: Метрики
-      false: Доступно только внутри кластера
-      true: Доступно для публичного интерфейса
+    secretEncryption:
+      label: Encrypt Secrets
+    cisProfile:
+      option: (Нет)
+    enableNetworkPolicy:
+      label: Изоляция сети проекта
+      warning: По умолчанию контроллер входящего трафика не сможет направлять запросы к подам на других нодах.
+    workNode:
+      label: Worker ноды
+    controlPlaneConcurrency:
+      header: Control Plane
+      label: Согласованность Control Plane
+      toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
+    workerConcurrency:
+      label: Согласованность Worker
+      toolTip: "Указывается либо фиксированное количество нод (например, 1) за раз, либо процент (например, 10%)"
+    drain:
+      label: Освобождение нод
+      toolTip: Освобождение превентивно удаляет поды на каждой ноде, чтобы на обновляемых нодах не было запущенных рабочих нагрузок. Обновление без освобождения выполняется быстрее и вызывает меньше изменений, но поды все равно могут быть перезапущены в зависимости от выполняемого обновления.
+      deleteEmptyDir:
+        warning: "По умолчанию поды, использующие тома emptyDir, будут удалены при обновлении. Это может повлиять на операции, зависящие от томов emptyDir, сохраняющихся в течение жизненного цикла подов."
+        label: Delete pods using emptyDir volumes
+        tooltip: emptyDir volumes are often used for ephemeral data, but the data will be permanently deleted.  Draining will fail if this is not set and there are pods using emptyDir.
+      force:
+        label: Delete standalone pods
+        tooltip: Delete standalone pods which are not managed by a Workload controller (Deployment, Job, etc).  Draining will fail if this is not set and there are standalone pods.
+      gracePeriod:
+        checkboxLabel: Override pod termination grace periods
+        inputLabel: Grace Period
+      timeout:
+        checkboxLabel: Timeout after
+        inputLabel: Drain Timeout
+    truncateHostnames: Усекать имя хоста до 15 символов для совместимости с NetBIOS.
+    address:
+      tooltip: Сетевые значения кластера нельзя изменить после того, как кластер будет создан.
+      header: Адресация
+      clusterCidr:
+        label: CIDR кластера
+      serviceCidr:
+        label: CIDR сервисов
+      dns:
+        label: DNS кластера
+      domain:
+        label: Домен кластера
+      nodePortRange:
+        label: Диапазон сервисных портов NodePort
+      tlsSan:
+        label: Альтернативные имена TLS
+      fqdn:
+        toolTip: FQDN, который будет разрешаться в исправные ноды Control Plane кластера.
+      caCerts:
+        label: CA сертификаты
+        toolTip: Сертификаты, необходимые клиенту для успешной проверки действительности сертификата, возвращенного Endpoint.
+      ipv6:
+        warning: Похоже, вы используете IPv6 CIDR. Драйвер ноды может требовать дополнительной конфигурации для его поддержки.
+        enable: Включить поддержку IPv6
+    etcd:
+      disableSnapshots:
+        label: Автоматические снапшоты
+      snapshotScheduleCron:
+        label: Cron-расписание
+      snapshotRetention:
+        label: Оставлять последний
+      exportMetric:
+        label: Метрики
+        false: Доступно только внутри кластера
+        true: Доступно для публичного интерфейса
   k3s:
     systemService:
       coredns: "CoreDNS"
@@ -2215,6 +2250,7 @@ fleet:
     workspace:
       label: Рабочее пространство
       addWorkspace: Создать рабочее пространство
+    helmRepoURLRegex: Helm Repos (URL Regex)
   clusterGroup:
     selector:
       label: Выбор кластера
@@ -2292,6 +2328,7 @@ gatekeeperIndex:
   poweredBy: OPA Gatekeeper
   unavailable: OPA + Gatekeeper не доступен в system-charts каталоге.
   violations: Нарушения
+  deprecated: The OPA Gatekeeper chart is deprecated as of Rancher 2.8 and will be removed in a future release. Please consider switching to <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.kubewarden.io">Kubewarden</a>.
 
 gatekeeperInstall:
   auditInterval: Авто-интервал
@@ -2358,6 +2395,9 @@ growl:
   podSecurity:
     message: "Создание этого пода нарушает существующие ограниченния для выбранного пространства имён"
     title: Нарушение PodSecurity
+  kubeApiHeaderWarning:
+    titleCreate: "{resourceType} Creation Warning"
+    titleUpdate: "{resourceType} Update Warning"
 
 hpa:
   detail:
@@ -2796,7 +2836,7 @@ logging:
     dockerRootDirectory: Корневая директория Docker
     systemdLogPath: Путь до systemd логов
     tooltip: "Некоторые дистрибутивы Kubernetes логируются в <code>journald</code>. Для сбора этих логов требуется задать <code>systemdLogPath</code>. При использовании директории по умолчанию <code>/run/log/journal</code> следует учитывать, что некоторые дистрибутивы Linux не используют этот путь как значение по умолчанию."
-    url: '<a href="https://rancher.com/docs/rancher/v2.6/en/logging/helm-chart-options/" target="_blank" rel="noopener nofollow noreferrer">Узнать больше</a>'
+    url: '<a href="https://ranchermanager.docs.rancher.com/v2.7/integrations-in-rancher/logging/logging-helm-chart-options" target="_blank" rel="noopener nofollow noreferrer">Узнать больше</a>'
     default: /run/log/journal
   elasticsearch:
     host: Хост
@@ -4116,9 +4156,8 @@ plugins:
       image:
         name: образы
         label: Образ развёртывания
-      cacheState:
-        name: cacheState
-        label: Состояние кэша
+      repository:
+        label: Repository Name
   tabs:
     all: Все
     available: Доступные
@@ -4145,7 +4184,7 @@ plugins:
     label: Удалить
     title: "Удалить расширение: {name}"
     prompt: "Вы уверены, что хотите удалить данное расширение?"
-    custom: "Вы уверены, что хотите удалить данный образ расширений? Все расширения, предоставленные этим образом, также будут удалены."
+    catalog: "Вы уверены, что хотите удалить данный образ каталога расширений? Все расширения, предоставленные этим образом, также будут удалены."
   upgradeAvailable: Доступна более новая версия этого расширения
   reload: Расширения изменены - требуется перезагрузка
   safeMode:
@@ -5635,6 +5674,8 @@ validation:
     logdna:
       apiKey: Требуется установить "Api Key".
   invalidCron: Неверное расписание cron
+  invalidCidr: "Invalid CIDR"
+  invalidIP: "Invalid IP"
   k8s:
     name: Должен состоять из буквенно-цифровых символов нижнего регистра или '-', начинаться и заканчиваться буквенно-цифровым символом (например, 'my-name' или '123-abc').
     identifier:
@@ -5694,6 +5735,7 @@ validation:
       missingResource: Вы должны указать Ресурс для каждого ресурсного гранта
       missingApiGroup: Вы должны указать группу API для каждого гранта на ресурс
       missingOneResource: Вы должны указать по крайней мере один URL-адрес ресурса, URL-адрес не-ресурса или группу API для каждого гранта на ресурс
+      noResourceAndNonResource: Each rule may contain Resources or Non-Resource URLs but not both
   service:
     externalName:
       none: Внешнее имя требуется для сервиса ExternalName.
@@ -7040,7 +7082,6 @@ advancedSettings:
     "auth-user-session-ttl-minutes": "Пользовательский TTL (в минутах) на сессию авторизации пользователя."
     "auth-token-max-ttl-minutes": "Максимальный TTL (в минутах) для всех токенов аутентификации. При значении 0 токен никогда не истекает."
     "kubeconfig-generate-token": "Автоматическая герерация токенов для юзеров при запросе kubeconfig."
-    "kubeconfig-token-ttl-minutes": "TTL, применяющийся к токенам, сгенерированным с помощью CLI. Устаревшее: этот параметр будет удалён, и kubeconfig-default-token-ttl-minutes будет использоваться для всех kubeconfig токенов."
     "kubeconfig-default-token-ttl-minutes": "TTL (в минутах), применяющийся ко всем токенам kubeconfig. При значении 0 токен никогда не истекает."
     "rke-metadata-config": "Настроить параметры обновления метаданных RKE."
     "ui-banners": "Баннер классификации используется для отображения фиксированного пользовательского баннера в шапке и/или подвале страницы."
