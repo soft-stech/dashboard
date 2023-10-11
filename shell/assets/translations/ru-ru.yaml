@@ -905,7 +905,7 @@ catalog:
       installGeneric: Установить чарт
       upgrade: "Обновить {name}"
     helm:
-      atomic: Atomicпш
+      atomic: Atomic
       description:
         label: Описание
         placeholder: напр. назначение helm команды
